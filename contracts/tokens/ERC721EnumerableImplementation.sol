@@ -65,11 +65,11 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   {
     super.removeNFToken(_from, _tokenId);
 
-    uint256 tokenIndex = idToOwnerIndex[_tokenId];
+    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length.sub(1);
     uint256 lastToken = ownerToIds[_from][lastTokenIndex];
 
-    ownerToIds[_from][tokenIndex] = lastToken;
+    ownerToIds[_from][tokenToRemoveIndex] = lastToken;
     ownerToIds[_from][lastTokenIndex] = 0;
     /*
      * Note that this will handle single-element arrays. In that case, both tokenToRemoveIndex and
@@ -79,7 +79,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
      */
     ownerToIds[_from].length--;
     idToOwnerIndex[_tokenId] = 0;
-    idToOwnerIndex[lastToken] = tokenIndex;
+    idToOwnerIndex[lastToken] = tokenToRemoveIndex;
   }
 
   /*
