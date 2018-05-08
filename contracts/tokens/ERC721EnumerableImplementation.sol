@@ -31,8 +31,6 @@ contract ERC721EnumerableImplementation is ERC721implementation {
 
   /*
    * @dev Contract constructor.
-   * @param _name A descriptive name for a collection of NFTs.
-   * @param _symbol An abbreviated name for NFTokens.
    */
   constructor()
     ERC721implementation()
