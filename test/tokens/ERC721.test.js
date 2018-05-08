@@ -200,7 +200,7 @@ contract('ERC721', (accounts) => {
     var recipient = accounts[2];
 
     await nftoken.mint(owner, id2);
-    await assertRevert(nftoken.transferFrom(owner, 0, id3, {from: owner}));
+    await assertRevert(nftoken.transferFrom(owner, recipient, id3, {from: owner}));
   });
 
   it('corectly safe transfers NFToken from owner', async () => {
