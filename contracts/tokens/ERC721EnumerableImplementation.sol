@@ -4,9 +4,8 @@ import "./ERC721implementation.sol";
 import "./ERC721Enumerable.sol";
 
 /*
- * @title None-fungable token.
- * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
- * the implementation at goo.gl/FLaJc9.
+ * @title ERC721 enumeration extension implementation.
+ * @dev Reusable implementation.
  */
 contract ERC721EnumerableImplementation is ERC721implementation {
 
