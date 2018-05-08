@@ -41,7 +41,7 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
    * @dev Magic value of a smart contract that can recieve NFToken.
    * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
-  bytes4 constant MAGIC_ONERC721RECEIVED = 0xf0b9e5ba;
+  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
   /*
    * @dev This emits when ownership of any NFT changes by any mechanism.
@@ -287,7 +287,7 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
 
     if (_to.isContract()) {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(_from, _tokenId, _data);
-      require(retval == MAGIC_ONERC721RECEIVED);
+      require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
   }
 
