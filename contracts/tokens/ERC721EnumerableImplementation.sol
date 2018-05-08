@@ -10,22 +10,22 @@ import "./ERC721Enumerable.sol";
 contract ERC721EnumerableImplementation is ERC721implementation {
 
   /*
-   * @dev Array with all NFToken IDs.
+   * @dev Array of all NFToken IDs.
    */
   uint256[] internal tokens;
 
   /*
-   * @dev Mapping from NFToken ID to position in the tokens array.
+   * @dev Mapping from NFToken ID to position in the global tokens array.
    */
   mapping(uint256 => uint256) internal idToIndex;
 
   /*
-   * @dev Mapping from owner to list of owned NFToken IDs.
+   * @dev Mapping from owner address to a list of owned NFToken IDs.
    */
   mapping (address => uint256[]) internal ownerToIds;
 
   /*
-   * @dev Mapping from NFToken id to index of the owner tokens list
+   * @dev Mapping from NFToken ID to its index in the owner tokens list.
    */
   mapping(uint256 => uint256) internal idToOwnerIndex;
 
