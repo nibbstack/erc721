@@ -311,19 +311,19 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
   /*
    * @dev Mints a new NFToken.
    * @param _to The address that will own the minted NFToken.
-   * @param _id of the NFToken to be minted by the msg.sender.
+   * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
   function _mint(address _to,
-                 uint256 _id)
+                 uint256 _tokenId)
     internal
   {
     require(_to != address(0));
-    require(_id != 0);
-    require(idToOwner[_id] == address(0));
+    require(_tokenId != 0);
+    require(idToOwner[_tokenId] == address(0));
 
-    addNFToken(_to, _id);
+    addNFToken(_to, _tokenId);
 
-    emit Transfer(address(0), _to, _id);
+    emit Transfer(address(0), _to, _tokenId);
   }
 
   /*

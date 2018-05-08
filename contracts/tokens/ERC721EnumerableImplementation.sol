@@ -37,14 +37,14 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   /*
    * @dev Mints a new NFToken.
    * @param _to The address that will own the minted NFToken.
-   * @param _id of the NFToken to be minted by the msg.sender.
+   * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
   function _mint(address _to,
-                 uint256 _id)
+                 uint256 _tokenId)
     internal
   {
-    super._mint(_to, _id);
-    tokens.push(_id);
+    super._mint(_to, _tokenId);
+    tokens.push(_tokenId);
   }
 
   /*
