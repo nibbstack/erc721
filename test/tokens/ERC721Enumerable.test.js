@@ -13,6 +13,15 @@ contract('ERC721EnumerableMock', (accounts) => {
     nftoken = await ERC721Enumerable.new();
   });
 
+  it('correctly checks all the supported interfaces', async () => {
+    var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
+    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
+    var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
+    assert.equal(nftokenInterface, true);
+    assert.equal(nftokenMetadataInterface, false);
+    assert.equal(nftokenEnumerableInterface, true);
+  });
+
   it('returns the correct total supply', async () => {
     var totalSupply = await nftoken.totalSupply();
     assert.equal(totalSupply, 0);
