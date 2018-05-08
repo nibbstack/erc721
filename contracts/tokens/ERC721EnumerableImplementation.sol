@@ -15,11 +15,6 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   uint256[] internal tokens;
 
   /*
-   * @dev Mapping from NFToken ID to position in the global tokens array.
-   */
-  mapping(uint256 => uint256) internal idToIndex;
-
-  /*
    * @dev Mapping from owner address to a list of owned NFToken IDs.
    */
   mapping (address => uint256[]) internal ownerToIds;
@@ -49,8 +44,6 @@ contract ERC721EnumerableImplementation is ERC721implementation {
     internal
   {
     super._mint(_to, _id);
-
-    idToIndex[_id] = tokens.length;
     tokens.push(_id);
   }
 
