@@ -57,6 +57,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
    internal
   {
     super.removeNFToken(_from, _tokenId);
+    assert(ownerToIds[_from].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length.sub(1);

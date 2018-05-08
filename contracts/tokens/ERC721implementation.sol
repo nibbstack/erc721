@@ -348,7 +348,7 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
    internal
   {
     require(idToOwner[_tokenId] == _from);
-
+    assert(ownerToNFTokenCount[_from] > 0);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from].sub(1);
     delete idToOwner[_tokenId];
   }
