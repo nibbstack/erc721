@@ -39,6 +39,11 @@ contract ERC721MetadataImplementation is ERC721implementation {
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
+  /*
+   * @dev Set a distinct URI (RFC 3986) for a given NFToken ID.
+   * @param _tokenId Id for which we want uri.
+   * @param _uri String representing RFC 3986 URI.
+   */
   function _setTokenUri(uint256 _tokenId,
                        string _uri)
     validNFToken(_tokenId)
