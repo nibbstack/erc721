@@ -14,6 +14,15 @@ contract('ERC721', (accounts) => {
     nftoken = await ERC721.new();
   });
 
+  it('correctly checks all the supported interfaces', async () => {
+    var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
+    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
+    var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
+    assert.equal(nftokenInterface, true);
+    assert.equal(nftokenMetadataInterface, false);
+    assert.equal(nftokenEnumerableInterface, false);
+  });
+
   it('returns correct balanceOf after mint', async () => {
     await nftoken.mint(accounts[0], id1);
     const count = await nftoken.balanceOf(accounts[0]);
