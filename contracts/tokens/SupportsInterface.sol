@@ -6,7 +6,7 @@ import "./ERC165.sol";
  * @title EIP165 implementation.
  * @dev Reusable implementation.
  */
-contract ERC165implementation is ERC165 {
+contract SupportsInterface is ERC165 {
   /*
    * @dev Mapping of supported intefraces.
    * You must not set element 0xffffffff to true.
