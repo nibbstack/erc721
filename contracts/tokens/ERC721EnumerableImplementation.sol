@@ -83,7 +83,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   }
 
   /*
-   * @dev Assignes a new NFToken to owner.
+   * @dev Assignes a new NFToken to an address.
    * @param _To Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
