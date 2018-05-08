@@ -85,6 +85,13 @@ contract('ERC721', (accounts) => {
   });
 
 
+  it('throws when trying to approve NFToken ID which it does not own', async () => {
+    await nftoken.mint(accounts[1], id2);
+    await assertRevert(nftoken.approve(accounts[2], id2, {from: accounts[2]}));
+    const address = await nftoken.getApproved(id2);
+    assert.equal(address, 0);
+  });
+
   it('throws when trying to approve NFToken ID which it already owns', async () => {
     await nftoken.mint(accounts[1], id2);
     await assertRevert(nftoken.approve(accounts[1], id2));
