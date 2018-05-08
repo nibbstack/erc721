@@ -8,10 +8,11 @@ contract ERC721MetadataEnumerableMock is ERC721EnumerableImplementation, ERC721M
 	constructor(string _name,
 		        string _symbol)
       ERC721MetadataImplementation(_name, _symbol)
+      ERC721EnumerableImplementation()
 	  public
 	{
 
-	} 
+	}
 
 	function mint(address _to,
                   uint256 _id,
