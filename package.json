@@ -1,0 +1,47 @@
+{
+  "name": "ethereum-erc721",
+  "version": "1.0.0",
+  "description": "Non-fungible token implementation Ethereum blockchain.",
+  "main": "truffle.js",
+  "directories": {
+    "contracts": "contracts",
+    "migrations": "migrations",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "author": "0xcert",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xcert/ethereum-erc721.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xcert/etheethereum-erc721reum/issues"
+  },
+  "homepage": "https://github.com/0xcert/ethereum-erc721#readme",
+  "keywords": [
+    "ethereum",
+    "eth",
+    "contract",
+    "contracts",
+    "smart",
+    "smart-contract",
+    "smart-contracts",
+    "token",
+    "tokens",
+    "nft",
+    "nfts",
+    "non-fungible",
+    "non-fungibles",
+    "erc",
+    "erc721",
+    "erc-721",
+    "deed",
+    "standard"
+  ],
+  "devDependencies": {
+    "truffle": "^4.1.8"
+  }
+}
