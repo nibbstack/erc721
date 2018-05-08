@@ -201,7 +201,8 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
   }
 
   /*
-   * @dev Approves another address to claim for the ownership of the given NFToken ID.
+   * @dev Approves another address to claim the ownership or send the given NFToken to another
+   * address.
    * @param _to Address to be approved for the given NFToken ID.
    * @param _tokenId ID of the token to be approved.
    */
