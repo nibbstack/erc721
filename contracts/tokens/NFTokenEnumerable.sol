@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "./ERC721implementation.sol";
+import "./NFToken.sol";
 import "./ERC721Enumerable.sol";
 
 /*
@@ -8,7 +8,7 @@ import "./ERC721Enumerable.sol";
  * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
  * the implementation at goo.gl/FLaJc9.
  */
-contract ERC721EnumerableImplementation is ERC721implementation {
+contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /*
    * @dev Array with all NFToken IDs.
@@ -36,7 +36,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
    * @param _symbol An abbreviated name for NFTokens.
    */
   constructor()
-    ERC721implementation()
+    NFToken()
     public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable

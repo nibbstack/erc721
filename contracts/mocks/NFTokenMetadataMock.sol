@@ -1,13 +1,12 @@
 pragma solidity ^0.4.23;
 
-import "../tokens/ERC721MetadataImplementation.sol";
-import "../tokens/ERC721EnumerableImplementation.sol";
+import "../tokens/NFTokenMetadata.sol";
 
-contract ERC721MetadataEnumerableMock is ERC721EnumerableImplementation, ERC721MetadataImplementation {
+contract NFTokenMetadataMock is NFTokenMetadata {
 
 	constructor(string _name,
 		          string _symbol)
-    ERC721MetadataImplementation(_name, _symbol)
+    NFTokenMetadata(_name, _symbol)
 	  public
 	{}
 

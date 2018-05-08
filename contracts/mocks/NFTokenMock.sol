@@ -1,8 +1,8 @@
 pragma solidity ^0.4.23;
 
-import "../tokens/ERC721implementation.sol";
+import "../tokens/NFToken.sol";
 
-contract ERC721Mock is ERC721implementation {
+contract NFTokenMock is NFToken {
 
 	function mint(address _to,
                 uint256 _id)

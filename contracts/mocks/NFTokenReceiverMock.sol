@@ -3,7 +3,7 @@ pragma solidity ^0.4.23;
 import "../../contracts/tokens/ERC721TokenReceiver.sol";
 
 
-contract ERC721TokenReceiverMock is ERC721TokenReceiver {
+contract NFTokenReceiverMock is ERC721TokenReceiver {
 
   /*
    * @dev Magic value of a smart contract that can recieve NFToken.

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "./ERC721implementation.sol";
+import "./NFToken.sol";
 import "./ERC721Metadata.sol";
 
 /*
@@ -8,7 +8,7 @@ import "./ERC721Metadata.sol";
  * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
  * the implementation at goo.gl/FLaJc9.
  */
-contract ERC721MetadataImplementation is ERC721implementation {
+contract NFTokenMetadata is NFToken, ERC721Metadata {
 
   /*
    * @dev A descriptive name for a collection of NFTs.
@@ -32,7 +32,7 @@ contract ERC721MetadataImplementation is ERC721implementation {
    */
   constructor(string _name,
               string _symbol)
-    ERC721implementation()
+    NFToken()
     public
   {
     issuerName = _name;

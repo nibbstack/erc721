@@ -1,9 +1,9 @@
-const ERC721 = artifacts.require('ERC721Mock');
+const NFToken = artifacts.require('NFTokenMock');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
-const TokenReceiverMock = artifacts.require('ERC721TokenReceiverMock');
+const TokenReceiverMock = artifacts.require('NFTokenReceiverMock');
 
-contract('ERC721', (accounts) => {
+contract('NFTokenMock', (accounts) => {
   let nftoken;
   let id1 = 1;
   let id2 = 2;
@@ -11,7 +11,7 @@ contract('ERC721', (accounts) => {
   let id4 = 40;
 
   beforeEach(async function () {
-    nftoken = await ERC721.new();
+    nftoken = await NFToken.new();
   });
 
   it('correctly checks all the supported interfaces', async () => {
