@@ -16,11 +16,9 @@ contract('ERC721', (accounts) => {
 
   it('correctly checks all the supported interfaces', async () => {
     var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
-    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
-    var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
+    var nftokenNonExistingInterface = await nftoken.supportsInterface('0x5b5e139f');
     assert.equal(nftokenInterface, true);
-    assert.equal(nftokenMetadataInterface, false);
-    assert.equal(nftokenEnumerableInterface, false);
+    assert.equal(nftokenNonExistingInterface, false);
   });
 
   it('returns correct balanceOf after mint', async () => {
