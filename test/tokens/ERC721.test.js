@@ -61,7 +61,7 @@ contract('ERC721', (accounts) => {
     assert.equal(address, accounts[1]);
   });
 
-  it('throws when trying to find owner od none existant NFToken id', async () => {
+  it('throws when trying to find owner od non-existing NFToken id', async () => {
     await assertRevert(nftoken.ownerOf(id4));
   });
 
@@ -80,12 +80,12 @@ contract('ERC721', (accounts) => {
     assert.equal(address, 0);
   });
 
-  it('throws when trying to get approval of none existant NFToken id', async () => {
+  it('throws when trying to get approval of non-existing NFToken id', async () => {
     await assertRevert(nftoken.getApproved(id4));
   });
 
 
-  it('throws when trying to approve NFToken id that we are not the owner of', async () => {
+  it('throws when trying to approve NFToken ID which it already owns', async () => {
     await nftoken.mint(accounts[1], id2);
     await assertRevert(nftoken.approve(accounts[1], id2));
     const address = await nftoken.getApproved(id2);
@@ -97,12 +97,11 @@ contract('ERC721', (accounts) => {
     var { logs } = await nftoken.setApprovalForAll(accounts[6], true);
     let approvalForAllEvent = logs.find(e => e.event === 'ApprovalForAll');
     assert.notEqual(approvalForAllEvent, undefined);
-
     var isApprovedForAll = await nftoken.isApprovedForAll(accounts[0], accounts[6]);
     assert.equal(isApprovedForAll, true);
   });
 
-  it('correctly sets than cancels an operator', async () => {
+  it('correctly sets then cancels an operator', async () => {
     await nftoken.mint(accounts[0], id2);
     await nftoken.setApprovalForAll(accounts[6], true);
     await nftoken.setApprovalForAll(accounts[6], false);
@@ -133,7 +132,7 @@ contract('ERC721', (accounts) => {
     assert.equal(ownerOfId2, recipient);
   });
 
-  it('corectly transfers nftoken from approved address', async () => {
+  it('corectly transfers NFToken from approved address', async () => {
     var sender = accounts[1];
     var recipient = accounts[2];
     var owner = accounts[3];
