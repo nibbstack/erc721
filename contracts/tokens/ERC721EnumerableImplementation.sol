@@ -48,7 +48,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   }
 
   /*
-   * @dev Removes a NFToken from owner.
+   * @dev Removes a NFToken from an address.
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.
    */
@@ -77,7 +77,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
 
   /*
    * @dev Assignes a new NFToken to an address.
-   * @param _To Address to wich we want to add the NFToken.
+   * @param _to Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
   function addNFToken(address _to,
@@ -115,7 +115,9 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   }
 
   /*
-   * @dev returns the `_index`th NFToken id of `_owner`.
+   * @dev returns the n-th NFToken ID from a list of owner's tokens.
+   * @param _owner Token owner's address.
+   * @param _index Index number representing n-th token in owner's list of tokens.
    */
   function tokenOfOwnerByIndex(address _owner,
                                uint256 _index)
