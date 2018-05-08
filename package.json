@@ -43,5 +43,8 @@
   ],
   "devDependencies": {
     "truffle": "^4.1.8"
+  },
+  "dependencies": {
+    "ethjs-util": "^0.1.4"
   }
 }
