@@ -230,6 +230,7 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
     external
   {
     require(_operator != address(0));
+    require(ownerToNFTokenCount[msg.sender] > 0);
     ownerToOperators[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
   }

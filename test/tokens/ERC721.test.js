@@ -95,6 +95,7 @@ contract('ERC721', (accounts) => {
   });
 
   it('correctly sets an operator', async () => {
+    await nftoken.mint(accounts[0], id2);
     var { logs } = await nftoken.setApprovalForAll(accounts[6], true);
     let approvalForAllEvent = logs.find(e => e.event === 'ApprovalForAll');
     assert.notEqual(approvalForAllEvent, undefined);
@@ -104,6 +105,7 @@ contract('ERC721', (accounts) => {
   });
 
   it('correctly sets than cancels an operator', async () => {
+    await nftoken.mint(accounts[0], id2);
     await nftoken.setApprovalForAll(accounts[6], true);
     await nftoken.setApprovalForAll(accounts[6], false);
 
