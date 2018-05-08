@@ -33,17 +33,6 @@ contract('ERC721EnumerableMock', (accounts) => {
     assert.equal(totalSupply, 2);
   });
 
-  it('returns the correct total supply', async () => {
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 0);
-
-    await nftoken.mint(accounts[1], id1);
-    await nftoken.mint(accounts[1], id2);
-
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 2);
-  });
-
   it('returns the correct token by index', async () => {
     await nftoken.mint(accounts[1], id1);
     await nftoken.mint(accounts[1], id2);
