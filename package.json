@@ -1,7 +1,7 @@
 {
-  "name": "ethereum-erc721",
+  "name": "@0xcert/ethereum-erc721",
   "version": "1.0.0",
-  "description": "Non-fungible token implementation Ethereum blockchain.",
+  "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
   "main": "truffle.js",
   "directories": {
     "contracts": "contracts",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/0xcert/ethereum-erc721#readme",
   "keywords": [
     "ethereum",
+    "blockchain",
     "eth",
     "contract",
     "contracts",
@@ -35,6 +36,7 @@
     "nfts",
     "non-fungible",
     "non-fungibles",
+    "eip",
     "erc",
     "erc721",
     "erc-721",
@@ -42,9 +44,7 @@
     "standard"
   ],
   "devDependencies": {
+    "ethjs-util": "^0.1.4",
     "truffle": "^4.1.8"
-  },
-  "dependencies": {
-    "ethjs-util": "^0.1.4"
   }
 }
