@@ -12,7 +12,7 @@ import "../utils/AddressUtils.sol";
  * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
  * the implementation at goo.gl/FLaJc9.
  */
-contract ERC721implementation is Ownable, ERC721, SupportsInterface {
+contract NFToken is Ownable, ERC721, SupportsInterface {
   using SafeMath for uint256;
   using AddressUtils for address;
 
@@ -325,6 +325,21 @@ contract ERC721implementation is Ownable, ERC721, SupportsInterface {
     addNFToken(_to, _tokenId);
 
     emit Transfer(address(0), _to, _tokenId);
+  }
+
+  /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    validNFToken(_tokenId)
+    internal
+  {
+    clearApproval(_owner, _tokenId);
+    removeNFToken(_owner, _tokenId);
+    emit Transfer(_owner, address(0), _tokenId);
   }
 
   /*

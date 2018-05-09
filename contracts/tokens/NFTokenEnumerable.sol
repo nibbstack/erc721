@@ -1,13 +1,13 @@
 pragma solidity ^0.4.23;
 
-import "./ERC721implementation.sol";
+import "./NFToken.sol";
 import "./ERC721Enumerable.sol";
 
 /*
  * @title ERC721 enumeration extension implementation.
  * @dev Reusable implementation.
  */
-contract ERC721EnumerableImplementation is ERC721implementation {
+contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /*
    * @dev Array of all NFToken IDs.
@@ -17,7 +17,12 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   /*
    * @dev Mapping from owner address to a list of owned NFToken IDs.
    */
-  mapping (address => uint256[]) internal ownerToIds;
+  mapping(uint256 => uint256) internal idToIndex;
+
+  /*
+   * @dev Mapping from owner to list of owned NFToken IDs.
+   */
+  mapping(address => uint256[]) internal ownerToIds;
 
   /*
    * @dev Mapping from NFToken ID to its index in the owner tokens list.
@@ -28,7 +33,7 @@ contract ERC721EnumerableImplementation is ERC721implementation {
    * @dev Contract constructor.
    */
   constructor()
-    ERC721implementation()
+    NFToken()
     public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
@@ -45,6 +50,30 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   {
     super._mint(_to, _tokenId);
     tokens.push(_tokenId);
+  }
+
+  /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    internal
+  {
+    assert(tokens.length > 0);
+    super._burn(_owner, _tokenId);
+
+    uint256 tokenIndex = idToIndex[_tokenId];
+    uint256 lastTokenIndex = tokens.length.sub(1);
+    uint256 lastToken = tokens[lastTokenIndex];
+
+    tokens[tokenIndex] = lastToken;
+    tokens[lastTokenIndex] = 0;
+
+    tokens.length--;
+    idToIndex[_tokenId] = 0;
+    idToIndex[lastToken] = tokenIndex;
   }
 
   /*

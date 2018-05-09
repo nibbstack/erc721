@@ -1,13 +1,13 @@
 pragma solidity ^0.4.23;
 
-import "./ERC721implementation.sol";
+import "./NFToken.sol";
 import "./ERC721Metadata.sol";
 
 /*
  * @title ERC721 metadata extension implementation.
  * @dev Reusable implementation.
  */
-contract ERC721MetadataImplementation is ERC721implementation {
+contract NFTokenMetadata is NFToken, ERC721Metadata {
 
   /*
    * @dev A descriptive name for a collection of NFTs.
@@ -31,12 +31,28 @@ contract ERC721MetadataImplementation is ERC721implementation {
    */
   constructor(string _name,
               string _symbol)
-    ERC721implementation()
+    NFToken()
     public
   {
     issuerName = _name;
     issuerSymbol = _symbol;
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
+  }
+
+    /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    internal
+  {
+    super._burn(_owner, _tokenId);
+
+    if (bytes(idToUri[_tokenId]).length != 0) {
+      delete idToUri[_tokenId];
+    }
   }
 
   /*
@@ -45,7 +61,7 @@ contract ERC721MetadataImplementation is ERC721implementation {
    * @param _uri String representing RFC 3986 URI.
    */
   function _setTokenUri(uint256 _tokenId,
-                       string _uri)
+                        string _uri)
     validNFToken(_tokenId)
     internal
   {
