@@ -47,8 +47,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @param _to The address that will own the minted NFToken.
    * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
-  function _mint(address _to,
-                 uint256 _tokenId)
+  function _mint(
+    address _to,
+    uint256 _tokenId
+  )
     internal
   {
     super._mint(_to, _tokenId);
@@ -63,8 +65,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
    */
-  function _burn(address _owner,
-                 uint256 _tokenId)
+  function _burn(
+    address _owner,
+    uint256 _tokenId
+  )
     internal
   {
     assert(tokens.length > 0);
@@ -87,8 +91,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.
    */
-  function removeNFToken(address _from,
-                         uint256 _tokenId)
+  function removeNFToken(
+    address _from,
+    uint256 _tokenId
+  )
    internal
   {
     super.removeNFToken(_from, _tokenId);
@@ -116,8 +122,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @param _to Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
-  function addNFToken(address _to,
-                      uint256 _tokenId)
+  function addNFToken(
+    address _to,
+    uint256 _tokenId
+  )
     internal
   {
     super.addNFToken(_to, _tokenId);
@@ -141,7 +149,9 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   /*
    * @dev Returns NFToken ID by its index.
    */
-  function tokenByIndex(uint256 _index)
+  function tokenByIndex(
+    uint256 _index
+  )
     external
     view
     returns (uint256)
@@ -155,8 +165,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @param _owner Token owner's address.
    * @param _index Index number representing n-th token in owner's list of tokens.
    */
-  function tokenOfOwnerByIndex(address _owner,
-                               uint256 _index)
+  function tokenOfOwnerByIndex(
+    address _owner,
+    uint256 _index
+  )
     external
     view
     returns (uint256)
@@ -164,4 +176,5 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     require(_index < ownerToIds[_owner].length);
     return ownerToIds[_owner][_index];
   }
+
 }

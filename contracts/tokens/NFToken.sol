@@ -50,7 +50,11 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * may be created and assigned without emitting Transfer. At the time of
    * any transfer, the approved address for that NFT (if any) is reset to none.
    */
-  event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
+  event Transfer(
+    address indexed _from,
+    address indexed _to,
+    uint256 _tokenId
+  );
 
   /*
    * @dev This emits when the approved address for an NFT is changed or
@@ -58,19 +62,29 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * When a Transfer event emits, this also indicates that the approved
    * address for that NFT (if any) is reset to none.
    */
-  event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
+  event Approval(
+    address indexed _owner,
+    address indexed _approved,
+    uint256 _tokenId
+  );
 
   /*
    * @dev This emits when an operator is enabled or disabled for an owner.
    * The operator can manage all NFTs of the owner.
    */
-  event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
+  event ApprovalForAll(
+    address indexed _owner,
+    address indexed _operator,
+    bool _approved
+  );
 
   /*
    * @dev Guarantees that the msg.sender is an owner or operator of the given NFToken.
    * @param _tokenId ID of the NFToken to validate.
    */
-  modifier canOperate(uint256 _tokenId) {
+  modifier canOperate(
+    uint256 _tokenId
+  ) {
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
     _;
@@ -80,7 +94,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Guarantees that the msg.sender is allowed to transfer NFToken.
    * @param _tokenId ID of the NFToken to transfer.
    */
-  modifier canTransfer(uint256 _tokenId) {
+  modifier canTransfer(
+    uint256 _tokenId
+  ) {
     address tokenOwner = idToOwner[_tokenId];
     require(
       tokenOwner == msg.sender
@@ -95,7 +111,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Guarantees that _tokenId is a valid Token.
    * @param _tokenId ID of the NFToken to validate.
    */
-  modifier validNFToken(uint256 _tokenId) {
+  modifier validNFToken(
+    uint256 _tokenId
+  ) {
     require(idToOwner[_tokenId] != address(0));
     _;
   }
@@ -113,7 +131,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Returns the count of all NFTokens assigent to owner.
    * @param _owner Address where we are interested in NFTokens owned by them.
    */
-  function balanceOf(address _owner)
+  function balanceOf(
+    address _owner
+  )
     external
     view
     returns (uint256)
@@ -126,7 +146,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @notice Find the owner of a NFToken.
    * @param _tokenId The identifier for a NFToken we are inspecting.
    */
-  function ownerOf(uint256 _tokenId)
+  function ownerOf(
+    uint256 _tokenId
+  )
     external
     view
     returns (address _owner)
@@ -149,10 +171,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _tokenId The NFT to transfer
    * @param data Additional data with no specified format, sent in call to `_to`
    */
-  function safeTransferFrom(address _from,
-                            address _to,
-                            uint256 _tokenId,
-                            bytes data)
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId,
+    bytes data
+  )
     external
   {
     _safeTransferFrom(_from, _to, _tokenId, data);
@@ -166,9 +190,11 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _to The new owner
    * @param _tokenId The NFT to transfer
    */
-  function safeTransferFrom(address _from,
-                            address _to,
-                            uint256 _tokenId)
+  function safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  )
     external
   {
     _safeTransferFrom(_from, _to, _tokenId, "");
@@ -186,9 +212,11 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _to The new owner
    * @param _tokenId The NFT to transfer
    */
-  function transferFrom(address _from,
-                        address _to,
-                        uint256 _tokenId)
+  function transferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  )
     external
     canTransfer(_tokenId)
     validNFToken(_tokenId)
@@ -206,7 +234,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _to Address to be approved for the given NFToken ID.
    * @param _tokenId ID of the token to be approved.
    */
-  function approve(address _approved, uint256 _tokenId)
+  function approve(
+    address _approved,
+    uint256 _tokenId
+  )
     external
     canOperate(_tokenId)
     validNFToken(_tokenId)
@@ -226,8 +257,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _operator Address to add to the set of authorized operators.
    * @param _approved True if the operators is approved, false to revoke approval
    */
-  function setApprovalForAll(address _operator,
-                             bool _approved)
+  function setApprovalForAll(
+    address _operator,
+    bool _approved
+  )
     external
   {
     require(_operator != address(0));
@@ -239,7 +272,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Returns an address currently approved to take ownership of the given NFToken ID.
    * @param _tokenId ID of the NFToken to query the approval of.
    */
-  function getApproved(uint256 _tokenId)
+  function getApproved(
+    uint256 _tokenId
+  )
     public
     view
     validNFToken(_tokenId)
@@ -254,8 +289,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _operator The address that acts on behalf of the owner
    * @return True if `_operator` is an approved operator for `_owner`, false otherwise
    */
-  function isApprovedForAll(address _owner,
-                            address _operator)
+  function isApprovedForAll(
+    address _owner,
+    address _operator
+  )
     external
     view
     returns (bool)
@@ -272,10 +309,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _tokenId The NFT to transfer
    * @param data Additional data with no specified format, sent in call to `_to`
    */
-  function _safeTransferFrom(address _from,
-                             address _to,
-                             uint256 _tokenId,
-                             bytes _data)
+  function _safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId,
+    bytes _data
+  )
     internal
     canTransfer(_tokenId)
     validNFToken(_tokenId)
@@ -297,7 +336,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _to Address of a new owner.
    * @param _tokenId The NFToken that is being transferred.
    */
-  function _transfer(address _to, uint256 _tokenId)
+  function _transfer(
+    address _to,
+    uint256 _tokenId
+  )
     private
   {
     address from = idToOwner[_tokenId];
@@ -317,8 +359,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _to The address that will own the minted NFToken.
    * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
-  function _mint(address _to,
-                 uint256 _tokenId)
+  function _mint(
+    address _to,
+    uint256 _tokenId
+  )
     internal
   {
     require(_to != address(0));
@@ -338,8 +382,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
    */
-  function _burn(address _owner,
-                 uint256 _tokenId)
+  function _burn(
+    address _owner,
+    uint256 _tokenId
+  )
     validNFToken(_tokenId)
     internal
   {
@@ -352,8 +398,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Clears the current approval of a given NFToken ID.
    * @param _tokenId ID of the NFToken to be transferred.
    */
-  function clearApproval(address _owner,
-                         uint256 _tokenId)
+  function clearApproval(
+    address _owner,
+    uint256 _tokenId
+  )
     internal
   {
     delete idToApprovals[_tokenId];
@@ -365,8 +413,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.
    */
-  function removeNFToken(address _from,
-                         uint256 _tokenId)
+  function removeNFToken(
+    address _from,
+    uint256 _tokenId
+  )
    internal
   {
     require(idToOwner[_tokenId] == _from);
@@ -380,8 +430,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @param _To Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
-  function addNFToken(address _to,
-                      uint256 _tokenId)
+  function addNFToken(
+    address _to,
+    uint256 _tokenId
+  )
     internal
   {
     require(idToOwner[_tokenId] == address(0));
@@ -389,4 +441,5 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
   }
+
 }

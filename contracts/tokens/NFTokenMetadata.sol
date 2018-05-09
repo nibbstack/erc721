@@ -29,8 +29,10 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
    * @param _name A descriptive name for a collection of NFTs.
    * @param _symbol An abbreviated name for NFTokens.
    */
-  constructor(string _name,
-              string _symbol)
+  constructor(
+    string _name,
+    string _symbol
+  )
     NFToken()
     public
   {
@@ -47,8 +49,10 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
    */
-  function _burn(address _owner,
-                 uint256 _tokenId)
+  function _burn(
+    address _owner,
+    uint256 _tokenId
+  )
     internal
   {
     super._burn(_owner, _tokenId);
@@ -63,8 +67,10 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
    * @param _tokenId Id for which we want uri.
    * @param _uri String representing RFC 3986 URI.
    */
-  function _setTokenUri(uint256 _tokenId,
-                        string _uri)
+  function _setTokenUri(
+    uint256 _tokenId,
+    string _uri
+  )
     validNFToken(_tokenId)
     internal
   {
@@ -97,7 +103,9 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
    * @dev A distinct URI (RFC 3986) for a given NFToken.
    * @param _tokenId Id for which we want uri.
    */
-  function tokenURI(uint256 _tokenId)
+  function tokenURI(
+    uint256 _tokenId
+  )
     validNFToken(_tokenId)
     external
     view

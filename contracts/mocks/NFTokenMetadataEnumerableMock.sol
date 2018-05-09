@@ -5,23 +5,29 @@ import "../tokens/NFTokenEnumerable.sol";
 
 contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
 
-	constructor(string _name,
-		          string _symbol)
+  constructor(
+    string _name,
+    string _symbol
+  )
     NFTokenMetadata(_name, _symbol)
-	  public
-	{}
+    public
+  {}
 
-	function mint(address _to,
-                uint256 _id,
-                string _uri)
+  function mint(
+    address _to,
+    uint256 _id,
+    string _uri
+  )
     external
-	{
-		super._mint(_to, _id);
-		super._setTokenUri(_id, _uri);
-	}
+  {
+    super._mint(_to, _id);
+    super._setTokenUri(_id, _uri);
+  }
 
-  function burn(address _owner,
-                uint256 _tokenId)
+  function burn(
+    address _owner,
+    uint256 _tokenId
+  )
     external
   {
     super._burn(_owner, _tokenId);
@@ -30,11 +36,14 @@ contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
   /*
    * @dev Helper function for testing the burn method.
    */
-  function checkUri(uint256 _tokenId)
+  function checkUri(
+    uint256 _tokenId
+  )
     external
     view
     returns (string)
   {
     return idToUri[_tokenId];
   }
+
 }

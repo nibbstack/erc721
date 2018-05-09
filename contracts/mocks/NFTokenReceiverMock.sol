@@ -25,9 +25,11 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
    * @return `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
    *  unless throwing
    */
-  function onERC721Received(address _from,
-                            uint256 _tokenId,
-                            bytes data)
+  function onERC721Received(
+    address _from,
+    uint256 _tokenId,
+    bytes data
+  )
     external
     returns(bytes4)
   {
@@ -36,4 +38,5 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
     data;
     return MAGIC_ON_ERC721_RECEIVED;
   }
+
 }

@@ -4,17 +4,22 @@ import "../tokens/NFToken.sol";
 
 contract NFTokenMock is NFToken {
 
-	function mint(address _to,
-                uint256 _id)
+  function mint(
+    address _to,
+    uint256 _id
+  )
     external
-	{
-		super._mint(_to, _id);
-	}
+  {
+    super._mint(_to, _id);
+  }
 
-  function burn(address _owner,
-                uint256 _tokenId)
+  function burn(
+    address _owner,
+    uint256 _tokenId
+  )
     external
   {
     super._burn(_owner, _tokenId);
   }
+
 }

@@ -14,7 +14,10 @@ contract Ownable {
    * @param previousOwner The address of the previous owner.
    * @param newOwner The address of the new owner.
    */
-  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
 
   /**
    * @dev The constructor sets the original `owner` of the contract to the sender account.
@@ -37,7 +40,9 @@ contract Ownable {
    * @dev Allows the current owner to transfer control of the contract to a newOwner.
    * @param newOwner The address to transfer ownership to.
    */
-  function transferOwnership(address newOwner)
+  function transferOwnership(
+    address newOwner
+  )
     onlyOwner
     public
   {

@@ -16,14 +16,16 @@ contract SupportsInterface is ERC165 {
   constructor()
     public
   {
-      supportedInterfaces[0x01ffc9a7] = true; // ERC165
+    supportedInterfaces[0x01ffc9a7] = true; // ERC165
   }
 
   /*
    * @dev Function to check which interfaces are suported by this contract.
    * @param interfaceID If of the interface.
    */
-  function supportsInterface(bytes4 interfaceID)
+  function supportsInterface(
+    bytes4 interfaceID
+  )
     external
     view
     returns (bool)
