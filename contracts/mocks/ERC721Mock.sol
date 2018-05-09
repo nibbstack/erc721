@@ -5,9 +5,9 @@ import "../tokens/ERC721implementation.sol";
 contract ERC721Mock is ERC721implementation {
 
 	function mint(address _to,
-                uint256 _id)
+                uint256 _tokenId)
     external
 	{
-		super._mint(_to, _id);
+		super._mint(_to, _tokenId);
 	}
 }
