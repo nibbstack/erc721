@@ -94,4 +94,23 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
     await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 1));
   });
 
+  it.only('corectly burns a NFTokens', async () => {
+    await nftoken.mint(accounts[1], id2, 'url2');
+    var { logs } = await nftoken.burn(accounts[1], id2);
+    let transferEvent = logs.find(e => e.event === 'Transfer');
+    assert.notEqual(transferEvent, undefined);
+
+    var balance = await nftoken.balanceOf(accounts[1]);
+    assert.equal(balance, 0);
+
+    var totalSupply = await nftoken.totalSupply();
+    assert.equal(totalSupply, 0);
+
+    await assertRevert(nftoken.ownerOf(id2));
+    await assertRevert(nftoken.tokenByIndex(0));
+    await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 0));
+
+    var uri = await nftoken.checkUri(id2);
+    assert.equal(uri, '');
+  });
 });

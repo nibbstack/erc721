@@ -40,8 +40,24 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
+    /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    internal
+  {
+    super._burn(_owner, _tokenId);
+
+    if (bytes(idToUri[_tokenId]).length != 0) {
+      delete idToUri[_tokenId];
+    }
+  }
+
   function _setTokenUri(uint256 _tokenId,
-                       string _uri)
+                        string _uri)
     validNFToken(_tokenId)
     internal
   {

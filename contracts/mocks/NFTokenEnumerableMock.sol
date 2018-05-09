@@ -6,8 +6,15 @@ contract NFTokenEnumerableMock is NFTokenEnumerable {
 
 	function mint(address _to,
                 uint256 _id)
-      external
+    external
 	{
 		super._mint(_to, _id);
 	}
+
+  function burn(address _owner,
+                uint256 _tokenId)
+    external
+  {
+    super._burn(_owner, _tokenId);
+  }
 }

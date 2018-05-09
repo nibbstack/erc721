@@ -58,6 +58,29 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    internal
+  {
+    super._burn(_owner, _tokenId);
+
+    uint256 tokenIndex = idToIndex[_tokenId];
+    uint256 lastTokenIndex = tokens.length.sub(1);
+    uint256 lastToken = tokens[lastTokenIndex];
+
+    tokens[tokenIndex] = lastToken;
+    tokens[lastTokenIndex] = 0;
+
+    tokens.length--;
+    idToIndex[_tokenId] = 0;
+    idToIndex[lastToken] = tokenIndex;
+  }
+
+  /*
    * @dev Removes a NFToken from owner.
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.

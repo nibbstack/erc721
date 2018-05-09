@@ -327,6 +327,21 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
+   * @dev Burns a NFToken.
+   * @param _owner Address of the NFToken owner.
+   * @param _tokenId ID of the NFToken to be burned.
+   */
+  function _burn(address _owner,
+                 uint256 _tokenId)
+    validNFToken(_tokenId)
+    internal
+  {
+    clearApproval(_owner, _tokenId);
+    removeNFToken(_owner, _tokenId);
+    emit Transfer(_owner, address(0), _tokenId);
+  }
+
+  /*
    * @dev Clears the current approval of a given NFToken ID.
    * @param _tokenId ID of the NFToken to be transferred.
    */

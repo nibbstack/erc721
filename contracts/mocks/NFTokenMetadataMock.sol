@@ -18,4 +18,22 @@ contract NFTokenMetadataMock is NFTokenMetadata {
 		super._mint(_to, _id);
 		super._setTokenUri(_id, _uri);
 	}
+
+  function burn(address _owner,
+                uint256 _tokenId)
+    external
+  {
+    super._burn(_owner, _tokenId);
+  }
+
+  /*
+   * @dev Helper function for testing the burn method.
+   */
+  function checkUri(uint256 _tokenId)
+    external
+    view
+    returns (string)
+  {
+    return idToUri[_tokenId];
+  }
 }
