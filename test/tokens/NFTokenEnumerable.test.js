@@ -22,15 +22,12 @@ contract('NFTokenEnumerableMock', (accounts) => {
     assert.equal(nftokenEnumerableInterface, true);
   });
 
-  it('returns the correct total supply', async () => {
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 0);
-
-    await nftoken.mint(accounts[1], id1);
-    await nftoken.mint(accounts[1], id2);
-
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 2);
+  it('correctly mint a new nftoken', async () => {
+    var { logs } = await nftoken.mint(accounts[1], id1);
+    let transferEvent = logs.find(e => e.event === 'Transfer');
+    assert.notEqual(transferEvent, undefined);
+    var owner = await nftoken.ownerOf(id1);
+    assert.equal(owner, accounts[1]);
   });
 
   it('returns the correct total supply', async () => {
@@ -91,7 +88,6 @@ contract('NFTokenEnumerableMock', (accounts) => {
 
     await assertRevert(nftoken.tokenByIndex(0));
     await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 0));
-
   });
 
 });
