@@ -4,36 +4,28 @@ import "./ERC721implementation.sol";
 import "./ERC721Enumerable.sol";
 
 /*
- * @title None-fungable token.
- * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
- * the implementation at goo.gl/FLaJc9.
+ * @title ERC721 enumeration extension implementation.
+ * @dev Reusable implementation.
  */
 contract ERC721EnumerableImplementation is ERC721implementation {
 
   /*
-   * @dev Array with all NFToken IDs.
+   * @dev Array of all NFToken IDs.
    */
   uint256[] internal tokens;
 
   /*
-   * @dev Mapping from NFToken ID to position in the tokens array.
-   */
-  mapping(uint256 => uint256) internal idToIndex;
-
-  /*
-   * @dev Mapping from owner to list of owned NFToken IDs.
+   * @dev Mapping from owner address to a list of owned NFToken IDs.
    */
   mapping (address => uint256[]) internal ownerToIds;
 
   /*
-   * @dev Mapping from NFToken id to index of the owner tokens list
+   * @dev Mapping from NFToken ID to its index in the owner tokens list.
    */
   mapping(uint256 => uint256) internal idToOwnerIndex;
 
   /*
    * @dev Contract constructor.
-   * @param _name A descriptive name for a collection of NFTs.
-   * @param _symbol An abbreviated name for NFTokens.
    */
   constructor()
     ERC721implementation()
@@ -45,20 +37,18 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   /*
    * @dev Mints a new NFToken.
    * @param _to The address that will own the minted NFToken.
-   * @param _id of the NFToken to be minted by the msg.sender.
+   * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
   function _mint(address _to,
-                 uint256 _id)
+                 uint256 _tokenId)
     internal
   {
-    super._mint(_to, _id);
-
-    idToIndex[_id] = tokens.length;
-    tokens.push(_id);
+    super._mint(_to, _tokenId);
+    tokens.push(_tokenId);
   }
 
   /*
-   * @dev Removes a NFToken from owner.
+   * @dev Removes a NFToken from an address.
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.
    */
@@ -67,25 +57,28 @@ contract ERC721EnumerableImplementation is ERC721implementation {
    internal
   {
     super.removeNFToken(_from, _tokenId);
+    assert(ownerToIds[_from].length > 0);
 
-    uint256 tokenIndex = idToOwnerIndex[_tokenId];
+    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length.sub(1);
     uint256 lastToken = ownerToIds[_from][lastTokenIndex];
 
-    ownerToIds[_from][tokenIndex] = lastToken;
+    ownerToIds[_from][tokenToRemoveIndex] = lastToken;
     ownerToIds[_from][lastTokenIndex] = 0;
-    // Note that this will handle single-element arrays. In that case, both tokenIndex and lastTokenIndex are going to
-    // be zero. Then we can make sure that we will remove _tokenId from the ownedTokens list since we are first swapping
-    // the lastToken to the first position, and then dropping the element placed in the last position of the list
-
+    /*
+     * Note that this will handle single-element arrays. In that case, both tokenToRemoveIndex and
+     * lastTokenIndex are going to be zero. Then we can make sure that we will remove _tokenId
+     * from the owned tokens list since we are first swapping the lastToken to the first position,
+     * and then dropping the element placed in the last position of the list
+     */
     ownerToIds[_from].length--;
     idToOwnerIndex[_tokenId] = 0;
-    idToOwnerIndex[lastToken] = tokenIndex;
+    idToOwnerIndex[lastToken] = tokenToRemoveIndex;
   }
 
   /*
-   * @dev Assignes a new NFToken to owner.
-   * @param _To Address to wich we want to add the NFToken.
+   * @dev Assignes a new NFToken to an address.
+   * @param _to Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
   function addNFToken(address _to,
@@ -123,7 +116,9 @@ contract ERC721EnumerableImplementation is ERC721implementation {
   }
 
   /*
-   * @dev returns the `_index`th NFToken id of `_owner`.
+   * @dev returns the n-th NFToken ID from a list of owner's tokens.
+   * @param _owner Token owner's address.
+   * @param _index Index number representing n-th token in owner's list of tokens.
    */
   function tokenOfOwnerByIndex(address _owner,
                                uint256 _index)

@@ -12,11 +12,11 @@ contract ERC721MetadataEnumerableMock is ERC721EnumerableImplementation, ERC721M
 	{}
 
 	function mint(address _to,
-                uint256 _id,
+                uint256 _tokenId,
                 string _uri)
     external
 	{
-		super._mint(_to, _id);
-		super._setTokenUri(_id, _uri);
+		super._mint(_to, _tokenId);
+		super._setTokenUri(_tokenId, _uri);
 	}
 }

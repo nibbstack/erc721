@@ -3,7 +3,7 @@ pragma solidity ^0.4.23;
 import "./ERC165.sol";
 
 /*
- * @title EIP165 implementation.
+ * @title ERC165 implementation.
  * @dev Reusable implementation.
  */
 contract SupportsInterface is ERC165 {

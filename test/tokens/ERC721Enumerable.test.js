@@ -15,22 +15,11 @@ contract('ERC721EnumerableMock', (accounts) => {
 
   it('correctly checks all the supported interfaces', async () => {
     var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
-    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
+    var nftokenNonExistingInterface = await nftoken.supportsInterface('0x5b5e139f');
     var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
     assert.equal(nftokenInterface, true);
-    assert.equal(nftokenMetadataInterface, false);
+    assert.equal(nftokenNonExistingInterface, false);
     assert.equal(nftokenEnumerableInterface, true);
-  });
-
-  it('returns the correct total supply', async () => {
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 0);
-
-    await nftoken.mint(accounts[1], id1);
-    await nftoken.mint(accounts[1], id2);
-
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 2);
   });
 
   it('returns the correct total supply', async () => {
@@ -53,7 +42,7 @@ contract('ERC721EnumerableMock', (accounts) => {
     assert.equal(tokenId, id2);
   });
 
-  it('throws when trying to get token by unexistant index', async () => {
+  it('throws when trying to get token by non-existing index', async () => {
     await nftoken.mint(accounts[1], id1);
     await assertRevert(nftoken.tokenByIndex(1));
   });
@@ -67,7 +56,7 @@ contract('ERC721EnumerableMock', (accounts) => {
     assert.equal(tokenId, id2);
   });
 
-  it('throws when trying to get token of owner by unexistant index', async () => {
+  it('throws when trying to get token of owner by non-existing index', async () => {
     await nftoken.mint(accounts[1], id1);
     await nftoken.mint(accounts[2], id3);
 
