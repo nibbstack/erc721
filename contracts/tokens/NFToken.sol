@@ -41,7 +41,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Magic value of a smart contract that can recieve NFToken.
    * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
-  bytes4 constant MAGIC_ONERC721RECEIVED = 0xf0b9e5ba;
+  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
   /*
    * @dev This emits when ownership of any NFT changes by any mechanism.
@@ -201,7 +201,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Approves another address to claim for the ownership of the given NFToken ID.
+   * @dev Approves another address to claim the ownership or send the given NFToken to another
+   * address.
    * @param _to Address to be approved for the given NFToken ID.
    * @param _tokenId ID of the token to be approved.
    */
@@ -287,7 +288,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
     if (_to.isContract()) {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(_from, _tokenId, _data);
-      require(retval == MAGIC_ONERC721RECEIVED);
+      require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
   }
 
@@ -311,19 +312,19 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   /*
    * @dev Mints a new NFToken.
    * @param _to The address that will own the minted NFToken.
-   * @param _id of the NFToken to be minted by the msg.sender.
+   * @param _tokenId of the NFToken to be minted by the msg.sender.
    */
   function _mint(address _to,
-                 uint256 _id)
+                 uint256 _tokenId)
     internal
   {
     require(_to != address(0));
-    require(_id != 0);
-    require(idToOwner[_id] == address(0));
+    require(_tokenId != 0);
+    require(idToOwner[_tokenId] == address(0));
 
-    addNFToken(_to, _id);
+    addNFToken(_to, _tokenId);
 
-    emit Transfer(address(0), _to, _id);
+    emit Transfer(address(0), _to, _tokenId);
   }
 
   /*
@@ -363,7 +364,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    internal
   {
     require(idToOwner[_tokenId] == _from);
-
+    assert(ownerToNFTokenCount[_from] > 0);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from].sub(1);
     delete idToOwner[_tokenId];
   }

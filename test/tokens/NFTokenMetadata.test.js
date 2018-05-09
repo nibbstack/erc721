@@ -16,10 +16,10 @@ contract('NFTokenMetadataMock', (accounts) => {
   it('correctly checks all the supported interfaces', async () => {
     var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
     var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
-    var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
+    var nftokenNonExistingInterface = await nftoken.supportsInterface('0x780e9d63');
     assert.equal(nftokenInterface, true);
     assert.equal(nftokenMetadataInterface, true);
-    assert.equal(nftokenEnumerableInterface, false);
+    assert.equal(nftokenNonExistingInterface, false);
   });
 
   it('returns the correct issuer name', async () => {
@@ -41,7 +41,7 @@ contract('NFTokenMetadataMock', (accounts) => {
     assert.equal(tokenURI, 'url2');
   });
 
-  it('throws when trying to get uri of none existant NFToken id', async () => {
+  it('throws when trying to get URI of invalid NFToken ID', async () => {
     await assertRevert(nftoken.tokenURI(id4));
   });
 

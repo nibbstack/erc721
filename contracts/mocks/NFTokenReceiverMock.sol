@@ -8,7 +8,7 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
   /*
    * @dev Magic value of a smart contract that can recieve NFToken.
    */
-  bytes4 private constant MAGIC_ONERC721RECEIVED = bytes4(
+  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = bytes4(
     keccak256("onERC721Received(address,uint256,bytes)")
   );
 
@@ -34,6 +34,6 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
     _from;
     _tokenId;
     data;
-    return MAGIC_ONERC721RECEIVED;
+    return MAGIC_ON_ERC721_RECEIVED;
   }
 }

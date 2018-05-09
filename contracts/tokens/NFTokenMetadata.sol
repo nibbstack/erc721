@@ -4,9 +4,8 @@ import "./NFToken.sol";
 import "./ERC721Metadata.sol";
 
 /*
- * @title None-fungable token.
- * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
- * the implementation at goo.gl/FLaJc9.
+ * @title ERC721 metadata extension implementation.
+ * @dev Reusable implementation.
  */
 contract NFTokenMetadata is NFToken, ERC721Metadata {
 
@@ -56,6 +55,11 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     }
   }
 
+  /*
+   * @dev Set a distinct URI (RFC 3986) for a given NFToken ID.
+   * @param _tokenId Id for which we want uri.
+   * @param _uri String representing RFC 3986 URI.
+   */
   function _setTokenUri(uint256 _tokenId,
                         string _uri)
     validNFToken(_tokenId)
