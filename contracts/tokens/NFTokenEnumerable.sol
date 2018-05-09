@@ -61,6 +61,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
                  uint256 _tokenId)
     internal
   {
+    assert(tokens.length > 0);
     super._burn(_owner, _tokenId);
 
     uint256 tokenIndex = idToIndex[_tokenId];
