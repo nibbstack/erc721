@@ -12,12 +12,12 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   /*
    * @dev A descriptive name for a collection of NFTs.
    */
-  string private issuerName;
+  string private nftName;
 
   /*
    * @dev An abbreviated name for NFTokens.
    */
-  string private issuerSymbol;
+  string private nftSymbol;
 
   /*
    * @dev Mapping from NFToken ID to metadata uri.
@@ -34,13 +34,16 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     NFToken()
     public
   {
-    issuerName = _name;
-    issuerSymbol = _symbol;
+    nftName = _name;
+    nftSymbol = _symbol;
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
     /*
    * @dev Burns a NFToken.
+   * @notice This is a private function which should be called from user-implemented external
+   * burner. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
    */
@@ -76,7 +79,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     view
     returns (string _name)
   {
-    _name = issuerName;
+    _name = nftName;
   }
 
   /*
@@ -87,7 +90,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     view
     returns (string _symbol)
   {
-    _symbol = issuerSymbol;
+    _symbol = nftSymbol;
   }
 
   /*

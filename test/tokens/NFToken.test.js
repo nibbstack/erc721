@@ -40,10 +40,6 @@ contract('NFTokenMock', (accounts) => {
     await assertRevert(nftoken.mint('0', id3));
   });
 
-  it.skip('throws when trying to mint NFToken from non-owner', async () => {
-    await assertRevert(nftoken.mint(accounts[1], id3, { from: accounts[1] }));
-  });
-
   it('finds the correct amount of NFTokens owned by account', async () => {
     await nftoken.mint(accounts[1], id2);
     await nftoken.mint(accounts[1], id3);
