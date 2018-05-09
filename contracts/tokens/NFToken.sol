@@ -221,8 +221,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @notice Enable or disable approval for a third party ("operator") to manage
-   * all your asset.
+   * @dev Enable or disable approval for a third party ("operator") to manage
+   * all sender's tokens.
+   * @notice This works even if sender doesn't own any tokens at the time.
    * @dev Emits the ApprovalForAll event
    * @param _operator Address to add to the set of authorized operators.
    * @param _approved True if the operators is approved, false to revoke approval
