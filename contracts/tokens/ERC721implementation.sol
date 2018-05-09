@@ -288,7 +288,7 @@ contract ERC721implementation is Ownable, ERC721, SupportsInterface {
 
     if (_to.isContract()) {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(_from, _tokenId, _data);
-      require(retval == MAGIC_ONERC721RECEIVED);
+      require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
   }
 
