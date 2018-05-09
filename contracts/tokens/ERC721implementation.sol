@@ -3,7 +3,7 @@ pragma solidity ^0.4.23;
 import "../math/SafeMath.sol";
 import "../ownership/Ownable.sol";
 import "./ERC721.sol";
-import "./ERC165implementation.sol";
+import "./SupportsInterface.sol";
 import "./ERC721TokenReceiver.sol";
 import "../utils/AddressUtils.sol";
 
@@ -12,7 +12,7 @@ import "../utils/AddressUtils.sol";
  * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
  * the implementation at goo.gl/FLaJc9.
  */
-contract ERC721implementation is Ownable, ERC721, ERC165implementation {
+contract ERC721implementation is Ownable, ERC721, SupportsInterface {
   using SafeMath for uint256;
   using AddressUtils for address;
 
@@ -231,7 +231,6 @@ contract ERC721implementation is Ownable, ERC721, ERC165implementation {
     external
   {
     require(_operator != address(0));
-    require(ownerToNFTokenCount[msg.sender] > 0);
     ownerToOperators[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
   }
