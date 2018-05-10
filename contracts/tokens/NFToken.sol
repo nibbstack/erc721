@@ -104,6 +104,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Contract constructor.
    */
   constructor()
+    SupportsInterface()
     public
   {
     supportedInterfaces[0x80ac58cd] = true; // ERC721
