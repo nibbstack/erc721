@@ -100,12 +100,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
     ownerToIds[_from][tokenToRemoveIndex] = lastToken;
     ownerToIds[_from][lastTokenIndex] = 0;
-    /*
-     * Note that this will handle single-element arrays. In that case, both tokenToRemoveIndex and
-     * lastTokenIndex are going to be zero. Then we can make sure that we will remove _tokenId
-     * from the owned tokens list since we are first swapping the lastToken to the first position,
-     * and then dropping the element placed in the last position of the list
-     */
+
     ownerToIds[_from].length--;
     idToOwnerIndex[_tokenId] = 0;
     idToOwnerIndex[lastToken] = tokenToRemoveIndex;
