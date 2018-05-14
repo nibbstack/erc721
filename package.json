@@ -9,7 +9,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test"
+    "test": "truffle test",
+    "migrate": "truffle migrate",
+    "compile": "truffle compile"
   },
   "author": "0xcert",
   "license": "MIT",
