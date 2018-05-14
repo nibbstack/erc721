@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![npm version](https://badge.fury.io/js/0xcert%2Fethereum-erc721.svg)](https://badge.fury.io/js/0xcert%2Fethereum-erc721)&nbsp;[![Dependency Status](https://gemnasium.com/0xcert/ethereum-erc721.svg)](https://gemnasium.com/0xcert/ethereum-erc721)
+![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![npm version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://badge.fury.io/js/0xcert%2Fethereum-erc721)&nbsp;[![Dependency Status](https://gemnasium.com/0xcert/ethereum-erc721.svg)](https://gemnasium.com/0xcert/ethereum-erc721)
 
 # ERC-721 Token
 
@@ -13,6 +13,7 @@ Requirements:
 - Windows, Linux or Mac OS X.
 
 Simply clone the repository and install npm packages:
+
 ```
 $ git clone git@github.com:0xcert/ethereum-erc721.git
 $ cd ethereum-erc721
@@ -20,9 +21,11 @@ $ npm install
 ```
 
 Make sure that everything has been set up correctly:
+
 ```
 $ npm run test
 ```
+
 All tests should pass.
 
 ## Structure
@@ -31,7 +34,6 @@ Since this is a Truffle project, you will find all tokens in `contracts/tokens/`
 - `NFToken.sol`: This is the base ERC-721 token implementation (with the support for ERC-165).
 - `NFTokenEnumerable.sol`: This implements optional ERC-721 support for enumeration. It is useful if you want to know the total supply of tokens, to query a token by index, etc.
 - `NFTokenMetadata.sol`: This implements optional ERC-721 meta-data features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
-
 
 Other files in the directory starting with `ERC*.sol` are interfaces and define the respective standards.
 
@@ -118,8 +120,8 @@ module.exports = function(deployer) {
 };
 ```
 
-
 Start `geth` and sync your client with the testnet (can take a little bit):
+
 ```
 $ geth console --testnet --light --rpc --rpcaddr "localhost" --rpcport "8545" --rpccorsdomain "*" --rpcapi="db,eth,net,web3,personal,web3"
 ```
@@ -130,9 +132,9 @@ Open another terminal and create a new account (your "test" account wallet):
 $ geth --testnet account new
 ```
 
-**NOTE**: In this example the wallet address is  `0x9062dd79d7e4273889b234f6b0c840ca43280af60x9` (make sure you add the returned string with `0x` yourself). Your account address will be different. And don't forget the passphrase or you won't be able to unlock your new account. Now, go and send some ether to it. Get it [here](https://faucet.metamask.io/). It's simple.
+**NOTE**: In this example the wallet address is  `0x9062dd79d7e4273889b234f6b0c840ca43280af60x9` (make sure you prepend the returned string with `0x` yourself). Your account address will be different! And don't forget the passphrase otherwise you won't be able to unlock your new account. Now, go and send some ether to it (you can get some [here](https://faucet.metamask.io/).
 
-Open project's `truffle.js` and add the following to the `module.exports`:
+Open project's `truffle.js` and add the following:
 
 ```js
 module.exports = {
@@ -142,16 +144,18 @@ module.exports = {
       port: 8545,
       network_id: '3', // Ropsten ID 3
       from: '0x9062dd79d7e4273889b234f6b0c840ca43280af60x9', // account address from which to deploy
-      gas: 4000000
-    }
-  }
+      gas: 4000000,
+    },
+  },
 };
 ```
 
 Next, let's unlock your account:
+
 ```
 $ npm run console -- --network ropsten
 ```
+
 ```
 truffle(ropsten)> web3.personal.unlockAccount("0x9062dd79d7e4273889b234f6b0c840ca43280af6", "<PASSWORD>", 1500)
 ```
@@ -162,7 +166,7 @@ At last, deploy the contract:
 $ npm run migrate -- --network ropsten
 ```
 
-Interacting with the contract. First get the address of the deployed contract:
+You can now interact with the contract. First get the address of the deployed contract:
 
 ```
 $ npm run networks
@@ -203,7 +207,6 @@ You can also check it on Ropsten [etherscan](https://ropsten.etherscan.io/addres
 '1'
 ```
 
-
 ## Contributing
 
 See CONTRIBUTING.md for how to help out.
@@ -213,4 +216,3 @@ See CONTRIBUTING.md for how to help out.
 ```
 Copyright (c) 2018 0xcert admin@0xcert.org.
 ```
-
