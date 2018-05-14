@@ -12,6 +12,7 @@
     "test": "truffle test",
     "migrate": "truffle migrate",
     "networks": "truffle networks",
+    "console": "truffle console",
     "compile": "truffle compile"
   },
   "author": "0xcert",
