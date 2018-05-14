@@ -14,9 +14,9 @@ contract('ownership/Ownable', (accounts) => {
   });
 
   it('changes owner after transfer', async () => {
-    let other = accounts[1];
+    const other = accounts[1];
     await ownable.transferOwnership(other);
-    let owner = await ownable.owner();
+    const owner = await ownable.owner();
     assert.isTrue(owner === other);
   });
 
