@@ -8,9 +8,8 @@ import "./ERC721TokenReceiver.sol";
 import "../utils/AddressUtils.sol";
 
 /*
- * @title None-fungable token.
- * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows
- * the implementation at goo.gl/FLaJc9.
+ * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows the
+ * implementation at goo.gl/FLaJc9.
  */
 contract NFToken is Ownable, ERC721, SupportsInterface {
   using SafeMath for uint256;
@@ -36,19 +35,17 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    */
   mapping (address => mapping (address => bool)) internal ownerToOperators;
 
-
   /*
    * @dev Magic value of a smart contract that can recieve NFToken.
    * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
   bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
-  /*
-   * @dev This emits when ownership of any NFT changes by any mechanism.
-   * This event emits when NFTs are created (`from` == 0) and destroyed
-   * (`to` == 0). Exception: during contract creation, any number of NFTs
-   * may be created and assigned without emitting Transfer. At the time of
-   * any transfer, the approved address for that NFT (if any) is reset to none.
+  /**
+   * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
+   * created (`from` == 0) and destroyed (`to` == 0). Exception: during contract creation, any
+   * number of NFTs may be created and assigned without emitting Transfer. At the time of any
+   * transfer, the approved address for that NFT (if any) is reset to none.
    */
   event Transfer(
     address indexed _from,
@@ -57,10 +54,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   );
 
   /*
-   * @dev This emits when the approved address for an NFT is changed or
-   * reaffirmed. The zero address indicates there is no approved address.
-   * When a Transfer event emits, this also indicates that the approved
-   * address for that NFT (if any) is reset to none.
+   * @dev This emits when the approved address for an NFT is changed or reaffirmed. The zero
+   * address indicates there is no approved address. When a Transfer event emits, this also
+   * indicates that the approved address for that NFT (if any) is reset to none.
    */
   event Approval(
     address indexed _owner,
@@ -69,8 +65,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   );
 
   /*
-   * @dev This emits when an operator is enabled or disabled for an owner.
-   * The operator can manage all NFTs of the owner.
+   * @dev This emits when an operator is enabled or disabled for an owner. The operator can manage
+   * all NFTs of the owner.
    */
   event ApprovalForAll(
     address indexed _owner,
@@ -129,8 +125,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Returns the count of all NFTokens assigent to owner.
-   * @param _owner Address where we are interested in NFTokens owned by them.
+   * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
+   * considered invalid, and this function throws for queries about the zero address.
+   * @param _owner Address for whom to query the balance.
    */
   function balanceOf(
     address _owner
@@ -144,8 +141,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Find the owner of a NFToken.
-   * @param _tokenId The identifier for a NFToken we are inspecting.
+   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
+   * invalid, and queries about them do throw.
+   * @param _tokenId The identifier for an NFT.
    */
   function ownerOf(
     uint256 _tokenId
@@ -159,37 +157,35 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Transfers the ownership of an NFT from one address to another address
-   * @notice Throws unless `msg.sender` is the current owner, an authorized
-   * operator, or the approved address for this NFT. Throws if `_from` is
-   * not the current owner. Throws if `_to` is the zero address. Throws if
-   * `_tokenId` is not a valid NFT. When transfer is complete, this function
-   * checks if `_to` is a smart contract (code size > 0). If so, it calls
-   * `onERC721Received` on `_to` and throws if the return value is not
-   * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
-   * @param _from The current owner of the NFT
-   * @param _to The new owner
-   * @param _tokenId The NFT to transfer
-   * @param data Additional data with no specified format, sent in call to `_to`
+   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
+   * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
+   * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
+   * function checks if `_to` is a smart contract (code size > 0). If so, it calls `onERC721Received`
+   * on `_to` and throws if the return value is not `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
+   * @param _data Additional data with no specified format, sent in call to `_to`.
    */
   function safeTransferFrom(
     address _from,
     address _to,
     uint256 _tokenId,
-    bytes data
+    bytes _data
   )
     external
   {
-    _safeTransferFrom(_from, _to, _tokenId, data);
+    _safeTransferFrom(_from, _to, _tokenId, _data);
   }
 
   /*
-   * @dev Transfers the ownership of an NFT from one address to another address
-   * @notice This works identically to the other function with an extra data parameter,
-   * except this function just sets data to []
-   * @param _from The current owner of the NFT
-   * @param _to The new owner
-   * @param _tokenId The NFT to transfer
+   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @notice This works identically to the other function with an extra data parameter, except this
+   * function just sets data to ""
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
    */
   function safeTransferFrom(
     address _from,
@@ -201,18 +197,15 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     _safeTransferFrom(_from, _to, _tokenId, "");
   }
 
-  /*
-   * @dev Transfer ownership of an NFT
-   * @notice THE CALLER IS RESPONSIBLE
-   * TO CONFIRM THAT `_to` IS CAPABLE OF RECEIVING NFTS OR ELSE
-   * THEY MAY BE PERMANENTLY LOST.
-   * Throws unless `msg.sender` is the current owner, an authorized
-   * operator, or the approved address for this NFT. Throws if `_from` is
-   * not the current owner. Throws if `_to` is the zero address. Throws if
-   * `_tokenId` is not a valid NFT.
-   * @param _from The current owner of the NFT
-   * @param _to The new owner
-   * @param _tokenId The NFT to transfer
+  /**
+   * @dev Throws unless `msg.sender` is the current owner, an authorized operator, or the approved
+   * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
+   * address. Throws if `_tokenId` is not a valid NFT.
+   * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
+   * they mayb be permanently lost.
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
    */
   function transferFrom(
     address _from,
@@ -231,8 +224,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Approves another address to claim the ownership or send the given NFToken to another
-   * address.
+   * @dev Set or reaffirm the approved address for an NFT.
+   * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
+   * the current NFT owner, or an authorized operator of the current owner.
    * @param _to Address to be approved for the given NFToken ID.
    * @param _tokenId ID of the token to be approved.
    */
@@ -252,13 +246,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     emit Approval(tokenOwner, _approved, _tokenId);
   }
 
-  /*
-   * @dev Enable or disable approval for a third party ("operator") to manage
-   * all sender's tokens.
+  /**
+   * @dev Enables or disables approval for a third party ("operator") to manage all of
+   * `msg.sender`'s assets. It also emits the ApprovalForAll event.
    * @notice This works even if sender doesn't own any tokens at the time.
-   * @dev Emits the ApprovalForAll event
    * @param _operator Address to add to the set of authorized operators.
-   * @param _approved True if the operators is approved, false to revoke approval
+   * @param _approved True if the operators is approved, false to revoke approval.
    */
   function setApprovalForAll(
     address _operator,
@@ -272,7 +265,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Returns an address currently approved to take ownership of the given NFToken ID.
+   * @dev Get the approved address for a single NFT.
+   * @notice Throws if `_tokenId` is not a valid NFT.
    * @param _tokenId ID of the NFToken to query the approval of.
    */
   function getApproved(
@@ -286,11 +280,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     return idToApprovals[_tokenId];
   }
 
-  /*
-   * @dev Query if an address is an authorized operator for another address
-   * @param _owner The address that owns the NFTs
-   * @param _operator The address that acts on behalf of the owner
-   * @return True if `_operator` is an approved operator for `_owner`, false otherwise
+  /**
+   * @dev Returns true if `_operator` is an approved operator for `_owner`, false otherwise.
+   * @param _owner The address that owns the NFTs.
+   * @param _operator The address that acts on behalf of the owner.
    */
   function isApprovedForAll(
     address _owner,
@@ -307,10 +300,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
   /*
    * @dev Actually perform the safeTransferFrom.
-   * @param _from The current owner of the NFT
-   * @param _to The new owner
-   * @param _tokenId The NFT to transfer
-   * @param data Additional data with no specified format, sent in call to `_to`
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
+   * @param _data Additional data with no specified format, sent in call to `_to`.
    */
   function _safeTransferFrom(
     address _from,

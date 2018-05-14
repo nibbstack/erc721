@@ -1,10 +1,9 @@
 pragma solidity ^0.4.23;
 
 /**
- * @title Ownable
- * @dev The contract has an owner address, and provides basic authorization control
- * whitch simplifies the implementation of user permissions. This contract is based
- * on the source code at https://goo.gl/n2ZGVt.
+ * @dev The contract has an owner address, and provides basic authorization control whitch
+ * simplifies the implementation of user permissions. This contract is based on the source code
+ * at https://goo.gl/n2ZGVt.
  */
 contract Ownable {
   address public owner;
@@ -38,17 +37,17 @@ contract Ownable {
 
   /**
    * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
+   * @param _newOwner The address to transfer ownership to.
    */
   function transferOwnership(
-    address newOwner
+    address _newOwner
   )
     onlyOwner
     public
   {
-    require(newOwner != address(0));
-    emit OwnershipTransferred(owner, newOwner);
-    owner = newOwner;
+    require(_newOwner != address(0));
+    emit OwnershipTransferred(owner, _newOwner);
+    owner = _newOwner;
   }
 
 }

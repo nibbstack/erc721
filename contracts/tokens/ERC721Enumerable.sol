@@ -1,22 +1,24 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
-/// @title ERC-721 Non-Fungible Token Standard, optional enumeration extension
-/// @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
-///  Note: the ERC-165 identifier for this interface is 0x780e9d63
-interface ERC721Enumerable /* is ERC721 */ {
-  /// @notice Count NFTs tracked by this contract
-  /// @return A count of valid NFTs tracked by this contract, where each one of
-  ///  them has an assigned and queryable owner not equal to the zero address
+/**
+ * @dev Optional enumeration extension for ERC-721 non-fungible token standard.
+ * See https://goo.gl/pc9yoS.
+ */
+interface ERC721Enumerable {
+
+  /**
+   * @dev Returns a count of valid NFTs tracked by this contract, where each one of them has an
+   * assigned and queryable owner not equal to the zero address.
+   */
   function totalSupply()
     external
     view 
     returns (uint256);
 
-  /// @notice Enumerate valid NFTs
-  /// @dev Throws if `_index` >= `totalSupply()`.
-  /// @param _index A counter less than `totalSupply()`
-  /// @return The token identifier for the `_index`th NFT,
-  ///  (sort order not specified)
+  /**
+   * @dev Returns the token identifier for the `_index`th NFT. Sort order is not specified.
+   * @param _index A counter less than `totalSupply()`.
+   */
   function tokenByIndex(
     uint256 _index
   )
@@ -24,13 +26,13 @@ interface ERC721Enumerable /* is ERC721 */ {
     view
     returns (uint256);
 
-  /// @notice Enumerate NFTs assigned to an owner
-  /// @dev Throws if `_index` >= `balanceOf(_owner)` or if
-  ///  `_owner` is the zero address, representing invalid NFTs.
-  /// @param _owner An address where we are interested in NFTs owned by them
-  /// @param _index A counter less than `balanceOf(_owner)`
-  /// @return The token identifier for the `_index`th NFT assigned to `_owner`,
-  ///   (sort order not specified)
+  /**
+   * @dev Returns the token identifier for the `_index`th NFT assigned to `_owner`. Sort order is
+   * not specified. It throws if `_index` >= `balanceOf(_owner)` or if `_owner` is the zero address,
+   * representing invalid NFTs.
+   * @param _owner An address where we are interested in NFTs owned by them.
+   * @param _index A counter less than `balanceOf(_owner)`.
+   */
   function tokenOfOwnerByIndex(
     address _owner,
     uint256 _index

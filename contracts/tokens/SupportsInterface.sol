@@ -3,16 +3,19 @@ pragma solidity ^0.4.23;
 import "./ERC165.sol";
 
 /*
- * @title ERC165 implementation.
- * @dev Reusable implementation.
+ * @dev Implementation of standard for detect smart contract interfaces.
  */
 contract SupportsInterface is ERC165 {
+
   /*
    * @dev Mapping of supported intefraces.
-   * You must not set element 0xffffffff to true.
+   * @notice You must not set element 0xffffffff to true.
    */
   mapping(bytes4 => bool) internal supportedInterfaces;
 
+  /**
+   * @dev Contract constructor.
+   */
   constructor()
     public
   {
@@ -21,15 +24,16 @@ contract SupportsInterface is ERC165 {
 
   /*
    * @dev Function to check which interfaces are suported by this contract.
-   * @param interfaceID If of the interface.
+   * @param _interfaceID Id of the interface.
    */
   function supportsInterface(
-    bytes4 interfaceID
+    bytes4 _interfaceID
   )
     external
     view
     returns (bool)
   {
-    return supportedInterfaces[interfaceID];
+    return supportedInterfaces[_interfaceID];
   }
+
 }

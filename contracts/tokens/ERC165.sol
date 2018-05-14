@@ -1,16 +1,20 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.23;
 
+/**
+ * @dev A standard for detect smart contract interfaces. See https://goo.gl/cxQCse.
+ */
 interface ERC165 {
-  /// @notice Query if a contract implements an interface
-  /// @param interfaceID The interface identifier, as specified in ERC-165
-  /// @dev Interface identification is specified in ERC-165. This function
-  ///  uses less than 30,000 gas.
-  /// @return `true` if the contract implements `interfaceID` and
-  ///  `interfaceID` is not 0xffffffff, `false` otherwise
+
+  /**
+   * @dev Checks if the smart contract includes a specific interface.
+   * @notice This function uses less than 30,000 gas.
+   * @param _interfaceID The interface identifier, as specified in ERC-165.
+   */
   function supportsInterface(
-    bytes4 interfaceID
+    bytes4 _interfaceID
   )
     external
     view
     returns (bool);
+
 }
