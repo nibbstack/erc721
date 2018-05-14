@@ -1,7 +1,6 @@
 pragma solidity ^0.4.23;
 
 /**
- * @title SafeMath
  * @dev Math operations with safety checks that throw on error. This contract is based
  * on the source code at https://goo.gl/iyQsmU.
  */
@@ -9,6 +8,8 @@ library SafeMath {
 
   /**
    * @dev Multiplies two numbers, throws on overflow.
+   * @param _a Factor number.
+   * @param _b Factor number.
    */
   function mul(
     uint256 _a,
@@ -28,6 +29,8 @@ library SafeMath {
 
   /**
    * @dev Integer division of two numbers, truncating the quotient.
+   * @param _a Dividend number.
+   * @param _b Divisor number.
    */
   function div(
     uint256 _a,
@@ -45,6 +48,8 @@ library SafeMath {
 
   /**
    * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+   * @param _a Minuend number.
+   * @param _b Subtrahend number.
    */
   function sub(
     uint256 _a,
@@ -60,6 +65,8 @@ library SafeMath {
 
   /**
    * @dev Adds two numbers, throws on overflow.
+   * @param _a Number.
+   * @param _b Number.
    */
   function add(
     uint256 _a,

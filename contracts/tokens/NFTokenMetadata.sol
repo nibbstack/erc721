@@ -4,8 +4,7 @@ import "./NFToken.sol";
 import "./ERC721Metadata.sol";
 
 /*
- * @title ERC721 metadata extension implementation.
- * @dev Reusable implementation.
+ * @dev Optional metadata implementation for ERC-721 non-fungible token standard.
  */
 contract NFTokenMetadata is NFToken, ERC721Metadata {
 
@@ -89,7 +88,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   }
 
   /*
-  * @notice Returns an abbreviated name for NFTokens.
+  * @dev Returns an abbreviated name for NFTokens.
   */
   function symbol()
     external

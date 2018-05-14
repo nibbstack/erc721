@@ -4,8 +4,7 @@ import "./NFToken.sol";
 import "./ERC721Enumerable.sol";
 
 /*
- * @title ERC721 enumeration extension implementation.
- * @dev Reusable implementation.
+ * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
  */
 contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
@@ -143,6 +142,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /*
    * @dev Returns NFToken ID by its index.
+   * @param _index A counter less than `totalSupply()`.
    */
   function tokenByIndex(
     uint256 _index
