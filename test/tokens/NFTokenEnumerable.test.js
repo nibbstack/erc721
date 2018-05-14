@@ -4,41 +4,41 @@ const assertRevert = require('../helpers/assertRevert');
 
 contract('NFTokenEnumerableMock', (accounts) => {
   let nftoken;
-  let id1 = 1;
-  let id2 = 2;
-  let id3 = 3;
-  let id4 = 40;
+  const id1 = 1;
+  const id2 = 2;
+  const id3 = 3;
+  const id4 = 40;
 
-  beforeEach(async function () {
+  beforeEach(async () => {
     nftoken = await NFTokenEnumerable.new();
   });
 
   it('correctly checks all the supported interfaces', async () => {
-    var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
-    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
-    var nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
+    const nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
+    const nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
+    const nftokenEnumerableInterface = await nftoken.supportsInterface('0x780e9d63');
     assert.equal(nftokenInterface, true);
     assert.equal(nftokenMetadataInterface, false);
     assert.equal(nftokenEnumerableInterface, true);
   });
 
   it('correctly mint a new nftoken', async () => {
-    var { logs } = await nftoken.mint(accounts[1], id1);
-    let transferEvent = logs.find(e => e.event === 'Transfer');
+    const { logs } = await nftoken.mint(accounts[1], id1);
+    const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
-    var owner = await nftoken.ownerOf(id1);
+    const owner = await nftoken.ownerOf(id1);
     assert.equal(owner, accounts[1]);
   });
 
   it('returns the correct total supply', async () => {
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 0);
+    const totalSupply0 = await nftoken.totalSupply();
+    assert.equal(totalSupply0, 0);
 
     await nftoken.mint(accounts[1], id1);
     await nftoken.mint(accounts[1], id2);
 
-    var totalSupply = await nftoken.totalSupply();
-    assert.equal(totalSupply, 2);
+    const totalSupply1 = await nftoken.totalSupply();
+    assert.equal(totalSupply1, 2);
   });
 
   it('returns the correct token by index', async () => {
@@ -46,7 +46,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     await nftoken.mint(accounts[1], id2);
     await nftoken.mint(accounts[2], id3);
 
-    var tokenId = await nftoken.tokenByIndex(1);
+    const tokenId = await nftoken.tokenByIndex(1);
     assert.equal(tokenId, id2);
   });
 
@@ -60,7 +60,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     await nftoken.mint(accounts[1], id2);
     await nftoken.mint(accounts[2], id3);
 
-    var tokenId = await nftoken.tokenOfOwnerByIndex(accounts[1], 1);
+    const tokenId = await nftoken.tokenOfOwnerByIndex(accounts[1], 1);
     assert.equal(tokenId, id2);
   });
 
@@ -73,17 +73,16 @@ contract('NFTokenEnumerableMock', (accounts) => {
 
   it('corectly burns a NFTokens', async () => {
     await nftoken.mint(accounts[1], id2);
-    var { logs } = await nftoken.burn(accounts[1], id2);
-    let transferEvent = logs.find(e => e.event === 'Transfer');
+    const { logs } = await nftoken.burn(accounts[1], id2);
+    const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
 
-    var balance = await nftoken.balanceOf(accounts[1]);
-
+    const balance = await nftoken.balanceOf(accounts[1]);
     assert.equal(balance, 0);
 
     await assertRevert(nftoken.ownerOf(id2));
 
-    var totalSupply = await nftoken.totalSupply();
+    const totalSupply = await nftoken.totalSupply();
     assert.equal(totalSupply, 0);
 
     await assertRevert(nftoken.tokenByIndex(0));

@@ -113,10 +113,10 @@ Requirements:
 Create a new file `migrations/2_mytoken_migration.js` and put in:
 
 ```js
-const MyNFTokenContract = artifacts.require("./tokens/MyNFToken.sol");
+const MyNFTokenContract = artifacts.require('./tokens/MyNFToken.sol');
 
 module.exports = function(deployer) {
-  deployer.deploy(MyNFTokenContract, "MyNFTokenTest", "MYNFT");
+  deployer.deploy(MyNFTokenContract, 'MyNFTokenTest', 'MYNFT');
 };
 ```
 
@@ -176,8 +176,8 @@ You can also check it on Ropsten [etherscan](https://ropsten.etherscan.io/addres
 
 ```
 > const { abi } = require('./build/contracts/MyNFToken.json');
-> const account0 = "0x9062dd79d7e4273889b234f6b0c840ca43280af60x9"; // your unlocked account
-> const account1 = "0x294a4c90900c0dae6ce8e3329a2b219a1f3d8c22"; // another account (you can create it)
+> const account0 = '0x9062dd79d7e4273889b234f6b0c840ca43280af60x9'; // your unlocked account
+> const account1 = '0x294a4c90900c0dae6ce8e3329a2b219a1f3d8c22'; // another account (you can create it)
 > const MyNFTokenContract = web3.eth.contract(abi);
 > const MyNFTokenInstance = MyNFTokenContract.at(<MyNFToken ADDRESS>);
 
@@ -188,18 +188,18 @@ You can also check it on Ropsten [etherscan](https://ropsten.etherscan.io/addres
 > MyNFTokenInstance.balanceOf(account0).toString();
 '0' <-- we don't have any NFTokens yet
 
-> MyNFTokenInstance.mint(account0, "1234", {from: account0});
+> MyNFTokenInstance.mint(account0, '1234', { from: account0 });
 '0xd919e28be93d3a597fe8bf8516457f105d47836001dce3e22df7663dc1c5a6ed'
-> MyNFTokenInstance.mint(account0, "5678", {from: account0});
+> MyNFTokenInstance.mint(account0, '5678', { from: account0 });
 '0x964d082d88f7f4db91e41430b53d5473249470a6823f14fc8d5c3979adb550aa'
 > MyNFTokenInstance.balanceOf(account0).toString();
 '2' <-- Now we have 2!
 
-> MyNFTokenInstance.burn(account0, "5678", {from: account0});
+> MyNFTokenInstance.burn(account0, '5678', { from: account0 });
 > '0xb2b4eede6793212ac2d085d0d1121ce78da26513dc8c3503dc4faadc2f771f58'
 > MyNFTokenInstance.balanceOf(account0).toString();
 '1'
-> MyNFTokenInstance.safeTransferFrom(account0, account1, "1234", {from: account0});
+> MyNFTokenInstance.safeTransferFrom(account0, account1, '1234', { from: account0 });
 '0x81b9b353855c4b8c9b8b4d82c4dc8bbfa2de0dd5e6d6d94831b459b1bf0dc7b3'
 > MyNFTokenInstance.balanceOf(account0).toString();
 '0'

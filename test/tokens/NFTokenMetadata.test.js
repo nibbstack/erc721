@@ -4,19 +4,19 @@ const assertRevert = require('../helpers/assertRevert');
 
 contract('NFTokenMetadataMock', (accounts) => {
   let nftoken;
-  let id1 = 1;
-  let id2 = 2;
-  let id3 = 3;
-  let id4 = 40;
+  const id1 = 1;
+  const id2 = 2;
+  const id3 = 3;
+  const id4 = 40;
 
-  beforeEach(async function () {
+  beforeEach(async () => {
     nftoken = await NFTokenMetadata.new('Foo', 'F');
   });
 
   it('correctly checks all the supported interfaces', async () => {
-    var nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
-    var nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
-    var nftokenNonExistingInterface = await nftoken.supportsInterface('0x780e9d63');
+    const nftokenInterface = await nftoken.supportsInterface('0x80ac58cd');
+    const nftokenMetadataInterface = await nftoken.supportsInterface('0x5b5e139f');
+    const nftokenNonExistingInterface = await nftoken.supportsInterface('0x780e9d63');
     assert.equal(nftokenInterface, true);
     assert.equal(nftokenMetadataInterface, true);
     assert.equal(nftokenNonExistingInterface, false);
@@ -33,8 +33,8 @@ contract('NFTokenMetadataMock', (accounts) => {
   });
 
   it('correctly mints and checks NFToken id 2 url', async () => {
-    var { logs } = await nftoken.mint(accounts[1], id2, 'url2');
-    let transferEvent = logs.find(e => e.event === 'Transfer');
+    const { logs } = await nftoken.mint(accounts[1], id2, 'url2');
+    const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
 
     const tokenURI = await nftoken.tokenURI(id2);
@@ -47,17 +47,16 @@ contract('NFTokenMetadataMock', (accounts) => {
 
   it('corectly burns a NFTokens', async () => {
     await nftoken.mint(accounts[1], id2, 'url');
-    var { logs } = await nftoken.burn(accounts[1], id2);
-    let transferEvent = logs.find(e => e.event === 'Transfer');
+    const { logs } = await nftoken.burn(accounts[1], id2);
+    const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
 
-    var balance = await nftoken.balanceOf(accounts[1]);
-
+    const balance = await nftoken.balanceOf(accounts[1]);
     assert.equal(balance, 0);
 
     await assertRevert(nftoken.ownerOf(id2));
 
-    var uri = await nftoken.checkUri(id2);
+    const uri = await nftoken.checkUri(id2);
     assert.equal(uri, '');
   });
 
