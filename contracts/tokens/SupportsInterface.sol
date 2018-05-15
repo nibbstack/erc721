@@ -13,7 +13,7 @@ contract SupportsInterface is ERC165 {
    */
   mapping(bytes4 => bool) internal supportedInterfaces;
 
-  /**
+  /*
    * @dev Contract constructor.
    */
   constructor()
