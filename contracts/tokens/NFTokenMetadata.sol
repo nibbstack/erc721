@@ -91,8 +91,8 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   }
 
   /*
-  * @dev Returns an abbreviated name for NFTokens.
-  */
+   * @dev Returns an abbreviated name for NFTokens.
+   */
   function symbol()
     external
     view
