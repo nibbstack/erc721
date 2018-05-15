@@ -279,7 +279,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Returns true if `_operator` is an approved operator for `_owner`, false otherwise.
+   * @dev Checks if `_operator` is an approved operator for `_owner`.
    * @param _owner The address that owns the NFTs.
    * @param _operator The address that acts on behalf of the owner.
    */
