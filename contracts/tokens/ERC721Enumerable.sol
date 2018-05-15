@@ -1,21 +1,21 @@
 pragma solidity ^0.4.23;
 
-/**
+/*
  * @dev Optional enumeration extension for ERC-721 non-fungible token standard.
  * See https://goo.gl/pc9yoS.
  */
 interface ERC721Enumerable {
 
-  /**
+  /*
    * @dev Returns a count of valid NFTs tracked by this contract, where each one of them has an
    * assigned and queryable owner not equal to the zero address.
    */
   function totalSupply()
     external
-    view 
+    view
     returns (uint256);
 
-  /**
+  /*
    * @dev Returns the token identifier for the `_index`th NFT. Sort order is not specified.
    * @param _index A counter less than `totalSupply()`.
    */
@@ -26,7 +26,7 @@ interface ERC721Enumerable {
     view
     returns (uint256);
 
-  /**
+  /*
    * @dev Returns the token identifier for the `_index`th NFT assigned to `_owner`. Sort order is
    * not specified. It throws if `_index` >= `balanceOf(_owner)` or if `_owner` is the zero address,
    * representing invalid NFTs.
@@ -40,5 +40,4 @@ interface ERC721Enumerable {
     external
     view
     returns (uint256);
-
 }
