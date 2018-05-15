@@ -195,7 +195,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     _safeTransferFrom(_from, _to, _tokenId, "");
   }
 
-  /**
+  /*
    * @dev Throws unless `msg.sender` is the current owner, an authorized operator, or the approved
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
    * address. Throws if `_tokenId` is not a valid NFT.
