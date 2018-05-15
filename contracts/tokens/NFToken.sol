@@ -326,7 +326,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /*
-   * @dev Actually preforms the transfer. Does NO checks.
+   * @dev Actually preforms the transfer.
+   * @notice Does NO checks.
    * @param _to Address of a new owner.
    * @param _tokenId The NFToken that is being transferred.
    */
