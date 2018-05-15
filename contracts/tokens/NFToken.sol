@@ -244,7 +244,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     emit Approval(tokenOwner, _approved, _tokenId);
   }
 
-  /**
+  /*
    * @dev Enables or disables approval for a third party ("operator") to manage all of
    * `msg.sender`'s assets. It also emits the ApprovalForAll event.
    * @notice This works even if sender doesn't own any tokens at the time.
@@ -278,7 +278,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     return idToApprovals[_tokenId];
   }
 
-  /**
+  /*
    * @dev Returns true if `_operator` is an approved operator for `_owner`, false otherwise.
    * @param _owner The address that owns the NFTs.
    * @param _operator The address that acts on behalf of the owner.
