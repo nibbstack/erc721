@@ -7,10 +7,9 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
 
   /*
    * @dev Magic value of a smart contract that can recieve NFToken.
+   * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
-  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = bytes4(
-    keccak256("onERC721Received(address,uint256,bytes)")
-  );
+  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
   /*
    * @notice Handle the receipt of an NFT
@@ -23,7 +22,7 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
    * @param _tokenId The NFT identifier which is being transfered
    * @param data Additional data with no specified format
    * @return `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
-   *  unless throwing
+   * unless throwing
    */
   function onERC721Received(
     address _from,
@@ -38,5 +37,4 @@ contract NFTokenReceiverMock is ERC721TokenReceiver {
     data;
     return MAGIC_ON_ERC721_RECEIVED;
   }
-
 }
