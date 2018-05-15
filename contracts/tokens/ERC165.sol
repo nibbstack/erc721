@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 /*
- * @dev A standard for detect smart contract interfaces. See https://goo.gl/cxQCse.
+ * @dev A standard for detecting smart contract interfaces. See https://goo.gl/cxQCse.
  */
 interface ERC165 {
 
