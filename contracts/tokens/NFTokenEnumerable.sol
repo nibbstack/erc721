@@ -32,7 +32,6 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
    * @dev Contract constructor.
    */
   constructor()
-    NFToken()
     public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
