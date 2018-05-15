@@ -8,8 +8,7 @@ import "./ERC721TokenReceiver.sol";
 import "../utils/AddressUtils.sol";
 
 /*
- * @dev Xcert is an implementation of EIP721 and EIP721Metadata. This contract follows the
- * implementation at goo.gl/FLaJc9.
+ * @dev Implementation of ERC-721 non-fungible token standard.
  */
 contract NFToken is Ownable, ERC721, SupportsInterface {
   using SafeMath for uint256;
