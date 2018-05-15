@@ -200,7 +200,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
    * address. Throws if `_tokenId` is not a valid NFT.
    * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
-   * they mayb be permanently lost.
+   * they maybe be permanently lost.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
