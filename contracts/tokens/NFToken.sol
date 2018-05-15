@@ -40,7 +40,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    */
   bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
-  /**
+  /*
    * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
    * created (`from` == 0) and destroyed (`to` == 0). Exception: during contract creation, any
    * number of NFTs may be created and assigned without emitting Transfer. At the time of any
@@ -436,5 +436,4 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
   }
-
 }
