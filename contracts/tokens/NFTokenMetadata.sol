@@ -32,7 +32,6 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     string _name,
     string _symbol
   )
-    NFToken()
     public
   {
     nftName = _name;
