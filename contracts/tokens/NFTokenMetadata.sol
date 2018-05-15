@@ -40,10 +40,10 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
-    /*
+  /*
    * @dev Burns a NFToken.
-   * @notice This is a private function which should be called from user-implemented external
-   * burner. Its purpose is to show and properly initialize data structures when using this
+   * @notice This is a internal function which should be called from user-implemented external
+   * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
