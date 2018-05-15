@@ -349,7 +349,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   /*
    * @dev Mints a new NFToken.
    * @notice This is a private function which should be called from user-implemented external
-   * minter. Its purpose is to show and properly initialize data structures when using this
+   * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _to The address that will own the minted NFToken.
    * @param _tokenId of the NFToken to be minted by the msg.sender.
@@ -372,7 +372,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   /*
    * @dev Burns a NFToken.
    * @notice This is a private function which should be called from user-implemented external
-   * burner. Its purpose is to show and properly initialize data structures when using this
+   * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
