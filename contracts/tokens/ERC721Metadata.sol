@@ -31,5 +31,4 @@ interface ERC721Metadata {
     external
     view
     returns (string);
-
 }

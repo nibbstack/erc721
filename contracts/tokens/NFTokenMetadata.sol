@@ -3,27 +3,27 @@ pragma solidity ^0.4.23;
 import "./NFToken.sol";
 import "./ERC721Metadata.sol";
 
-/*
+/**
  * @dev Optional metadata implementation for ERC-721 non-fungible token standard.
  */
 contract NFTokenMetadata is NFToken, ERC721Metadata {
 
-  /*
+  /**
    * @dev A descriptive name for a collection of NFTs.
    */
   string private nftName;
 
-  /*
+  /**
    * @dev An abbreviated name for NFTokens.
    */
   string private nftSymbol;
 
-  /*
+  /**
    * @dev Mapping from NFToken ID to metadata uri.
    */
   mapping (uint256 => string) internal idToUri;
 
-  /*
+  /**
    * @dev Contract constructor.
    * @param _name A descriptive name for a collection of NFTs.
    * @param _symbol An abbreviated name for NFTokens.
@@ -39,10 +39,10 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
-    /*
+  /**
    * @dev Burns a NFToken.
-   * @notice This is a private function which should be called from user-implemented external
-   * burner. Its purpose is to show and properly initialize data structures when using this
+   * @notice This is a internal function which should be called from user-implemented external
+   * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _owner Address of the NFToken owner.
    * @param _tokenId ID of the NFToken to be burned.
@@ -60,8 +60,11 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     }
   }
 
-  /*
+  /**
    * @dev Set a distinct URI (RFC 3986) for a given NFToken ID.
+   * @notice this is a internal function which should be called from user-implemented external
+   * function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
    * @param _tokenId Id for which we want uri.
    * @param _uri String representing RFC 3986 URI.
    */
@@ -75,7 +78,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     idToUri[_tokenId] = _uri;
   }
 
-  /*
+  /**
    * @dev Returns a descriptive name for a collection of NFTokens.
    */
   function name()
@@ -86,9 +89,9 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     _name = nftName;
   }
 
-  /*
-  * @dev Returns an abbreviated name for NFTokens.
-  */
+  /**
+   * @dev Returns an abbreviated name for NFTokens.
+   */
   function symbol()
     external
     view
@@ -97,7 +100,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
     _symbol = nftSymbol;
   }
 
-  /*
+  /**
    * @dev A distinct URI (RFC 3986) for a given NFToken.
    * @param _tokenId Id for which we want uri.
    */

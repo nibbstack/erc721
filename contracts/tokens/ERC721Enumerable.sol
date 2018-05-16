@@ -12,7 +12,7 @@ interface ERC721Enumerable {
    */
   function totalSupply()
     external
-    view 
+    view
     returns (uint256);
 
   /**
@@ -40,5 +40,4 @@ interface ERC721Enumerable {
     external
     view
     returns (uint256);
-
 }

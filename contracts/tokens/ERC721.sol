@@ -45,7 +45,7 @@ interface ERC721 {
    */
   function balanceOf(
     address _owner
-  ) 
+  )
     external
     view
     returns (uint256);
@@ -164,5 +164,4 @@ interface ERC721 {
     external
     view
     returns (bool);
-
 }
