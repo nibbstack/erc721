@@ -15,12 +15,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   using AddressUtils for address;
 
   /**
-   * @dev A mapping from NFToken ID to the address that owns it.
+   * @dev A mapping from NFT ID to the address that owns it.
    */
   mapping (uint256 => address) internal idToOwner;
 
   /**
-   * @dev Mapping from NFToken ID to approved address.
+   * @dev Mapping from NFT ID to approved address.
    */
   mapping (uint256 => address) internal idToApprovals;
 
@@ -35,7 +35,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   mapping (address => mapping (address => bool)) internal ownerToOperators;
 
   /**
-   * @dev Magic value of a smart contract that can recieve NFToken.
+   * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
   bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
@@ -45,6 +45,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * created (`from` == 0) and destroyed (`to` == 0). Exception: during contract creation, any
    * number of NFTs may be created and assigned without emitting Transfer. At the time of any
    * transfer, the approved address for that NFT (if any) is reset to none.
+   * @param _from Sender of NFT (if address is zero address it indicates token creation).
+   * @param _to Receiver of NFT (if address is zero address it indicates token destruction).
+   * @param _tokenId The NFT that got transfered.
    */
   event Transfer(
     address indexed _from,
@@ -56,6 +59,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev This emits when the approved address for an NFT is changed or reaffirmed. The zero
    * address indicates there is no approved address. When a Transfer event emits, this also
    * indicates that the approved address for that NFT (if any) is reset to none.
+   * @param _owner Owner of NFT.
+   * @param _approved Address that we are approving.
+   * @param _tokenId NFT which we are approving.
    */
   event Approval(
     address indexed _owner,
@@ -66,6 +72,10 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   /**
    * @dev This emits when an operator is enabled or disabled for an owner. The operator can manage
    * all NFTs of the owner.
+   * @param _owner Owner of NFT.
+   * @param _operator Address to which we are setting operator rights.
+   * @param _approved Status of operator rights(true if operator rights are given and false if
+   * revoked).
    */
   event ApprovalForAll(
     address indexed _owner,
@@ -74,8 +84,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   );
 
   /**
-   * @dev Guarantees that the msg.sender is an owner or operator of the given NFToken.
-   * @param _tokenId ID of the NFToken to validate.
+   * @dev Guarantees that the msg.sender is an owner or operator of the given NFT.
+   * @param _tokenId ID of the NFT to validate.
    */
   modifier canOperate(
     uint256 _tokenId
@@ -86,8 +96,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Guarantees that the msg.sender is allowed to transfer NFToken.
-   * @param _tokenId ID of the NFToken to transfer.
+   * @dev Guarantees that the msg.sender is allowed to transfer NFT.
+   * @param _tokenId ID of the NFT to transfer.
    */
   modifier canTransfer(
     uint256 _tokenId
@@ -104,7 +114,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
   /**
    * @dev Guarantees that _tokenId is a valid Token.
-   * @param _tokenId ID of the NFToken to validate.
+   * @param _tokenId ID of the NFT to validate.
    */
   modifier validNFToken(
     uint256 _tokenId
@@ -225,7 +235,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Set or reaffirm the approved address for an NFT.
    * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
    * the current NFT owner, or an authorized operator of the current owner.
-   * @param _approved Address to be approved for the given NFToken ID.
+   * @param _approved Address to be approved for the given NFT ID.
    * @param _tokenId ID of the token to be approved.
    */
   function approve(
@@ -265,7 +275,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   /**
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
-   * @param _tokenId ID of the NFToken to query the approval of.
+   * @param _tokenId ID of the NFT to query the approval of.
    */
   function getApproved(
     uint256 _tokenId
@@ -329,7 +339,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Actually preforms the transfer.
    * @notice Does NO checks.
    * @param _to Address of a new owner.
-   * @param _tokenId The NFToken that is being transferred.
+   * @param _tokenId The NFT that is being transferred.
    */
   function _transfer(
     address _to,
@@ -347,12 +357,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Mints a new NFToken.
+   * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _to The address that will own the minted NFToken.
-   * @param _tokenId of the NFToken to be minted by the msg.sender.
+   * @param _to The address that will own the minted NFT.
+   * @param _tokenId of the NFT to be minted by the msg.sender.
    */
   function _mint(
     address _to,
@@ -370,12 +380,12 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Burns a NFToken.
+   * @dev Burns a NFT.
    * @notice This is a private function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _owner Address of the NFToken owner.
-   * @param _tokenId ID of the NFToken to be burned.
+   * @param _owner Address of the NFT owner.
+   * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
     address _owner,
@@ -390,8 +400,8 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Clears the current approval of a given NFToken ID.
-   * @param _tokenId ID of the NFToken to be transferred.
+   * @dev Clears the current approval of a given NFT ID.
+   * @param _tokenId ID of the NFT to be transferred.
    */
   function clearApproval(
     address _owner,
@@ -404,9 +414,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Removes a NFToken from owner.
-   * @param _from Address from wich we want to remove the NFToken.
-   * @param _tokenId Which NFToken we want to remove.
+   * @dev Removes a NFT from owner.
+   * @param _from Address from wich we want to remove the NFT.
+   * @param _tokenId Which NFT we want to remove.
    */
   function removeNFToken(
     address _from,
@@ -421,9 +431,9 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   }
 
   /**
-   * @dev Assignes a new NFToken to owner.
-   * @param _to Address to wich we want to add the NFToken.
-   * @param _tokenId Which NFToken we want to add.
+   * @dev Assignes a new NFT to owner.
+   * @param _to Address to wich we want to add the NFT.
+   * @param _tokenId Which NFT we want to add.
    */
   function addNFToken(
     address _to,

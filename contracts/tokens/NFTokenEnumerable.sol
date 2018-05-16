@@ -9,22 +9,22 @@ import "./ERC721Enumerable.sol";
 contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /**
-   * @dev Array of all NFToken IDs.
+   * @dev Array of all NFT IDs.
    */
   uint256[] internal tokens;
 
   /**
-   * @dev Mapping from owner address to a list of owned NFToken IDs.
+   * @dev Mapping from owner address to a list of owned NFT IDs.
    */
   mapping(uint256 => uint256) internal idToIndex;
 
   /**
-   * @dev Mapping from owner to list of owned NFToken IDs.
+   * @dev Mapping from owner to list of owned NFT IDs.
    */
   mapping(address => uint256[]) internal ownerToIds;
 
   /**
-   * @dev Mapping from NFToken ID to its index in the owner tokens list.
+   * @dev Mapping from NFT ID to its index in the owner tokens list.
    */
   mapping(uint256 => uint256) internal idToOwnerIndex;
 
@@ -38,12 +38,12 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev Mints a new NFToken.
+   * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _to The address that will own the minted NFToken.
-   * @param _tokenId of the NFToken to be minted by the msg.sender.
+   * @param _to The address that will own the minted NFT.
+   * @param _tokenId of the NFT to be minted by the msg.sender.
    */
   function _mint(
     address _to,
@@ -56,12 +56,12 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev Burns a NFToken.
+   * @dev Burns a NFT.
    * @notice This is a private function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _owner Address of the NFToken owner.
-   * @param _tokenId ID of the NFToken to be burned.
+   * @param _owner Address of the NFT owner.
+   * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
     address _owner,
@@ -85,9 +85,9 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev Removes a NFToken from an address.
-   * @param _from Address from wich we want to remove the NFToken.
-   * @param _tokenId Which NFToken we want to remove.
+   * @dev Removes a NFT from an address.
+   * @param _from Address from wich we want to remove the NFT.
+   * @param _tokenId Which NFT we want to remove.
    */
   function removeNFToken(
     address _from,
@@ -111,9 +111,9 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev Assignes a new NFToken to an address.
-   * @param _to Address to wich we want to add the NFToken.
-   * @param _tokenId Which NFToken we want to add.
+   * @dev Assignes a new NFT to an address.
+   * @param _to Address to wich we want to add the NFT.
+   * @param _tokenId Which NFT we want to add.
    */
   function addNFToken(
     address _to,
@@ -140,7 +140,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev Returns NFToken ID by its index.
+   * @dev Returns NFT ID by its index.
    * @param _index A counter less than `totalSupply()`.
    */
   function tokenByIndex(
@@ -155,7 +155,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
   }
 
   /**
-   * @dev returns the n-th NFToken ID from a list of owner's tokens.
+   * @dev returns the n-th NFT ID from a list of owner's tokens.
    * @param _owner Token owner's address.
    * @param _index Index number representing n-th token in owner's list of tokens.
    */
