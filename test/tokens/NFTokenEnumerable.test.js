@@ -22,7 +22,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     assert.equal(nftokenEnumerableInterface, true);
   });
 
-  it('correctly mint a new nftoken', async () => {
+  it('correctly mints a new NFT', async () => {
     const { logs } = await nftoken.mint(accounts[1], id1);
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
@@ -71,7 +71,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 1));
   });
 
-  it('corectly burns a NFTokens', async () => {
+  it('corectly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2);
     const { logs } = await nftoken.burn(accounts[1], id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');

@@ -32,13 +32,13 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
     assert.equal(symbol, 'F');
   });
 
-  it('returns the correct NFToken id 2 url', async () => {
+  it('returns the correct NFT id 2 url', async () => {
     await nftoken.mint(accounts[1], id2, 'url2');
     const tokenURI = await nftoken.tokenURI(id2);
     assert.equal(tokenURI, 'url2');
   });
 
-  it('throws when trying to get uri of none existant NFToken id', async () => {
+  it('throws when trying to get uri of none existant NFT id', async () => {
     await assertRevert(nftoken.tokenURI(id4));
   });
 
@@ -94,7 +94,7 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
     await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 1));
   });
 
-  it('corectly burns a NFTokens', async () => {
+  it('corectly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2, 'url2');
     const { logs } = await nftoken.burn(accounts[1], id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');

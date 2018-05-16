@@ -32,7 +32,7 @@ contract('NFTokenMetadataMock', (accounts) => {
     assert.equal(symbol, 'F');
   });
 
-  it('correctly mints and checks NFToken id 2 url', async () => {
+  it('correctly mints and checks NFT id 2 url', async () => {
     const { logs } = await nftoken.mint(accounts[1], id2, 'url2');
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
@@ -41,11 +41,11 @@ contract('NFTokenMetadataMock', (accounts) => {
     assert.equal(tokenURI, 'url2');
   });
 
-  it('throws when trying to get URI of invalid NFToken ID', async () => {
+  it('throws when trying to get URI of invalid NFT ID', async () => {
     await assertRevert(nftoken.tokenURI(id4));
   });
 
-  it('corectly burns a NFTokens', async () => {
+  it('corectly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2, 'url');
     const { logs } = await nftoken.burn(accounts[1], id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');
