@@ -225,7 +225,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
    * @dev Set or reaffirm the approved address for an NFT.
    * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
    * the current NFT owner, or an authorized operator of the current owner.
-   * @param _to Address to be approved for the given NFToken ID.
+   * @param _approved Address to be approved for the given NFToken ID.
    * @param _tokenId ID of the token to be approved.
    */
   function approve(
@@ -422,7 +422,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
   /**
    * @dev Assignes a new NFToken to owner.
-   * @param _To Address to wich we want to add the NFToken.
+   * @param _to Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
    */
   function addNFToken(
