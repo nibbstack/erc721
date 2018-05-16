@@ -214,7 +214,7 @@ We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) n
 | Contract | Token address | Transaction hash
 |-|-|-
 | NFToken | [0x761795048cb255020db1dae4823087c37acf1ac3](https://ropsten.etherscan.io/address/0x761795048cb255020db1dae4823087c37acf1ac3) | [0x60e7f8a0cc946d7db708a29e29dd8d4a768a7fc28a24827d023ada924e1d0c2c](https://ropsten.etherscan.io/tx/0x60e7f8a0cc946d7db708a29e29dd8d4a768a7fc28a24827d023ada924e1d0c2c)
-| NFTokenEnumerate | [0xed301d5360bc6978f0eb5ff0f83580c76445ad16](https://ropsten.etherscan.io/address/0xed301d5360bc6978f0eb5ff0f83580c76445ad16) | [0xedec7a7c6f3c5aa128ff726d286fddda3ba4eef0002ea63262201e9a59cc31f0](https://ropsten.etherscan.io/tx/0xedec7a7c6f3c5aa128ff726d286fddda3ba4eef0002ea63262201e9a59cc31f0)
+| NFTokenEnumerable | [0xed301d5360bc6978f0eb5ff0f83580c76445ad16](https://ropsten.etherscan.io/address/0xed301d5360bc6978f0eb5ff0f83580c76445ad16) | [0xedec7a7c6f3c5aa128ff726d286fddda3ba4eef0002ea63262201e9a59cc31f0](https://ropsten.etherscan.io/tx/0xedec7a7c6f3c5aa128ff726d286fddda3ba4eef0002ea63262201e9a59cc31f0)
 | NFTokenMetadata | [0xbb19e2ea9608187ff0ddc5bb998a1e7282e436cc](https://ropsten.etherscan.io/address/0xbb19e2ea9608187ff0ddc5bb998a1e7282e436cc) | [0x85c0442bed3cdc4bad916e1a11aad59bb46c44aa26d9382d5a381d329137080e](https://ropsten.etherscan.io/tx/0x85c0442bed3cdc4bad916e1a11aad59bb46c44aa26d9382d5a381d329137080e)
 | NFTokenMetadataEnumerable | [0x26f92c434e6f3cb227826a24147d19a465d12c39](https://ropsten.etherscan.io/address/0x26f92c434e6f3cb227826a24147d19a465d12c39) | [0xadbfd600fd9f053ff890d0e68b430df11df1b10c631b7e2db79857270ac43b79](https://ropsten.etherscan.io/tx/0xadbfd600fd9f053ff890d0e68b430df11df1b10c631b7e2db79857270ac43b79)
 
