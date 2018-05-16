@@ -19,7 +19,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   string private nftSymbol;
 
   /**
-   * @dev Mapping from NFToken ID to metadata uri.
+   * @dev Mapping from NFT ID to metadata uri.
    */
   mapping (uint256 => string) internal idToUri;
 
@@ -40,12 +40,12 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   }
 
   /**
-   * @dev Burns a NFToken.
+   * @dev Burns a NFT.
    * @notice This is a internal function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _owner Address of the NFToken owner.
-   * @param _tokenId ID of the NFToken to be burned.
+   * @param _owner Address of the NFT owner.
+   * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
     address _owner,
@@ -61,7 +61,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   }
 
   /**
-   * @dev Set a distinct URI (RFC 3986) for a given NFToken ID.
+   * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
    * @notice this is a internal function which should be called from user-implemented external
    * function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
@@ -101,7 +101,7 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   }
 
   /**
-   * @dev A distinct URI (RFC 3986) for a given NFToken.
+   * @dev A distinct URI (RFC 3986) for a given NFT.
    * @param _tokenId Id for which we want uri.
    */
   function tokenURI(
