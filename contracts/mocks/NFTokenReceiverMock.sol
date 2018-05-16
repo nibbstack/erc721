@@ -5,13 +5,13 @@ import "../../contracts/tokens/ERC721TokenReceiver.sol";
 
 contract NFTokenReceiverMock is ERC721TokenReceiver {
 
-  /*
+  /**
    * @dev Magic value of a smart contract that can recieve NFToken.
    * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
    */
   bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
 
-  /*
+  /**
    * @notice Handle the receipt of an NFT
    * @dev The ERC721 smart contract calls this function on the recipient
    * after a `transfer`. This function MAY throw to revert and reject the

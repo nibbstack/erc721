@@ -33,7 +33,7 @@ contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
     super._burn(_owner, _tokenId);
   }
 
-  /*
+  /**
    * @dev Helper function exclusively for testing the burn method.
    * @notice Remove this function and use tokenURI that has appropriate checks.
    */

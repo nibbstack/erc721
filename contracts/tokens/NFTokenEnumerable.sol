@@ -3,32 +3,32 @@ pragma solidity ^0.4.23;
 import "./NFToken.sol";
 import "./ERC721Enumerable.sol";
 
-/*
+/**
  * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
  */
 contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
-  /*
+  /**
    * @dev Array of all NFToken IDs.
    */
   uint256[] internal tokens;
 
-  /*
+  /**
    * @dev Mapping from owner address to a list of owned NFToken IDs.
    */
   mapping(uint256 => uint256) internal idToIndex;
 
-  /*
+  /**
    * @dev Mapping from owner to list of owned NFToken IDs.
    */
   mapping(address => uint256[]) internal ownerToIds;
 
-  /*
+  /**
    * @dev Mapping from NFToken ID to its index in the owner tokens list.
    */
   mapping(uint256 => uint256) internal idToOwnerIndex;
 
-  /*
+  /**
    * @dev Contract constructor.
    */
   constructor()
@@ -37,7 +37,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
   }
 
-  /*
+  /**
    * @dev Mints a new NFToken.
    * @notice This is a private function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
@@ -55,7 +55,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     tokens.push(_tokenId);
   }
 
-  /*
+  /**
    * @dev Burns a NFToken.
    * @notice This is a private function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
@@ -84,7 +84,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     idToIndex[lastToken] = tokenIndex;
   }
 
-  /*
+  /**
    * @dev Removes a NFToken from an address.
    * @param _from Address from wich we want to remove the NFToken.
    * @param _tokenId Which NFToken we want to remove.
@@ -110,7 +110,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     idToOwnerIndex[lastToken] = tokenToRemoveIndex;
   }
 
-  /*
+  /**
    * @dev Assignes a new NFToken to an address.
    * @param _to Address to wich we want to add the NFToken.
    * @param _tokenId Which NFToken we want to add.
@@ -128,7 +128,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     idToOwnerIndex[_tokenId] = length;
   }
 
-  /*
+  /**
    * @dev Returns the count of all existing NFTokens.
    */
   function totalSupply()
@@ -139,7 +139,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     return tokens.length;
   }
 
-  /*
+  /**
    * @dev Returns NFToken ID by its index.
    * @param _index A counter less than `totalSupply()`.
    */
@@ -154,7 +154,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     return tokens[_index];
   }
 
-  /*
+  /**
    * @dev returns the n-th NFToken ID from a list of owner's tokens.
    * @param _owner Token owner's address.
    * @param _index Index number representing n-th token in owner's list of tokens.
