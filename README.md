@@ -220,10 +220,8 @@ We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) n
 
 ## Contributing
 
-See CONTRIBUTING.md for how to help out.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
-## Licence (MIT)
+## Licence
 
-```
-Copyright (c) 2018 0xcert admin@0xcert.org.
-```
+See [LICENSE](./LICENSE) for details.
