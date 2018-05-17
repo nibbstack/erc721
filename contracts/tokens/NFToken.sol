@@ -349,7 +349,6 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   {
     address from = idToOwner[_tokenId];
 
-    clearApproval(from, _tokenId);
     removeNFToken(from, _tokenId);
     addNFToken(_to, _tokenId);
 
@@ -394,7 +393,6 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     validNFToken(_tokenId)
     internal
   {
-    clearApproval(_owner, _tokenId);
     removeNFToken(_owner, _tokenId);
     emit Transfer(_owner, address(0), _tokenId);
   }
@@ -426,6 +424,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   {
     require(idToOwner[_tokenId] == _from);
     assert(ownerToNFTokenCount[_from] > 0);
+    clearApproval(_from, _tokenId);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from].sub(1);
     delete idToOwner[_tokenId];
   }
