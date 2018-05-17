@@ -224,4 +224,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
 ## Licence
 
-See [LICENSE.md](./LICENSE.md) for details.
+See [LICENSE](./LICENSE) for details.
