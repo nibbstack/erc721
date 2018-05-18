@@ -1,4 +1,4 @@
-const NFTokenMetadata = artifacts.require('NFTokenMetadataMock');
+const NFTokenMetadata = artifacts.require('NFTokenMetadataTestMock');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
 

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../tokens/NFTokenEnumerable.sol";
+import "../../contracts/tokens/NFTokenEnumerable.sol";
 
 contract NFTokenEnumerableMock is NFTokenEnumerable {
 
@@ -23,4 +23,5 @@ contract NFTokenEnumerableMock is NFTokenEnumerable {
   {
     super._burn(_owner, _tokenId);
   }
+
 }

@@ -1,8 +1,8 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.23;
 
 import "../../contracts/math/SafeMath.sol";
 
-contract SafeMathMock {
+contract SafeMathTestMock {
   uint256 public result;
 
   function multiply(

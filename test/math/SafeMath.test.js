@@ -1,4 +1,4 @@
-const SafeMathMock = artifacts.require('SafeMathMock');
+const SafeMathMock = artifacts.require('SafeMathTestMock');
 const assertRevert = require('../helpers/assertRevert');
 const assertJump = require('../helpers/assertJump');
 
