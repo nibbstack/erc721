@@ -1,6 +1,6 @@
 {
   "name": "@0xcert/ethereum-erc721",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
   "main": "truffle.js",
   "directories": {
