@@ -1,5 +1,4 @@
-![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![npm version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://badge.fury.io/js/0xcert%2Fethereum-erc721)&nbsp;[![Requirements Status](https://requires.io/github/0xcert/ethereum-erc721/requirements.svg?branch=master)](https://requires.io/github/0xcert/ethereum-erc721/requirements/?branch=master)
-
+![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![npm version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://badge.fury.io/js/0xcert%2Fethereum-erc721)&nbsp;[![Requirements Status](https://requires.io/github/0xcert/ethereum-erc721/requirements.svg?branch=master)](https://requires.io/github/0xcert/ethereum-erc721/requirements/?branch=master)&nbsp;[![bug bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/0xcert/ethereum-erc721/issues/46)
 
 # ERC-721 Token
 
