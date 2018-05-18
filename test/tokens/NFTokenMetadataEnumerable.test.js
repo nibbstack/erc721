@@ -1,4 +1,4 @@
-const NFTokenMetadataEnumerable = artifacts.require('NFTokenMetadataEnumerableMock');
+const NFTokenMetadataEnumerable = artifacts.require('NFTokenMetadataEnumerableTestMock');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
 
