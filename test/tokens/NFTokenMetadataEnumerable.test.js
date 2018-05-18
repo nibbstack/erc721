@@ -99,6 +99,8 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
     const { logs } = await nftoken.burn(accounts[1], id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
+    const clearApprovalEvent = logs.find(e => e.event === 'Approval');
+    assert.notEqual(clearApprovalEvent, undefined);
 
     const balance = await nftoken.balanceOf(accounts[1]);
     assert.equal(balance, 0);
