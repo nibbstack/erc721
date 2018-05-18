@@ -86,6 +86,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /**
    * @dev Removes a NFT from an address.
+   * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _from Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
@@ -112,6 +113,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
 
   /**
    * @dev Assignes a new NFT to an address.
+   * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */

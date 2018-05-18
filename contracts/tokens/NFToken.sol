@@ -415,6 +415,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
   /**
    * @dev Removes a NFT from owner.
+   * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _from Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
@@ -432,6 +433,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
 
   /**
    * @dev Assignes a new NFT to owner.
+   * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */
