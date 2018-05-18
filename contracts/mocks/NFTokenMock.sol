@@ -8,6 +8,7 @@ contract NFTokenMock is NFToken {
     address _to,
     uint256 _id
   )
+    onlyOwner
     external
   {
     super._mint(_to, _id);
@@ -17,6 +18,7 @@ contract NFTokenMock is NFToken {
     address _owner,
     uint256 _tokenId
   )
+    onlyOwner
     external
   {
     super._burn(_owner, _tokenId);
