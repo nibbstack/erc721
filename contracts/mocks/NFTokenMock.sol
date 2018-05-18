@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../tokens/NFToken.sol";
+import "../../contracts/tokens/NFToken.sol";
 
 contract NFTokenMock is NFToken {
 
