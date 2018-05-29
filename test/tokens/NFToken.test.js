@@ -1,7 +1,7 @@
 const NFToken = artifacts.require('NFTokenMock');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
-const TokenReceiverMock = artifacts.require('NFTokenReceiverMock');
+const TokenReceiverMock = artifacts.require('NFTokenReceiverTestMock');
 
 contract('NFTokenMock', (accounts) => {
   let nftoken;
