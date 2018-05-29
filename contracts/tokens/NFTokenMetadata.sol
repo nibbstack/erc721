@@ -11,12 +11,12 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   /**
    * @dev A descriptive name for a collection of NFTs.
    */
-  string private nftName;
+  string internal nftName;
 
   /**
    * @dev An abbreviated name for NFTokens.
    */
-  string private nftSymbol;
+  string internal nftSymbol;
 
   /**
    * @dev Mapping from NFT ID to metadata uri.
@@ -25,17 +25,11 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
 
   /**
    * @dev Contract constructor.
-   * @param _name A descriptive name for a collection of NFTs.
-   * @param _symbol An abbreviated name for NFTokens.
+   * @notice When implementing this contract don't forget to set nftName and nftSymbol.
    */
-  constructor(
-    string _name,
-    string _symbol
-  )
+  constructor()
     public
   {
-    nftName = _name;
-    nftSymbol = _symbol;
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
 
