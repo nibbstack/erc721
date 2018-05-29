@@ -14,17 +14,17 @@ contract NFTokenMock is NFToken {
    */
   function mint(
     address _to,
-    uint256 _id
+    uint256 _tokenId
   )
     onlyOwner
     external
   {
-    super._mint(_to, _id);
+    super._mint(_to, _tokenId);
   }
 
   /**
    * @dev Removes a NFT from owner.
-   * @param _from Address from wich we want to remove the NFT.
+   * @param _owner Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
   function burn(

@@ -30,19 +30,19 @@ contract NFTokenMetadataMock is NFTokenMetadata {
    */
   function mint(
     address _to,
-    uint256 _id,
+    uint256 _tokenId,
     string _uri
   )
     onlyOwner
     external
   {
-    super._mint(_to, _id);
-    super._setTokenUri(_id, _uri);
+    super._mint(_to, _tokenId);
+    super._setTokenUri(_tokenId, _uri);
   }
 
   /**
    * @dev Removes a NFT from owner.
-   * @param _from Address from wich we want to remove the NFT.
+   * @param _owner Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
   function burn(
