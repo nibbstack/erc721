@@ -4,13 +4,20 @@ import "../tokens/NFTokenMetadata.sol";
 
 contract NFTokenMetadataMock is NFTokenMetadata {
 
+  /**
+   * @dev Contract constructor.
+   * @param _name A descriptive name for a collection of NFTs.
+   * @param _symbol An abbreviated name for NFTokens.
+   */
   constructor(
     string _name,
     string _symbol
   )
-    NFTokenMetadata(_name, _symbol)
     public
-  {}
+  {
+    nftName = _name;
+    nftSymbol = _symbol;
+  }
 
   function mint(
     address _to,
