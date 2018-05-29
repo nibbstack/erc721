@@ -3,6 +3,10 @@ pragma solidity ^0.4.23;
 import "../tokens/NFTokenMetadata.sol";
 import "../tokens/NFTokenEnumerable.sol";
 
+/**
+ * @dev This is an example contract implementation of NFToken with enumerable and metadata
+ * extensions.
+ */
 contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
 
   /**
@@ -20,6 +24,12 @@ contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
     nftSymbol = _symbol;
   }
 
+  /**
+   * @dev Mints a new NFT.
+   * @param _to The address that will own the minted NFT.
+   * @param _tokenId of the NFT to be minted by the msg.sender.
+   * @param _uri String representing RFC 3986 URI.
+   */
   function mint(
     address _to,
     uint256 _id,
@@ -32,6 +42,11 @@ contract NFTokenMetadataEnumerableMock is NFTokenEnumerable, NFTokenMetadata {
     super._setTokenUri(_id, _uri);
   }
 
+  /**
+   * @dev Removes a NFT from owner.
+   * @param _from Address from wich we want to remove the NFT.
+   * @param _tokenId Which NFT we want to remove.
+   */
   function burn(
     address _owner,
     uint256 _tokenId
