@@ -52,9 +52,10 @@ contract MyNFToken is NFTokenMetadata {
     string _name,
     string _symbol
   )
-    NFTokenMetadata(_name, _symbol)
     public
   {
+    nftName = _name;
+    nftSymbol = _symbol;
   }
 
   /* Implements a mint function which allows us and only us to
