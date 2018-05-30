@@ -14,7 +14,7 @@ interface ERC721 {
   event Transfer(
     address indexed _from,
     address indexed _to,
-    uint256 _tokenId
+    uint256 indexed _tokenId
   );
 
   /**
@@ -25,7 +25,7 @@ interface ERC721 {
   event Approval(
     address indexed _owner,
     address indexed _approved,
-    uint256 _tokenId
+    uint256 indexed _tokenId
   );
 
   /**
