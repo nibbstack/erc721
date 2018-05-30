@@ -52,7 +52,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   event Transfer(
     address indexed _from,
     address indexed _to,
-    uint256 _tokenId
+    uint256 indexed _tokenId
   );
 
   /**
@@ -66,7 +66,7 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
   event Approval(
     address indexed _owner,
     address indexed _approved,
-    uint256 _tokenId
+    uint256 indexed _tokenId
   );
 
   /**
