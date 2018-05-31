@@ -11,6 +11,7 @@
   "scripts": {
     "compile": "truffle compile",
     "console": "truffle console",
+    "flatten": "mkdir -p build && truffle-flattener contracts/**/*.sol >> build/bundle.sol",
     "lint": "eslint './**/*.js?(x)'",
     "migrate": "truffle migrate",
     "networks": "truffle networks",
@@ -51,6 +52,7 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "ethjs-util": "^0.1.4",
-    "truffle": "^4.1.11"
+    "truffle": "^4.1.11",
+    "truffle-flattener": "^1.2.5"
   }
 }
