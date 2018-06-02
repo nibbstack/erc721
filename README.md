@@ -14,7 +14,7 @@ Requirements:
 
 ### NPM
 
-This is an [NPM](https://www.npmjs.com/package/@0xcert/ethereum-erc721) module for [Truffle](http://truffleframework.com) framework. In order to use it as a dependency in your Javascript project, you must first install it using the `npm` comment:
+This is an [NPM](https://www.npmjs.com/package/@0xcert/ethereum-erc721) module for [Truffle](http://truffleframework.com) framework. In order to use it as a dependency in your Javascript project, you must first install it through the `npm` command:
 
 ```
 $ npm install @0xcert/ethereum-xcert
