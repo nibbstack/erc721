@@ -4,27 +4,30 @@
 
 This is a complete implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum blockchain. This is an open source project build with [Truffle](http://truffleframework.com) framework.
 
-Purpose of this implemetation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum blockchain. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
+Purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum blockchain. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
+
+## Structure
+
+Since this is a Truffle project, you will find all tokens in `contracts/tokens/` directory. There are multiple implementations and you can select between:
+- `NFToken.sol`: This is the base ERC-721 token implementation (with the support for ERC-165).
+- `NFTokenEnumerable.sol`: This implements optional ERC-721 support for enumeration. It is useful if you want to know the total supply of tokens, to query a token by index, etc.
+- `NFTokenMetadata.sol`: This implements optional ERC-721 meta-data features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
+
+Other files in the directory starting with `ERC*.sol` are interfaces and define the respective standards.
+
+## Requirements
+
+* NodeJS 9.0+ recommended.
+* Windows, Linux or Mac OS X.
 
 ## Installation
 
-Requirements:
-- NodeJS 9.0+ recommended.
-- Windows, Linux or Mac OS X.
-
 ### NPM
 
-This is an [NPM](https://www.npmjs.com/package/@0xcert/ethereum-erc721) module for [Truffle](http://truffleframework.com) framework. In order to use it as a dependency in your Javascript project, you must first install it through the `npm` command:
+This is an [NPM](https://www.npmjs.com/package/@0xcert/ethereum-erc721) module for [Truffle](http://truffleframework.com) framework. In order to use it as a dependency in your Javascript project, you must install it through the `npm` command:
 
 ```
 $ npm install @0xcert/ethereum-erc721
-```
-
-To interact with package's contracts within JavaScript code, you simply need to require that package's .json files:
-
-```js
-const contract = require("@0xcert/ethereum-erc721/build/contracts/NFTokenEnumerable.json");
-console.log(contract);
 ```
 
 ### Source
@@ -43,20 +46,22 @@ Make sure that everything has been set up correctly:
 $ npm run test
 ```
 
-All tests should pass.
-
-## Structure
-
-Since this is a Truffle project, you will find all tokens in `contracts/tokens/` directory. There are multiple implementations and you can select between:
-- `NFToken.sol`: This is the base ERC-721 token implementation (with the support for ERC-165).
-- `NFTokenEnumerable.sol`: This implements optional ERC-721 support for enumeration. It is useful if you want to know the total supply of tokens, to query a token by index, etc.
-- `NFTokenMetadata.sol`: This implements optional ERC-721 meta-data features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
-
-Other files in the directory starting with `ERC*.sol` are interfaces and define the respective standards.
-
 ## Usage
 
-The easiest way to start is to clone the repository and then create a new file under `contracts/tokens/` (e.g. `MyNFToken.sol`):
+### NPM
+
+To interact with package's contracts within JavaScript code, you simply need to require that package's .json files:
+
+```js
+const contract = require("@0xcert/ethereum-erc721/build/contracts/NFTokenEnumerable.json");
+console.log(contract);
+```
+
+### Source
+
+#### Creating smart contract
+
+The easiest way to start is to create a new file under `contracts/tokens/` (e.g. `MyNFToken.sol`):
 
 ```sol
 pragma solidity ^0.4.23;
@@ -75,14 +80,6 @@ contract MyNFToken is NFTokenMetadata {
     nftSymbol = _symbol;
   }
 
-  /* Implements a mint function which allows us and only us to
-   * issue a new NFToken. NFToken implements only _mint function
-   * which does all the heavy work creating the token, but we
-   * need to provide a proper wrapper function with desired
-   * access permissions.
-   * @param _owner NFToken owner address.
-   * @param _id Unique NFToken ID.
-   */
   function mint(
     address _owner,
     uint256 _id
@@ -93,12 +90,6 @@ contract MyNFToken is NFTokenMetadata {
     super._mint(_owner, _id);
   }
 
-  /* Burns a NFToken. NFToken already implements internal _burn
-   * function (the same as for _mint). Here we only provide a wrapper
-   * function with proper access permissions.
-   * @param _owner NFToken owner address.
-   * @param _id Unique NFToken ID.
-   */
   function burn(
     address _owner,
     uint256 _tokenId
@@ -120,7 +111,7 @@ $ npm run compile
 
 The easiest way to deploy it locally and start interacting with the contract (minting and transferring tokens) is to deploy it on your personal (local) blockchain using [Ganache](http://truffleframework.com/ganache/). Follow the steps in the Truffle documentation which are described [here](http://truffleframework.com/docs/getting_started/project#alternative-migrating-with-ganache).
 
-## Deploying on testnet (Ropsten)
+#### Deploying on testnet (Ropsten)
 
 Next step is to deploy the contract on the testnet.
 
