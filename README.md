@@ -12,7 +12,24 @@ Requirements:
 - NodeJS 9.0+ recommended.
 - Windows, Linux or Mac OS X.
 
-Simply clone the repository and install npm packages:
+### NPM
+
+This is an [NPM](https://www.npmjs.com/package/@0xcert/ethereum-erc721) module for [Truffle](http://truffleframework.com) framework. In order to use it as a dependency in your Javascript project, you must first install it using the `npm` comment:
+
+```
+$ npm install @0xcert/ethereum-xcert
+```
+
+To interact with package's contracts within JavaScript code, you simply need to require that package's .json files:
+
+```js
+const contract = require("@0xcert/ethereum-erc721/build/contracts/NFTokenEnumerable.json");
+console.log(contract);
+```
+
+### Source
+
+Clone the repository and install the required `npm` dependencies:
 
 ```
 $ git clone git@github.com:0xcert/ethereum-erc721.git
@@ -39,7 +56,7 @@ Other files in the directory starting with `ERC*.sol` are interfaces and define 
 
 ## Usage
 
-The easiest way to start is to create a new file under `contracts/tokens/` (e.g. `MyNFToken.sol`):
+The easiest way to start is to clone the repository and then create a new file under `contracts/tokens/` (e.g. `MyNFToken.sol`):
 
 ```sol
 pragma solidity ^0.4.23;
