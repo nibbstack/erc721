@@ -50,6 +50,7 @@
     "standard"
   ],
   "devDependencies": {
+    "@0xcert/ethereum-utils": "^1.0.0",
     "eslint": "^4.19.1",
     "ethjs-util": "^0.1.4",
     "truffle": "^4.1.11",
