@@ -1,11 +1,11 @@
 pragma solidity ^0.4.23;
 
-import "../math/SafeMath.sol";
-import "../ownership/Ownable.sol";
+import "@0xcert/ethereum-utils/contracts/math/SafeMath.sol";
+import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 import "./ERC721.sol";
-import "./SupportsInterface.sol";
+import "@0xcert/ethereum-utils/contracts/utils/SupportsInterface.sol";
 import "./ERC721TokenReceiver.sol";
-import "../utils/AddressUtils.sol";
+import "@0xcert/ethereum-utils/contracts/utils/AddressUtils.sol";
 
 /**
  * @dev Implementation of ERC-721 non-fungible token standard.
