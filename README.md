@@ -20,7 +20,7 @@ Other files in the directory starting with `ERC*.sol` are interfaces and define 
 * NodeJS 9.0+ recommended.
 * Windows, Linux or Mac OS X.
 
-**Using Remix?** This package uses NPM modules which are supported in the [Remix Alpha](https://remix-alpha.ethereum.org) version only.
+**Using Remix?** This package uses NPM modules which are supported in the [Remix Alpha](https://remix-alpha.ethereum.org) version only. You can also use the `npm run flatten` command to create a `build/bundle.sol` file with all package contracts which you can manually copy and then paste into Remix editor.
 
 ## Installation
 
