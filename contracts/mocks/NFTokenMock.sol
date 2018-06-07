@@ -1,11 +1,13 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "../../contracts/tokens/NFToken.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken.
  */
-contract NFTokenMock is NFToken {
+contract NFTokenMock is
+  NFToken
+{
 
   /**
    * @dev Mints a new NFT.
@@ -36,4 +38,5 @@ contract NFTokenMock is NFToken {
   {
     super._burn(_owner, _tokenId);
   }
+
 }

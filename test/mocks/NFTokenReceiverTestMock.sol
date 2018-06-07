@@ -1,8 +1,10 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "../../contracts/tokens/ERC721TokenReceiver.sol";
 
-contract NFTokenReceiverTestMock is ERC721TokenReceiver {
+contract NFTokenReceiverTestMock is
+  ERC721TokenReceiver
+{
 
   function onERC721Received(
     address _from,

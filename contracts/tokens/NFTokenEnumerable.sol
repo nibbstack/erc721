@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "./NFToken.sol";
 import "./ERC721Enumerable.sol";
@@ -6,7 +6,10 @@ import "./ERC721Enumerable.sol";
 /**
  * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
  */
-contract NFTokenEnumerable is NFToken, ERC721Enumerable {
+contract NFTokenEnumerable is
+  NFToken,
+  ERC721Enumerable
+{
 
   /**
    * @dev Array of all NFT IDs.

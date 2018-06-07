@@ -1,11 +1,13 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "../tokens/NFTokenMetadata.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.
  */
-contract NFTokenMetadataMock is NFTokenMetadata {
+contract NFTokenMetadataMock is
+  NFTokenMetadata
+{
 
   /**
    * @dev Contract constructor.

@@ -1,8 +1,10 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "../../contracts/mocks/NFTokenMetadataEnumerableMock.sol";
 
-contract NFTokenMetadataEnumerableTestMock is NFTokenMetadataEnumerableMock {
+contract NFTokenMetadataEnumerableTestMock is
+  NFTokenMetadataEnumerableMock
+{
 
   constructor(
     string _name,

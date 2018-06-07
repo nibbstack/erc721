@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 /**
  * @dev Optional metadata extension for ERC-721 non-fungible token standard.
@@ -31,4 +31,5 @@ interface ERC721Metadata {
     external
     view
     returns (string);
+
 }
