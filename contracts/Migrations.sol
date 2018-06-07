@@ -1,11 +1,13 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 
 /**
  * @dev Truffle migrations manager.
  */
-contract Migrations is Ownable {
+contract Migrations is
+  Ownable
+{
   uint public lastCompletedMigration;
 
   /**

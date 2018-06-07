@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 /**
  * @dev ERC-721 interface for accepting safe transfers. See https://goo.gl/pc9yoS.

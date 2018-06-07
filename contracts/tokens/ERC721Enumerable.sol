@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 /**
  * @dev Optional enumeration extension for ERC-721 non-fungible token standard.
@@ -40,4 +40,5 @@ interface ERC721Enumerable {
     external
     view
     returns (uint256);
+
 }

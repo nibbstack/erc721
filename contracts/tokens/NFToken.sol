@@ -1,16 +1,20 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
+import "./ERC721.sol";
+import "./ERC721TokenReceiver.sol";
 import "@0xcert/ethereum-utils/contracts/math/SafeMath.sol";
 import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
-import "./ERC721.sol";
 import "@0xcert/ethereum-utils/contracts/utils/SupportsInterface.sol";
-import "./ERC721TokenReceiver.sol";
 import "@0xcert/ethereum-utils/contracts/utils/AddressUtils.sol";
 
 /**
  * @dev Implementation of ERC-721 non-fungible token standard.
  */
-contract NFToken is Ownable, ERC721, SupportsInterface {
+contract NFToken is
+  Ownable,
+  ERC721,
+  SupportsInterface
+{
   using SafeMath for uint256;
   using AddressUtils for address;
 
@@ -448,4 +452,5 @@ contract NFToken is Ownable, ERC721, SupportsInterface {
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
   }
+
 }

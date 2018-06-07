@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "./NFToken.sol";
 import "./ERC721Metadata.sol";
@@ -6,7 +6,10 @@ import "./ERC721Metadata.sol";
 /**
  * @dev Optional metadata implementation for ERC-721 non-fungible token standard.
  */
-contract NFTokenMetadata is NFToken, ERC721Metadata {
+contract NFTokenMetadata is
+  NFToken,
+  ERC721Metadata
+{
 
   /**
    * @dev A descriptive name for a collection of NFTs.
@@ -108,4 +111,5 @@ contract NFTokenMetadata is NFToken, ERC721Metadata {
   {
     return idToUri[_tokenId];
   }
+
 }

@@ -1,11 +1,13 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "../../contracts/tokens/NFTokenEnumerable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with enumerable extension.
  */
-contract NFTokenEnumerableMock is NFTokenEnumerable {
+contract NFTokenEnumerableMock is 
+  NFTokenEnumerable
+{
 
   /**
    * @dev Mints a new NFT.
