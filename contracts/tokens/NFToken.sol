@@ -252,7 +252,6 @@ contract NFToken is
   {
     address tokenOwner = idToOwner[_tokenId];
     require(_approved != tokenOwner);
-    require(!(getApproved(_tokenId) == address(0) && _approved == address(0)));
 
     idToApprovals[_tokenId] = _approved;
     emit Approval(tokenOwner, _approved, _tokenId);
