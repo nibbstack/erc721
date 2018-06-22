@@ -13,7 +13,7 @@ interface ERC721TokenReceiver {
    * @notice The contract address is always the message sender. A wallet/broker/auction application
    * MUST implement the wallet interface if it will accept safe transfers.
    * @param _operator The address which called `safeTransferFrom` function.
-   * @param _from The sending address.
+   * @param _from The address which previously owned the token.
    * @param _tokenId The NFT identifier which is being transferred.
    * @param _data Additional data with no specified format.
    */
