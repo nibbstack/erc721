@@ -1,12 +1,14 @@
 pragma solidity ^0.4.24;
 
 import "../../contracts/tokens/NFToken.sol";
+import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken.
  */
 contract NFTokenMock is
-  NFToken
+  NFToken,
+  Ownable
 {
 
   /**

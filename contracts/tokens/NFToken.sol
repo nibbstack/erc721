@@ -3,7 +3,6 @@ pragma solidity ^0.4.24;
 import "./ERC721.sol";
 import "./ERC721TokenReceiver.sol";
 import "@0xcert/ethereum-utils/contracts/math/SafeMath.sol";
-import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 import "@0xcert/ethereum-utils/contracts/utils/SupportsInterface.sol";
 import "@0xcert/ethereum-utils/contracts/utils/AddressUtils.sol";
 
@@ -11,7 +10,6 @@ import "@0xcert/ethereum-utils/contracts/utils/AddressUtils.sol";
  * @dev Implementation of ERC-721 non-fungible token standard.
  */
 contract NFToken is
-  Ownable,
   ERC721,
   SupportsInterface
 {
