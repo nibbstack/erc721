@@ -40,9 +40,9 @@ contract NFToken is
 
   /**
    * @dev Magic value of a smart contract that can recieve NFT.
-   * Equal to: keccak256("onERC721Received(address,uint256,bytes)").
+   * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
-  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0xf0b9e5ba;
+  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
@@ -333,7 +333,7 @@ contract NFToken is
     _transfer(_to, _tokenId);
 
     if (_to.isContract()) {
-      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(_from, _tokenId, _data);
+      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
       require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
   }
