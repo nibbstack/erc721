@@ -350,7 +350,7 @@ contract NFToken is
   {
     address from = idToOwner[_tokenId];
 
-    clearApproval(_tokenId);
+    delete idToApprovals[_tokenId];
     removeNFToken(from, _tokenId);
     addNFToken(_to, _tokenId);
 
@@ -395,21 +395,9 @@ contract NFToken is
     validNFToken(_tokenId)
     internal
   {
-    clearApproval(_tokenId);
+    delete idToApprovals[_tokenId];
     removeNFToken(_owner, _tokenId);
     emit Transfer(_owner, address(0), _tokenId);
-  }
-
-  /**
-   * @dev Clears the current approval of a given NFT ID.
-   * @param _tokenId ID of the NFT to be transferred.
-   */
-  function clearApproval(
-    uint256 _tokenId
-  )
-    internal
-  {
-    delete idToApprovals[_tokenId];
   }
 
   /**
