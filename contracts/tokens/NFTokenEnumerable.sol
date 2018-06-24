@@ -77,6 +77,7 @@ contract NFTokenEnumerable is
     assert(tokens.length > 0);
 
     uint256 tokenIndex = idToIndex[_tokenId];
+    assert(tokens[tokenIndex] == _tokenId);
     uint256 lastTokenIndex = tokens.length.sub(1);
     uint256 lastToken = tokens[lastTokenIndex];
 
@@ -156,6 +157,7 @@ contract NFTokenEnumerable is
     returns (uint256)
   {
     require(_index < tokens.length);
+    assert(idToIndex[tokens[_index]] == _index);
     return tokens[_index];
   }
 
