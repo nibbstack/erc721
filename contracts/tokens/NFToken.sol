@@ -349,14 +349,14 @@ contract NFToken is
     private
   {
     address from = idToOwner[_tokenId];
+    clearApproval(_tokenId);
 
-    delete idToApprovals[_tokenId];
     removeNFToken(from, _tokenId);
     addNFToken(_to, _tokenId);
 
     emit Transfer(from, _to, _tokenId);
   }
-
+   
   /**
    * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
@@ -395,9 +395,24 @@ contract NFToken is
     validNFToken(_tokenId)
     internal
   {
-    delete idToApprovals[_tokenId];
+    clearApproval(_tokenId);
     removeNFToken(_owner, _tokenId);
     emit Transfer(_owner, address(0), _tokenId);
+  }
+
+  /** 
+   * @dev Clears the current approval of a given NFT ID.
+   * @param _tokenId ID of the NFT to be transferred.
+   */
+  function clearApproval(
+    uint256 _tokenId
+  )
+    internal
+  {
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
   }
 
   /**
