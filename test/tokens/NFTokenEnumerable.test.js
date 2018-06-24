@@ -50,7 +50,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     assert.equal(tokenId, id2);
   });
 
-  it('throws when trying to get token by unexistant index', async () => {
+  it('throws when trying to get token by non-existing index', async () => {
     await nftoken.mint(accounts[1], id1);
     await assertRevert(nftoken.tokenByIndex(1));
   });
@@ -64,7 +64,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     assert.equal(tokenId, id2);
   });
 
-  it('throws when trying to get token of owner by unexistant index', async () => {
+  it('throws when trying to get token of owner by non-existing index', async () => {
     await nftoken.mint(accounts[1], id1);
     await nftoken.mint(accounts[2], id3);
 
