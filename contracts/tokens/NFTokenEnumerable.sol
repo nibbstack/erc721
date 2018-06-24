@@ -85,8 +85,9 @@ contract NFTokenEnumerable is
     tokens[tokenIndex] = lastToken;
 
     tokens.length--;
-    idToIndex[_tokenId] = 0;
+    // Consider adding a conditional check for the last token in order to save GAS.
     idToIndex[lastToken] = tokenIndex;
+    idToIndex[_tokenId] = 0;
   }
 
   /**
@@ -111,8 +112,9 @@ contract NFTokenEnumerable is
     ownerToIds[_from][tokenToRemoveIndex] = lastToken;
 
     ownerToIds[_from].length--;
-    idToOwnerIndex[_tokenId] = 0;
+    // Consider adding a conditional check for the last token in order to save GAS.
     idToOwnerIndex[lastToken] = tokenToRemoveIndex;
+    idToOwnerIndex[_tokenId] = 0;
   }
 
   /**
