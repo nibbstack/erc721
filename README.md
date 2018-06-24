@@ -71,8 +71,12 @@ The easiest way to start is to create a new file under `contracts/tokens/` (e.g.
 pragma solidity ^0.4.23;
 
 import "../tokens/NFTokenMetadata.sol";
+import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 
-contract MyNFToken is NFTokenMetadata {
+contract MyNFToken is
+  NFTokenMetadata,
+  Ownable
+{
 
   constructor(
     string _name,
