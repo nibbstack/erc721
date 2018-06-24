@@ -56,6 +56,7 @@ contract NFTokenEnumerable is
   {
     super._mint(_to, _tokenId);
     tokens.push(_tokenId);
+    idToIndex[_tokenId] = tokens.length.sub(1);
   }
 
   /**
