@@ -17,7 +17,7 @@ contract NFTokenEnumerable is
   uint256[] internal tokens;
 
   /**
-   * @dev Mapping from owner address to a list of owned NFT IDs.
+   * @dev Mapping from token ID its index in global tokens array.
    */
   mapping(uint256 => uint256) internal idToIndex;
 
@@ -56,6 +56,7 @@ contract NFTokenEnumerable is
   {
     super._mint(_to, _tokenId);
     tokens.push(_tokenId);
+    idToIndex[_tokenId] = tokens.length.sub(1);
   }
 
   /**
@@ -72,15 +73,16 @@ contract NFTokenEnumerable is
   )
     internal
   {
-    assert(tokens.length > 0);
     super._burn(_owner, _tokenId);
+    assert(tokens.length > 0);
 
     uint256 tokenIndex = idToIndex[_tokenId];
+    // Sanity check. This could be removed in the future.
+    assert(tokens[tokenIndex] == _tokenId);
     uint256 lastTokenIndex = tokens.length.sub(1);
     uint256 lastToken = tokens[lastTokenIndex];
 
     tokens[tokenIndex] = lastToken;
-    tokens[lastTokenIndex] = 0;
 
     tokens.length--;
     idToIndex[_tokenId] = 0;
@@ -155,6 +157,8 @@ contract NFTokenEnumerable is
     returns (uint256)
   {
     require(_index < tokens.length);
+    // Sanity check. This could be removed in the future.
+    assert(idToIndex[tokens[_index]] == _index);
     return tokens[_index];
   }
 
