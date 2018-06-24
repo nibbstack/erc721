@@ -407,7 +407,7 @@ contract NFToken is
   function clearApproval(
     uint256 _tokenId
   )
-    internal
+    private
   {
     if(idToApprovals[_tokenId] != 0)
     {
