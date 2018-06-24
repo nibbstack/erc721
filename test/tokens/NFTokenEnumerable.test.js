@@ -93,8 +93,8 @@ contract('NFTokenEnumerableMock', (accounts) => {
     const totalSupply = await nftoken.totalSupply();
     assert.equal(totalSupply, 2);
 
-    await assertRevert(nftoken.tokenByIndex(3));
-    await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 3));
+    await assertRevert(nftoken.tokenByIndex(2));
+    await assertRevert(nftoken.tokenOfOwnerByIndex(accounts[1], 2));
 
     let tokenId = await nftoken.tokenByIndex(0);
     assert.equal(tokenId, id1);
