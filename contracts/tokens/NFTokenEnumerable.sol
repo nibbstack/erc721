@@ -82,7 +82,6 @@ contract NFTokenEnumerable is
     uint256 lastToken = tokens[lastTokenIndex];
 
     tokens[tokenIndex] = lastToken;
-    tokens[lastTokenIndex] = 0;
 
     tokens.length--;
     idToIndex[_tokenId] = 0;
