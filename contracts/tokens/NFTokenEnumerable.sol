@@ -55,8 +55,8 @@ contract NFTokenEnumerable is
     internal
   {
     super._mint(_to, _tokenId);
-    tokens.push(_tokenId);
-    idToIndex[_tokenId] = tokens.length.sub(1);
+    uint256 length = tokens.push(_tokenId);
+    idToIndex[_tokenId] = length - 1;
   }
 
   /**
