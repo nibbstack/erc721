@@ -6,7 +6,7 @@ import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 /**
  * @dev This is an example contract implementation of NFToken with enumerable extension.
  */
-contract NFTokenEnumerableMock is 
+contract NFTokenEnumerableMock is
   NFTokenEnumerable,
   Ownable
 {
