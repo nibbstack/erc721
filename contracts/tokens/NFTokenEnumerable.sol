@@ -79,7 +79,7 @@ contract NFTokenEnumerable is
     uint256 tokenIndex = idToIndex[_tokenId];
     // Sanity check. This could be removed in the future.
     assert(tokens[tokenIndex] == _tokenId);
-    uint256 lastTokenIndex = tokens.length.sub(1);
+    uint256 lastTokenIndex = tokens.length - 1;
     uint256 lastToken = tokens[lastTokenIndex];
 
     tokens[tokenIndex] = lastToken;
@@ -106,7 +106,7 @@ contract NFTokenEnumerable is
     assert(ownerToIds[_from].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
-    uint256 lastTokenIndex = ownerToIds[_from].length.sub(1);
+    uint256 lastTokenIndex = ownerToIds[_from].length - 1;
     uint256 lastToken = ownerToIds[_from][lastTokenIndex];
 
     ownerToIds[_from][tokenToRemoveIndex] = lastToken;
