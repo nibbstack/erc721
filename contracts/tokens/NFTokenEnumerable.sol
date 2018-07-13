@@ -457,8 +457,6 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    delete idToOwner[_tokenId];
-    
     assert(ownerToIds[owner].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
@@ -470,9 +468,10 @@ contract NFTokenEnumerable is
       ownerToIds[owner][tokenToRemoveIndex] = lastToken;
       idToOwnerIndex[lastToken] = tokenToRemoveIndex;
     }
-
-    ownerToIds[owner].length--;
+    
+    delete idToOwner[_tokenId];
     idToOwnerIndex[_tokenId] = 0;
+    ownerToIds[owner].length--;
 
     // remove from tokens array
     assert(tokens.length > 0);
