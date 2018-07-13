@@ -321,7 +321,6 @@ contract NFTokenEnumerable is
     ownerToIds[_from].length--;
     // Consider adding a conditional check for the last token in order to save GAS.
     idToOwnerIndex[lastToken] = tokenToRemoveIndex;
-    idToOwnerIndex[_tokenId] = 0;
 
     // add NFT
     idToOwner[_tokenId] = _to;
