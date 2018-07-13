@@ -241,7 +241,18 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    removeNFToken(_from, _tokenId);
+    assert(ownerToIds[_from].length > 0);
+
+    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
+    uint256 lastTokenIndex = ownerToIds[_from].length - 1;
+    uint256 lastToken = ownerToIds[_from][lastTokenIndex];
+
+    ownerToIds[_from][tokenToRemoveIndex] = lastToken;
+
+    ownerToIds[_from].length--;
+    // Consider adding a conditional check for the last token in order to save GAS.
+    idToOwnerIndex[lastToken] = tokenToRemoveIndex;
+    idToOwnerIndex[_tokenId] = 0;
 
     // add NFT
     idToOwner[_tokenId] = _to;
