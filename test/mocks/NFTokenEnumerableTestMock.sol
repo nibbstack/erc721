@@ -36,4 +36,14 @@ contract NFTokenEnumerableTestMock is
   {
     return idToOwnerIndex[_tokenId];
   }
+
+  function idToIndexWrapper(
+    uint256 _tokenId
+  )
+    external
+    view
+    returns (uint256)
+  {
+    return idToIndex[_tokenId];
+  }
 }
