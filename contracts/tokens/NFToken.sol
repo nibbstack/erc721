@@ -356,7 +356,12 @@ contract NFToken is
       delete idToApprovals[_tokenId];
     }
 
-    removeNFToken(from, _tokenId);
+    // remove NFT
+    require(idToOwner[_tokenId] == from);
+    assert(ownerToNFTokenCount[from] > 0);
+    ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
+    delete idToOwner[_tokenId];
+
     addNFToken(_to, _tokenId);
 
     emit Transfer(from, _to, _tokenId);
