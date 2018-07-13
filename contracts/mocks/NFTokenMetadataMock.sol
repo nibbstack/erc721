@@ -10,7 +10,6 @@ contract NFTokenMetadataMock is
   NFTokenMetadata,
   Ownable
 {
-
   /**
    * @dev Contract constructor.
    * @param _name A descriptive name for a collection of NFTs.
@@ -46,17 +45,15 @@ contract NFTokenMetadataMock is
 
   /**
    * @dev Removes a NFT from owner.
-   * @param _owner Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
   function burn(
-    address _owner,
     uint256 _tokenId
   )
     onlyOwner
     external
   {
-    super._burn(_owner, _tokenId);
+    super._burn(_tokenId);
   }
 
 }
