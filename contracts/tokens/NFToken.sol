@@ -341,15 +341,18 @@ contract NFToken is
     bytes _data
   )
     internal
-    canTransfer(_tokenId)
-    validNFToken(_tokenId)
   {
-    address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == _from);
+   // valid NFT
+    require(_from != address(0));
+    require(idToOwner[_tokenId] == _from);
     require(_to != address(0));
 
-    // transfer section
-    address from = idToOwner[_tokenId];
+    // can transfer
+    require(
+      _from == msg.sender
+      || getApproved(_tokenId) == msg.sender
+      || ownerToOperators[_from][msg.sender]
+    );
 
     // clear approval
     if(idToApprovals[_tokenId] != 0)
@@ -358,18 +361,14 @@ contract NFToken is
     }
 
     // remove NFT
-    require(idToOwner[_tokenId] == from);
-    assert(ownerToNFTokenCount[from] > 0);
-    ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
-    delete idToOwner[_tokenId];
+    assert(ownerToNFTokenCount[_from] > 0);
+    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
 
     // add NFT
-    require(idToOwner[_tokenId] == address(0));
-
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
-    emit Transfer(from, _to, _tokenId);
+    emit Transfer(_from, _to, _tokenId);
 
     if (_to.isContract()) {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
