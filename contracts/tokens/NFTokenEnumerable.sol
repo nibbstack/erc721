@@ -468,9 +468,9 @@ contract NFTokenEnumerable is
       ownerToIds[owner][tokenToRemoveIndex] = lastToken;
       idToOwnerIndex[lastToken] = tokenToRemoveIndex;
     }
-    
+
     delete idToOwner[_tokenId];
-    idToOwnerIndex[_tokenId] = 0;
+    delete idToOwnerIndex[_tokenId];
     ownerToIds[owner].length--;
 
     // remove from tokens array
