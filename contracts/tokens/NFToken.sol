@@ -365,7 +365,7 @@ contract NFToken is
   function getApproved(
     uint256 _tokenId
   )
-    public
+    external
     view
     returns (address)
   {
