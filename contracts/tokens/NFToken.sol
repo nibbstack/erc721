@@ -349,7 +349,12 @@ contract NFToken is
     private
   {
     address from = idToOwner[_tokenId];
-    clearApproval(_tokenId);
+
+    // clear approval
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
 
     removeNFToken(from, _tokenId);
     addNFToken(_to, _tokenId);
