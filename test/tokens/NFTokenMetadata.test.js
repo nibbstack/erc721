@@ -1,4 +1,4 @@
-/*const NFTokenMetadata = artifacts.require('NFTokenMetadataTestMock');
+const NFTokenMetadata = artifacts.require('NFTokenMetadataTestMock');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
 
@@ -47,7 +47,7 @@ contract('NFTokenMetadataMock', (accounts) => {
 
   it('corectly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2, 'url');
-    const { logs } = await nftoken.burn(accounts[1], id2);
+    const { logs } = await nftoken.burn(id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
     const clearApprovalEvent = logs.find(e => e.event === 'Approval');
@@ -62,4 +62,4 @@ contract('NFTokenMetadataMock', (accounts) => {
     assert.equal(uri, '');
   });
 
-});*/
+});
