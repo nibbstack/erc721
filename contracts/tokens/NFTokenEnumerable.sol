@@ -513,8 +513,6 @@ contract NFTokenEnumerable is
     returns (uint256)
   {
     require(_index < tokens.length);
-    // Sanity check. This could be removed in the future.
-    assert(idToIndex[tokens[_index]] == _index);
     return tokens[_index];
   }
 
