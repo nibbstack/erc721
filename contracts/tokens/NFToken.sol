@@ -428,7 +428,8 @@ contract NFToken is
     internal
   {
     // valid NFT
-    require(idToOwner[_tokenId] != address(0));
+    require(_owner != address(0));
+    require(idToOwner[_tokenId] == _owner);
 
     // clear approval
     if(idToApprovals[_tokenId] != 0)
@@ -437,7 +438,6 @@ contract NFToken is
     }
 
     // remove NFT
-    require(idToOwner[_tokenId] == _owner);
     assert(ownerToNFTokenCount[_owner] > 0);
     ownerToNFTokenCount[_owner] = ownerToNFTokenCount[_owner] - 1;
     delete idToOwner[_tokenId];
