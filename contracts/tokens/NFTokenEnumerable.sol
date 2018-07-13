@@ -477,8 +477,6 @@ contract NFTokenEnumerable is
     assert(tokens.length > 0);
 
     uint256 tokenIndex = idToIndex[_tokenId];
-    // Sanity check. This could be removed in the future.
-    assert(tokens[tokenIndex] == _tokenId);
     lastTokenIndex = tokens.length - 1;
     lastToken = tokens[lastTokenIndex];
 
