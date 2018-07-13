@@ -107,7 +107,7 @@ contract NFToken is
     address tokenOwner = idToOwner[_tokenId];
     require(
       tokenOwner == msg.sender
-      || getApproved(_tokenId) == msg.sender
+      || idToApprovals[_tokenId] == msg.sender
       || ownerToOperators[tokenOwner][msg.sender]
     );
 
