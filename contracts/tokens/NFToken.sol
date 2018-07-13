@@ -443,42 +443,7 @@ contract NFToken is
 
     emit Transfer(_from, _to, _tokenId);
   }
-
-  /**
-   * @dev Actually preforms the transfer.
-   * @notice Does NO checks.
-   * @param _to Address of a new owner.
-   * @param _tokenId The NFT that is being transferred.
-   */
-  function _transfer(
-    address _to,
-    uint256 _tokenId
-  )
-    private
-  {
-    address from = idToOwner[_tokenId];
-
-    // clear approval
-    if(idToApprovals[_tokenId] != 0)
-    {
-      delete idToApprovals[_tokenId];
-    }
-
-    // remove NFT
-    require(idToOwner[_tokenId] == from);
-    assert(ownerToNFTokenCount[from] > 0);
-    ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
-    delete idToOwner[_tokenId];
-
-    // add NFT
-    require(idToOwner[_tokenId] == address(0));
-
-    idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
-
-    emit Transfer(from, _to, _tokenId);
-  }
-   
+  
   /**
    * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
