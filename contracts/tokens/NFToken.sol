@@ -394,57 +394,6 @@ contract NFToken is
   }
 
   /**
-   * @dev Actually perform the safeTransferFrom.
-   * @param _from The current owner of the NFT.
-   * @param _to The new owner.
-   * @param _tokenId The NFT to transfer.
-   * @param _data Additional data with no specified format, sent in call to `_to`.
-   */
-  function _safeTransferFrom(
-    address _from,
-    address _to,
-    uint256 _tokenId,
-    bytes _data
-  )
-    internal
-  {
-    // valid NFT
-    require(_from != address(0));
-    require(idToOwner[_tokenId] == _from);
-    require(_to != address(0));
-
-    // can transfer
-    require(
-      _from == msg.sender
-      || getApproved(_tokenId) == msg.sender
-      || ownerToOperators[_from][msg.sender]
-    );
-
-    if (_to.isContract()) {
-      require(
-        ERC721TokenReceiver(_to)
-          .onERC721Received(msg.sender, _from, _tokenId, _data) == MAGIC_ON_ERC721_RECEIVED
-      );
-    }
-
-    // clear approval
-    if(idToApprovals[_tokenId] != 0)
-    {
-      delete idToApprovals[_tokenId];
-    }
-
-    // remove NFT
-    assert(ownerToNFTokenCount[_from] > 0);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
-
-    // add NFT
-    idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
-
-    emit Transfer(_from, _to, _tokenId);
-  }
-  
-  /**
    * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
