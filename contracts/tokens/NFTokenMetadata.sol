@@ -50,7 +50,7 @@ contract NFTokenMetadata is
   )
     internal
   {
-    super._burn(_owner, _tokenId);
+    //super._burn(_owner, _tokenId);
 
     if (bytes(idToUri[_tokenId]).length != 0) {
       delete idToUri[_tokenId];

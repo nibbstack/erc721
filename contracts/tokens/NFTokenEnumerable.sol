@@ -73,7 +73,7 @@ contract NFTokenEnumerable is
   )
     internal
   {
-    super._burn(_owner, _tokenId);
+    //super._burn(_owner, _tokenId);
     assert(tokens.length > 0);
 
     uint256 tokenIndex = idToIndex[_tokenId];
