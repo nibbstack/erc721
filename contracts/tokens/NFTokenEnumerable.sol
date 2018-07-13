@@ -48,11 +48,6 @@ contract NFTokenEnumerable is
    */
   mapping (uint256 => address) internal idToApprovals;
 
-   /**
-   * @dev Mapping from owner address to count of his tokens.
-   */
-  mapping (address => uint256) internal ownerToNFTokenCount;
-
   /**
    * @dev Mapping from owner address to mapping of operator addresses.
    */
@@ -131,7 +126,7 @@ contract NFTokenEnumerable is
     returns (uint256)
   {
     require(_owner != address(0));
-    return ownerToNFTokenCount[_owner];
+    return ownerToIds[_owner].length;
   }
 
   /**
@@ -196,13 +191,10 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    assert(ownerToNFTokenCount[_from] > 0);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     removeNFToken(_from, _tokenId);
 
     // add NFT
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
     addNFToken(_to, _tokenId);
 
     emit Transfer(_from, _to, _tokenId);
@@ -249,13 +241,10 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    assert(ownerToNFTokenCount[_from] > 0);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     removeNFToken(_from, _tokenId);
 
     // add NFT
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
     addNFToken(_to, _tokenId);
 
     emit Transfer(_from, _to, _tokenId);
@@ -297,13 +286,10 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    assert(ownerToNFTokenCount[_from] > 0);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     removeNFToken(_from, _tokenId);
 
     // add NFT
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
     addNFToken(_to, _tokenId);
 
     emit Transfer(_from, _to, _tokenId);
@@ -398,7 +384,6 @@ contract NFTokenEnumerable is
 
     // add NFT
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
     addNFToken(_to, _tokenId);
 
@@ -432,8 +417,6 @@ contract NFTokenEnumerable is
     }
 
     // remove NFT
-    assert(ownerToNFTokenCount[owner] > 0);
-    ownerToNFTokenCount[owner] = ownerToNFTokenCount[owner] - 1;
     delete idToOwner[_tokenId];
     removeNFToken(owner, _tokenId);
 
