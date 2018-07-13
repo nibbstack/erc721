@@ -102,7 +102,7 @@ contract NFTokenEnumerable is
   )
    internal
   {
-    super.removeNFToken(_from, _tokenId);
+    //super.removeNFToken(_from, _tokenId);
     assert(ownerToIds[_from].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
@@ -129,7 +129,7 @@ contract NFTokenEnumerable is
   )
     internal
   {
-    super.addNFToken(_to, _tokenId);
+    //super.addNFToken(_to, _tokenId);
 
     uint256 length = ownerToIds[_to].push(_tokenId);
     idToOwnerIndex[_tokenId] = length - 1;
