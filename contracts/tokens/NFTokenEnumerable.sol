@@ -428,7 +428,7 @@ contract NFTokenEnumerable is
     idToOwnerIndex[_tokenId] = length - 1;
 
     // add to tokens array
-    uint256 length = tokens.push(_tokenId);
+    length = tokens.push(_tokenId);
     idToIndex[_tokenId] = length - 1;
 
     emit Transfer(address(0), _to, _tokenId);
@@ -458,7 +458,19 @@ contract NFTokenEnumerable is
 
     // remove NFT
     delete idToOwner[_tokenId];
-    removeNFToken(owner, _tokenId);
+    
+    assert(ownerToIds[owner].length > 0);
+
+    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
+    uint256 lastTokenIndex = ownerToIds[owner].length - 1;
+    uint256 lastToken = ownerToIds[owner][lastTokenIndex];
+
+    ownerToIds[owner][tokenToRemoveIndex] = lastToken;
+
+    ownerToIds[owner].length--;
+    // Consider adding a conditional check for the last token in order to save GAS.
+    idToOwnerIndex[lastToken] = tokenToRemoveIndex;
+    idToOwnerIndex[_tokenId] = 0;
 
     // remove from tokens array
     assert(tokens.length > 0);
@@ -466,8 +478,8 @@ contract NFTokenEnumerable is
     uint256 tokenIndex = idToIndex[_tokenId];
     // Sanity check. This could be removed in the future.
     assert(tokens[tokenIndex] == _tokenId);
-    uint256 lastTokenIndex = tokens.length - 1;
-    uint256 lastToken = tokens[lastTokenIndex];
+    lastTokenIndex = tokens.length - 1;
+    lastToken = tokens[lastTokenIndex];
 
     tokens[tokenIndex] = lastToken;
 
