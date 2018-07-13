@@ -404,7 +404,6 @@ contract NFToken is
     internal
   {
     require(_to != address(0));
-    require(_tokenId != 0);
     require(idToOwner[_tokenId] == address(0));
 
     // add NFT
