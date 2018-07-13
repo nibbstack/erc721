@@ -69,7 +69,7 @@ contract NFTokenMetadata is
     uint256 _tokenId,
     string _uri
   )
-    validNFToken(_tokenId)
+   // validNFToken(_tokenId)
     internal
   {
     idToUri[_tokenId] = _uri;
@@ -104,7 +104,7 @@ contract NFTokenMetadata is
   function tokenURI(
     uint256 _tokenId
   )
-    validNFToken(_tokenId)
+    //validNFToken(_tokenId)
     external
     view
     returns (string)
