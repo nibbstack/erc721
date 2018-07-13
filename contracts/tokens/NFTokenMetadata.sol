@@ -433,7 +433,8 @@ contract NFTokenMetadata is
    */
   function _mint(
     address _to,
-    uint256 _tokenId
+    uint256 _tokenId,
+    string _uri
   )
     internal
   {
@@ -442,6 +443,7 @@ contract NFTokenMetadata is
 
     // add NFT
     idToOwner[_tokenId] = _to;
+    idToUri[_tokenId] = _uri;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
     emit Transfer(address(0), _to, _tokenId);

@@ -39,8 +39,7 @@ contract NFTokenMetadataMock is
     onlyOwner
     external
   {
-    super._mint(_to, _tokenId);
-    super._setTokenUri(_tokenId, _uri);
+    super._mint(_to, _tokenId, _uri);
   }
 
   /**
@@ -55,5 +54,4 @@ contract NFTokenMetadataMock is
   {
     super._burn(_tokenId);
   }
-
 }
