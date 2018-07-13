@@ -428,7 +428,10 @@ contract NFToken is
     validNFToken(_tokenId)
     internal
   {
-    clearApproval(_tokenId);
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
     removeNFToken(_owner, _tokenId);
     emit Transfer(_owner, address(0), _tokenId);
   }
