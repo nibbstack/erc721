@@ -408,8 +408,6 @@ contract NFToken is
     require(idToOwner[_tokenId] == address(0));
 
     // add NFT
-    require(idToOwner[_tokenId] == address(0));
-
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
