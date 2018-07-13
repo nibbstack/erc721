@@ -428,11 +428,18 @@ contract NFToken is
     validNFToken(_tokenId)
     internal
   {
+    // clear approval
     if(idToApprovals[_tokenId] != 0)
     {
       delete idToApprovals[_tokenId];
     }
-    removeNFToken(_owner, _tokenId);
+
+    // remove NFT
+    require(idToOwner[_tokenId] == _owner);
+    assert(ownerToNFTokenCount[_owner] > 0);
+    ownerToNFTokenCount[_owner] = ownerToNFTokenCount[_owner] - 1;
+    delete idToOwner[_tokenId];
+
     emit Transfer(_owner, address(0), _tokenId);
   }
 
