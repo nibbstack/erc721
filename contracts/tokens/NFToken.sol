@@ -237,9 +237,6 @@ contract NFToken is
       || ownerToOperators[_from][msg.sender]
     );
 
-    // transfer section
-    address from = idToOwner[_tokenId];
-
     // clear approval
     if(idToApprovals[_tokenId] != 0)
     {
@@ -247,9 +244,9 @@ contract NFToken is
     }
 
     // remove NFT
-    require(idToOwner[_tokenId] == from);
-    assert(ownerToNFTokenCount[from] > 0);
-    ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
+    require(idToOwner[_tokenId] == _from);
+    assert(ownerToNFTokenCount[_from] > 0);
+    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     delete idToOwner[_tokenId];
 
     // add NFT
@@ -258,7 +255,7 @@ contract NFToken is
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
-    emit Transfer(from, _to, _tokenId);
+    emit Transfer(_from, _to, _tokenId);
   }
 
   /**
