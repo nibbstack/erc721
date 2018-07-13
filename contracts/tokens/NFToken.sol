@@ -86,46 +86,6 @@ contract NFToken is
   );
 
   /**
-   * @dev Guarantees that the msg.sender is an owner or operator of the given NFT.
-   * @param _tokenId ID of the NFT to validate.
-   */
-  modifier canOperate(
-    uint256 _tokenId
-  ) {
-    address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
-    _;
-  }
-
-  /**
-   * @dev Guarantees that the msg.sender is allowed to transfer NFT.
-   * @param _tokenId ID of the NFT to transfer.
-   */
-  modifier canTransfer(
-    uint256 _tokenId
-  ) {
-    address tokenOwner = idToOwner[_tokenId];
-    require(
-      tokenOwner == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
-      || ownerToOperators[tokenOwner][msg.sender]
-    );
-
-    _;
-  }
-
-  /**
-   * @dev Guarantees that _tokenId is a valid Token.
-   * @param _tokenId ID of the NFT to validate.
-   */
-  modifier validNFToken(
-    uint256 _tokenId
-  ) {
-    require(idToOwner[_tokenId] != address(0));
-    _;
-  }
-
-  /**
    * @dev Contract constructor.
    */
   constructor()
