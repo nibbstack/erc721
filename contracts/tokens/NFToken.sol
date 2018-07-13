@@ -223,10 +223,16 @@ contract NFToken is
     uint256 _tokenId
   )
     external
-    canTransfer(_tokenId)
     validNFToken(_tokenId)
   {
+    // can transfer
     address tokenOwner = idToOwner[_tokenId];
+    require(
+      tokenOwner == msg.sender
+      || getApproved(_tokenId) == msg.sender
+      || ownerToOperators[tokenOwner][msg.sender]
+    );
+
     require(tokenOwner == _from);
     require(_to != address(0));
 
