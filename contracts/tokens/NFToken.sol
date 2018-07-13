@@ -204,7 +204,40 @@ contract NFToken is
   )
     external
   {
-    _safeTransferFrom(_from, _to, _tokenId, "");
+    // valid NFT
+    require(_from != address(0));
+    require(idToOwner[_tokenId] == _from);
+    require(_to != address(0));
+
+    // can transfer
+    require(
+      _from == msg.sender
+      || getApproved(_tokenId) == msg.sender
+      || ownerToOperators[_from][msg.sender]
+    );
+
+    if (_to.isContract()) {
+      require(
+        ERC721TokenReceiver(_to)
+          .onERC721Received(msg.sender, _from, _tokenId, "") == MAGIC_ON_ERC721_RECEIVED
+      );
+    }
+
+    // clear approval
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
+
+    // remove NFT
+    assert(ownerToNFTokenCount[_from] > 0);
+    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
+
+    // add NFT
+    idToOwner[_tokenId] = _to;
+    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
+
+    emit Transfer(_from, _to, _tokenId);
   }
 
   /**
@@ -342,7 +375,7 @@ contract NFToken is
   )
     internal
   {
-     // valid NFT
+    // valid NFT
     require(_from != address(0));
     require(idToOwner[_tokenId] == _from);
     require(_to != address(0));
