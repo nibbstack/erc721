@@ -367,9 +367,9 @@ contract NFToken is
   )
     public
     view
-    validNFToken(_tokenId)
     returns (address)
   {
+    require(idToOwner[_tokenId] != address(0));
     return idToApprovals[_tokenId];
   }
 
