@@ -1,7 +1,7 @@
 const NFTokenEnumerable = artifacts.require('NFTokenEnumerableMock');
 const NFTokenEnumerableTest = artifacts.require('../mocks/NFTokenEnumerableTestMock.sol');
-const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
+const expectThrow = require('../helpers/expectThrow');
 
 contract('NFTokenEnumerableMock', (accounts) => {
   let nftoken;
@@ -102,5 +102,134 @@ contract('NFTokenEnumerableMock', (accounts) => {
 
     tokenId = await nftoken.tokenByIndex(1);
     assert.equal(tokenId, id3);
+  });
+
+  it('mint should correctly set ownerToIds and idToOwnerIndex and idToIndex', async () => {
+    nftoken = await NFTokenEnumerableTest.new();
+    await nftoken.mint(accounts[1], id1);
+    await nftoken.mint(accounts[1], id3);
+    await nftoken.mint(accounts[1], id2);
+
+    const idToOwnerIndexId1 = await nftoken.idToOwnerIndexWrapper(id1);
+    const idToOwnerIndexId3 = await nftoken.idToOwnerIndexWrapper(id3);
+    const idToOwnerIndexId2 = await nftoken.idToOwnerIndexWrapper(id2);
+    assert.strictEqual(idToOwnerIndexId1.toNumber(), 0);
+    assert.strictEqual(idToOwnerIndexId3.toNumber(), 1);
+    assert.strictEqual(idToOwnerIndexId2.toNumber(), 2);
+
+    const ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[1]);
+    const ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[1], 0);
+    const ownerToIdsSecond = await nftoken.ownerToIdbyIndex(accounts[1], 1);
+    const ownerToIdsThird = await nftoken.ownerToIdbyIndex(accounts[1], 2);
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '3');
+    assert.strictEqual(ownerToIdsFirst.toNumber(), id1);
+    assert.strictEqual(ownerToIdsSecond.toNumber(), id3);
+    assert.strictEqual(ownerToIdsThird.toNumber(), id2);
+
+    const idToIndexFirst = await nftoken.idToIndexWrapper(id1);
+    const idToIndexSecond = await nftoken.idToIndexWrapper(id3);
+    const idToIndexThird = await nftoken.idToIndexWrapper(id2);
+
+    assert.strictEqual(idToIndexFirst.toNumber(), 0);
+    assert.strictEqual(idToIndexSecond.toNumber(), 1);
+    assert.strictEqual(idToIndexThird.toNumber(), 2);
+  });
+
+  it('burn should correctly set ownerToIds and idToOwnerIndex and idToIndex', async () => {
+    nftoken = await NFTokenEnumerableTest.new();
+    await nftoken.mint(accounts[1], id1);
+    await nftoken.mint(accounts[1], id3);
+    await nftoken.mint(accounts[1], id2);
+
+    //burn id1
+    await nftoken.burn(id1, {from: accounts[0]});
+
+    let idToOwnerIndexId3 = await nftoken.idToOwnerIndexWrapper(id3);
+    let idToOwnerIndexId2 = await nftoken.idToOwnerIndexWrapper(id2);
+    assert.strictEqual(idToOwnerIndexId3.toNumber(), 1);
+    assert.strictEqual(idToOwnerIndexId2.toNumber(), 0);
+
+    let ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[1]);
+    let ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[1], 0);
+    let ownerToIdsSecond = await nftoken.ownerToIdbyIndex(accounts[1], 1);
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '2');
+    assert.strictEqual(ownerToIdsFirst.toNumber(), id2);
+    assert.strictEqual(ownerToIdsSecond.toNumber(), id3);
+
+    let idToIndexFirst = await nftoken.idToIndexWrapper(id2);
+    let idToIndexSecond = await nftoken.idToIndexWrapper(id3);
+
+    assert.strictEqual(idToIndexFirst.toNumber(), 0);
+    assert.strictEqual(idToIndexSecond.toNumber(), 1);
+
+    let tokenIndexFirst = await nftoken.tokenByIndex(0);
+    let tokenIndexSecond = await nftoken.tokenByIndex(1);
+
+    assert.strictEqual(tokenIndexFirst.toNumber(), id2);
+    assert.strictEqual(tokenIndexSecond.toNumber(), id3);
+
+    //burn id2
+    await nftoken.burn(id2, {from: accounts[0]});
+
+    idToOwnerIndexId3 = await nftoken.idToOwnerIndexWrapper(id3);
+    assert.strictEqual(idToOwnerIndexId3.toNumber(), 0);
+
+    ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[1]);
+    ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[1], 0);
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '1');
+    assert.strictEqual(ownerToIdsFirst.toNumber(), id3);
+
+    idToIndexFirst = await nftoken.idToIndexWrapper(id3);
+
+    assert.strictEqual(idToIndexFirst.toNumber(), 0);
+
+    tokenIndexFirst = await nftoken.tokenByIndex(0);
+
+    assert.strictEqual(tokenIndexFirst.toNumber(), id3);
+
+    //burn id3
+    await nftoken.burn(id3, {from: accounts[0]});
+
+    idToOwnerIndexId3 = await nftoken.idToOwnerIndexWrapper(id3);
+    assert.strictEqual(idToOwnerIndexId3.toNumber(), 0);
+
+    ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[1]);
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '0');
+
+    await expectThrow(nftoken.ownerToIdbyIndex(accounts[1], 0));
+
+    idToIndexFirst = await nftoken.idToIndexWrapper(id3);
+
+    assert.strictEqual(idToIndexFirst.toNumber(), 0);
+  });
+
+  it('transfer should correctly set ownerToIds and idToOwnerIndex and idToIndex', async () => {
+    nftoken = await NFTokenEnumerableTest.new();
+    await nftoken.mint(accounts[1], id1);
+    await nftoken.mint(accounts[1], id3);
+    await nftoken.mint(accounts[1], id2);
+
+    await nftoken.transferFrom(accounts[1], accounts[2], id1, {from: accounts[1]});
+
+    let idToOwnerIndexId1 = await nftoken.idToOwnerIndexWrapper(id1);
+    let idToOwnerIndexId3 = await nftoken.idToOwnerIndexWrapper(id3);
+    let idToOwnerIndexId2 = await nftoken.idToOwnerIndexWrapper(id2);
+    assert.strictEqual(idToOwnerIndexId1.toNumber(), 0);
+    assert.strictEqual(idToOwnerIndexId3.toNumber(), 1);
+    assert.strictEqual(idToOwnerIndexId2.toNumber(), 0);
+
+    let ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[1]);
+    let ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[1], 0);
+    let ownerToIdsSecond = await nftoken.ownerToIdbyIndex(accounts[1], 1);
+    await expectThrow(nftoken.ownerToIdbyIndex(accounts[1], 2));
+
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '2');
+    assert.strictEqual(ownerToIdsFirst.toNumber(), id2);
+    assert.strictEqual(ownerToIdsSecond.toNumber(), id3);
+
+    ownerToIdsLenPrior = await nftoken.ownerToIdsLen(accounts[2]);
+    ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[2], 0);
+    assert.strictEqual(ownerToIdsLenPrior.toString(), '1');
+    assert.strictEqual(ownerToIdsFirst.toNumber(), id1);
   });
 });
