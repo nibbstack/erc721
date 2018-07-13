@@ -230,7 +230,28 @@ contract NFToken is
     require(tokenOwner == _from);
     require(_to != address(0));
 
-    _transfer(_to, _tokenId);
+    // transfer section
+    address from = idToOwner[_tokenId];
+
+    // clear approval
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
+
+    // remove NFT
+    require(idToOwner[_tokenId] == from);
+    assert(ownerToNFTokenCount[from] > 0);
+    ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
+    delete idToOwner[_tokenId];
+
+    // add NFT
+    require(idToOwner[_tokenId] == address(0));
+
+    idToOwner[_tokenId] = _to;
+    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
+
+    emit Transfer(from, _to, _tokenId);
   }
 
   /**
