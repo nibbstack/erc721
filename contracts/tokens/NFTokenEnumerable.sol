@@ -424,7 +424,8 @@ contract NFTokenEnumerable is
     // add NFT
     idToOwner[_tokenId] = _to;
 
-    addNFToken(_to, _tokenId);
+    uint256 length = ownerToIds[_to].push(_tokenId);
+    idToOwnerIndex[_tokenId] = length - 1;
 
     // add to tokens array
     uint256 length = tokens.push(_tokenId);
