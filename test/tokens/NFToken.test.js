@@ -246,7 +246,7 @@ contract('NFTokenMock', (accounts) => {
 
   it('corectly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2);
-    const { logs } = await nftoken.burn(accounts[1], id2);
+    const { logs } = await nftoken.burn(id2);
 
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
@@ -261,6 +261,6 @@ contract('NFTokenMock', (accounts) => {
   });
 
   it('throws when trying to burn non existant NFT', async () => {
-    await assertRevert(nftoken.burn(accounts[1], id2));
+    await assertRevert(nftoken.burn(id2));
   });
 });
