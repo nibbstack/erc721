@@ -224,19 +224,18 @@ contract NFToken is
   )
     external
   {
-    // can transfer
-    address tokenOwner = idToOwner[_tokenId];
-    require(
-      tokenOwner == msg.sender
-      || getApproved(_tokenId) == msg.sender
-      || ownerToOperators[tokenOwner][msg.sender]
-    );
-
-    // valid NFT
-    require(idToOwner[_tokenId] != address(0));
-
-    require(tokenOwner == _from);
+    
+    // valid nft
+    require(_from != address(0));
+    require(idToOwner[_tokenId] == _from);
     require(_to != address(0));
+
+    // can transfer
+    require(
+      _from == msg.sender
+      || getApproved(_tokenId) == msg.sender
+      || ownerToOperators[_from][msg.sender]
+    );
 
     // transfer section
     address from = idToOwner[_tokenId];
