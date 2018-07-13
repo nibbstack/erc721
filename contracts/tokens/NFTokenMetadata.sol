@@ -397,11 +397,11 @@ contract NFTokenMetadata is
   function tokenURI(
     uint256 _tokenId
   )
-    //validNFToken(_tokenId)
     external
     view
     returns (string)
   {
+    require(idToOwner[_tokenId] != address(0));
     return idToUri[_tokenId];
   }
 
@@ -417,9 +417,9 @@ contract NFTokenMetadata is
     uint256 _tokenId,
     string _uri
   )
-   // validNFToken(_tokenId)
     internal
   {
+    require(idToOwner[_tokenId] != address(0));
     idToUri[_tokenId] = _uri;
   }
 
