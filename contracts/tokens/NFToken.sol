@@ -224,8 +224,7 @@ contract NFToken is
   )
     external
   {
-    
-    // valid nft
+    // valid NFT
     require(_from != address(0));
     require(idToOwner[_tokenId] == _from);
     require(_to != address(0));
