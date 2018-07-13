@@ -342,7 +342,7 @@ contract NFToken is
   )
     internal
   {
-   // valid NFT
+     // valid NFT
     require(_from != address(0));
     require(idToOwner[_tokenId] == _from);
     require(_to != address(0));
@@ -354,6 +354,11 @@ contract NFToken is
       || ownerToOperators[_from][msg.sender]
     );
 
+    if (_to.isContract()) {
+      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
+      require(retval == MAGIC_ON_ERC721_RECEIVED);
+    }
+    
     // clear approval
     if(idToApprovals[_tokenId] != 0)
     {
@@ -369,11 +374,6 @@ contract NFToken is
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
     emit Transfer(_from, _to, _tokenId);
-
-    if (_to.isContract()) {
-      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
-      require(retval == MAGIC_ON_ERC721_RECEIVED);
-    }
   }
 
   /**
