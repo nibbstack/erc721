@@ -362,7 +362,11 @@ contract NFToken is
     ownerToNFTokenCount[from] = ownerToNFTokenCount[from] - 1;
     delete idToOwner[_tokenId];
 
-    addNFToken(_to, _tokenId);
+    // add NFT
+    require(idToOwner[_tokenId] == address(0));
+
+    idToOwner[_tokenId] = _to;
+    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
 
     emit Transfer(from, _to, _tokenId);
   }
