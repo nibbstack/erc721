@@ -331,12 +331,13 @@ contract NFToken is
     uint256 _tokenId
   )
     external
-    canOperate(_tokenId)
-    validNFToken(_tokenId)
   {
     // can operate
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
+
+    // valid NFT
+    require(idToOwner[_tokenId] != address(0));
 
     require(_approved != tokenOwner);
 
