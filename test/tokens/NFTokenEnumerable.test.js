@@ -1,4 +1,4 @@
-/*const NFTokenEnumerable = artifacts.require('NFTokenEnumerableMock');
+const NFTokenEnumerable = artifacts.require('NFTokenEnumerableMock');
 const NFTokenEnumerableTest = artifacts.require('../mocks/NFTokenEnumerableTestMock.sol');
 const util = require('ethjs-util');
 const assertRevert = require('../helpers/assertRevert');
@@ -147,7 +147,7 @@ contract('NFTokenEnumerableMock', (accounts) => {
     await nftoken.mint(accounts[1], id1);
     await nftoken.mint(accounts[1], id2);
     await nftoken.mint(accounts[1], id3);
-    const { logs } = await nftoken.burn(accounts[1], id2);
+    const { logs } = await nftoken.burn(id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');
     assert.notEqual(transferEvent, undefined);
 
@@ -169,4 +169,3 @@ contract('NFTokenEnumerableMock', (accounts) => {
     assert.equal(tokenId, id3);
   });
 });
-*/

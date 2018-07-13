@@ -59,7 +59,7 @@ contract NFTokenMetadataEnumerableMock is
     onlyOwner
     external
   {
-    super._burn(_owner, _tokenId);
+    //super._burn(_owner, _tokenId);
   }
 
 }
