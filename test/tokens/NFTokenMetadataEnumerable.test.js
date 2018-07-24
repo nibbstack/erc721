@@ -326,6 +326,9 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
 
     tokenId = await nftoken.tokenByIndex(1);
     assert.equal(tokenId, id3);
+
+    const uri = await nftoken.checkUri(id2);
+    assert.equal(uri, '');
   });
 
   it('mint should correctly set ownerToIds and idToOwnerIndex and idToIndex', async () => {
@@ -452,5 +455,25 @@ contract('NFTokenMetadataEnumerableMock', (accounts) => {
     ownerToIdsFirst = await nftoken.ownerToIdbyIndex(accounts[2], 0);
     assert.strictEqual(ownerToIdsLenPrior.toString(), '1');
     assert.strictEqual(ownerToIdsFirst.toNumber(), id1);
+  });
+
+  it('returns the correct issuer name', async () => {
+    const name = await nftoken.name();
+    assert.equal(name, 'Foo');
+  });
+
+  it('returns the correct issuer symbol', async () => {
+    const symbol = await nftoken.symbol();
+    assert.equal(symbol, 'F');
+  });
+
+  it('correctly mints and checks NFT id 2 url', async () => {
+    const { logs } = await nftoken.mint(accounts[1], id2, 'url2');
+    const transferEvent = logs.find(e => e.event === 'Transfer');
+    assert.notEqual(transferEvent, undefined);
+  });
+
+  it('throws when trying to get URI of invalid NFT ID', async () => {
+    await assertRevert(nftoken.tokenURI(id4));
   });
 });
