@@ -8,7 +8,7 @@ import "@0xcert/ethereum-utils/contracts/utils/SupportsInterface.sol";
 import "@0xcert/ethereum-utils/contracts/utils/AddressUtils.sol";
 
 /**
- * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
+ * @dev Optional enumerable implementation for ERC-721 non-fungible token standard.
  */
 contract NFTokenEnumerable is
   ERC721,
