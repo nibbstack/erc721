@@ -433,7 +433,8 @@ contract NFTokenMetadataEnumerable is
    */
   function _mint(
     address _to,
-    uint256 _tokenId
+    uint256 _tokenId,
+    string _uri
   )
     internal
   {
@@ -445,6 +446,9 @@ contract NFTokenMetadataEnumerable is
 
     uint256 length = ownerToIds[_to].push(_tokenId);
     idToOwnerIndex[_tokenId] = length - 1;
+
+    // add uri
+    idToUri[_tokenId] = _uri;
 
     // add to tokens array
     length = tokens.push(_tokenId);
