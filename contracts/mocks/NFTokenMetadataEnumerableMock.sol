@@ -1,7 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "../tokens/NFTokenMetadata.sol";
-import "../tokens/NFTokenEnumerable.sol";
+import "../tokens/NFTokenMetadataEnumerable.sol";
 import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
 
 /**
@@ -9,8 +8,7 @@ import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
  * extensions.
  */
 contract NFTokenMetadataEnumerableMock is
-  NFTokenEnumerable,
-  NFTokenMetadata,
+  NFTokenMetadataEnumerable,
   Ownable
 {
 
@@ -43,23 +41,20 @@ contract NFTokenMetadataEnumerableMock is
     onlyOwner
     external
   {
-    super._mint(_to, _tokenId);
-    super._setTokenUri(_tokenId, _uri);
+    super._mint(_to, _tokenId, _uri);
   }
 
   /**
    * @dev Removes a NFT from owner.
-   * @param _owner Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
   function burn(
-    address _owner,
     uint256 _tokenId
   )
     onlyOwner
     external
   {
-    //super._burn(_owner, _tokenId);
+    super._burn(_tokenId);
   }
 
 }
