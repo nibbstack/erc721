@@ -551,4 +551,59 @@ contract NFTokenMetadataEnumerable is
     require(_index < ownerToIds[_owner].length);
     return ownerToIds[_owner][_index];
   }
+
+  /**
+   * @dev Returns a descriptive name for a collection of NFTokens.
+   */
+  function name()
+    external
+    view
+    returns (string _name)
+  {
+    _name = nftName;
+  }
+
+  /**
+   * @dev Returns an abbreviated name for NFTokens.
+   */
+  function symbol()
+    external
+    view
+    returns (string _symbol)
+  {
+    _symbol = nftSymbol;
+  }
+
+  /**
+   * @dev A distinct URI (RFC 3986) for a given NFT.
+   * @param _tokenId Id for which we want uri.
+   */
+  function tokenURI(
+    uint256 _tokenId
+  )
+    external
+    view
+    returns (string)
+  {
+    require(idToOwner[_tokenId] != address(0));
+    return idToUri[_tokenId];
+  }
+
+  /**
+   * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
+   * @notice this is a internal function which should be called from user-implemented external
+   * function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
+   * @param _tokenId Id for which we want uri.
+   * @param _uri String representing RFC 3986 URI.
+   */
+  function _setTokenUri(
+    uint256 _tokenId,
+    string _uri
+  )
+    internal
+  {
+    require(idToOwner[_tokenId] != address(0));
+    idToUri[_tokenId] = _uri;
+  }
 }
