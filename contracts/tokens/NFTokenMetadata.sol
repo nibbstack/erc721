@@ -392,7 +392,9 @@ contract NFTokenMetadata is
   }
 
   /**
-   * @dev A distinct URI (RFC 3986) for a given NFT.
+   * @notice A distinct Uniform Resource Identifier (URI) for a given asset.
+   * @dev Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC 3986. The URI may point
+   * to a JSON file that conforms to the "ERC721 Metadata JSON Schema".
    * @param _tokenId Id for which we want uri.
    */
   function tokenURI(
