@@ -21,6 +21,21 @@ contract NFTokenMetadataEnumerable is
   using AddressUtils for address;
 
   /**
+   * @dev A descriptive name for a collection of NFTs.
+   */
+  string internal nftName;
+
+  /**
+   * @dev An abbreviated name for NFTokens.
+   */
+  string internal nftSymbol;
+
+  /**
+   * @dev Mapping from NFT ID to metadata uri.
+   */
+  mapping (uint256 => string) internal idToUri;
+
+  /**
    * @dev Array of all NFT IDs.
    */
   uint256[] internal tokens;
