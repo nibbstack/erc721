@@ -496,6 +496,11 @@ contract NFTokenMetadataEnumerable is
     delete idToOwnerIndex[_tokenId];
     ownerToIds[owner].length--;
 
+    // delete uri
+    if (bytes(idToUri[_tokenId]).length != 0) {
+      delete idToUri[_tokenId];
+    }
+
     // remove from tokens array
     assert(tokens.length > 0);
 
