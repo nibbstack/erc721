@@ -46,7 +46,7 @@ contract NFTokenEnumerable is
   /**
    * @dev Mapping from NFT ID to approved address.
    */
-  mapping (uint256 => address) internal idToApprovals;
+  mapping (uint256 => address) internal idToApproval;
 
   /**
    * @dev Mapping from owner address to mapping of operator addresses.
@@ -174,7 +174,7 @@ contract NFTokenEnumerable is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
@@ -186,9 +186,9 @@ contract NFTokenEnumerable is
     }
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -237,7 +237,7 @@ contract NFTokenEnumerable is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
@@ -249,9 +249,9 @@ contract NFTokenEnumerable is
     }
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -302,14 +302,14 @@ contract NFTokenEnumerable is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -352,7 +352,7 @@ contract NFTokenEnumerable is
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
 
-    idToApprovals[_tokenId] = _approved;
+    idToApproval[_tokenId] = _approved;
     emit Approval(tokenOwner, _approved, _tokenId);
   }
 
@@ -386,7 +386,7 @@ contract NFTokenEnumerable is
     returns (address)
   {
     require(idToOwner[_tokenId] != address(0));
-    return idToApprovals[_tokenId];
+    return idToApproval[_tokenId];
   }
 
   /**
@@ -495,9 +495,9 @@ contract NFTokenEnumerable is
     require(owner != address(0));
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT

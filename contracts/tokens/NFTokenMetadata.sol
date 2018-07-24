@@ -41,7 +41,7 @@ contract NFTokenMetadata is
   /**
    * @dev Mapping from NFT ID to approved address.
    */
-  mapping (uint256 => address) internal idToApprovals;
+  mapping (uint256 => address) internal idToApproval;
 
    /**
    * @dev Mapping from owner address to count of his tokens.
@@ -174,7 +174,7 @@ contract NFTokenMetadata is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
@@ -186,9 +186,9 @@ contract NFTokenMetadata is
     }
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -225,7 +225,7 @@ contract NFTokenMetadata is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
@@ -237,9 +237,9 @@ contract NFTokenMetadata is
     }
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -278,14 +278,14 @@ contract NFTokenMetadata is
     // can transfer
     require(
       _from == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[_from][msg.sender]
     );
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
@@ -316,7 +316,7 @@ contract NFTokenMetadata is
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
 
-    idToApprovals[_tokenId] = _approved;
+    idToApproval[_tokenId] = _approved;
     emit Approval(tokenOwner, _approved, _tokenId);
   }
 
@@ -350,7 +350,7 @@ contract NFTokenMetadata is
     returns (address)
   {
     require(idToOwner[_tokenId] != address(0));
-    return idToApprovals[_tokenId];
+    return idToApproval[_tokenId];
   }
 
   /**
@@ -469,9 +469,9 @@ contract NFTokenMetadata is
     require(owner != address(0));
 
     // clear approval
-    if(idToApprovals[_tokenId] != 0)
+    if(idToApproval[_tokenId] != 0)
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
 
     // remove NFT
