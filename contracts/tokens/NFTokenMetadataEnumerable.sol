@@ -31,7 +31,7 @@ contract NFTokenMetadataEnumerable is
   string internal nftSymbol;
 
   /**
-   * @dev Mapping from NFT ID to metadata uri.
+   * @dev Mapping from NFT ID to metadata URI.
    */
   mapping (uint256 => string) internal idToUri;
 
@@ -491,7 +491,7 @@ contract NFTokenMetadataEnumerable is
    * @notice A distinct Uniform Resource Identifier (URI) for a given asset.
    * @dev Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC 3986. The URI may point
    * to a JSON file that conforms to the "ERC721 Metadata JSON Schema".
-   * @param _tokenId Id for which we want uri.
+   * @param _tokenId Id for which we want URI.
    */
   function tokenURI(
     uint256 _tokenId
@@ -509,7 +509,7 @@ contract NFTokenMetadataEnumerable is
    * @notice this is a internal function which should be called from user-implemented external
    * function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _tokenId Id for which we want uri.
+   * @param _tokenId Id for which we want URI.
    * @param _uri String representing RFC 3986 URI.
    */
   function _setTokenUri(
@@ -546,7 +546,7 @@ contract NFTokenMetadataEnumerable is
     uint256 length = ownerToIds[_to].push(_tokenId);
     idToOwnerIndex[_tokenId] = length - 1;
 
-    // add uri
+    // add URI
     idToUri[_tokenId] = _uri;
 
     // add to tokens array
@@ -595,7 +595,7 @@ contract NFTokenMetadataEnumerable is
     delete idToOwnerIndex[_tokenId];
     ownerToIds[owner].length--;
 
-    // delete uri
+    // delete URI
     if (bytes(idToUri[_tokenId]).length != 0) {
       delete idToUri[_tokenId];
     }
