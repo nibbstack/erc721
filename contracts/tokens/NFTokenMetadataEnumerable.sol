@@ -424,101 +424,6 @@ contract NFTokenMetadataEnumerable is
   }
 
   /**
-   * @dev Mints a new NFT.
-   * @notice This is a private function which should be called from user-implemented external
-   * mint function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
-   * @param _to The address that will own the minted NFT.
-   * @param _tokenId of the NFT to be minted by the msg.sender.
-   */
-  function _mint(
-    address _to,
-    uint256 _tokenId,
-    string _uri
-  )
-    internal
-  {
-    require(_to != address(0));
-    require(idToOwner[_tokenId] == address(0));
-
-    // add NFT
-    idToOwner[_tokenId] = _to;
-
-    uint256 length = ownerToIds[_to].push(_tokenId);
-    idToOwnerIndex[_tokenId] = length - 1;
-
-    // add uri
-    idToUri[_tokenId] = _uri;
-
-    // add to tokens array
-    length = tokens.push(_tokenId);
-    idToIndex[_tokenId] = length - 1;
-
-    emit Transfer(address(0), _to, _tokenId);
-  }
-
-  /**
-   * @dev Burns a NFT.
-   * @notice This is a private function which should be called from user-implemented external
-   * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
-   * @param _tokenId ID of the NFT to be burned.
-   */
-  function _burn(
-    uint256 _tokenId
-  )
-    internal
-  {
-    // valid NFT
-    address owner = idToOwner[_tokenId];
-    require(owner != address(0));
-
-    // clear approval
-    if(idToApprovals[_tokenId] != 0)
-    {
-      delete idToApprovals[_tokenId];
-    }
-
-    // remove NFT
-    assert(ownerToIds[owner].length > 0);
-
-    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
-    uint256 lastTokenIndex = ownerToIds[owner].length - 1;
-
-    if(lastTokenIndex != tokenToRemoveIndex)
-    {
-      uint256 lastToken = ownerToIds[owner][lastTokenIndex];
-      ownerToIds[owner][tokenToRemoveIndex] = lastToken;
-      idToOwnerIndex[lastToken] = tokenToRemoveIndex;
-    }
-
-    delete idToOwner[_tokenId];
-    delete idToOwnerIndex[_tokenId];
-    ownerToIds[owner].length--;
-
-    // delete uri
-    if (bytes(idToUri[_tokenId]).length != 0) {
-      delete idToUri[_tokenId];
-    }
-
-    // remove from tokens array
-    assert(tokens.length > 0);
-
-    uint256 tokenIndex = idToIndex[_tokenId];
-    lastTokenIndex = tokens.length - 1;
-    lastToken = tokens[lastTokenIndex];
-
-    tokens[tokenIndex] = lastToken;
-
-    tokens.length--;
-    // Consider adding a conditional check for the last token in order to save GAS.
-    idToIndex[lastToken] = tokenIndex;
-    idToIndex[_tokenId] = 0;
-
-    emit Transfer(owner, address(0), _tokenId);
-  }
-
-  /**
    * @dev Returns the count of all existing NFTokens.
    */
   function totalSupply()
@@ -616,5 +521,100 @@ contract NFTokenMetadataEnumerable is
   {
     require(idToOwner[_tokenId] != address(0));
     idToUri[_tokenId] = _uri;
+  }
+
+  /**
+   * @dev Mints a new NFT.
+   * @notice This is a private function which should be called from user-implemented external
+   * mint function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
+   * @param _to The address that will own the minted NFT.
+   * @param _tokenId of the NFT to be minted by the msg.sender.
+   */
+  function _mint(
+    address _to,
+    uint256 _tokenId,
+    string _uri
+  )
+    internal
+  {
+    require(_to != address(0));
+    require(idToOwner[_tokenId] == address(0));
+
+    // add NFT
+    idToOwner[_tokenId] = _to;
+
+    uint256 length = ownerToIds[_to].push(_tokenId);
+    idToOwnerIndex[_tokenId] = length - 1;
+
+    // add uri
+    idToUri[_tokenId] = _uri;
+
+    // add to tokens array
+    length = tokens.push(_tokenId);
+    idToIndex[_tokenId] = length - 1;
+
+    emit Transfer(address(0), _to, _tokenId);
+  }
+
+  /**
+   * @dev Burns a NFT.
+   * @notice This is a private function which should be called from user-implemented external
+   * burn function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
+   * @param _tokenId ID of the NFT to be burned.
+   */
+  function _burn(
+    uint256 _tokenId
+  )
+    internal
+  {
+    // valid NFT
+    address owner = idToOwner[_tokenId];
+    require(owner != address(0));
+
+    // clear approval
+    if(idToApprovals[_tokenId] != 0)
+    {
+      delete idToApprovals[_tokenId];
+    }
+
+    // remove NFT
+    assert(ownerToIds[owner].length > 0);
+
+    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
+    uint256 lastTokenIndex = ownerToIds[owner].length - 1;
+
+    if(lastTokenIndex != tokenToRemoveIndex)
+    {
+      uint256 lastToken = ownerToIds[owner][lastTokenIndex];
+      ownerToIds[owner][tokenToRemoveIndex] = lastToken;
+      idToOwnerIndex[lastToken] = tokenToRemoveIndex;
+    }
+
+    delete idToOwner[_tokenId];
+    delete idToOwnerIndex[_tokenId];
+    ownerToIds[owner].length--;
+
+    // delete uri
+    if (bytes(idToUri[_tokenId]).length != 0) {
+      delete idToUri[_tokenId];
+    }
+
+    // remove from tokens array
+    assert(tokens.length > 0);
+
+    uint256 tokenIndex = idToIndex[_tokenId];
+    lastTokenIndex = tokens.length - 1;
+    lastToken = tokens[lastTokenIndex];
+
+    tokens[tokenIndex] = lastToken;
+
+    tokens.length--;
+    // Consider adding a conditional check for the last token in order to save GAS.
+    idToIndex[lastToken] = tokenIndex;
+    idToIndex[_tokenId] = 0;
+
+    emit Transfer(owner, address(0), _tokenId);
   }
 }

@@ -406,6 +406,49 @@ contract NFTokenEnumerable is
   }
 
   /**
+   * @dev Returns the count of all existing NFTokens.
+   */
+  function totalSupply()
+    external
+    view
+    returns (uint256)
+  {
+    return tokens.length;
+  }
+
+  /**
+   * @dev Returns NFT ID by its index.
+   * @param _index A counter less than `totalSupply()`.
+   */
+  function tokenByIndex(
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256)
+  {
+    require(_index < tokens.length);
+    return tokens[_index];
+  }
+
+  /**
+   * @dev returns the n-th NFT ID from a list of owner's tokens.
+   * @param _owner Token owner's address.
+   * @param _index Index number representing n-th token in owner's list of tokens.
+   */
+  function tokenOfOwnerByIndex(
+    address _owner,
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256)
+  {
+    require(_index < ownerToIds[_owner].length);
+    return ownerToIds[_owner][_index];
+  }
+
+    /**
    * @dev Mints a new NFT.
    * @notice This is a private function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
@@ -489,48 +532,5 @@ contract NFTokenEnumerable is
     idToIndex[_tokenId] = 0;
 
     emit Transfer(owner, address(0), _tokenId);
-  }
-
-  /**
-   * @dev Returns the count of all existing NFTokens.
-   */
-  function totalSupply()
-    external
-    view
-    returns (uint256)
-  {
-    return tokens.length;
-  }
-
-  /**
-   * @dev Returns NFT ID by its index.
-   * @param _index A counter less than `totalSupply()`.
-   */
-  function tokenByIndex(
-    uint256 _index
-  )
-    external
-    view
-    returns (uint256)
-  {
-    require(_index < tokens.length);
-    return tokens[_index];
-  }
-
-  /**
-   * @dev returns the n-th NFT ID from a list of owner's tokens.
-   * @param _owner Token owner's address.
-   * @param _index Index number representing n-th token in owner's list of tokens.
-   */
-  function tokenOfOwnerByIndex(
-    address _owner,
-    uint256 _index
-  )
-    external
-    view
-    returns (uint256)
-  {
-    require(_index < ownerToIds[_owner].length);
-    return ownerToIds[_owner][_index];
   }
 }
