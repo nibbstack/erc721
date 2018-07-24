@@ -53,7 +53,6 @@ contract NFTokenEnumerable is
    */
   mapping (address => mapping (address => bool)) internal ownerToOperators;
   
-
   /**
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
