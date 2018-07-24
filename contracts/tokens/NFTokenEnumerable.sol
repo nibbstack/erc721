@@ -406,7 +406,7 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Returns the count of all existing NFTokens.
+   * @dev Returns the count of all existing NFTs.
    */
   function totalSupply()
     external

@@ -24,7 +24,7 @@ contract NFTokenMetadata is
   string internal nftName;
 
   /**
-   * @dev An abbreviated name for NFTokens.
+   * @dev An abbreviated name for NFTs.
    */
   string internal nftSymbol;
 
@@ -370,7 +370,7 @@ contract NFTokenMetadata is
   }
 
   /**
-   * @dev Returns a descriptive name for a collection of NFTokens.
+   * @dev Returns a descriptive name for a collection of NFTs.
    */
   function name()
     external
@@ -381,7 +381,7 @@ contract NFTokenMetadata is
   }
 
   /**
-   * @dev Returns an abbreviated name for NFTokens.
+   * @dev Returns an abbreviated name for NFTs.
    */
   function symbol()
     external

@@ -26,7 +26,7 @@ contract NFTokenMetadataEnumerable is
   string internal nftName;
 
   /**
-   * @dev An abbreviated name for NFTokens.
+   * @dev An abbreviated name for NFTs.
    */
   string internal nftSymbol;
 
@@ -70,7 +70,6 @@ contract NFTokenMetadataEnumerable is
    */
   mapping (address => mapping (address => bool)) internal ownerToOperators;
   
-
   /**
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
@@ -424,7 +423,7 @@ contract NFTokenMetadataEnumerable is
   }
 
   /**
-   * @dev Returns the count of all existing NFTokens.
+   * @dev Returns the count of all existing NFTs.
    */
   function totalSupply()
     external
@@ -467,7 +466,7 @@ contract NFTokenMetadataEnumerable is
   }
 
   /**
-   * @dev Returns a descriptive name for a collection of NFTokens.
+   * @dev Returns a descriptive name for a collection of NFTs.
    */
   function name()
     external
@@ -478,7 +477,7 @@ contract NFTokenMetadataEnumerable is
   }
 
   /**
-   * @dev Returns an abbreviated name for NFTokens.
+   * @dev Returns an abbreviated name for NFTs.
    */
   function symbol()
     external

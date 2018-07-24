@@ -56,5 +56,4 @@ contract NFTokenMetadataEnumerableMock is
   {
     super._burn(_tokenId);
   }
-
 }
