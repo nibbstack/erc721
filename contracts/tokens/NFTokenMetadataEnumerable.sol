@@ -112,6 +112,7 @@ contract NFTokenMetadataEnumerable is
     public
   {
     supportedInterfaces[0x80ac58cd] = true; // ERC721
+    supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
   }
 
