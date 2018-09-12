@@ -45,7 +45,7 @@ contract('NFTokenMetadataMock', (accounts) => {
     await assertRevert(nftoken.tokenURI(id4));
   });
 
-  it('corectly burns a NFT', async () => {
+  it('correctly burns a NFT', async () => {
     await nftoken.mint(accounts[1], id2, 'url');
     const { logs } = await nftoken.burn(accounts[1], id2);
     const transferEvent = logs.find(e => e.event === 'Transfer');
