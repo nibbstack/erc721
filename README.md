@@ -2,7 +2,7 @@
 
 # ERC-721 Token
 
-This is a complete implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum blockchain. This is an open source project build with [Truffle](http://truffleframework.com) framework.
+This is a complete implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum blockchain. This is an open source project built with [Truffle](http://truffleframework.com) framework.
 
 Purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum blockchain. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
 
@@ -13,7 +13,7 @@ If you are looking for a more feature-rich and advanced ERC721 implementation, t
 Since this is a Truffle project, you will find all tokens in `contracts/tokens/` directory. There are multiple implementations and you can select between:
 - `NFToken.sol`: This is the base ERC-721 token implementation (with the support for ERC-165).
 - `NFTokenEnumerable.sol`: This implements optional ERC-721 support for enumeration. It is useful if you want to know the total supply of tokens, to query a token by index, etc.
-- `NFTokenMetadata.sol`: This implements optional ERC-721 meta-data features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
+- `NFTokenMetadata.sol`: This implements optional ERC-721 metadata features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
 
 Other files in the directory starting with `ERC*.sol` are interfaces and define the respective standards.
 
