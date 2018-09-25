@@ -199,7 +199,7 @@ contract('NFTokenMock', (accounts) => {
     await assertRevert(nftoken.transferFrom(owner, 0, id2, {from: owner}));
   });
 
-  it('throws when trying to transfer a invalid NFT', async () => {
+  it('throws when trying to transfer an invalid NFT', async () => {
     const owner = accounts[3];
     const recipient = accounts[2];
 
