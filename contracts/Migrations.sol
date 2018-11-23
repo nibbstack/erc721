@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
+import "./ownership/Ownable.sol";
 
 /**
  * @dev Truffle migrations manager.

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "../tokens/NFTokenMetadata.sol";
-import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
+import "../ownership/Ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.
