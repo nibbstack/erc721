@@ -27,17 +27,17 @@ contract('NFTokenMock', (accounts) => {
     assert.equal(count.toNumber(), 1);
   });
 
-  it('throws when trying to mint 2 NFTs with the same claim', async () => {
+  it('throws when trying to mint 2 NFTs with the same id', async () => {
     await nftoken.mint(accounts[0], id2);
     await assertRevert(nftoken.mint(accounts[0], id2));
   });
 
-  it('throws trying to mint NFT with empty claim', async () => {
+  it('throws trying to mint NFT with empty id', async () => {
     await assertRevert(nftoken.mint(accounts[0], ''));
   });
 
-  it('throws when trying to mint NFT to 0x0 address ', async () => {
-    await assertRevert(nftoken.mint('0', id3));
+  it('throws when trying to mint NFT to zero address ', async () => {
+    await assertRevert(nftoken.mint('0x0000000000000000000000000000000000000000', id3));
   });
 
   it('finds the correct amount of NFTs owned by account', async () => {
@@ -47,8 +47,8 @@ contract('NFTokenMock', (accounts) => {
     assert.equal(count.toNumber(), 2);
   });
 
-  it('throws when trying to get count of NFTs owned by 0x0 address', async () => {
-    await assertRevert(nftoken.balanceOf('0'));
+  it('throws when trying to get count of NFTs owned by zero address', async () => {
+    await assertRevert(nftoken.balanceOf('0x0000000000000000000000000000000000000000'));
   });
 
   it('finds the correct owner of NFToken id', async () => {
