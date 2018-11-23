@@ -167,12 +167,14 @@ contract NFToken is
   }
 
   /**
-   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @dev Transfers the ownership of an NFT from one address to another address. This function can
+   * be changed to payable.
    * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
    * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
    * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
-   * function checks if `_to` is a smart contract (code size > 0). If so, it calls `onERC721Received`
-   * on `_to` and throws if the return value is not `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
+   * function checks if `_to` is a smart contract (code size > 0). If so, it calls 
+   * `onERC721Received` on `_to` and throws if the return value is not 
+   * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -190,7 +192,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @dev Transfers the ownership of an NFT from one address to another address. This function can
+   * be changed to payable.
    * @notice This works identically to the other function with an extra data parameter, except this
    * function just sets data to ""
    * @param _from The current owner of the NFT.
@@ -210,7 +213,7 @@ contract NFToken is
   /**
    * @dev Throws unless `msg.sender` is the current owner, an authorized operator, or the approved
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
-   * address. Throws if `_tokenId` is not a valid NFT.
+   * address. Throws if `_tokenId` is not a valid NFT. This function can be changed to payable.
    * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
    * they maybe be permanently lost.
    * @param _from The current owner of the NFT.
@@ -234,7 +237,7 @@ contract NFToken is
   }
 
   /**
-   * @dev Set or reaffirm the approved address for an NFT.
+   * @dev Set or reaffirm the approved address for an NFT. This function can be changed to payable.
    * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
    * the current NFT owner, or an authorized operator of the current owner.
    * @param _approved Address to be approved for the given NFT ID.
