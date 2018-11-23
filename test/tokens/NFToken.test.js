@@ -31,11 +31,7 @@ contract('NFTokenMock', (accounts) => {
     await nftoken.mint(accounts[0], id2);
     await assertRevert(nftoken.mint(accounts[0], id2));
   });
-
-  it('throws trying to mint NFT with empty id', async () => {
-    await assertRevert(nftoken.mint(accounts[0], ''));
-  });
-
+  
   it('throws when trying to mint NFT to zero address ', async () => {
     await assertRevert(nftoken.mint('0x0000000000000000000000000000000000000000', id3));
   });
