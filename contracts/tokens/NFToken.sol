@@ -268,7 +268,6 @@ contract NFToken is
   )
     external
   {
-    require(_operator != address(0));
     ownerToOperators[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
   }

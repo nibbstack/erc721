@@ -116,10 +116,6 @@ contract('NFTokenMock', (accounts) => {
     assert.equal(isApprovedForAll, false);
   });
 
-  it('throws when trying to set a zero address as operator', async () => {
-    await assertRevert(nftoken.setApprovalForAll(0, true));
-  });
-
   it('correctly transfers NFT from owner', async () => {
     const sender = accounts[1];
     const recipient = accounts[2];
