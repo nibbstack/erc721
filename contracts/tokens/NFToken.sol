@@ -319,7 +319,7 @@ contract NFToken is
     uint256 _tokenId,
     bytes _data
   )
-    internal
+    private
     canTransfer(_tokenId)
     validNFToken(_tokenId)
   {
