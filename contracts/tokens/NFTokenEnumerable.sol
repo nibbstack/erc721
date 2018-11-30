@@ -108,14 +108,16 @@ contract NFTokenEnumerable is
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length - 1;
-    uint256 lastToken = ownerToIds[_from][lastTokenIndex];
+
+    if(lastTokenIndex != tokenToRemoveIndex)
+    {
+      uint256 lastToken = ownerToIds[_from][lastTokenIndex];
+      ownerToIds[_from][tokenToRemoveIndex] = lastToken;
+      idToOwnerIndex[lastToken] = tokenToRemoveIndex;
+    }
 
     ownerToIds[_from][tokenToRemoveIndex] = lastToken;
-
     ownerToIds[_from].length--;
-    // Consider adding a conditional check for the last token in order to save GAS.
-    idToOwnerIndex[lastToken] = tokenToRemoveIndex;
-    idToOwnerIndex[_tokenId] = 0;
   }
 
   /**
