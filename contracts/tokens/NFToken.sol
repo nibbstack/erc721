@@ -303,8 +303,6 @@ contract NFToken is
     view
     returns (bool)
   {
-    require(_owner != address(0));
-    require(_operator != address(0));
     return ownerToOperators[_owner][_operator];
   }
 
