@@ -29,7 +29,7 @@ contract NFToken is
    /**
    * @dev Mapping from owner address to count of his tokens.
    */
-  mapping (address => uint256) internal ownerToNFTokenCount;
+  mapping (address => uint256) private ownerToNFTokenCount;
 
   /**
    * @dev Mapping from owner address to mapping of operator addresses.
@@ -146,7 +146,7 @@ contract NFToken is
     returns (uint256)
   {
     require(_owner != address(0));
-    return ownerToNFTokenCount[_owner];
+    return getOwnerNFTCount(_owner);
   }
 
   /**
@@ -449,4 +449,18 @@ contract NFToken is
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
   }
 
+  /**
+   * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
+   * extension to remove double storage(gas optimization) of owner nft count.
+   * @param _owner Address for whom to query the count.
+   */
+  function getOwnerNFTCount(
+    address _owner
+  )
+    internal
+    view
+    returns (uint256)
+  {
+    return ownerToNFTokenCount[_owner];
+  }
 }

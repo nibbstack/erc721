@@ -102,7 +102,8 @@ contract NFTokenEnumerable is
   )
    internal
   {
-    super.removeNFToken(_from, _tokenId);
+    require(idToOwner[_tokenId] == _from);
+    delete idToOwner[_tokenId];
     assert(ownerToIds[_from].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
@@ -129,7 +130,8 @@ contract NFTokenEnumerable is
   )
     internal
   {
-    super.addNFToken(_to, _tokenId);
+    require(idToOwner[_tokenId] == address(0));
+    idToOwner[_tokenId] = _to;
 
     uint256 length = ownerToIds[_to].push(_tokenId);
     idToOwnerIndex[_tokenId] = length - 1;
@@ -180,4 +182,18 @@ contract NFTokenEnumerable is
     return ownerToIds[_owner][_index];
   }
 
+  /**
+   * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
+   * extension to remove double storage(gas optimization) of owner nft count.
+   * @param _owner Address for whom to query the count.
+   */
+  function getOwnerNFTCount(
+    address _owner
+  )
+    internal
+    view
+    returns (uint256)
+  {
+    return ownerToIds[_owner].length;
+  }
 }
