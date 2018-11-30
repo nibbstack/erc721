@@ -85,7 +85,7 @@ contract NFTokenEnumerable is
     tokens[tokenIndex] = lastToken;
 
     tokens.length--;
-    // Consider adding a conditional check for the last token in order to save GAS.
+    // This wastes gas if you are burning the last token but saves a little gas if you are not. 
     idToIndex[lastToken] = tokenIndex;
     idToIndex[_tokenId] = 0;
   }
