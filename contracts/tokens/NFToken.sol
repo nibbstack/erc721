@@ -451,7 +451,7 @@ contract NFToken is
 
   /**
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
-   * extension to remove double storage(gas optimization) of owner nft count.
+   * extension to remove double storage (gas optimization) of owner nft count.
    * @param _owner Address for whom to query the count.
    */
   function getOwnerNFTCount(
