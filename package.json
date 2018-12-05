@@ -1,0 +1,67 @@
+{
+  "name": "@0xcert/ethereum-erc721",
+  "version": "2.0.0",
+  "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
+  "scripts": {
+    "compile": "specron compile",
+    "sandbox": "specron sandbox",
+    "prepare": "specron compile",
+    "test": "specron compile && specron test"
+  },
+  "specron": {
+    "compiler": {
+      "build": "./build",
+      "match": [
+        "./src/**/*.sol"
+      ]
+    },
+    "test": {
+      "match": [
+        "./src/**/*.test.*"
+      ]
+    },
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "author": "0xcert",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xcert/ethereum-erc721.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xcert/etheethereum-erc721reum/issues"
+  },
+  "homepage": "https://github.com/0xcert/ethereum-erc721#readme",
+  "keywords": [
+    "ethereum",
+    "blockchain",
+    "eth",
+    "contract",
+    "contracts",
+    "smart",
+    "smart-contract",
+    "smart-contracts",
+    "token",
+    "tokens",
+    "nft",
+    "nfts",
+    "non-fungible",
+    "non-fungibles",
+    "eip",
+    "erc",
+    "erc721",
+    "erc-721",
+    "deed",
+    "standard"
+  ],
+  "dependencies": {
+    "@specron/cli": "latest",
+    "@specron/spec": "latest",
+    "solc": "^0.4.24",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.1",
+    "web3": "^1.0.0-beta.36"
+  }
+}
