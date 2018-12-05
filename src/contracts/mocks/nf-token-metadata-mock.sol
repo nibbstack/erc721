@@ -1,15 +1,12 @@
 pragma solidity ^0.4.24;
 
-import "../tokens/NFTokenMetadata.sol";
-import "../tokens/NFTokenEnumerable.sol";
-import "../ownership/Ownable.sol";
+import "../tokens/nf-token-metadata.sol";
+import "../ownership/ownable.sol";
 
 /**
- * @dev This is an example contract implementation of NFToken with enumerable and metadata
- * extensions.
+ * @dev This is an example contract implementation of NFToken with metadata extension.
  */
-contract NFTokenMetadataEnumerableMock is
-  NFTokenEnumerable,
+contract NFTokenMetadataMock is
   NFTokenMetadata,
   Ownable
 {

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
-import "./NFToken.sol";
-import "./ERC721Enumerable.sol";
+import "./nf-token.sol";
+import "./erc721-enumerable.sol";
 
 /**
  * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
