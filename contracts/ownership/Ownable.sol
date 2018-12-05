@@ -2,8 +2,8 @@ pragma solidity ^0.4.24;
 
 /**
  * @dev The contract has an owner address, and provides basic authorization control whitch
- * simplifies the implementation of user permissions. This contract is based on the source code
- * at https://goo.gl/n2ZGVt.
+ * simplifies the implementation of user permissions. This contract is based on the source code at:
+ * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol
  */
 contract Ownable {
   
