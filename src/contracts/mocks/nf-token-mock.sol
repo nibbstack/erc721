@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 import "../../contracts/tokens/nf-token.sol";
 import "../ownership/ownable.sol";

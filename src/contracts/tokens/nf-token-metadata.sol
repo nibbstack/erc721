@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 import "./nf-token.sol";
 import "./erc721-metadata.sol";
@@ -65,7 +65,7 @@ contract NFTokenMetadata is
    */
   function _setTokenUri(
     uint256 _tokenId,
-    string _uri
+    string memory _uri
   )
     internal
     validNFToken(_tokenId)
@@ -79,7 +79,7 @@ contract NFTokenMetadata is
   function name()
     external
     view
-    returns (string _name)
+    returns (string memory _name)
   {
     _name = nftName;
   }
@@ -90,7 +90,7 @@ contract NFTokenMetadata is
   function symbol()
     external
     view
-    returns (string _symbol)
+    returns (string memory _symbol)
   {
     _symbol = nftSymbol;
   }
@@ -105,7 +105,7 @@ contract NFTokenMetadata is
     external
     view
     validNFToken(_tokenId)
-    returns (string)
+    returns (string memory)
   {
     return idToUri[_tokenId];
   }

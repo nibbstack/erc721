@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 import "../../contracts/tokens/erc721-token-receiver.sol";
 
@@ -9,7 +9,7 @@ contract NFTokenReceiverTestMock is
     address _operator,
     address _from,
     uint256 _tokenId,
-    bytes _data
+    bytes calldata _data
   )
     external
     returns(bytes4)

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -114,7 +114,6 @@ contract NFTokenEnumerable is
       idToOwnerIndex[lastToken] = tokenToRemoveIndex;
     }
 
-    ownerToIds[_from][tokenToRemoveIndex] = lastToken;
     ownerToIds[_from].length--;
   }
 

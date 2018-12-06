@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 import "../tokens/nf-token-metadata.sol";
 import "../tokens/nf-token-enumerable.sol";
@@ -20,8 +20,8 @@ contract NFTokenMetadataEnumerableMock is
    * @param _symbol An abbreviated name for NFTokens.
    */
   constructor(
-    string _name,
-    string _symbol
+    string memory _name,
+    string memory _symbol
   )
     public
   {
@@ -38,7 +38,7 @@ contract NFTokenMetadataEnumerableMock is
   function mint(
     address _to,
     uint256 _tokenId,
-    string _uri
+    string calldata _uri
   )
     external
     onlyOwner

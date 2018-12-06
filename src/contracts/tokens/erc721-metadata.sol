@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 /**
  * @dev Optional metadata extension for ERC-721 non-fungible token standard.
@@ -12,7 +12,7 @@ interface ERC721Metadata {
   function name()
     external
     view
-    returns (string _name);
+    returns (string memory _name);
 
   /**
    * @dev Returns a abbreviated name for a collection of NFTs in this contract.
@@ -20,7 +20,7 @@ interface ERC721Metadata {
   function symbol()
     external
     view
-    returns (string _symbol);
+    returns (string memory _symbol);
 
   /**
    * @dev Returns a distinct Uniform Resource Identifier (URI) for a given asset. It Throws if
@@ -30,6 +30,6 @@ interface ERC721Metadata {
   function tokenURI(uint256 _tokenId)
     external
     view
-    returns (string);
+    returns (string memory);
 
 }

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 
 /**
  * @dev ERC-721 non-fungible token standard. See https://goo.gl/pc9yoS.
@@ -78,7 +78,7 @@ interface ERC721 {
     address _from,
     address _to,
     uint256 _tokenId,
-    bytes _data
+    bytes calldata _data
   )
     external;
 
