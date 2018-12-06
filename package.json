@@ -57,8 +57,8 @@
     "standard"
   ],
   "dependencies": {
-    "@specron/cli": "latest",
-    "@specron/spec": "latest",
+    "@specron/cli": "0.4.3",
+    "@specron/spec": "0.4.3",
     "solc": "^0.5.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.1",
