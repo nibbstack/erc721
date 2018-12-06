@@ -37,8 +37,8 @@ contract NFTokenMetadataMock is
     uint256 _tokenId,
     string _uri
   )
-    onlyOwner
     external
+    onlyOwner
   {
     super._mint(_to, _tokenId);
     super._setTokenUri(_tokenId, _uri);
@@ -51,8 +51,8 @@ contract NFTokenMetadataMock is
   function burn(
     uint256 _tokenId
   )
-    onlyOwner
     external
+    onlyOwner
   {
     super._burn(_tokenId);
   }
