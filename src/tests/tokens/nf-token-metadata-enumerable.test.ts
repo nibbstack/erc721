@@ -187,7 +187,7 @@ spec.test('corectly burns a NFT', async (ctx) => {
   const uri1 = ctx.get('uri1');
 
   await nftoken.instance.methods.mint(bob, id1, uri1).send({ from: owner });
-  const logs = await nftoken.instance.methods.burn(bob, id1).send({ from: owner });
+  const logs = await nftoken.instance.methods.burn(id1).send({ from: owner });
   ctx.not(logs.events.Transfer, undefined);
 
   const balance = await nftoken.instance.methods.balanceOf(bob).call();

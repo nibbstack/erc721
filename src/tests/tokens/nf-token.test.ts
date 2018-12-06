@@ -383,7 +383,7 @@ spec.test('corectly burns a NFT', async (ctx) => {
   const id1 = ctx.get('id1');
 
   await nftoken.instance.methods.mint(bob, id1).send({ from: owner });
-  const logs = await nftoken.instance.methods.burn(bob, id1).send({ from: owner });
+  const logs = await nftoken.instance.methods.burn(id1).send({ from: owner });
   ctx.not(logs.events.Transfer, undefined);
 
   const balance = await nftoken.instance.methods.balanceOf(bob).call();
@@ -396,5 +396,5 @@ spec.test('throws when trying to burn non existant NFT', async (ctx) => {
   const owner = ctx.get('owner');
   const id1 = ctx.get('id1');
 
-  await ctx.reverts(() => nftoken.instance.methods.burn(owner, id1).send({ from: owner }));
+  await ctx.reverts(() => nftoken.instance.methods.burn(id1).send({ from: owner }));
 });

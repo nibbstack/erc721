@@ -180,7 +180,7 @@ spec.test('burn should correctly set ownerToIds and idToOwnerIndex and idToIndex
   await nftoken.instance.methods.mint(bob, id2).send({ from: owner });
 
   //burn id1
-  await nftoken.instance.methods.burn(bob, id1).send({ from: owner });
+  await nftoken.instance.methods.burn(id1).send({ from: owner });
 
   let idToOwnerIndexId3 = await nftoken.instance.methods.idToOwnerIndexWrapper(id3).call();
   let idToOwnerIndexId2 = await nftoken.instance.methods.idToOwnerIndexWrapper(id2).call();
@@ -205,7 +205,7 @@ spec.test('burn should correctly set ownerToIds and idToOwnerIndex and idToIndex
   ctx.is(tokenIndexSecond, id3);
 
   //burn id2
-  await nftoken.instance.methods.burn(bob, id2).send({ from: owner });
+  await nftoken.instance.methods.burn(id2).send({ from: owner });
 
   idToOwnerIndexId3 = await nftoken.instance.methods.idToOwnerIndexWrapper(id3).call();
   ctx.is(idToOwnerIndexId3, '0');
@@ -222,7 +222,7 @@ spec.test('burn should correctly set ownerToIds and idToOwnerIndex and idToIndex
   ctx.is(tokenIndexFirst, id3);
 
   //burn id3
-  await nftoken.instance.methods.burn(bob, id3).send({ from: owner });
+  await nftoken.instance.methods.burn(id3).send({ from: owner });
 
   idToOwnerIndexId3 = await nftoken.instance.methods.idToOwnerIndexWrapper(id3).call();
   ctx.is(idToOwnerIndexId3, '0');

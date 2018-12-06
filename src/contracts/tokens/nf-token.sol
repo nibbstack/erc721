@@ -383,19 +383,18 @@ contract NFToken is
    * @notice This is a private function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
-   * @param _owner Address of the NFT owner.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
-    address _owner,
     uint256 _tokenId
   )
     internal
     validNFToken(_tokenId)
   {
+    address tokenOwner = idToOwner[_tokenId];
     clearApproval(_tokenId);
-    removeNFToken(_owner, _tokenId);
-    emit Transfer(_owner, address(0), _tokenId);
+    removeNFToken(tokenOwner, _tokenId);
+    emit Transfer(tokenOwner, address(0), _tokenId);
   }
 
   /** 
