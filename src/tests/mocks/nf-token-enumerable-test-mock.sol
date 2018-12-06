@@ -36,21 +36,13 @@ contract NFTokenEnumerableTestMock is
     return idToOwnerIndex[_tokenId];
   }
 
-  function removeNFTokenWrapper(
-    address _from,
-    uint256 _tokenId
-  )
-   external
-  {
-    super.removeNFToken(_from, _tokenId);
-  }
-
-  function addNFTokenWrapper(
-    address _to,
+  function idToIndexWrapper(
     uint256 _tokenId
   )
     external
+    view
+    returns (uint256)
   {
-    super.addNFToken(_to, _tokenId);
+    return idToIndex[_tokenId];
   }
 }
