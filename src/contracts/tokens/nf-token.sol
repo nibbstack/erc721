@@ -390,8 +390,8 @@ contract NFToken is
     address _owner,
     uint256 _tokenId
   )
-    validNFToken(_tokenId)
     internal
+    validNFToken(_tokenId)
   {
     clearApproval(_tokenId);
     removeNFToken(_owner, _tokenId);
