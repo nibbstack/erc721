@@ -1,0 +1,25 @@
+pragma solidity ^0.4.24;
+
+import "../../contracts/mocks/nf-token-metadata-enumerable-mock.sol";
+
+contract NFTokenMetadataEnumerableTestMock is
+  NFTokenMetadataEnumerableMock
+{
+  constructor(
+    string _name,
+    string _symbol
+  )
+    NFTokenMetadataEnumerableMock(_name, _symbol)
+    public
+  {}
+
+  function checkUri(
+    uint256 _tokenId
+  )
+    external
+    view
+    returns (string)
+  {
+    return idToUri[_tokenId];
+  }
+}
