@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://travis-ci.org/0xcert/ethereum-erc721/)&nbsp;[![Dependencies Status](https://david-dm.org/0xcert/ethereum-erc721.svg)](https://david-dm.org/0xcert/ethereum-erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-closed-2930e8.svg)](https://github.com/0xcert/ethereum-erc721/issues/46)
+![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@0xcert/ethereum-erc721)&nbsp;[![Dependencies Status](https://david-dm.org/0xcert/ethereum-erc721.svg)](https://david-dm.org/0xcert/ethereum-erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-closed-2930e8.svg)](https://github.com/0xcert/ethereum-erc721/issues/46)
 
 # ERC-721 Token
 
@@ -21,8 +21,6 @@ Other files in the directory starting with `ERC*.sol` are interfaces and define 
 
 * NodeJS 9.0+ recommended.
 * Windows, Linux or Mac OS X.
-
-**Using Remix?** This package uses NPM modules which are supported in the [Remix Alpha](https://remix-alpha.ethereum.org) version only. You can also use the `npm run flatten` command to create a `build/bundle.sol` file with all package contracts which you can manually copy and then paste into Remix editor.
 
 ## Installation
 
@@ -71,7 +69,7 @@ The easiest way to start is to create a new file under `contracts/tokens/` (e.g.
 pragma solidity ^0.4.23;
 
 import "../tokens/NFTokenMetadata.sol";
-import "@0xcert/ethereum-utils/contracts/ownership/Ownable.sol";
+import "../ownership/Ownable.sol";
 
 contract MyNFToken is
   NFTokenMetadata,
