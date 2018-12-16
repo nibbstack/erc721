@@ -74,8 +74,7 @@ To do this, simply paste the code belowe into Remix and deploy the smart contrac
 
 ```solidity
 pragma solidity ^0.5.1;
-//import "github.com/0xcert/ethereum-utils/contracts/utils/ERC165.sol";
-//"github.com/0xcert/ethereum-erc721/src/contracts/mocks/nf-token-metadata-mock.sol";
+import "github.com/0xcert/ethereum-erc721/src/contracts/mocks/nf-token-metadata-mock.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.
