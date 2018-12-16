@@ -9,12 +9,13 @@ library SafeMath {
 
   /**
    * @dev Multiplies two numbers, reverts on overflow.
-   * @param _a Factor number.
-   * @param _b Factor number.
+   * @param factor1 Factor number.
+   * @param factor2 Factor number.
+   * @return The product of the two factors
    */
   function mul(
-    uint256 _a,
-    uint256 _b
+    uint256 factor1,
+    uint256 factor2
   )
     internal
     pure
@@ -23,90 +24,94 @@ library SafeMath {
     // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
     // benefit is lost if 'b' is also tested.
     // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
-    if (_a == 0) {
+    if (factor1 == 0) {
       return 0;
     }
 
-    uint256 c = _a * _b;
-    require(c / _a == _b);
+    uint256 product = factor1 * factor2;
+    require(product / factor1 == factor2);
 
-    return c;
+    return product;
   }
 
   /**
    * @dev Integer division of two numbers, truncating the quotient, reverts on division by zero.
-   * @param _a Dividend number.
-   * @param _b Divisor number.
+   * @param dividend Dividend number.
+   * @param divisor Divisor number.
+   * @return The quotient
    */
   function div(
-    uint256 _a,
-    uint256 _b
+    uint256 dividend,
+    uint256 divisor
   )
     internal
     pure
     returns (uint256)
   {
-    // Solidity only automatically asserts when dividing by 0
-    require(_b > 0);
-    uint256 c = _a / _b;
-    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+    // Solidity automatically asserts when dividing by 0, using all gas
+    require(divisor > 0);
+    uint256 quotient = dividend / divisor;
+    // assert(dividend == divisor * quotient + dividend % divisor); // There is no case in which this doesn't hold
 
-    return c;
+    return quotient;
   }
 
   /**
    * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
-   * @param _a Minuend number.
-   * @param _b Subtrahend number.
+   * @param minuend Minuend number.
+   * @param subtrahend Subtrahend number.
+   * @return difference
    */
   function sub(
-    uint256 _a,
-    uint256 _b
+    uint256 minuend,
+    uint256 subtrahend
   )
     internal
     pure
     returns (uint256)
   {
-    require(_b <= _a);
-    uint256 c = _a - _b;
+    require(subtrahend <= minuend);
+    uint256 difference = minuend - subtrahend;
 
-    return c;
+    return difference;
   }
 
   /**
    * @dev Adds two numbers, reverts on overflow.
-   * @param _a Number.
-   * @param _b Number.
+   * @param addend1 Number.
+   * @param addend2 Number.
+   * @return sum
    */
   function add(
-    uint256 _a,
-    uint256 _b
+    uint256 addend1,
+    uint256 addend2
   )
     internal
     pure
     returns (uint256)
   {
-    uint256 c = _a + _b;
-    require(c >= _a);
+    uint256 sum = addend1 + addend2;
+    require(sum >= addend1);
 
-    return c;
+    return sum;
   }
 
   /**
     * @dev Divides two numbers and returns the remainder (unsigned integer modulo),
     * reverts when dividing by zero.
-    * @param _a Number.
-    * @param _b Number.
+    * @param dividend Number.
+    * @param divisor Number.
+    * @return remainder
     */
   function mod(
-    uint256 _a,
-    uint256 _b
+    uint256 dividend,
+    uint256 divisor
   )
     internal
     pure
     returns (uint256) 
   {
-    require(_b != 0);
-    return _a % _b;
+    require(divisor != 0);
+    return dividend % divisor;
   }
 }
