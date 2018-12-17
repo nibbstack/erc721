@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 /**
  * @dev The contract has an owner address, and provides basic authorization control whitch
@@ -10,8 +10,8 @@ contract Ownable {
   /**
    * @dev Error constants.
    */
-  string constant NOT_OWNER = "018001";
-  string constant ZERO_ADDRESS = "018002";
+  string public constant NOT_OWNER = "018001";
+  string public constant ZERO_ADDRESS = "018002";
 
   address public owner;
 
@@ -56,4 +56,5 @@ contract Ownable {
     emit OwnershipTransferred(owner, _newOwner);
     owner = _newOwner;
   }
+
 }

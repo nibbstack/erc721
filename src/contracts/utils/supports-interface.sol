@@ -1,6 +1,7 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 import "./erc165.sol";
+
 
 /**
  * @dev Implementation of standard for detect smart contract interfaces.
@@ -19,7 +20,7 @@ contract SupportsInterface is
    * @dev Contract constructor.
    */
   constructor()
-    public
+    public 
   {
     supportedInterfaces[0x01ffc9a7] = true; // ERC165
   }

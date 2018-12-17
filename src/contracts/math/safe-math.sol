@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 /**
  * @dev Math operations with safety checks that throw on error. This contract is based on the 
@@ -109,4 +109,5 @@ library SafeMath {
     require(_b != 0);
     return _a % _b;
   }
+
 }

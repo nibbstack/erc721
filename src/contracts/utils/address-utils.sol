@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 /**
  * @dev Utility library of inline functions on addresses.
@@ -16,6 +16,7 @@ library AddressUtils {
     view
     returns (bool)
   {
+
     uint256 size;
 
     /**
@@ -25,7 +26,7 @@ library AddressUtils {
      * TODO: Check this again before the Serenity release, because all addresses will be
      * contracts then.
      */
-    assembly { size := extcodesize(_addr) } // solium-disable-line security/no-inline-assembly
+    assembly { size := extcodesize(_addr) } // solhint-disable-line
     return size > 0;
   }
 
