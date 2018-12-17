@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 /**
  * @dev ERC-721 non-fungible token standard. See https://goo.gl/pc9yoS.
@@ -37,30 +37,6 @@ interface ERC721 {
     address indexed _operator,
     bool _approved
   );
-
-  /**
-   * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
-   * considered invalid, and this function throws for queries about the zero address.
-   * @param _owner Address for whom to query the balance.
-   */
-  function balanceOf(
-    address _owner
-  )
-    external
-    view
-    returns (uint256);
-
-  /**
-   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
-   * invalid, and queries about them do throw.
-   * @param _tokenId The identifier for an NFT.
-   */
-  function ownerOf(
-    uint256 _tokenId
-  )
-    external
-    view
-    returns (address);
 
   /**
    * @dev Transfers the ownership of an NFT from one address to another address.
@@ -140,6 +116,30 @@ interface ERC721 {
   )
     external;
 
+  /**
+   * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
+   * considered invalid, and this function throws for queries about the zero address.
+   * @param _owner Address for whom to query the balance.
+   */
+  function balanceOf(
+    address _owner
+  )
+    external
+    view
+    returns (uint256);
+
+  /**
+   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
+   * invalid, and queries about them do throw.
+   * @param _tokenId The identifier for an NFT.
+   */
+  function ownerOf(
+    uint256 _tokenId
+  )
+    external
+    view
+    returns (address);
+    
   /**
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.

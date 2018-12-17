@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 import "./erc721.sol";
 import "./erc721-token-receiver.sol";
@@ -40,7 +40,7 @@ contract NFToken is
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
-  bytes4 constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
+  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
@@ -68,7 +68,7 @@ contract NFToken is
   event Approval(
     address indexed _owner,
     address indexed _approved,
-    uint256 indexed _tokenId
+      uint256 indexed _tokenId
   );
 
   /**
@@ -91,7 +91,8 @@ contract NFToken is
    */
   modifier canOperate(
     uint256 _tokenId
-  ) {
+  ) 
+  {
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
     _;
@@ -131,38 +132,6 @@ contract NFToken is
     public
   {
     supportedInterfaces[0x80ac58cd] = true; // ERC721
-  }
-
-  /**
-   * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
-   * considered invalid, and this function throws for queries about the zero address.
-   * @param _owner Address for whom to query the balance.
-   */
-  function balanceOf(
-    address _owner
-  )
-    external
-    view
-    returns (uint256)
-  {
-    require(_owner != address(0));
-    return getOwnerNFTCount(_owner);
-  }
-
-  /**
-   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
-   * invalid, and queries about them do throw.
-   * @param _tokenId The identifier for an NFT.
-   */
-  function ownerOf(
-    uint256 _tokenId
-  )
-    external
-    view
-    returns (address _owner)
-  {
-    _owner = idToOwner[_tokenId];
-    require(_owner != address(0));
   }
 
   /**
@@ -275,6 +244,38 @@ contract NFToken is
   }
 
   /**
+   * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
+   * considered invalid, and this function throws for queries about the zero address.
+   * @param _owner Address for whom to query the balance.
+   */
+  function balanceOf(
+    address _owner
+  )
+    external
+    view
+    returns (uint256)
+  {
+    require(_owner != address(0));
+    return getOwnerNFTCount(_owner);
+  }
+
+  /**
+   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
+   * invalid, and queries about them do throw.
+   * @param _tokenId The identifier for an NFT.
+   */
+  function ownerOf(
+    uint256 _tokenId
+  )
+    external
+    view
+    returns (address _owner)
+  {
+    _owner = idToOwner[_tokenId];
+    require(_owner != address(0));
+  }
+
+  /**
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
    * @param _tokenId ID of the NFT to query the approval of.
@@ -304,35 +305,6 @@ contract NFToken is
     returns (bool)
   {
     return ownerToOperators[_owner][_operator];
-  }
-
-  /**
-   * @dev Actually perform the safeTransferFrom.
-   * @param _from The current owner of the NFT.
-   * @param _to The new owner.
-   * @param _tokenId The NFT to transfer.
-   * @param _data Additional data with no specified format, sent in call to `_to`.
-   */
-  function _safeTransferFrom(
-    address _from,
-    address _to,
-    uint256 _tokenId,
-    bytes memory _data
-  )
-    private
-    canTransfer(_tokenId)
-    validNFToken(_tokenId)
-  {
-    address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == _from);
-    require(_to != address(0));
-
-    _transfer(_to, _tokenId);
-
-    if (_to.isContract()) {
-      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
-      require(retval == MAGIC_ON_ERC721_RECEIVED);
-    }
   }
 
   /**
@@ -397,21 +369,6 @@ contract NFToken is
     emit Transfer(tokenOwner, address(0), _tokenId);
   }
 
-  /** 
-   * @dev Clears the current approval of a given NFT ID.
-   * @param _tokenId ID of the NFT to be transferred.
-   */
-  function clearApproval(
-    uint256 _tokenId
-  )
-    private
-  {
-    if(idToApprovals[_tokenId] != address(0))
-    {
-      delete idToApprovals[_tokenId];
-    }
-  }
-
   /**
    * @dev Removes a NFT from owner.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
@@ -422,7 +379,7 @@ contract NFToken is
     address _from,
     uint256 _tokenId
   )
-   internal
+    internal
   {
     require(idToOwner[_tokenId] == _from);
     assert(ownerToNFTokenCount[_from] > 0);
@@ -462,4 +419,49 @@ contract NFToken is
   {
     return ownerToNFTokenCount[_owner];
   }
+
+  /**
+   * @dev Actually perform the safeTransferFrom.
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
+   * @param _data Additional data with no specified format, sent in call to `_to`.
+   */
+  function _safeTransferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId,
+    bytes memory _data
+  )
+    private
+    canTransfer(_tokenId)
+    validNFToken(_tokenId)
+  {
+    address tokenOwner = idToOwner[_tokenId];
+    require(tokenOwner == _from);
+    require(_to != address(0));
+
+    _transfer(_to, _tokenId);
+
+    if (_to.isContract()) {
+      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
+      require(retval == MAGIC_ON_ERC721_RECEIVED);
+    }
+  }
+
+  /** 
+   * @dev Clears the current approval of a given NFT ID.
+   * @param _tokenId ID of the NFT to be transferred.
+   */
+  function clearApproval(
+    uint256 _tokenId
+  )
+    private
+  {
+    if (idToApprovals[_tokenId] != address(0))
+    {
+      delete idToApprovals[_tokenId];
+    }
+  }
+
 }

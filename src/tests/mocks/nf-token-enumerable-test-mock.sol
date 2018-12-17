@@ -1,10 +1,11 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 import "../../contracts/mocks/nf-token-enumerable-mock.sol";
 
 contract NFTokenEnumerableTestMock is
   NFTokenEnumerableMock
 {
+
   function ownerToIdsLen(
     address _owner
   )
@@ -45,4 +46,5 @@ contract NFTokenEnumerableTestMock is
   {
     return idToIndex[_tokenId];
   }
+
 }

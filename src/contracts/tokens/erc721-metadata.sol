@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 /**
  * @dev Optional metadata extension for ERC-721 non-fungible token standard.

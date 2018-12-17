@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 import "./nf-token.sol";
 import "./erc721-metadata.sol";
@@ -37,43 +37,6 @@ contract NFTokenMetadata is
   }
 
   /**
-   * @dev Burns a NFT.
-   * @notice This is a internal function which should be called from user-implemented external
-   * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
-   * @param _tokenId ID of the NFT to be burned.
-   */
-  function _burn(
-    uint256 _tokenId
-  )
-    internal
-  {
-    super._burn(_tokenId);
-
-    if (bytes(idToUri[_tokenId]).length != 0) {
-      delete idToUri[_tokenId];
-    }
-  }
-
-  /**
-   * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
-   * @notice this is a internal function which should be called from user-implemented external
-   * function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
-   * @param _tokenId Id for which we want uri.
-   * @param _uri String representing RFC 3986 URI.
-   */
-  function _setTokenUri(
-    uint256 _tokenId,
-    string memory _uri
-  )
-    internal
-    validNFToken(_tokenId)
-  {
-    idToUri[_tokenId] = _uri;
-  }
-
-  /**
    * @dev Returns a descriptive name for a collection of NFTokens.
    */
   function name()
@@ -108,6 +71,43 @@ contract NFTokenMetadata is
     returns (string memory)
   {
     return idToUri[_tokenId];
+  }
+
+  /**
+   * @dev Burns a NFT.
+   * @notice This is a internal function which should be called from user-implemented external
+   * burn function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
+   * @param _tokenId ID of the NFT to be burned.
+   */
+  function _burn(
+    uint256 _tokenId
+  )
+    internal
+  {
+    super._burn(_tokenId);
+
+    if (bytes(idToUri[_tokenId]).length != 0) {
+      delete idToUri[_tokenId];
+    }
+  }
+
+  /**
+   * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
+   * @notice this is a internal function which should be called from user-implemented external
+   * function. Its purpose is to show and properly initialize data structures when using this
+   * implementation.
+   * @param _tokenId Id for which we want uri.
+   * @param _uri String representing RFC 3986 URI.
+   */
+  function _setTokenUri(
+    uint256 _tokenId,
+    string memory _uri
+  )
+    internal
+    validNFToken(_tokenId)
+  {
+    idToUri[_tokenId] = _uri;
   }
 
 }

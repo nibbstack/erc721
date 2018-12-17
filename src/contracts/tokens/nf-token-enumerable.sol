@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -38,6 +38,51 @@ contract NFTokenEnumerable is
     public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
+  }
+
+  /**
+   * @dev Returns the count of all existing NFTokens.
+   */
+  function totalSupply()
+    external
+    view
+    returns (uint256)
+  {
+    return tokens.length;
+  }
+
+  /**
+   * @dev Returns NFT ID by its index.
+   * @param _index A counter less than `totalSupply()`.
+   */
+  function tokenByIndex(
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256)
+  {
+    require(_index < tokens.length);
+    // Sanity check. This could be removed in the future.
+    assert(idToIndex[tokens[_index]] == _index);
+    return tokens[_index];
+  }
+
+  /**
+   * @dev returns the n-th NFT ID from a list of owner's tokens.
+   * @param _owner Token owner's address.
+   * @param _index Index number representing n-th token in owner's list of tokens.
+   */
+  function tokenOfOwnerByIndex(
+    address _owner,
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256)
+  {
+    require(_index < ownerToIds[_owner].length);
+    return ownerToIds[_owner][_index];
   }
 
   /**
@@ -98,7 +143,7 @@ contract NFTokenEnumerable is
     address _from,
     uint256 _tokenId
   )
-   internal
+    internal
   {
     require(idToOwner[_tokenId] == _from);
     delete idToOwner[_tokenId];
@@ -107,7 +152,7 @@ contract NFTokenEnumerable is
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length - 1;
 
-    if(lastTokenIndex != tokenToRemoveIndex)
+    if (lastTokenIndex != tokenToRemoveIndex)
     {
       uint256 lastToken = ownerToIds[_from][lastTokenIndex];
       ownerToIds[_from][tokenToRemoveIndex] = lastToken;
@@ -134,51 +179,6 @@ contract NFTokenEnumerable is
 
     uint256 length = ownerToIds[_to].push(_tokenId);
     idToOwnerIndex[_tokenId] = length - 1;
-  }
-
-  /**
-   * @dev Returns the count of all existing NFTokens.
-   */
-  function totalSupply()
-    external
-    view
-    returns (uint256)
-  {
-    return tokens.length;
-  }
-
-  /**
-   * @dev Returns NFT ID by its index.
-   * @param _index A counter less than `totalSupply()`.
-   */
-  function tokenByIndex(
-    uint256 _index
-  )
-    external
-    view
-    returns (uint256)
-  {
-    require(_index < tokens.length);
-    // Sanity check. This could be removed in the future.
-    assert(idToIndex[tokens[_index]] == _index);
-    return tokens[_index];
-  }
-
-  /**
-   * @dev returns the n-th NFT ID from a list of owner's tokens.
-   * @param _owner Token owner's address.
-   * @param _index Index number representing n-th token in owner's list of tokens.
-   */
-  function tokenOfOwnerByIndex(
-    address _owner,
-    uint256 _index
-  )
-    external
-    view
-    returns (uint256)
-  {
-    require(_index < ownerToIds[_owner].length);
-    return ownerToIds[_owner][_index];
   }
 
   /**
