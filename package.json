@@ -56,7 +56,7 @@
     "deed",
     "standard"
   ],
-  "dependencies": {
+  "devDependencies": {
     "@specron/cli": "0.4.3",
     "@specron/spec": "0.4.3",
     "solc": "^0.5.1",
