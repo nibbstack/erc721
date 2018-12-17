@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@0xcert/ethereum-erc721)&nbsp;[![Dependencies Status](https://david-dm.org/0xcert/ethereum-erc721.svg)](https://david-dm.org/0xcert/ethereum-erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-closed-2930e8.svg)](https://github.com/0xcert/ethereum-erc721/issues/46)
+[![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)](https://travis-ci.org/0xcert/ethereum-erc721)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@0xcert/ethereum-erc721)&nbsp;[![Dependencies Status](https://david-dm.org/0xcert/ethereum-erc721.svg)](https://david-dm.org/0xcert/ethereum-erc721)&nbsp;[![ERC-721 Bug Bounty](https://img.shields.io/badge/ERC--721%20Bug%20Bounty-51,000%20USD-purple.svg)](BUG-BOUNTY.md)
 
 # ERC-721 Token
 
@@ -236,6 +236,14 @@ We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) n
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
+
+## Bug bounty
+
+You are somebody that reads documentation on smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
+
+If your project depends on ERC-721 or you want to help improve the assuarance of this project then you can pledge a bounty. This means you will commit to pay researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
+
+Read the full [bug bounty program](BUG-BOUNTY.md).
 
 ## Licence
 
