@@ -334,20 +334,24 @@ No
       ...;}
 
 For control structures whose body contains a single statement, omitting the
-braces is ok *if* the statement is contained on a single line.
+braces is NOT ok in any condition.
 
-Yes
+No
 
     if (x < 10)
       x += 1;
-
-No
 
     if (x < 10)
       someArray.push(Coin({
         name: 'spam',
         value: 42
       }));
+    
+Yes
+
+    if (x < 10) {
+      x += 1;
+    }
 
 For `if` blocks which have an `else` or `else if` clause, the `else` should be
 placed on the same line as the `if`'s closing brace. This is an exception compared
@@ -357,19 +361,13 @@ Yes
 
     if (x < 3) {
       x += 1;
-    } else if (x > 7) {
+    } 
+    else if (x > 7) {
       x -= 1;
-    } else {
+    } 
+    else {
       x = 5;
     }
-
-
-    if (x < 3)
-      x += 1;
-    else
-      x -= 1;
-
-No
 
     if (x < 3) {
       x += 1;
@@ -377,6 +375,19 @@ No
     else {
       x -= 1;
     }
+   
+No
+
+    if (x < 3) {
+      x += 1;
+    } else {
+      x -= 1;
+    }
+
+    if (x < 3)
+      x += 1;
+    else
+      x -= 1;
 
 ### Function Declaration
 
