@@ -73,7 +73,7 @@ library SafeMath {
     require(_subtrahend <= _minuend);
     uint256 difference = _minuend - _subtrahend;
 
-    return _difference;
+    return difference;
   }
 
   /**
