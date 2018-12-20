@@ -19,7 +19,7 @@ library SafeMath {
   )
     internal
     pure
-    returns (uint256)
+    returns (uint256 product)
   {
     // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
     // benefit is lost if 'b' is also tested.
@@ -28,10 +28,8 @@ library SafeMath {
       return 0;
     }
 
-    uint256 product = _factor1 * _factor2;
+    product = _factor1 * _factor2;
     require(product / _factor1 == _factor2);
-
-    return product;
   }
 
   /**
@@ -46,14 +44,12 @@ library SafeMath {
   )
     internal
     pure
-    returns (uint256)
+    returns (uint256 quotient)
   {
     // Solidity automatically asserts when dividing by 0, using all gas
     require(_divisor > 0);
-    uint256 quotient = _dividend / _divisor;
+    quotient = _dividend / _divisor;
     // assert(_dividend == _divisor * quotient + _dividend % _divisor); // There is no case in which this doesn't hold
-
-    return quotient;
   }
 
   /**
@@ -68,12 +64,10 @@ library SafeMath {
   )
     internal
     pure
-    returns (uint256)
+    returns (uint256 difference)
   {
     require(_subtrahend <= _minuend);
-    uint256 difference = _minuend - _subtrahend;
-
-    return difference;
+    difference = _minuend - _subtrahend;
   }
 
   /**
@@ -88,12 +82,10 @@ library SafeMath {
   )
     internal
     pure
-    returns (uint256)
+    returns (uint256 sum)
   {
-    uint256 sum = _addend1 + _addend2;
+    sum = _addend1 + _addend2;
     require(sum >= _addend1);
-
-    return sum;
   }
 
   /**
@@ -109,10 +101,10 @@ library SafeMath {
   )
     internal
     pure
-    returns (uint256) 
+    returns (uint256 remainder) 
   {
     require(_divisor != 0);
-    return _dividend % _divisor;
+    remainder = _dividend % _divisor;
   }
 
 }
