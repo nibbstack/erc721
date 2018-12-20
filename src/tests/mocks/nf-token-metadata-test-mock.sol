@@ -10,8 +10,8 @@ contract NFTokenMetadataTestMock is
     string memory _name,
     string memory _symbol
   )
-    NFTokenMetadataMock(_name, _symbol)
     public
+    NFTokenMetadataMock(_name, _symbol)
   {}
 
   function checkUri(

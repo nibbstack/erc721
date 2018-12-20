@@ -7,7 +7,7 @@
     "sandbox": "specron sandbox",
     "prepare": "specron compile",
     "test": "specron compile && specron test",
-    "solhint": "solhint src/contracts/**/*.sol"
+    "solhint": "solhint src/**/*.sol"
   },
   "specron": {
     "compiler": {

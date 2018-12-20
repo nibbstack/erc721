@@ -4,13 +4,13 @@
 
 We use GitHub issues to track public bugs. Please ensure your description is clear and has sufficient instructions to be able to reproduce the issue.
 
-## Pull Requests
+## Pull requests
 
 * Fork the repo and create your branch from master.
 * If you've added code that should be tested, add tests.
 * Ensure the test suite passes.
 
-## Coding Style
+## Coding style
 
 * Avoid abbreviations.
 * Use PEP-8 style guidelines, if not otherwise outlined here.
