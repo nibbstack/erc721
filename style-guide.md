@@ -336,6 +336,12 @@ No
 For control structures whose body contains a single statement, omitting the
 braces is NOT ok in any condition.
 
+Yes
+
+    if (x < 10) {
+      x += 1;
+    }
+
 No
 
     if (x < 10)
@@ -346,12 +352,6 @@ No
         name: 'spam',
         value: 42
       }));
-    
-Yes
-
-    if (x < 10) {
-      x += 1;
-    }
 
 For `if` blocks which have an `else` or `else if` clause, the `else` should be
 placed on the same line as the `if`'s closing brace. This is an exception compared
