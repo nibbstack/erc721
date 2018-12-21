@@ -3,7 +3,8 @@ pragma solidity 0.5.1;
 /**
  * @dev Utility library of inline functions on addresses.
  */
-library AddressUtils {
+library AddressUtils
+{
 
   /**
    * @dev Returns whether the target address is a contract.
@@ -16,7 +17,6 @@ library AddressUtils {
     view
     returns (bool)
   {
-
     uint256 size;
 
     /**

@@ -5,7 +5,8 @@ pragma solidity 0.5.1;
  * source code at: 
  * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol.
  */
-library SafeMath {
+library SafeMath
+{
 
   /**
    * @dev Multiplies two numbers, reverts on overflow.
@@ -24,7 +25,8 @@ library SafeMath {
     // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
     // benefit is lost if 'b' is also tested.
     // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
-    if (_factor1 == 0) {
+    if (_factor1 == 0)
+    {
       return 0;
     }
 

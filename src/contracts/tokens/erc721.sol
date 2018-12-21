@@ -3,7 +3,8 @@ pragma solidity 0.5.1;
 /**
  * @dev ERC-721 non-fungible token standard. See https://goo.gl/pc9yoS.
  */
-interface ERC721 {
+interface ERC721
+{
 
   /**
    * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are

@@ -105,13 +105,15 @@ Yes
       bytes32[] options
     );
     
-    LongAndLotsOfArgs(
+    emit LongAndLotsOfArgs(
       sender,
       recipient,
       publicKey,
       amount,
       options
     );
+
+    emit ShortOneArg(sender);
 
 No
 
@@ -123,13 +125,11 @@ No
                             uint256 amount,
                             bytes32[] options);
     
-    LongAndLotsOfArgs(sender,
+    emit LongAndLotsOfArgs(sender,
                       recipient,
                       publicKey,
                       amount,
                       options);
-
-
 
 ### Source File Encoding
 
@@ -156,7 +156,8 @@ Yes
 
     pragma solidity >=0.4.0 <0.6.0;
     
-    contract A {
+    contract A
+    {
       using SafeMath for uint256;
     
       uint256 someVariable;
@@ -167,7 +168,8 @@ Yes
     
       modifier SomeModifier(
         uint256 arg1
-      ) {
+      )
+      {
         // some check
         _;
       }
@@ -207,7 +209,8 @@ No
 
     pragma solidity >=0.4.0 <0.6.0;
     
-    contract A {
+    contract A
+    {
     
       // External functions
       // ...
@@ -238,20 +241,13 @@ No
 
 Avoid extraneous whitespace in the following  situations:
 
-Immediately inside parenthesis, brackets or braces, with the exception of single line function declarations.
-
 Yes
 
-    spam(ham[1], Coin({name: "ham"}));
+    spam(ham[1], Coin({ name: "ham" }));
 
-No::
+No
 
     spam( ham[ 1 ], Coin( { name: "ham" } ) );
-
-Exception
-
-    function singleLine() public { spam(); }
-
 
 More than one space around an assignment or other operator to align with
   another:
@@ -271,20 +267,14 @@ No
 
 Control Structures
 
-The braces denoting the body of a contract, library, functions and structs
-should:
-
-* open on the same line as the declaration
-* close on their own line at the same indentation level as the beginning of the
-  declaration.
-* The opening brace should be proceeded by a single space.
-
 Yes
 
     pragma solidity >=0.4.0 <0.6.0;
     
-    contract Coin {
-      struct Bank {
+    contract Coin 
+    {
+      struct Bank 
+      {
         address owner;
         uint balance;
       }
@@ -294,8 +284,7 @@ No
 
     pragma solidity >=0.4.0 <0.6.0;
     
-    contract Coin
-    {
+    contract Coin {
       struct Bank {
         address owner;
         uint balance;
@@ -312,18 +301,14 @@ block and the opening brace.
 
 Yes
 
-    if (...) {
-      ...
-    }
-    
-    for (...) {
+    if (...) 
+    {
       ...
     }
 
 No
 
-    if (...)
-    {
+    if (...) {
       ...
     }
     
@@ -338,7 +323,8 @@ braces is NOT ok in any condition.
 
 Yes
 
-    if (x < 10) {
+    if (x < 10) 
+    {
       x += 1;
     }
 
@@ -359,20 +345,25 @@ to the rules of other block-like structures.
 
 Yes
 
-    if (x < 3) {
+    if (x < 3) 
+    {
       x += 1;
     } 
-    else if (x > 7) {
+    else if (x > 7) 
+    {
       x -= 1;
     } 
-    else {
+    else 
+    {
       x = 5;
     }
 
-    if (x < 3) {
+    if (x < 3) 
+    {
       x += 1;
     }
-    else {
+    else 
+    {
       x -= 1;
     }
    
@@ -432,8 +423,7 @@ No
       doSomething();
     }
     
-    function thisFunctionHasAnArgument(address a) public
-    {
+    function thisFunctionHasAnArgument(address a) public {
       doSomething();
     }
     
@@ -447,7 +437,7 @@ No
                                             address c,
                                             address d,
                                             address e,
-                                            address f) public {
+                                            dress f) public {
         doSomething();
     }
     
@@ -604,7 +594,9 @@ Yes
     }
     
     contract A is
-      B, C, D 
+      B,
+      C,
+      D 
     {
       uint x;
     
@@ -699,8 +691,7 @@ Yes
 No
 
     uint [] x;
-
-
+    
 ###  Other Recommendations
 
 * Strings should be quoted with double-quotes instead of single-quotes.
@@ -784,8 +775,7 @@ naming styles.
 * `Capitalized_Words_With_Underscores`
 * `_underscoreMixedCase` 
 
-.. note:: When using initialisms in CapWords, capitalize all the letters of the initialisms. Thus HTTPServerError is better than HttpServerError. When using initialisms is mixedCase, capitalize all the letters of the initialisms, except keep the first one lower case if it is the beginning of the name. Thus xmlHTTPRequest is better than XMLHTTPRequest.
-
+When using initialisms in CapWords, capitalize all the letters of the initialisms. Thus HTTPServerError is better than HttpServerError. When using initialisms is mixedCase, capitalize all the letters of the initialisms, except keep the first one lower case if it is the beginning of the name. Thus xmlHTTPRequest is better than XMLHTTPRequest.
 
 ### Names to Avoid
 
@@ -795,7 +785,6 @@ naming styles.
 
 Never use any of these for single letter variable names.  They are often
 indistinguishable from the numerals one and zero.
-
 
 ### Contract and Library Names
 
@@ -809,19 +798,28 @@ Yes
     pragma solidity >=0.4.0 <0.6.0;
     
     // Owned.sol
-    contract Owned {
+    contract Owned 
+    {
       address public owner;
     
-      constructor() public {
+      constructor()
+        public 
+      {
         owner = msg.sender;
       }
     
-      modifier onlyOwner {
+      modifier onlyOwner
+      {
         require(msg.sender == owner);
         _;
       }
     
-      function transferOwnership(address newOwner) public onlyOwner {
+      function transferOwnership(
+        address newOwner
+      ) 
+        public 
+        onlyOwner
+      {
         owner = newOwner;
       }
     }
@@ -829,7 +827,10 @@ Yes
     // Congress.sol
     import "./Owned.sol";
     
-    contract Congress is Owned, TokenRecipient {
+    contract Congress is 
+      Owned,
+      TokenRecipient
+    {
       //...
     }
 
@@ -838,19 +839,28 @@ No
     pragma solidity >=0.4.0 <0.6.0;
     
     // owned.sol
-    contract owned {
+    contract owned 
+    {
       address public owner;
     
-      constructor() public {
+      constructor()
+        public 
+      {
         owner = msg.sender;
       }
     
-      modifier onlyOwner {
+      modifier onlyOwner
+      {
         require(msg.sender == owner);
         _;
       }
     
-      function transferOwnership(address newOwner) public onlyOwner {
+      function transferOwnership(
+        address newOwner
+      ) 
+        public
+        onlyOwner
+      {
         owner = newOwner;
       }
     }
@@ -858,26 +868,25 @@ No
     // Congress.sol
     import "./owned.sol";
     
-    contract Congress is owned, tokenRecipient {
+    contract Congress is
+      owned,
+      tokenRecipient 
+    {
       //...
     }
-
 
 ### Struct Names
 
 Structs should be named using the CapWords style. Examples: `MyCoin`, `Position`, `PositionXY`.
 
-
 ### Event Names
 
 Events should be named using the CapWords style. Examples: `Deposit`, `Transfer`, `Approval`, `BeforeTransfer`, `AfterTransfer`.
-
 
 ### Function Names
 
 Functions other than constructors should use mixedCase. Examples: `getBalance`, `transfer`, `verifyOwner`, `addMember`, `changeOwner`.
 If a function is `private` or `internal` function shoud use _underscoreMixedCase. Examples: `_calculateBalance` , `_doTransfer`. 
-
 
 ### Function Argument Names
 
@@ -886,22 +895,18 @@ Function arguments should use _underscoreMixedCase. Examples: `_initialSupply`, 
 When writing library functions that operate on a custom struct, the struct
 should be the first argument and should always be named `self`.
 
-
 ### Local and State Variable Names
 
 Use mixedCase. Examples: `totalSupply`, `remainingSupply`, `balancesOf`, `creatorAddress`, `isPreSale`, `tokenExchangeRate`.
-
 
 ### Constants
 
 Constants should be named with all capital letters with underscores separating
 words. Examples: `MAX_BLOCKS`, `TOKEN_NAME`, `TOKEN_TICKER`, `CONTRACT_VERSION`.
 
-
 ### Modifier Names
 
 Use mixedCase. Examples: `onlyBy`, `onlyAfter`, `onlyDuringThePreSale`.
-
 
 ### Enums
 

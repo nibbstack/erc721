@@ -4,7 +4,8 @@ pragma solidity 0.5.1;
  * @dev Optional enumeration extension for ERC-721 non-fungible token standard.
  * See https://goo.gl/pc9yoS.
  */
-interface ERC721Enumerable {
+interface ERC721Enumerable
+{
 
   /**
    * @dev Returns a count of valid NFTs tracked by this contract, where each one of them has an
