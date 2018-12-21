@@ -4,7 +4,8 @@ pragma solidity 0.5.1;
  * @dev Optional metadata extension for ERC-721 non-fungible token standard.
  * See https://goo.gl/pc9yoS.
  */
-interface ERC721Metadata {
+interface ERC721Metadata
+{
 
   /**
    * @dev Returns a descriptive name for a collection of NFTs in this contract.

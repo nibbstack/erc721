@@ -5,7 +5,8 @@ pragma solidity 0.5.1;
  * simplifies the implementation of user permissions. This contract is based on the source code at:
  * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol
  */
-contract Ownable {
+contract Ownable
+{
   
   /**
    * @dev Error constants.
@@ -37,7 +38,8 @@ contract Ownable {
   /**
    * @dev Throws if called by any account other than the owner.
    */
-  modifier onlyOwner() {
+  modifier onlyOwner()
+  {
     require(msg.sender == owner, NOT_OWNER);
     _;
   }

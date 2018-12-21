@@ -3,7 +3,8 @@ pragma solidity 0.5.1;
 /**
  * @dev ERC-721 interface for accepting safe transfers. See https://goo.gl/pc9yoS.
  */
-interface ERC721TokenReceiver {
+interface ERC721TokenReceiver
+{
 
   /**
    * @dev Handle the receipt of a NFT. The ERC721 smart contract calls this function on the

@@ -4,7 +4,8 @@ pragma solidity 0.5.1;
  * @dev A standard for detecting smart contract interfaces. 
  * See: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md.
  */
-interface ERC165 {
+interface ERC165
+{
 
   /**
    * @dev Checks if the smart contract includes a specific interface.

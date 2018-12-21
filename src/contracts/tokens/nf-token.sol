@@ -104,7 +104,8 @@ contract NFToken is
    */
   modifier canTransfer(
     uint256 _tokenId
-  ) {
+  ) 
+  {
     address tokenOwner = idToOwner[_tokenId];
     require(
       tokenOwner == msg.sender
@@ -120,7 +121,8 @@ contract NFToken is
    */
   modifier validNFToken(
     uint256 _tokenId
-  ) {
+  )
+  {
     require(idToOwner[_tokenId] != address(0));
     _;
   }
@@ -443,7 +445,8 @@ contract NFToken is
 
     _transfer(_to, _tokenId);
 
-    if (_to.isContract()) {
+    if (_to.isContract()) 
+    {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
       require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
