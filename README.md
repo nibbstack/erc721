@@ -140,8 +140,6 @@ We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) n
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
-**Accepting donations:** 0xF9196F9f176fd2eF9243E8960817d5FbE63D79aa
-
 ## Licence
 
 See [LICENSE](./LICENSE) for details.
