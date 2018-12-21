@@ -17,6 +17,12 @@ contract NFToken is
   using AddressUtils for address;
 
   /**
+   * @dev Magic value of a smart contract that can recieve NFT.
+   * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
+   */
+  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
+
+  /**
    * @dev A mapping from NFT ID to the address that owns it.
    */
   mapping (uint256 => address) internal idToOwner;
@@ -35,12 +41,6 @@ contract NFToken is
    * @dev Mapping from owner address to mapping of operator addresses.
    */
   mapping (address => mapping (address => bool)) internal ownerToOperators;
-
-  /**
-   * @dev Magic value of a smart contract that can recieve NFT.
-   * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
-   */
-  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
