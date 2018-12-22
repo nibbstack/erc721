@@ -74,6 +74,7 @@ To do this, simply paste the code belowe into Remix and deploy the smart contrac
 
 ```solidity
 pragma solidity 0.5.1;
+
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
 
