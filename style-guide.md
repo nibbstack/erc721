@@ -21,7 +21,7 @@ Use 2 spaces per indentation level.
 
 Spaces are the preferred indentation method.
 
-Mixing tabs and spaces should be avoided.
+Mixing tabs and spaces must be avoided.
 
 ### Multiple contracts in the same file
 
@@ -137,11 +137,11 @@ UTF-8 or ASCII encoding is preferred.
 
 ### Imports
 
-Import statements should always be placed at the top of the file.
+Import statements must always be placed at the top of the file.
 
-### Code ordering
+### Code Ordering
 
-Functions and declarations should be grouped according to their visibility and ordered:
+Functions and declarations must be grouped according to their visibility and ordered:
 
 - constructor
 - fallback function (if exists)
@@ -294,7 +294,7 @@ No
 The same recommendations apply to the control structures `if`, `else`, `while`,
 and `for`.
 
-Additionally there should be a single space between the control structures
+Additionally there must be a single space between the control structures
 `if`, `while`, and `for` and the parenthetic block representing the
 conditional, as well as a single space between the conditional parenthetic
 block and the opening brace.
@@ -339,7 +339,7 @@ No
         value: 42
       }));
 
-For `if` blocks which have an `else` or `else if` clause, the `else` should be
+For `if` blocks which have an `else` or `else if` clause, the `else` must be
 placed on the same line as the `if`'s closing brace. This is an exception compared
 to the rules of other block-like structures.
 
@@ -384,7 +384,7 @@ No
 
 For every function declarations, it is recommended to drop each argument onto
 it's own line at the same indentation level as the function body.  The closing
-parenthesis and opening bracket should be placed on their own line as well at
+parenthesis and opening bracket must be placed on their own line as well at
 the same indentation level as the function declaration.
 
 Yes
@@ -451,7 +451,7 @@ No
         doSomething();
     }
 
-If a function declaration has modifiers, then each modifier should be
+If a function declaration has modifiers, then each modifier must be
 dropped to its own line.
 
 Yes
@@ -506,7 +506,7 @@ No
         doSomething();
     }
 
-Multiline output parameters and return statements should follow the same style.
+Multiline output parameters and return statements must follow the same style.
 
 Yes
 
@@ -681,7 +681,7 @@ No
 
 ### Variable Declarations
 
-Declarations of array variables should not have a space between the type and
+Declarations of array variables must not have a space between the type and
 the brackets.
 
 Yes
@@ -694,7 +694,7 @@ No
     
 ###  Other Recommendations
 
-* Strings should be quoted with double-quotes instead of single-quotes.
+* Strings must be quoted with double-quotes instead of single-quotes.
 
 Yes
 
@@ -788,8 +788,7 @@ indistinguishable from the numerals one and zero.
 
 ### Contract and Library Names
 
-* Contracts and libraries should be named using the CapWords style. Examples: `SimpleToken`, `SmartBank`, `CertificateHashRepository`, `Player`, `Congress`, `Owned`.
-* Contract and library names should also match their filenames. 
+* Contracts and libraries must be named using the CapWords style. Examples: `SimpleToken`, `SmartBank`, `CertificateHashRepository`, `Player`, `Congress`, `Owned`.
 
 As shown in the example below, if the contract name is `Congress` and the library name is `Owned`, then their associated filenames should be `congress.sol` and `owned.sol`.
 
@@ -797,7 +796,7 @@ Yes
 
     pragma solidity >=0.4.0 <0.6.0;
     
-    // Owned.sol
+    // owned.sol
     contract Owned 
     {
       address public owner;
@@ -824,7 +823,7 @@ Yes
       }
     }
     
-    // Congress.sol
+    // congress.sol
     import "./Owned.sol";
     
     contract Congress is 
@@ -877,20 +876,20 @@ No
 
 ### Struct Names
 
-Structs should be named using the CapWords style. Examples: `MyCoin`, `Position`, `PositionXY`.
+Structs must be named using the CapWords style. Examples: `MyCoin`, `Position`, `PositionXY`.
 
 ### Event Names
 
-Events should be named using the CapWords style. Examples: `Deposit`, `Transfer`, `Approval`, `BeforeTransfer`, `AfterTransfer`.
+Events must be named using the CapWords style. Examples: `Deposit`, `Transfer`, `Approval`, `BeforeTransfer`, `AfterTransfer`.
 
 ### Function Names
 
-Functions other than constructors should use mixedCase. Examples: `getBalance`, `transfer`, `verifyOwner`, `addMember`, `changeOwner`.
+Functions other than constructors must use mixedCase. Examples: `getBalance`, `transfer`, `verifyOwner`, `addMember`, `changeOwner`.
 If a function is `private` or `internal` function shoud use _underscoreMixedCase. Examples: `_calculateBalance` , `_doTransfer`. 
 
 ### Function Argument Names
 
-Function arguments should use _underscoreMixedCase. Examples: `_initialSupply`, `_account`, `_recipientAddress`, `_senderAddress`, `_newOwner`.
+Function arguments must use _underscoreMixedCase. Examples: `_initialSupply`, `_account`, `_recipientAddress`, `_senderAddress`, `_newOwner`.
 
 When writing library functions that operate on a custom struct, the struct
 should be the first argument and should always be named `self`.
@@ -901,7 +900,7 @@ Use mixedCase. Examples: `totalSupply`, `remainingSupply`, `balancesOf`, `creato
 
 ### Constants
 
-Constants should be named with all capital letters with underscores separating
+Constants must be named with all capital letters with underscores separating
 words. Examples: `MAX_BLOCKS`, `TOKEN_NAME`, `TOKEN_TICKER`, `CONTRACT_VERSION`.
 
 ### Modifier Names
@@ -910,4 +909,4 @@ Use mixedCase. Examples: `onlyBy`, `onlyAfter`, `onlyDuringThePreSale`.
 
 ### Enums
 
-Enums, in the style of simple type declarations, should be named using the CapWords style. Examples: `TokenGroup`, `Frame`, `HashStyle`, `CharacterLocation`.
+Enums, in the style of simple type declarations, must be named using the CapWords style. Examples: `TokenGroup`, `Frame`, `HashStyle`, `CharacterLocation`.
