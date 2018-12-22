@@ -38,6 +38,7 @@ contract NFTokenMetadata is
 
   /**
    * @dev Returns a descriptive name for a collection of NFTokens.
+   * @return Representing name. 
    */
   function name()
     external
@@ -49,6 +50,7 @@ contract NFTokenMetadata is
 
   /**
    * @dev Returns an abbreviated name for NFTokens.
+   * @return Representing symbol. 
    */
   function symbol()
     external
@@ -61,6 +63,7 @@ contract NFTokenMetadata is
   /**
    * @dev A distinct URI (RFC 3986) for a given NFT.
    * @param _tokenId Id for which we want uri.
+   * @return URI of _tokenId.
    */
   function tokenURI(
     uint256 _tokenId

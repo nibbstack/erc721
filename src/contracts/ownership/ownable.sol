@@ -14,6 +14,9 @@ contract Ownable
   string public constant NOT_OWNER = "018001";
   string public constant ZERO_ADDRESS = "018002";
 
+  /**
+   * @dev Current owner address.
+   */
   address public owner;
 
   /**
