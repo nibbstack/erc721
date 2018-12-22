@@ -9,13 +9,14 @@ library AddressUtils
   /**
    * @dev Returns whether the target address is a contract.
    * @param _addr Address to check.
+   * @return True if _addr is a contract, false if not.
    */
   function isContract(
     address _addr
   )
     internal
     view
-    returns (bool)
+    returns (bool addressCheck)
   {
     uint256 size;
 
@@ -27,7 +28,7 @@ library AddressUtils
      * contracts then.
      */
     assembly { size := extcodesize(_addr) } // solhint-disable-line
-    return size > 0;
+    addressCheck = size > 0;
   }
 
 }

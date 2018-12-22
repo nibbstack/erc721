@@ -42,6 +42,7 @@ contract NFTokenEnumerable is
 
   /**
    * @dev Returns the count of all existing NFTokens.
+   * @return Total supply of NFTs.
    */
   function totalSupply()
     external
@@ -54,6 +55,7 @@ contract NFTokenEnumerable is
   /**
    * @dev Returns NFT ID by its index.
    * @param _index A counter less than `totalSupply()`.
+   * @return Token id.
    */
   function tokenByIndex(
     uint256 _index
@@ -63,8 +65,6 @@ contract NFTokenEnumerable is
     returns (uint256)
   {
     require(_index < tokens.length);
-    // Sanity check. This could be removed in the future.
-    assert(idToIndex[tokens[_index]] == _index);
     return tokens[_index];
   }
 
@@ -72,6 +72,7 @@ contract NFTokenEnumerable is
    * @dev returns the n-th NFT ID from a list of owner's tokens.
    * @param _owner Token owner's address.
    * @param _index Index number representing n-th token in owner's list of tokens.
+   * @return Token id.
    */
   function tokenOfOwnerByIndex(
     address _owner,
@@ -117,11 +118,8 @@ contract NFTokenEnumerable is
     internal
   {
     super._burn(_tokenId);
-    assert(tokens.length > 0);
 
     uint256 tokenIndex = idToIndex[_tokenId];
-    // Sanity check. This could be removed in the future.
-    assert(tokens[tokenIndex] == _tokenId);
     uint256 lastTokenIndex = tokens.length - 1;
     uint256 lastToken = tokens[lastTokenIndex];
 
@@ -147,7 +145,6 @@ contract NFTokenEnumerable is
   {
     require(idToOwner[_tokenId] == _from);
     delete idToOwner[_tokenId];
-    assert(ownerToIds[_from].length > 0);
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
     uint256 lastTokenIndex = ownerToIds[_from].length - 1;
@@ -185,6 +182,7 @@ contract NFTokenEnumerable is
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
    * extension to remove double storage(gas optimization) of owner nft count.
    * @param _owner Address for whom to query the count.
+   * @return Number of _owner NFTs.
    */
   function getOwnerNFTCount(
     address _owner

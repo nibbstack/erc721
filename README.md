@@ -73,7 +73,8 @@ You have created and have possession of unique glass-blown artwork (each having 
 To do this, simply paste the code belowe into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
 ```solidity
-pragma solidity ^0.5.1;
+pragma solidity 0.5.1;
+
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
 
@@ -84,6 +85,10 @@ contract MyArtSale is
   NFTokenMetadata,
   Ownable
 {
+
+  /**
+   * @dev Contract constructor. Sets metadata extension `name` and `symbol`. 
+   */
   constructor()
     public
   {

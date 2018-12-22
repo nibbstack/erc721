@@ -12,7 +12,7 @@ library SafeMath
    * @dev Multiplies two numbers, reverts on overflow.
    * @param _factor1 Factor number.
    * @param _factor2 Factor number.
-   * @return The product of the two factors
+   * @return The product of the two factors.
    */
   function mul(
     uint256 _factor1,
@@ -38,7 +38,7 @@ library SafeMath
    * @dev Integer division of two numbers, truncating the quotient, reverts on division by zero.
    * @param _dividend Dividend number.
    * @param _divisor Divisor number.
-   * @return The quotient
+   * @return The quotient.
    */
   function div(
     uint256 _dividend,
@@ -48,17 +48,17 @@ library SafeMath
     pure
     returns (uint256 quotient)
   {
-    // Solidity automatically asserts when dividing by 0, using all gas
+    // Solidity automatically asserts when dividing by 0, using all gas.
     require(_divisor > 0);
     quotient = _dividend / _divisor;
-    // assert(_dividend == _divisor * quotient + _dividend % _divisor); // There is no case in which this doesn't hold
+    // assert(_dividend == _divisor * quotient + _dividend % _divisor); // There is no case in which this doesn't hold.
   }
 
   /**
    * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
    * @param _minuend Minuend number.
    * @param _subtrahend Subtrahend number.
-   * @return difference
+   * @return Difference.
    */
   function sub(
     uint256 _minuend,
@@ -76,7 +76,7 @@ library SafeMath
    * @dev Adds two numbers, reverts on overflow.
    * @param _addend1 Number.
    * @param _addend2 Number.
-   * @return sum
+   * @return Sum.
    */
   function add(
     uint256 _addend1,
@@ -91,11 +91,11 @@ library SafeMath
   }
 
   /**
-    * @dev Divides two numbers and returns the remainder (unsigned integer modulo),
-    * reverts when dividing by zero.
+    * @dev Divides two numbers and returns the remainder (unsigned integer modulo), reverts when
+    * dividing by zero.
     * @param _dividend Number.
     * @param _divisor Number.
-    * @return remainder
+    * @return Remainder.
     */
   function mod(
     uint256 _dividend,

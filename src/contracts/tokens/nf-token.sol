@@ -68,7 +68,7 @@ contract NFToken is
   event Approval(
     address indexed _owner,
     address indexed _approved,
-      uint256 indexed _tokenId
+    uint256 indexed _tokenId
   );
 
   /**
@@ -249,6 +249,7 @@ contract NFToken is
    * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
    * considered invalid, and this function throws for queries about the zero address.
    * @param _owner Address for whom to query the balance.
+   * @return Balance of _owner.
    */
   function balanceOf(
     address _owner
@@ -265,6 +266,7 @@ contract NFToken is
    * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
    * invalid, and queries about them do throw.
    * @param _tokenId The identifier for an NFT.
+   * @return Address of _tokenId owner.
    */
   function ownerOf(
     uint256 _tokenId
@@ -281,6 +283,7 @@ contract NFToken is
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
    * @param _tokenId ID of the NFT to query the approval of.
+   * @return Address that _tokenId is approved for. 
    */
   function getApproved(
     uint256 _tokenId
@@ -297,6 +300,7 @@ contract NFToken is
    * @dev Checks if `_operator` is an approved operator for `_owner`.
    * @param _owner The address that owns the NFTs.
    * @param _operator The address that acts on behalf of the owner.
+   * @return True if approved for all, false otherwise.
    */
   function isApprovedForAll(
     address _owner,
@@ -384,7 +388,6 @@ contract NFToken is
     internal
   {
     require(idToOwner[_tokenId] == _from);
-    assert(ownerToNFTokenCount[_from] > 0);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     delete idToOwner[_tokenId];
   }
@@ -411,6 +414,7 @@ contract NFToken is
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
    * extension to remove double storage (gas optimization) of owner nft count.
    * @param _owner Address for whom to query the count.
+   * @return Number of _owner NFTs.
    */
   function getOwnerNFTCount(
     address _owner

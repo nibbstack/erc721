@@ -12,7 +12,8 @@ contract NFTokenMetadataTestMock is
   )
     public
     NFTokenMetadataMock(_name, _symbol)
-  {}
+  {
+  }
 
   function checkUri(
     uint256 _tokenId

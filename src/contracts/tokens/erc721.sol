@@ -1,7 +1,8 @@
 pragma solidity 0.5.1;
 
 /**
- * @dev ERC-721 non-fungible token standard. See https://goo.gl/pc9yoS.
+ * @dev ERC-721 non-fungible token standard. 
+ * See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md.
  */
 interface ERC721
 {
@@ -44,8 +45,9 @@ interface ERC721
    * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
    * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
    * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
-   * function checks if `_to` is a smart contract (code size > 0). If so, it calls `onERC721Received`
-   * on `_to` and throws if the return value is not `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
+   * function checks if `_to` is a smart contract (code size > 0). If so, it calls
+   * `onERC721Received` on `_to` and throws if the return value is not 
+   * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -121,6 +123,7 @@ interface ERC721
    * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
    * considered invalid, and this function throws for queries about the zero address.
    * @param _owner Address for whom to query the balance.
+   * @return Balance of _owner.
    */
   function balanceOf(
     address _owner
@@ -133,6 +136,7 @@ interface ERC721
    * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
    * invalid, and queries about them do throw.
    * @param _tokenId The identifier for an NFT.
+   * @return Address of _tokenId owner.
    */
   function ownerOf(
     uint256 _tokenId
@@ -145,6 +149,7 @@ interface ERC721
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
    * @param _tokenId The NFT to find the approved address for.
+   * @return Address that _tokenId is approved for. 
    */
   function getApproved(
     uint256 _tokenId
@@ -157,6 +162,7 @@ interface ERC721
    * @dev Returns true if `_operator` is an approved operator for `_owner`, false otherwise.
    * @param _owner The address that owns the NFTs.
    * @param _operator The address that acts on behalf of the owner.
+   * @return True if approved for all, false otherwise.
    */
   function isApprovedForAll(
     address _owner,
