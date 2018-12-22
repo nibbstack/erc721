@@ -84,6 +84,10 @@ contract MyArtSale is
   NFTokenMetadata,
   Ownable
 {
+
+  /**
+   * @dev Contract constructor. Sets metadata extension `name` and `symbol`. 
+   */
   constructor()
     public
   {
