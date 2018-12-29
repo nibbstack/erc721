@@ -885,7 +885,7 @@ Events must be named using the CapWords style. Examples: `Deposit`, `Transfer`, 
 ### Function Names
 
 Functions other than constructors must use mixedCase. Examples: `getBalance`, `transfer`, `verifyOwner`, `addMember`, `changeOwner`.
-If a function is `private` or `internal` function shoud use _underscoreMixedCase. Examples: `_calculateBalance` , `_doTransfer`. 
+If a function is `private` or `internal` function should use _underscoreMixedCase. Examples: `_calculateBalance` , `_doTransfer`. 
 
 ### Function Argument Names
 
