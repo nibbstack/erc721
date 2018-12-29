@@ -137,7 +137,7 @@ contract NFTokenEnumerable is
    * @param _from Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
-  function removeNFToken(
+  function _removeNFToken(
     address _from,
     uint256 _tokenId
   )
@@ -165,7 +165,7 @@ contract NFTokenEnumerable is
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */
-  function addNFToken(
+  function _addNFToken(
     address _to,
     uint256 _tokenId
   )
@@ -184,7 +184,7 @@ contract NFTokenEnumerable is
    * @param _owner Address for whom to query the count.
    * @return Number of _owner NFTs.
    */
-  function getOwnerNFTCount(
+  function _getOwnerNFTCount(
     address _owner
   )
     internal
