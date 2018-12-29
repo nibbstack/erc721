@@ -259,7 +259,7 @@ contract NFToken is
     returns (uint256)
   {
     require(_owner != address(0));
-    return getOwnerNFTCount(_owner);
+    return _getOwnerNFTCount(_owner);
   }
 
   /**
@@ -326,10 +326,10 @@ contract NFToken is
     internal
   {
     address from = idToOwner[_tokenId];
-    clearApproval(_tokenId);
+    _clearApproval(_tokenId);
 
-    removeNFToken(from, _tokenId);
-    addNFToken(_to, _tokenId);
+    _removeNFToken(from, _tokenId);
+    _addNFToken(_to, _tokenId);
 
     emit Transfer(from, _to, _tokenId);
   }
@@ -351,7 +351,7 @@ contract NFToken is
     require(_to != address(0));
     require(idToOwner[_tokenId] == address(0));
 
-    addNFToken(_to, _tokenId);
+    _addNFToken(_to, _tokenId);
 
     emit Transfer(address(0), _to, _tokenId);
   }
@@ -370,8 +370,8 @@ contract NFToken is
     validNFToken(_tokenId)
   {
     address tokenOwner = idToOwner[_tokenId];
-    clearApproval(_tokenId);
-    removeNFToken(tokenOwner, _tokenId);
+    _clearApproval(_tokenId);
+    _removeNFToken(tokenOwner, _tokenId);
     emit Transfer(tokenOwner, address(0), _tokenId);
   }
 
@@ -381,7 +381,7 @@ contract NFToken is
    * @param _from Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
-  function removeNFToken(
+  function _removeNFToken(
     address _from,
     uint256 _tokenId
   )
@@ -398,7 +398,7 @@ contract NFToken is
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */
-  function addNFToken(
+  function _addNFToken(
     address _to,
     uint256 _tokenId
   )
@@ -416,7 +416,7 @@ contract NFToken is
    * @param _owner Address for whom to query the count.
    * @return Number of _owner NFTs.
    */
-  function getOwnerNFTCount(
+  function _getOwnerNFTCount(
     address _owner
   )
     internal
@@ -460,7 +460,7 @@ contract NFToken is
    * @dev Clears the current approval of a given NFT ID.
    * @param _tokenId ID of the NFT to be transferred.
    */
-  function clearApproval(
+  function _clearApproval(
     uint256 _tokenId
   )
     private
