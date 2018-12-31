@@ -1,24 +1,29 @@
 {
   "name": "@0xcert/ethereum-erc721",
-  "version": "1.10.0",
+  "version": "2.0.0",
   "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
-  "main": "truffle.js",
-  "directories": {
-    "contracts": "contracts",
-    "migrations": "migrations",
-    "test": "test"
-  },
   "scripts": {
-    "clean": "rm -Rf ./build",
-    "compile": "truffle compile",
-    "console": "truffle console",
-    "flatten": "mkdir -p build && truffle-flattener contracts/**/*.sol >> build/bundle.sol",
-    "lint": "eslint './**/*.js?(x)'",
-    "migrate": "truffle migrate",
-    "networks": "truffle networks",
-    "postpublish": "npm run clean",
-    "prepublish": "npm run compile",
-    "test": "npm run clean && truffle test"
+    "compile": "specron compile",
+    "sandbox": "specron sandbox",
+    "prepare": "specron compile",
+    "test": "specron compile && specron test",
+    "solhint": "solhint src/**/*.sol"
+  },
+  "specron": {
+    "compiler": {
+      "build": "./build",
+      "match": [
+        "./src/**/*.sol"
+      ]
+    },
+    "test": {
+      "match": [
+        "./src/**/*.test.*"
+      ]
+    },
+    "require": [
+      "ts-node/register"
+    ]
   },
   "author": "0xcert",
   "license": "MIT",
@@ -53,12 +58,12 @@
     "standard"
   ],
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "ethjs-util": "^0.1.6",
-    "truffle": "^4.1.12",
-    "truffle-flattener": "^1.2.5"
-  },
-  "dependencies": {
-    "@0xcert/ethereum-utils": "^1.0.1"
+    "@specron/cli": "^0.5.1",
+    "@specron/spec": "^0.5.1",
+    "solc": "^0.5.1",
+    "solhint": "^1.4.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "web3": "^1.0.0-beta.37"
   }
 }
