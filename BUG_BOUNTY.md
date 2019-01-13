@@ -31,7 +31,7 @@ Help us find any problems with this contract and with ERC-721 in general. This b
 - Give a token to somebody else and double spend it or revert it back to your control
 - Any undocumented and unintuitive behavior
 - Typos
-- Style guide violations
+- Style guide violations (find the current style guide in effect referenced from [CONTRIBUTING.md](CONTRIBUTING.md))
 
 ## Rules and rewards
 
