@@ -60,7 +60,7 @@
   "devDependencies": {
     "@specron/cli": "^0.5.1",
     "@specron/spec": "^0.5.1",
-    "solc": "^0.5.1",
+    "solc": "^0.5.2",
     "solhint": "^1.4.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
