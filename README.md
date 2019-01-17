@@ -6,7 +6,7 @@ This is the complete reference implementation of the [ERC-721](https://github.co
 
 Purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum blockchain. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
 
-If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [Xcert repository](https://github.com/0xcert/ethereum-xcert).
+If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [0xcert Framework](https://github.com/0xcert/framework).
 
 ## Structure
 
