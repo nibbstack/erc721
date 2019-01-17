@@ -109,7 +109,8 @@ contract NFTokenEnumerable is
    * @dev Burns a NFT.
    * @notice This is a private function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
+   * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
+   * NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
