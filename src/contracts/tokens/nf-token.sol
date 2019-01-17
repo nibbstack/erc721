@@ -336,7 +336,7 @@ contract NFToken is
    
   /**
    * @dev Mints a new NFT.
-   * @notice This is a private function which should be called from user-implemented external
+   * @notice This is a internal function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _to The address that will own the minted NFT.
@@ -358,7 +358,7 @@ contract NFToken is
 
   /**
    * @dev Burns a NFT.
-   * @notice This is a private function which should be called from user-implemented external burn
+   * @notice This is a internal function which should be called from user-implemented external burn
    * function. Its purpose is to show and properly initialize data structures when using this
    * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
    * NFT.
