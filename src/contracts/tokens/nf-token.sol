@@ -20,7 +20,7 @@ contract NFToken is
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
-  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
+  bytes4 internal constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @dev A mapping from NFT ID to the address that owns it.
