@@ -152,7 +152,7 @@ You are somebody that reads documentation on smart contracts and understands how
 	
 If your project depends on ERC-721 or you want to help improve the assuarance of this project then you can pledge a bounty. This means you will commit to pay researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
 	
-Read the full [bug bounty program](BUG-BOUNTY.md).
+Read the full [bug bounty program](BUG_BOUNTY.md).
 
 ## Licence
 
