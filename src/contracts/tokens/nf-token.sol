@@ -1,4 +1,4 @@
-pragma solidity 0.5.1;
+pragma solidity 0.5.2;
 
 import "./erc721.sol";
 import "./erc721-token-receiver.sol";
@@ -20,7 +20,7 @@ contract NFToken is
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
-  bytes4 private constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
+  bytes4 internal constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @dev A mapping from NFT ID to the address that owns it.
@@ -30,7 +30,7 @@ contract NFToken is
   /**
    * @dev Mapping from NFT ID to approved address.
    */
-  mapping (uint256 => address) internal idToApprovals;
+  mapping (uint256 => address) internal idToApproval;
 
    /**
    * @dev Mapping from owner address to count of his tokens.
@@ -109,7 +109,7 @@ contract NFToken is
     address tokenOwner = idToOwner[_tokenId];
     require(
       tokenOwner == msg.sender
-      || idToApprovals[_tokenId] == msg.sender
+      || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[tokenOwner][msg.sender]
     );
     _;
@@ -224,7 +224,7 @@ contract NFToken is
     address tokenOwner = idToOwner[_tokenId];
     require(_approved != tokenOwner);
 
-    idToApprovals[_tokenId] = _approved;
+    idToApproval[_tokenId] = _approved;
     emit Approval(tokenOwner, _approved, _tokenId);
   }
 
@@ -293,7 +293,7 @@ contract NFToken is
     validNFToken(_tokenId)
     returns (address)
   {
-    return idToApprovals[_tokenId];
+    return idToApproval[_tokenId];
   }
 
   /**
@@ -336,7 +336,7 @@ contract NFToken is
    
   /**
    * @dev Mints a new NFT.
-   * @notice This is a private function which should be called from user-implemented external
+   * @notice This is an internal function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _to The address that will own the minted NFT.
@@ -358,9 +358,10 @@ contract NFToken is
 
   /**
    * @dev Burns a NFT.
-   * @notice This is a private function which should be called from user-implemented external
-   * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
+   * @notice This is an internal function which should be called from user-implemented external burn
+   * function. Its purpose is to show and properly initialize data structures when using this
+   * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
+   * NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
@@ -465,9 +466,9 @@ contract NFToken is
   )
     private
   {
-    if (idToApprovals[_tokenId] != address(0))
+    if (idToApproval[_tokenId] != address(0))
     {
-      delete idToApprovals[_tokenId];
+      delete idToApproval[_tokenId];
     }
   }
 

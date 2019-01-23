@@ -6,7 +6,7 @@ This is the complete reference implementation of the [ERC-721](https://github.co
 
 Purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum blockchain. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
 
-If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [Xcert repository](https://github.com/0xcert/ethereum-xcert).
+If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [0xcert Framework](https://github.com/0xcert/framework).
 
 ## Structure
 
@@ -73,7 +73,7 @@ You have created and have possession of unique glass-blown artwork (each having 
 To do this, simply paste the code belowe into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
 ```solidity
-pragma solidity 0.5.1;
+pragma solidity 0.5.2;
 
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
@@ -145,6 +145,14 @@ We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) n
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
+
+## Bug bounty
+	
+You are somebody that reads documentation on smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
+	
+If your project depends on ERC-721 or you want to help improve the assuarance of this project then you can pledge a bounty. This means you will commit to pay researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
+	
+Read the full [bug bounty program](BUG_BOUNTY.md).
 
 ## Licence
 

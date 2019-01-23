@@ -1,4 +1,4 @@
-pragma solidity 0.5.1;
+pragma solidity 0.5.2;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -88,7 +88,7 @@ contract NFTokenEnumerable is
 
   /**
    * @dev Mints a new NFT.
-   * @notice This is a private function which should be called from user-implemented external
+   * @notice This is an internal function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _to The address that will own the minted NFT.
@@ -107,9 +107,10 @@ contract NFTokenEnumerable is
 
   /**
    * @dev Burns a NFT.
-   * @notice This is a private function which should be called from user-implemented external
+   * @notice This is an internal function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
+   * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
+   * NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
