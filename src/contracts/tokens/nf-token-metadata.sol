@@ -78,9 +78,10 @@ contract NFTokenMetadata is
 
   /**
    * @dev Burns a NFT.
-   * @notice This is a internal function which should be called from user-implemented external
+   * @notice This is an internal function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
+   * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
+   * NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
@@ -98,7 +99,7 @@ contract NFTokenMetadata is
 
   /**
    * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
-   * @notice this is a internal function which should be called from user-implemented external
+   * @notice This is an internal function which should be called from user-implemented external
    * function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
    * @param _tokenId Id for which we want uri.
