@@ -17,7 +17,7 @@ contract NFTokenEnumerable is
   uint256[] internal tokens;
 
   /**
-   * @dev Mapping from token ID its index in global tokens array.
+   * @dev Mapping from token ID to its index in global tokens array.
    */
   mapping(uint256 => uint256) internal idToIndex;
 
