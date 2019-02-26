@@ -39,8 +39,8 @@ spec.beforeEach(async (ctx) => {
 
 spec.beforeEach(async (ctx) => {
   const nfToken = await ctx.deploy({ 
-    src: './build/nf-token-mock.json',
-    contract: 'NFTokenMock',
+    src: './build/nf-token-test-mock.json',
+    contract: 'NFTokenTestMock',
   });
   ctx.set('nfToken', nfToken);
 });
