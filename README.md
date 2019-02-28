@@ -18,6 +18,10 @@ All contracts and tests are in the [src](src/) folder. There are multiple implem
 
 Other files in the [tokens](src/contracts/tokens) and [utils](src/contracts/utils) directories named like `erc*.sol` are interfaces and define the respective standards.
 
+Mock contract showing basic contract usage are available in [mocks](src/contracts/mocks) folder. 
+
+There are also test mocks which can be seen [here](src/tests/mocks). These are especially made to test different edge cases and behaviours and should NOT be used as a reference for implementation.
+
 ## Requirements
 
 * NodeJS 9.0+ is supported
