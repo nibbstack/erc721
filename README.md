@@ -36,7 +36,7 @@ There are also test mocks which can be seen [here](src/tests/mocks). These are s
 This project is [released as an npm module](https://www.npmjs.com/package/@0xcert/ethereum-erc721). You must install it using the `npm` command:
 
 ```
-$ npm install @0xcert/ethereum-erc721@2.0.0-rc1
+$ npm install @0xcert/ethereum-erc721@2.0.0
 ```
 
 ### Source
