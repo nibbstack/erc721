@@ -1,4 +1,4 @@
-pragma solidity 0.5.2;
+pragma solidity 0.5.6;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";

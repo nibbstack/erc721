@@ -36,7 +36,7 @@ There are also test mocks which can be seen [here](src/tests/mocks). These are s
 This project is [released as an npm module](https://www.npmjs.com/package/@0xcert/ethereum-erc721). You must install it using the `npm` command:
 
 ```
-$ npm install @0xcert/ethereum-erc721@2.0.0-rc1
+$ npm install @0xcert/ethereum-erc721@2.0.0
 ```
 
 ### Source
@@ -77,7 +77,7 @@ You have created and have possession of unique glass-blown artwork (each having 
 To do this, simply paste the code belowe into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
 ```solidity
-pragma solidity 0.5.2;
+pragma solidity 0.5.6;
 
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
