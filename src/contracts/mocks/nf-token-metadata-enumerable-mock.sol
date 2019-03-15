@@ -1,4 +1,4 @@
-pragma solidity 0.5.2;
+pragma solidity 0.5.6;
 
 import "../tokens/nf-token-metadata.sol";
 import "../tokens/nf-token-enumerable.sol";
