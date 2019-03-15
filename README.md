@@ -18,6 +18,10 @@ All contracts and tests are in the [src](src/) folder. There are multiple implem
 
 Other files in the [tokens](src/contracts/tokens) and [utils](src/contracts/utils) directories named like `erc*.sol` are interfaces and define the respective standards.
 
+Mock contract showing basic contract usage are available in [mocks](src/contracts/mocks) folder. 
+
+There are also test mocks which can be seen [here](src/tests/mocks). These are specifically made to test different edge cases and behaviours and should NOT be used as a reference for implementation.
+
 ## Requirements
 
 * NodeJS 9.0+ is supported
@@ -112,19 +116,6 @@ contract MyArtSale is
   {
     super._mint(_to, _tokenId);
     super._setTokenUri(_tokenId, _uri);
-  }
-
-  /**
-   * @dev Removes a NFT from owner.
-   * @param _tokenId Which NFT we want to remove.
-   */
-  function burn(
-    uint256 _tokenId
-  )
-    external
-    onlyOwner
-  {
-    super._burn(_tokenId);
   }
 
 }
