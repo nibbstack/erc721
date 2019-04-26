@@ -145,7 +145,6 @@ We already deployed some contracts to [testnet](http://testnet.wanscan.org/) net
 | [`nf-token-metadata.sol`](src/contracts/tokens/nf-token-metadata.sol) | [0xF0a3852BbFC67ba9936E661fE092C93804bf1c81](http://testnet.wanscan.org/address/0xF0a3852BbFC67ba9936E661fE092C93804bf1c81)          | [0x338ca779405d39c0e0f403b01679b22603c745828211b5b2ea319affbc3e181b](http://testnet.wanscan.org/tx/0x338ca779405d39c0e0f403b01679b22603c745828211b5b2ea319affbc3e181b)             |
 | [`nf-token-enumerable.sol`](src/contracts/tokens/nf-token-enumerable.sol) | [0x539d2CcBDc3Fc5D709b9d0f77CaE6a82e2fec1F3](http://testnet.wanscan.org/address/0x539d2CcBDc3Fc5D709b9d0f77CaE6a82e2fec1F3)          | [0x755886c9a9a53189550be162410b2ae2de6fc62f6791bf38599a078daf265580](http://testnet.wanscan.org/tx/0x755886c9a9a53189550be162410b2ae2de6fc62f6791bf38599a078daf265580)             |
 
-
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
