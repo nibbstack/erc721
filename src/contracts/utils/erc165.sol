@@ -2,7 +2,7 @@ pragma solidity 0.5.6;
 
 /**
  * @dev A standard for detecting smart contract interfaces. 
- * See: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md.
+ * See: https://eips.ethereum.org/EIPS/eip-165.
  */
 interface ERC165
 {
