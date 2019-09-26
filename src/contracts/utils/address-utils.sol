@@ -2,6 +2,9 @@ pragma solidity 0.5.6;
 
 /**
  * @dev Utility library of inline functions on addresses.
+ * @notice Based on: 
+ * https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol
+ * Requires EIP-1052.
  */
 library AddressUtils
 {
@@ -18,17 +21,17 @@ library AddressUtils
     view
     returns (bool addressCheck)
   {
-    uint256 size;
+    // This method relies in extcodesize, which returns 0 for contracts in
+    // construction, since the code is only stored at the end of the
+    // constructor execution.
 
-    /**
-     * XXX Currently there is no better way to check if there is a contract in an address than to
-     * check the size of the code at that address.
-     * See https://ethereum.stackexchange.com/a/14016/36603 for more details about how this works.
-     * TODO: Check this again before the Serenity release, because all addresses will be
-     * contracts then.
-     */
-    assembly { size := extcodesize(_addr) } // solhint-disable-line
-    addressCheck = size > 0;
+    // According to EIP-1052, 0x0 is the value returned for not-yet created accounts
+    // and 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470 is returned
+    // for accounts without code, i.e. `keccak256('')`
+    bytes32 codehash;
+    bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
+    assembly { codehash := extcodehash(_addr) } // solhint-disable-line
+    addressCheck = (codehash != 0x0 && codehash != accountHash);
   }
 
 }
