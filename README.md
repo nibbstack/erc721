@@ -72,7 +72,7 @@ console.log(contract);
 
 You can quickly deploy a contract with this library using [Remix IDE](https://remix.ethereum.org). Here is one example.
 
-You have created and have possession of unique glass-blown artwork (each having a serial number / lot number) which you would like to sell using the Ethereum or Wanchain mainnet. You will sell non-fungible tokens and the buyers would be able to trade those to other people. One token per piece of artwork. You commit to anybody holding these tokens that they may redeem there token and take physical posession of the art.
+You have created and have possession of unique glass-blown artwork (each having a serial number / lot number) which you would like to sell using the Ethereum or Wanchain mainnet. You will sell non-fungible tokens and the buyers would be able to trade those to other people. One token per piece of artwork. You commit to anybody holding these tokens that they may redeem their token and take physical posession of the art.
 
 To do this, simply paste the code belowe into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
