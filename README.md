@@ -2,9 +2,9 @@
 
 # ERC-721 Token — Reference Implementation
 
-This is the complete reference implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum and Wanchain blockchains. This is an open source project, complete with [Specron](https://specron.github.io/framework/) testing.
+This is the complete reference implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum and Wanchain blockchains. This is an open-source project, complete with [Specron](https://specron.github.io/framework/) testing.
 
-Purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum and Wanchain blockchains. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
+The purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum and Wanchain blockchains. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
 
 If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [0xcert Framework](https://github.com/0xcert/framework).
 
@@ -16,11 +16,11 @@ All contracts and tests are in the [src](src/) folder. There are multiple implem
 - [`nf-token-metadata.sol`](src/contracts/tokens/nf-token-metadata.sol): This implements optional ERC-721 metadata features for the token contract. It implements a token name, a symbol and a distinct URI pointing to a publicly exposed ERC-721 JSON metadata file.
 - [`nf-token-enumerable.sol`](src/contracts/tokens/nf-token-enumerable.sol): This implements optional ERC-721 support for enumeration. It is useful if you want to know the total supply of tokens, to query a token by index, etc.
 
-Other files in the [tokens](src/contracts/tokens) and [utils](src/contracts/utils) directories named like `erc*.sol` are interfaces and define the respective standards.
+Other files in the [tokens](src/contracts/tokens) and [utils](src/contracts/utils) directories named `erc*.sol` are interfaces and define the respective standards.
 
-Mock contract showing basic contract usage are available in [mocks](src/contracts/mocks) folder.
+Mock contracts showing basic contract usage are available in the [mocks](src/contracts/mocks) folder.
 
-There are also test mocks which can be seen [here](src/tests/mocks). These are specifically made to test different edge cases and behaviours and should NOT be used as a reference for implementation.
+There are also test mocks that can be seen [here](src/tests/mocks). These are specifically made to test different edge cases and behaviours and should NOT be used as a reference for implementation.
 
 ## Requirements
 
@@ -31,7 +31,7 @@ There are also test mocks which can be seen [here](src/tests/mocks). These are s
 
 ### npm
 
-*This is the recommended installation method if you want to use this package in your own JavaScript project.*
+*This is the recommended installation method if you want to use this package in your JavaScript project.*
 
 This project is [released as an npm module](https://www.npmjs.com/package/@0xcert/ethereum-erc721). You must install it using the `npm` command:
 
@@ -72,9 +72,9 @@ console.log(contract);
 
 You can quickly deploy a contract with this library using [Remix IDE](https://remix.ethereum.org). Here is one example.
 
-You have created and have possession of unique glass-blown artwork (each having a serial number / lot number) which you would like to sell using the Ethereum or Wanchain mainnet. You will sell non-fungible tokens and the buyers would be able to trade those to other people. One token per piece of artwork. You commit to anybody holding these tokens that they may redeem their token and take physical posession of the art.
+You have created and have possession of unique glass-blown artwork (each having a serial/lot number) which you would like to sell using the Ethereum or Wanchain mainnet. You will sell non-fungible tokens and the buyers would be able to trade those to other people. One token per piece of artwork. You commit to anybody holding these tokens that they may redeem their token and take physical possession of the art.
 
-To do this, simply paste the code belowe into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
+To do this, simply paste the code below into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
 ```solidity
 pragma solidity 0.5.6;
@@ -121,13 +121,13 @@ contract MyArtSale is
 }
 ```
 
-*You should contact a lawyer before holding an auction, or selling anything really. Specifically, laws for auctions vary wildly by jurisdiction. This application is provided only as an example of the technology and is not legal advice.*
+*You should contact a lawyer before holding an auction, or selling anything. Specifically, laws for auctions vary wildly by jurisdiction. This application is provided only as an example of the technology and is not legal advice.*
 
 ## Playground
 
 ### Ethereum - Ropsten testnet
 
-We already deployed some contracts to [Ropsten](https://ropsten.etherscan.io/) network. You can play with them RIGHT NOW. No need to install software. In this test version of the contract, anybody can `mint` or `burn` tokens, so don't use it for anything important.
+We already deployed some contracts to the [Ropsten](https://ropsten.etherscan.io/) network. You can play with them RIGHT NOW. No need to install the software. In this test version of the contract, anybody can `mint` or `burn` tokens, so don't use it for anything important.
 
 | Contract                                                     | Token address | Transaction hash |
 | ------------------------------------------------------------ | ------------- | ---------------- |
@@ -151,9 +151,9 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
 ## Bug bounty
 
-You are somebody that reads documentation on smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
+You are somebody that reads the documentation of smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
 
-If your project depends on ERC-721 or you want to help improve the assuarance of this project then you can pledge a bounty. This means you will commit to pay researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
+If your project depends on ERC-721 or you want to help improve the assurance of this project then you can pledge a bounty. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
 
 Read the full [bug bounty program](BUG_BOUNTY.md).
 
