@@ -4,7 +4,7 @@
 
 ## Leaderboard
 
-The leaderboard will list all the contributors of this bounty.
+The leaderboard will list all the contributors to this bounty.
 
 | Bug report | Severity | Researcher
 |-|-|-|
@@ -28,7 +28,7 @@ Help us find any problems with this contract and with ERC-721 in general. This b
 
 - Overflow or break parts of the implementation
 - Steal ownership of a token
-- Give a token to somebody else and double spend it or revert it back to your control
+- Give a token to somebody else and double-spend it or revert it to your control
 - Any undocumented and unintuitive behavior
 - Typos
 - Style guide violations (find the current style guide in effect referenced from [CONTRIBUTING.md](CONTRIBUTING.md))
@@ -71,9 +71,9 @@ Examples of impact:
 Examples of likelihood:
 
 * *High likelihood* — affects all users of the smart contract performing a certain function
-* *Medium likelihood* — affects a number of end users in a scenario that actually happens naturally in production deployments
-* *Low likelihood* — affects two end users only if they are cooperating together to exploit a specially crafted transaction
-* *Notable* — affects developers and grammarians but not end users
+* *Medium likelihood* — affects several end-users in a scenario that happens naturally in production deployments
+* *Low likelihood* — affects two end users only if they are together to exploit a specially crafted transaction
+* *Notable* — affects developers and grammarians but not end-users
 
 How to win:
 
@@ -88,8 +88,8 @@ Rules for bounty sponsor:
 
 ## More questions
 
-* Are you really recommending [*full disclosure*](https://en.wikipedia.org/wiki/Full_disclosure_(computer_security)) as a best practice?
-  * Yes. [Well known losses](https://github.com/ethereum/EIPs/issues/223) due to problems with ERC-20 have exceeded [tens of millions USD]((https://github.com/ethereum/EIPs/issues/223)). The best defense we can offer to the community is to be transparent when issues come. Following are two references on this topic to explore further.
+* Are you recommending [*full disclosure*](https://en.wikipedia.org/wiki/Full_disclosure_(computer_security)) as a best practice?
+  * Yes. [Well known losses](https://github.com/ethereum/EIPs/issues/223) due to problems with ERC-20 have exceeded [tens of millions USD]((https://github.com/ethereum/EIPs/issues/223)). The best defense we can offer to the community is to be transparent when issues come. The following are two references on this topic to explore further.
   * Schneier, Bruce. ["Damned Good Idea"](https://www.schneier.com/essay-146.html). CSO Online. Retrieved 29 April 2013.
   * Heiser, Jay (January 2001). ["Exposing Infosecurity Hype"](https://web.archive.org/web/20060328012516/http://infosecuritymag.techtarget.com/articles/january01/columns_curmudgeons_corner.shtml). *Information Security Mag*. TechTarget. Archived from [the original](http://infosecuritymag.techtarget.com/articles/january01/columns_curmudgeons_corner.shtml) on 28 March 2006. Retrieved 29 April 2013.
   * [:star: Star this repo](https://github.com/0xcert/ethereum-erc721/) if you are using this code. Surely you would want to know of any bugs as soon as possible.

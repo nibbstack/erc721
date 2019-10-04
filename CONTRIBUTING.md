@@ -12,7 +12,7 @@ We use GitHub issues to track public bugs. Please ensure your description is cle
 
 ## Coding style
 
-Full style guide is available [here](https://github.com/0xcert/solidity-style-guide).
+The full style guide is available [here](https://github.com/0xcert/solidity-style-guide).
 
 ## Release process
 
