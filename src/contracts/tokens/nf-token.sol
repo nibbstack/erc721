@@ -17,6 +17,19 @@ contract NFToken is
   using AddressUtils for address;
 
   /**
+   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * Based on 0xcert framework error codes.
+   */
+  string constant ZERO_ADDRESS = "003001";
+  string constant NOT_VALID_NFT = "003002";
+  string constant NOT_OWNER_OR_OPERATOR = "003003";
+  string constant NOT_OWNER_APPROWED_OR_OPERATOR = "003004";
+  string constant NOT_ABLE_TO_RECEIVE_NFT = "003005";
+  string constant NFT_ALREADY_EXISTS = "003006";
+  string constant NOT_OWNER = "003007";
+  string constant IS_OWNER = "003008";
+
+  /**
    * @dev Magic value of a smart contract that can recieve NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
@@ -94,7 +107,7 @@ contract NFToken is
   )
   {
     address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
+    require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender], NOT_OWNER_OR_OPERATOR);
     _;
   }
 
@@ -110,7 +123,8 @@ contract NFToken is
     require(
       tokenOwner == msg.sender
       || idToApproval[_tokenId] == msg.sender
-      || ownerToOperators[tokenOwner][msg.sender]
+      || ownerToOperators[tokenOwner][msg.sender],
+      NOT_OWNER_APPROWED_OR_OPERATOR
     );
     _;
   }
@@ -123,7 +137,7 @@ contract NFToken is
     uint256 _tokenId
   )
   {
-    require(idToOwner[_tokenId] != address(0));
+    require(idToOwner[_tokenId] != address(0), NOT_VALID_NFT);
     _;
   }
 
@@ -203,8 +217,8 @@ contract NFToken is
     validNFToken(_tokenId)
   {
     address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == _from);
-    require(_to != address(0));
+    require(tokenOwner == _from, NOT_OWNER);
+    require(_to != address(0), ZERO_ADDRESS);
 
     _transfer(_to, _tokenId);
   }
@@ -226,7 +240,7 @@ contract NFToken is
     validNFToken(_tokenId)
   {
     address tokenOwner = idToOwner[_tokenId];
-    require(_approved != tokenOwner);
+    require(_approved != tokenOwner, IS_OWNER);
 
     idToApproval[_tokenId] = _approved;
     emit Approval(tokenOwner, _approved, _tokenId);
@@ -264,7 +278,7 @@ contract NFToken is
     view
     returns (uint256)
   {
-    require(_owner != address(0));
+    require(_owner != address(0), ZERO_ADDRESS);
     return _getOwnerNFTCount(_owner);
   }
 
@@ -283,7 +297,7 @@ contract NFToken is
     returns (address _owner)
   {
     _owner = idToOwner[_tokenId];
-    require(_owner != address(0));
+    require(_owner != address(0), NOT_VALID_NFT);
   }
 
   /**
@@ -342,7 +356,7 @@ contract NFToken is
 
     emit Transfer(from, _to, _tokenId);
   }
-   
+
   /**
    * @dev Mints a new NFT.
    * @notice This is an internal function which should be called from user-implemented external
@@ -358,8 +372,8 @@ contract NFToken is
     internal
     virtual
   {
-    require(_to != address(0));
-    require(idToOwner[_tokenId] == address(0));
+    require(_to != address(0), ZERO_ADDRESS);
+    require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     _addNFToken(_to, _tokenId);
 
@@ -400,7 +414,7 @@ contract NFToken is
     internal
     virtual
   {
-    require(idToOwner[_tokenId] == _from);
+    require(idToOwner[_tokenId] == _from, NOT_OWNER);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
     delete idToOwner[_tokenId];
   }
@@ -418,7 +432,7 @@ contract NFToken is
     internal
     virtual
   {
-    require(idToOwner[_tokenId] == address(0));
+    require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     idToOwner[_tokenId] = _to;
     ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
@@ -459,15 +473,15 @@ contract NFToken is
     validNFToken(_tokenId)
   {
     address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == _from);
-    require(_to != address(0));
+    require(tokenOwner == _from, NOT_OWNER);
+    require(_to != address(0), ZERO_ADDRESS);
 
     _transfer(_to, _tokenId);
 
     if (_to.isContract())
     {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
-      require(retval == MAGIC_ON_ERC721_RECEIVED);
+      require(retval == MAGIC_ON_ERC721_RECEIVED, NOT_ABLE_TO_RECEIVE_NFT);
     }
   }
 
