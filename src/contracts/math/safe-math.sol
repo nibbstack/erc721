@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 /**
  * @dev Math operations with safety checks that throw on error. This contract is based on the 
@@ -12,7 +12,7 @@ library SafeMath
    * @dev Multiplies two numbers, reverts on overflow.
    * @param _factor1 Factor number.
    * @param _factor2 Factor number.
-   * @return The product of the two factors.
+   * @return product The product of the two factors.
    */
   function mul(
     uint256 _factor1,
@@ -38,7 +38,7 @@ library SafeMath
    * @dev Integer division of two numbers, truncating the quotient, reverts on division by zero.
    * @param _dividend Dividend number.
    * @param _divisor Divisor number.
-   * @return The quotient.
+   * @return quotient quotient The quotient.
    */
   function div(
     uint256 _dividend,
@@ -58,7 +58,7 @@ library SafeMath
    * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
    * @param _minuend Minuend number.
    * @param _subtrahend Subtrahend number.
-   * @return Difference.
+   * @return difference Difference.
    */
   function sub(
     uint256 _minuend,
@@ -76,7 +76,7 @@ library SafeMath
    * @dev Adds two numbers, reverts on overflow.
    * @param _addend1 Number.
    * @param _addend2 Number.
-   * @return Sum.
+   * @return sum Sum.
    */
   function add(
     uint256 _addend1,
@@ -95,7 +95,7 @@ library SafeMath
     * dividing by zero.
     * @param _dividend Number.
     * @param _divisor Number.
-    * @return Remainder.
+    * @return remainder Remainder.
     */
   function mod(
     uint256 _dividend,
@@ -103,7 +103,7 @@ library SafeMath
   )
     internal
     pure
-    returns (uint256 remainder) 
+    returns (uint256 remainder)
   {
     require(_divisor != 0);
     remainder = _dividend % _divisor;

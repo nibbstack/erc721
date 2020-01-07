@@ -16,6 +16,16 @@
         "./src/**/*.sol"
       ]
     },
+    "flattener": {
+      "build": "./build",
+      "match": [
+        "./src/**/*.sol"
+      ],
+      "severities": [
+        "error",
+        "warning"
+      ]
+    },
     "test": {
       "match": [
         "./src/**/*.test.*"
@@ -58,9 +68,10 @@
     "standard"
   ],
   "devDependencies": {
-    "@specron/cli": "0.7.0",
-    "@specron/spec": "0.7.0",
-    "solc": "0.5.6",
+    "@specron/cli": "0.11.0-alpha1",
+    "@specron/spec": "0.11.0-alpha1",
+    "@specron/flattener": "0.11.0-alpha1",
+    "solc": "0.6.1",
     "solhint": "^1.4.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",

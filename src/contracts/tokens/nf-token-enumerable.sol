@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -46,6 +46,7 @@ contract NFTokenEnumerable is
    */
   function totalSupply()
     external
+    override
     view
     returns (uint256)
   {
@@ -61,6 +62,7 @@ contract NFTokenEnumerable is
     uint256 _index
   )
     external
+    override
     view
     returns (uint256)
   {
@@ -79,6 +81,7 @@ contract NFTokenEnumerable is
     uint256 _index
   )
     external
+    override
     view
     returns (uint256)
   {
@@ -99,10 +102,12 @@ contract NFTokenEnumerable is
     uint256 _tokenId
   )
     internal
+    override
+    virtual
   {
     super._mint(_to, _tokenId);
-    uint256 length = tokens.push(_tokenId);
-    idToIndex[_tokenId] = length - 1;
+    tokens.push(_tokenId);
+    idToIndex[_tokenId] = tokens.length - 1;
   }
 
   /**
@@ -117,6 +122,8 @@ contract NFTokenEnumerable is
     uint256 _tokenId
   )
     internal
+    override
+    virtual
   {
     super._burn(_tokenId);
 
@@ -126,8 +133,8 @@ contract NFTokenEnumerable is
 
     tokens[tokenIndex] = lastToken;
 
-    tokens.length--;
-    // This wastes gas if you are burning the last token but saves a little gas if you are not. 
+    tokens.pop();
+    // This wastes gas if you are burning the last token but saves a little gas if you are not.
     idToIndex[lastToken] = tokenIndex;
     idToIndex[_tokenId] = 0;
   }
@@ -143,6 +150,8 @@ contract NFTokenEnumerable is
     uint256 _tokenId
   )
     internal
+    override
+    virtual
   {
     require(idToOwner[_tokenId] == _from);
     delete idToOwner[_tokenId];
@@ -157,7 +166,7 @@ contract NFTokenEnumerable is
       idToOwnerIndex[lastToken] = tokenToRemoveIndex;
     }
 
-    ownerToIds[_from].length--;
+    ownerToIds[_from].pop();
   }
 
   /**
@@ -171,12 +180,14 @@ contract NFTokenEnumerable is
     uint256 _tokenId
   )
     internal
+    override
+    virtual
   {
     require(idToOwner[_tokenId] == address(0));
     idToOwner[_tokenId] = _to;
 
-    uint256 length = ownerToIds[_to].push(_tokenId);
-    idToOwnerIndex[_tokenId] = length - 1;
+    ownerToIds[_to].push(_tokenId);
+    idToOwnerIndex[_tokenId] = ownerToIds[_to].length - 1;
   }
 
   /**
@@ -189,6 +200,8 @@ contract NFTokenEnumerable is
     address _owner
   )
     internal
+    override
+    virtual
     view
     returns (uint256)
   {

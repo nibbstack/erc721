@@ -47,8 +47,8 @@ spec.beforeEach(async (ctx) => {
 
 spec.beforeEach(async (ctx) => {
   const nfToken = await ctx.deploy({ 
-    src: './build/nf-token-metadata-enumerable-mock.json',
-    contract: 'NFTokenMetadataEnumerableMock',
+    src: './build/nf-token-metadata-enumerable-test-mock.json',
+    contract: 'NFTokenMetadataEnumerableTestMock',
     args: ['Foo','F']
   });
   ctx.set('nfToken', nfToken);
@@ -195,4 +195,6 @@ spec.test('corectly burns a NFT', async (ctx) => {
   await ctx.reverts(() => nftoken.instance.methods.ownerOf(id1).call());
   await ctx.reverts(() => nftoken.instance.methods.tokenByIndex(0).call());
   await ctx.reverts(() => nftoken.instance.methods.tokenOfOwnerByIndex(bob, 0).call());
+  const uri = await nftoken.instance.methods.checkUri(id1).call();
+  ctx.is(uri, '');
 });

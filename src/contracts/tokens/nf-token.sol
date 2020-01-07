@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "./erc721.sol";
 import "./erc721-token-receiver.sol";
@@ -91,7 +91,7 @@ contract NFToken is
    */
   modifier canOperate(
     uint256 _tokenId
-  ) 
+  )
   {
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender]);
@@ -104,7 +104,7 @@ contract NFToken is
    */
   modifier canTransfer(
     uint256 _tokenId
-  ) 
+  )
   {
     address tokenOwner = idToOwner[_tokenId];
     require(
@@ -142,8 +142,8 @@ contract NFToken is
    * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
    * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
    * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
-   * function checks if `_to` is a smart contract (code size > 0). If so, it calls 
-   * `onERC721Received` on `_to` and throws if the return value is not 
+   * function checks if `_to` is a smart contract (code size > 0). If so, it calls
+   * `onERC721Received` on `_to` and throws if the return value is not
    * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
@@ -157,6 +157,7 @@ contract NFToken is
     bytes calldata _data
   )
     external
+    override
   {
     _safeTransferFrom(_from, _to, _tokenId, _data);
   }
@@ -176,6 +177,7 @@ contract NFToken is
     uint256 _tokenId
   )
     external
+    override
   {
     _safeTransferFrom(_from, _to, _tokenId, "");
   }
@@ -196,6 +198,7 @@ contract NFToken is
     uint256 _tokenId
   )
     external
+    override
     canTransfer(_tokenId)
     validNFToken(_tokenId)
   {
@@ -218,6 +221,7 @@ contract NFToken is
     uint256 _tokenId
   )
     external
+    override
     canOperate(_tokenId)
     validNFToken(_tokenId)
   {
@@ -240,6 +244,7 @@ contract NFToken is
     bool _approved
   )
     external
+    override
   {
     ownerToOperators[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
@@ -255,6 +260,7 @@ contract NFToken is
     address _owner
   )
     external
+    override
     view
     returns (uint256)
   {
@@ -266,12 +272,13 @@ contract NFToken is
    * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
    * invalid, and queries about them do throw.
    * @param _tokenId The identifier for an NFT.
-   * @return Address of _tokenId owner.
+   * @return _owner Address of _tokenId owner.
    */
   function ownerOf(
     uint256 _tokenId
   )
     external
+    override
     view
     returns (address _owner)
   {
@@ -283,12 +290,13 @@ contract NFToken is
    * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
    * @param _tokenId ID of the NFT to query the approval of.
-   * @return Address that _tokenId is approved for. 
+   * @return Address that _tokenId is approved for.
    */
   function getApproved(
     uint256 _tokenId
   )
     external
+    override
     view
     validNFToken(_tokenId)
     returns (address)
@@ -307,6 +315,7 @@ contract NFToken is
     address _operator
   )
     external
+    override
     view
     returns (bool)
   {
@@ -347,6 +356,7 @@ contract NFToken is
     uint256 _tokenId
   )
     internal
+    virtual
   {
     require(_to != address(0));
     require(idToOwner[_tokenId] == address(0));
@@ -368,6 +378,7 @@ contract NFToken is
     uint256 _tokenId
   )
     internal
+    virtual
     validNFToken(_tokenId)
   {
     address tokenOwner = idToOwner[_tokenId];
@@ -387,6 +398,7 @@ contract NFToken is
     uint256 _tokenId
   )
     internal
+    virtual
   {
     require(idToOwner[_tokenId] == _from);
     ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
@@ -404,6 +416,7 @@ contract NFToken is
     uint256 _tokenId
   )
     internal
+    virtual
   {
     require(idToOwner[_tokenId] == address(0));
 
@@ -421,6 +434,7 @@ contract NFToken is
     address _owner
   )
     internal
+    virtual
     view
     returns (uint256)
   {
@@ -450,14 +464,14 @@ contract NFToken is
 
     _transfer(_to, _tokenId);
 
-    if (_to.isContract()) 
+    if (_to.isContract())
     {
       bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
       require(retval == MAGIC_ON_ERC721_RECEIVED);
     }
   }
 
-  /** 
+  /**
    * @dev Clears the current approval of a given NFT ID.
    * @param _tokenId ID of the NFT to be transferred.
    */

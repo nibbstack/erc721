@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 /**
  * @dev Optional metadata extension for ERC-721 non-fungible token standard.
@@ -9,7 +9,7 @@ interface ERC721Metadata
 
   /**
    * @dev Returns a descriptive name for a collection of NFTs in this contract.
-   * @return Representing name. 
+   * @return _name Representing name.
    */
   function name()
     external
@@ -18,7 +18,7 @@ interface ERC721Metadata
 
   /**
    * @dev Returns a abbreviated name for a collection of NFTs in this contract.
-   * @return Representing symbol. 
+   * @return _symbol Representing symbol.
    */
   function symbol()
     external

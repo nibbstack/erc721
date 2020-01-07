@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "./nf-token.sol";
 import "./erc721-metadata.sol";
@@ -38,10 +38,11 @@ contract NFTokenMetadata is
 
   /**
    * @dev Returns a descriptive name for a collection of NFTokens.
-   * @return Representing name. 
+   * @return _name Representing name.
    */
   function name()
     external
+    override
     view
     returns (string memory _name)
   {
@@ -50,10 +51,11 @@ contract NFTokenMetadata is
 
   /**
    * @dev Returns an abbreviated name for NFTokens.
-   * @return Representing symbol. 
+   * @return _symbol Representing symbol.
    */
   function symbol()
     external
+    override
     view
     returns (string memory _symbol)
   {
@@ -69,6 +71,7 @@ contract NFTokenMetadata is
     uint256 _tokenId
   )
     external
+    override
     view
     validNFToken(_tokenId)
     returns (string memory)
@@ -88,6 +91,8 @@ contract NFTokenMetadata is
     uint256 _tokenId
   )
     internal
+    override
+    virtual
   {
     super._burn(_tokenId);
 

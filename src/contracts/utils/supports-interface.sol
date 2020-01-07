@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "./erc165.sol";
 
@@ -19,7 +19,7 @@ contract SupportsInterface is
    * @dev Contract constructor.
    */
   constructor()
-    public 
+    public
   {
     supportedInterfaces[0x01ffc9a7] = true; // ERC165
   }
@@ -33,6 +33,7 @@ contract SupportsInterface is
     bytes4 _interfaceID
   )
     external
+    override
     view
     returns (bool)
   {

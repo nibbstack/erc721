@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "../../contracts/mocks/nf-token-mock.sol";
 
