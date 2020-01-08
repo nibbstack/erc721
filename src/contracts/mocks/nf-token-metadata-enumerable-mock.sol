@@ -113,7 +113,7 @@ contract NFTokenMetadataEnumerableMock is
     internal
     override(NFToken, NFTokenEnumerable)
   {
-    NFTokenEnumerable. _removeNFToken(_from, _tokenId);
+    NFTokenEnumerable._removeNFToken(_from, _tokenId);
   }
 
   /**
