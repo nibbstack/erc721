@@ -342,7 +342,7 @@ contract NFToken is
 
     emit Transfer(from, _to, _tokenId);
   }
-   
+
   /**
    * @dev Mints a new NFT.
    * @notice This is an internal function which should be called from user-implemented external
