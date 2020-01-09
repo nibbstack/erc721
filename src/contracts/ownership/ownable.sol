@@ -7,12 +7,12 @@ pragma solidity 0.6.1;
  */
 contract Ownable
 {
-  
+
   /**
    * @dev Error constants.
    */
-  string public constant NOT_OWNER = "018001";
-  string public constant ZERO_ADDRESS = "018002";
+  string public constant NOT_CURRENT_OWNER = "018001";
+  string public constant CANNOT_TRANSFER_TO_ZERO_ADDRESS = "018002";
 
   /**
    * @dev Current owner address.
@@ -43,7 +43,7 @@ contract Ownable
    */
   modifier onlyOwner()
   {
-    require(msg.sender == owner, NOT_OWNER);
+    require(msg.sender == owner, NOT_CURRENT_OWNER);
     _;
   }
 
@@ -57,7 +57,7 @@ contract Ownable
     public
     onlyOwner
   {
-    require(_newOwner != address(0), ZERO_ADDRESS);
+    require(_newOwner != address(0), CANNOT_TRANSFER_TO_ZERO_ADDRESS);
     emit OwnershipTransferred(owner, _newOwner);
     owner = _newOwner;
   }
