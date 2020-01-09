@@ -1,8 +1,8 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 /**
  * @dev Utility library of inline functions on addresses.
- * @notice Based on: 
+ * @notice Based on:
  * https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol
  * Requires EIP-1052.
  */
@@ -12,7 +12,7 @@ library AddressUtils
   /**
    * @dev Returns whether the target address is a contract.
    * @param _addr Address to check.
-   * @return True if _addr is a contract, false if not.
+   * @return addressCheck True if _addr is a contract, false if not.
    */
   function isContract(
     address _addr

@@ -1,7 +1,7 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 /**
- * @dev ERC-721 interface for accepting safe transfers. 
+ * @dev ERC-721 interface for accepting safe transfers.
  * See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md.
  */
 interface ERC721TokenReceiver
@@ -28,5 +28,5 @@ interface ERC721TokenReceiver
   )
     external
     returns(bytes4);
-    
+
 }

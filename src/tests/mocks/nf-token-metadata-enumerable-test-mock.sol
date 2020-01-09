@@ -1,9 +1,9 @@
 pragma solidity 0.6.1;
 
-import "../../contracts/mocks/nf-token-metadata-mock.sol";
+import "../../contracts/mocks/nf-token-metadata-enumerable-mock.sol";
 
-contract NFTokenMetadataTestMock is
-  NFTokenMetadataMock
+contract NFTokenMetadataEnumerableTestMock is
+  NFTokenMetadataEnumerableMock
 {
 
   constructor(
@@ -11,7 +11,7 @@ contract NFTokenMetadataTestMock is
     string memory _symbol
   )
     public
-    NFTokenMetadataMock(_name, _symbol)
+    NFTokenMetadataEnumerableMock(_name, _symbol)
   {
   }
 

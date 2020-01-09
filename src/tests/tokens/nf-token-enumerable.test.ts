@@ -100,7 +100,7 @@ spec.test('throws when trying to get token by non-existing index', async (ctx) =
   const id1 = ctx.get('id1');
 
   await nftoken.instance.methods.mint(bob, id1).send({ from: owner });
-  await ctx.reverts(() => nftoken.instance.methods.tokenByIndex(1).call());
+  await ctx.reverts(() => nftoken.instance.methods.tokenByIndex(1).call(), '005007');
 });
 
 spec.test('returns the correct token of owner by index', async (ctx) => {
@@ -127,7 +127,7 @@ spec.test('throws when trying to get token of owner by non-existing index', asyn
   const id1 = ctx.get('id1');
 
   await nftoken.instance.methods.mint(bob, id1).send({ from: owner });
-  await ctx.reverts(() => nftoken.instance.methods.tokenOfOwnerByIndex(bob, 1).call());
+  await ctx.reverts(() => nftoken.instance.methods.tokenOfOwnerByIndex(bob, 1).call(), '005007');
 });
 
 spec.test('mint should correctly set ownerToIds and idToOwnerIndex and idToIndex', async (ctx) => {

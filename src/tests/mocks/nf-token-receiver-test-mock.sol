@@ -1,4 +1,4 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 import "../../contracts/tokens/erc721-token-receiver.sol";
 
@@ -13,6 +13,7 @@ contract NFTokenReceiverTestMock is
     bytes calldata _data
   )
     external
+    override
     returns(bytes4)
   {
     _operator;

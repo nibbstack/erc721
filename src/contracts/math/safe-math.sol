@@ -1,18 +1,25 @@
-pragma solidity 0.5.6;
+pragma solidity 0.6.1;
 
 /**
- * @dev Math operations with safety checks that throw on error. This contract is based on the 
- * source code at: 
+ * @dev Math operations with safety checks that throw on error. This contract is based on the
+ * source code at:
  * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol.
  */
 library SafeMath
 {
+  /**
+   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * Based on 0xcert framework error codes.
+   */
+  string constant OVERFLOW = "008001";
+  string constant SUBTRAHEND_GREATER_THEN_MINUEND = "008002";
+  string constant DIVISION_BY_ZERO = "008003";
 
   /**
    * @dev Multiplies two numbers, reverts on overflow.
    * @param _factor1 Factor number.
    * @param _factor2 Factor number.
-   * @return The product of the two factors.
+   * @return product The product of the two factors.
    */
   function mul(
     uint256 _factor1,
@@ -31,14 +38,14 @@ library SafeMath
     }
 
     product = _factor1 * _factor2;
-    require(product / _factor1 == _factor2);
+    require(product / _factor1 == _factor2, OVERFLOW);
   }
 
   /**
    * @dev Integer division of two numbers, truncating the quotient, reverts on division by zero.
    * @param _dividend Dividend number.
    * @param _divisor Divisor number.
-   * @return The quotient.
+   * @return quotient quotient The quotient.
    */
   function div(
     uint256 _dividend,
@@ -49,7 +56,7 @@ library SafeMath
     returns (uint256 quotient)
   {
     // Solidity automatically asserts when dividing by 0, using all gas.
-    require(_divisor > 0);
+    require(_divisor > 0, DIVISION_BY_ZERO);
     quotient = _dividend / _divisor;
     // assert(_dividend == _divisor * quotient + _dividend % _divisor); // There is no case in which this doesn't hold.
   }
@@ -58,7 +65,7 @@ library SafeMath
    * @dev Substracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
    * @param _minuend Minuend number.
    * @param _subtrahend Subtrahend number.
-   * @return Difference.
+   * @return difference Difference.
    */
   function sub(
     uint256 _minuend,
@@ -68,7 +75,7 @@ library SafeMath
     pure
     returns (uint256 difference)
   {
-    require(_subtrahend <= _minuend);
+    require(_subtrahend <= _minuend, SUBTRAHEND_GREATER_THEN_MINUEND);
     difference = _minuend - _subtrahend;
   }
 
@@ -76,7 +83,7 @@ library SafeMath
    * @dev Adds two numbers, reverts on overflow.
    * @param _addend1 Number.
    * @param _addend2 Number.
-   * @return Sum.
+   * @return sum Sum.
    */
   function add(
     uint256 _addend1,
@@ -87,7 +94,7 @@ library SafeMath
     returns (uint256 sum)
   {
     sum = _addend1 + _addend2;
-    require(sum >= _addend1);
+    require(sum >= _addend1, OVERFLOW);
   }
 
   /**
@@ -95,7 +102,7 @@ library SafeMath
     * dividing by zero.
     * @param _dividend Number.
     * @param _divisor Number.
-    * @return Remainder.
+    * @return remainder Remainder.
     */
   function mod(
     uint256 _dividend,
@@ -103,9 +110,9 @@ library SafeMath
   )
     internal
     pure
-    returns (uint256 remainder) 
+    returns (uint256 remainder)
   {
-    require(_divisor != 0);
+    require(_divisor != 0, DIVISION_BY_ZERO);
     remainder = _dividend % _divisor;
   }
 
