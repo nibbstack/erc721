@@ -97,7 +97,10 @@ contract NFTokenMetadataEnumerableMock is
     virtual
   {
     NFTokenEnumerable._burn(_tokenId);
-    NFTokenMetadata._burn(_tokenId);
+    if (bytes(idToUri[_tokenId]).length != 0)
+    {
+        delete idToUri[_tokenId];
+    }
   }
 
   /**
