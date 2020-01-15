@@ -1,12 +1,19 @@
 pragma solidity 0.6.1;
 
 /**
- * @dev Math operations with safety checks that throw on error. This contract is based on the 
- * source code at: 
+ * @dev Math operations with safety checks that throw on error. This contract is based on the
+ * source code at:
  * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol.
  */
 library SafeMath
 {
+  /**
+   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * Based on 0xcert framework error codes.
+   */
+  string constant OVERFLOW = "008001";
+  string constant SUBTRAHEND_GREATER_THEN_MINUEND = "008002";
+  string constant DIVISION_BY_ZERO = "008003";
 
   /**
    * @dev Multiplies two numbers, reverts on overflow.
@@ -31,7 +38,7 @@ library SafeMath
     }
 
     product = _factor1 * _factor2;
-    require(product / _factor1 == _factor2);
+    require(product / _factor1 == _factor2, OVERFLOW);
   }
 
   /**
@@ -49,7 +56,7 @@ library SafeMath
     returns (uint256 quotient)
   {
     // Solidity automatically asserts when dividing by 0, using all gas.
-    require(_divisor > 0);
+    require(_divisor > 0, DIVISION_BY_ZERO);
     quotient = _dividend / _divisor;
     // assert(_dividend == _divisor * quotient + _dividend % _divisor); // There is no case in which this doesn't hold.
   }
@@ -68,7 +75,7 @@ library SafeMath
     pure
     returns (uint256 difference)
   {
-    require(_subtrahend <= _minuend);
+    require(_subtrahend <= _minuend, SUBTRAHEND_GREATER_THEN_MINUEND);
     difference = _minuend - _subtrahend;
   }
 
@@ -87,7 +94,7 @@ library SafeMath
     returns (uint256 sum)
   {
     sum = _addend1 + _addend2;
-    require(sum >= _addend1);
+    require(sum >= _addend1, OVERFLOW);
   }
 
   /**
@@ -105,7 +112,7 @@ library SafeMath
     pure
     returns (uint256 remainder)
   {
-    require(_divisor != 0);
+    require(_divisor != 0, DIVISION_BY_ZERO);
     remainder = _dividend % _divisor;
   }
 

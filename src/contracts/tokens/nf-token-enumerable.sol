@@ -12,6 +12,12 @@ contract NFTokenEnumerable is
 {
 
   /**
+   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * Based on 0xcert framework error codes.
+   */
+  string constant INVALID_INDEX = "005007";
+
+  /**
    * @dev Array of all NFT IDs.
    */
   uint256[] internal tokens;
@@ -66,7 +72,7 @@ contract NFTokenEnumerable is
     view
     returns (uint256)
   {
-    require(_index < tokens.length);
+    require(_index < tokens.length, INVALID_INDEX);
     return tokens[_index];
   }
 
@@ -85,7 +91,7 @@ contract NFTokenEnumerable is
     view
     returns (uint256)
   {
-    require(_index < ownerToIds[_owner].length);
+    require(_index < ownerToIds[_owner].length, INVALID_INDEX);
     return ownerToIds[_owner][_index];
   }
 
@@ -153,7 +159,7 @@ contract NFTokenEnumerable is
     override
     virtual
   {
-    require(idToOwner[_tokenId] == _from);
+    require(idToOwner[_tokenId] == _from, NOT_OWNER);
     delete idToOwner[_tokenId];
 
     uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
@@ -183,7 +189,7 @@ contract NFTokenEnumerable is
     override
     virtual
   {
-    require(idToOwner[_tokenId] == address(0));
+    require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
     idToOwner[_tokenId] = _to;
 
     ownerToIds[_to].push(_tokenId);
