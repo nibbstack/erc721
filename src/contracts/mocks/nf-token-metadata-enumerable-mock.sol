@@ -76,9 +76,7 @@ contract NFTokenMetadataEnumerableMock is
     override(NFToken, NFTokenEnumerable)
     virtual
   {
-    super._mint(_to, _tokenId);
-    tokens.push(_tokenId);
-    idToIndex[_tokenId] = tokens.length - 1;
+    NFTokenEnumerable._mint(_to, _tokenId);
   }
 
   /**
@@ -149,7 +147,7 @@ contract NFTokenMetadataEnumerableMock is
     view
     returns (uint256)
   {
-    return ownerToIds[_owner].length;
+    return NFTokenEnumerable._getOwnerNFTCount(_owner);
   }
 
 }
