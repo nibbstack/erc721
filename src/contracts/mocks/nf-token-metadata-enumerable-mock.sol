@@ -97,7 +97,7 @@ contract NFTokenMetadataEnumerableMock is
     NFTokenEnumerable._burn(_tokenId);
     if (bytes(idToUri[_tokenId]).length != 0)
     {
-        delete idToUri[_tokenId];
+      delete idToUri[_tokenId];
     }
   }
 
