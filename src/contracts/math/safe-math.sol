@@ -45,7 +45,7 @@ library SafeMath
    * @dev Integer division of two numbers, truncating the quotient, reverts on division by zero.
    * @param _dividend Dividend number.
    * @param _divisor Divisor number.
-   * @return quotient quotient The quotient.
+   * @return quotient The quotient.
    */
   function div(
     uint256 _dividend,

@@ -76,9 +76,7 @@ contract NFTokenMetadataEnumerableMock is
     override(NFToken, NFTokenEnumerable)
     virtual
   {
-    super._mint(_to, _tokenId);
-    tokens.push(_tokenId);
-    idToIndex[_tokenId] = tokens.length - 1;
+    NFTokenEnumerable._mint(_to, _tokenId);
   }
 
   /**
@@ -96,18 +94,11 @@ contract NFTokenMetadataEnumerableMock is
     override(NFTokenMetadata, NFTokenEnumerable)
     virtual
   {
-    super._burn(_tokenId);
-
-    uint256 tokenIndex = idToIndex[_tokenId];
-    uint256 lastTokenIndex = tokens.length - 1;
-    uint256 lastToken = tokens[lastTokenIndex];
-
-    tokens[tokenIndex] = lastToken;
-
-    tokens.pop();
-    // This wastes gas if you are burning the last token but saves a little gas if you are not.
-    idToIndex[lastToken] = tokenIndex;
-    idToIndex[_tokenId] = 0;
+    NFTokenEnumerable._burn(_tokenId);
+    if (bytes(idToUri[_tokenId]).length != 0)
+    {
+      delete idToUri[_tokenId];
+    }
   }
 
   /**
@@ -123,20 +114,7 @@ contract NFTokenMetadataEnumerableMock is
     internal
     override(NFToken, NFTokenEnumerable)
   {
-    require(idToOwner[_tokenId] == _from);
-    delete idToOwner[_tokenId];
-
-    uint256 tokenToRemoveIndex = idToOwnerIndex[_tokenId];
-    uint256 lastTokenIndex = ownerToIds[_from].length - 1;
-
-    if (lastTokenIndex != tokenToRemoveIndex)
-    {
-      uint256 lastToken = ownerToIds[_from][lastTokenIndex];
-      ownerToIds[_from][tokenToRemoveIndex] = lastToken;
-      idToOwnerIndex[lastToken] = tokenToRemoveIndex;
-    }
-
-    ownerToIds[_from].pop();
+    NFTokenEnumerable._removeNFToken(_from, _tokenId);
   }
 
   /**
@@ -152,11 +130,7 @@ contract NFTokenMetadataEnumerableMock is
     internal
     override(NFToken, NFTokenEnumerable)
   {
-    require(idToOwner[_tokenId] == address(0));
-    idToOwner[_tokenId] = _to;
-
-    ownerToIds[_to].push(_tokenId);
-    idToOwnerIndex[_tokenId] = ownerToIds[_to].length - 1;
+    NFTokenEnumerable._addNFToken(_to, _tokenId);
   }
 
    /**
@@ -173,7 +147,7 @@ contract NFTokenMetadataEnumerableMock is
     view
     returns (uint256)
   {
-    return ownerToIds[_owner].length;
+    return NFTokenEnumerable._getOwnerNFTCount(_owner);
   }
 
 }
