@@ -22,4 +22,10 @@ The release manager is responsible to follow this process for each release of th
 2. Summarize the changes and create a release using [GitHub releases](https://github.com/0xcert/solidity-style-guide/releases).
 3. Create a branch/pull request against https://github.com/0xcert/framework/tree/master/packages/0xcert-ethereum-erc721-contracts for any relevant changes since the last release here
 
+```
+$ npm i
+$ npm test
+$ npm publish
+```
+
 Note: item 1 may become automated at some point and put into the continuous integration build.
