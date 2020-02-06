@@ -398,3 +398,13 @@ spec.test('throws when trying to burn non existant NFT', async (ctx) => {
 
   await ctx.reverts(() => nftoken.instance.methods.burn(id1).send({ from: owner }), '003002');
 });
+
+spec.test('safeTransfer does not call onERC721Received to constructing contract', async (ctx) => {
+  const sendsToSelfOnConstruct = await ctx.deploy({ 
+    src: './build/sends-to-self-on-construct.json',
+    contract: 'SendsToSelfOnConstruct',
+  });
+
+  const logs = sendsToSelfOnConstruct.logs;
+  ctx.is(logs.events.Received, undefined);
+});
