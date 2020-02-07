@@ -1,16 +1,19 @@
 pragma solidity 0.6.2;
 
 import "../../contracts/mocks/nf-token-mock.sol";
-import "./nf-token-receiver.sol";
+import "./nf-token-receiver-test-mock.sol";
 
 contract SendsToSelfOnConstruct is
-  NFTokenReceiver
+  NFTokenReceiverTestMock
 {
-  constuctor() {
-    const uint TOKEN_ID = 1;
-    ERC721 tokens = new NFTokenMock();
-    tokens.mint(TOKEN_ID, this.address);
-    tokens.safeTransferFrom(this.address, this.address, TOKEN_ID);
+  uint constant TOKEN_ID = 1;
+
+  constructor() 
+    public  
+  {
+    NFTokenMock tokens = new NFTokenMock();
+    tokens.mint(address(this), TOKEN_ID);
+    tokens.safeTransferFrom(address(this), address(this), TOKEN_ID);
   }
 
 }

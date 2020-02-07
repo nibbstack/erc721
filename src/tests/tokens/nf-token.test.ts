@@ -405,6 +405,7 @@ spec.test('safeTransfer does not call onERC721Received to constructing contract'
     contract: 'SendsToSelfOnConstruct',
   });
 
-  const logs = sendsToSelfOnConstruct.logs;
-  ctx.is(logs.events.Received, undefined);
+  const receipt = sendsToSelfOnConstruct.receipt;
+  console.log(receipt.events.Received());
+  ctx.not(receipt.events.Received, undefined); // I want to confirm here that there is only one event (the mint(), and not the safeTransferFrom)
 });
