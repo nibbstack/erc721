@@ -94,7 +94,6 @@ contract MyArtSale is
    * @dev Contract constructor. Sets metadata extension `name` and `symbol`.
    */
   constructor()
-    public
   {
     nftName = "Frank's Art Sale";
     nftSymbol = "FAS";
