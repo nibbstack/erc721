@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "../tokens/nf-token-metadata.sol";
 import "../tokens/nf-token-enumerable.sol";
@@ -23,7 +24,6 @@ contract NFTokenMetadataEnumerableMock is
     string memory _name,
     string memory _symbol
   )
-    public
   {
     nftName = _name;
     nftSymbol = _symbol;

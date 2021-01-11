@@ -72,8 +72,8 @@
     "@specron/flattener": "0.15.1",
     "@specron/spec": "0.15.1",
     "@types/node": "13.7.0",
-    "solc": "0.6.2",
-    "solhint": "2.3.0",
+    "solc": "0.8.0",
+    "solhint": "3.3.2",
     "ts-node": "8.6.2",
     "typescript": "3.7.5",
     "web3": "1.2.5-rc.0"

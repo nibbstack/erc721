@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -41,7 +42,6 @@ contract NFTokenEnumerable is
    * @dev Contract constructor.
    */
   constructor()
-    public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
   }
