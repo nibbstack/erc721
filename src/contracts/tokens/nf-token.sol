@@ -1,8 +1,8 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "./erc721.sol";
 import "./erc721-token-receiver.sol";
-import "../math/safe-math.sol";
 import "../utils/supports-interface.sol";
 import "../utils/address-utils.sol";
 
@@ -13,17 +13,16 @@ contract NFToken is
   ERC721,
   SupportsInterface
 {
-  using SafeMath for uint256;
   using AddressUtils for address;
 
   /**
-   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * @dev List of revert message codes. Implementing dApp should handle showing the correct message.
    * Based on 0xcert framework error codes.
    */
   string constant ZERO_ADDRESS = "003001";
   string constant NOT_VALID_NFT = "003002";
   string constant NOT_OWNER_OR_OPERATOR = "003003";
-  string constant NOT_OWNER_APPROWED_OR_OPERATOR = "003004";
+  string constant NOT_OWNER_APPROVED_OR_OPERATOR = "003004";
   string constant NOT_ABLE_TO_RECEIVE_NFT = "003005";
   string constant NFT_ALREADY_EXISTS = "003006";
   string constant NOT_OWNER = "003007";
@@ -56,49 +55,6 @@ contract NFToken is
   mapping (address => mapping (address => bool)) internal ownerToOperators;
 
   /**
-   * @dev Emits when ownership of any NFT changes by any mechanism. This event emits when NFTs are
-   * created (`from` == 0) and destroyed (`to` == 0). Exception: during contract creation, any
-   * number of NFTs may be created and assigned without emitting Transfer. At the time of any
-   * transfer, the approved address for that NFT (if any) is reset to none.
-   * @param _from Sender of NFT (if address is zero address it indicates token creation).
-   * @param _to Receiver of NFT (if address is zero address it indicates token destruction).
-   * @param _tokenId The NFT that got transfered.
-   */
-  event Transfer(
-    address indexed _from,
-    address indexed _to,
-    uint256 indexed _tokenId
-  );
-
-  /**
-   * @dev This emits when the approved address for an NFT is changed or reaffirmed. The zero
-   * address indicates there is no approved address. When a Transfer event emits, this also
-   * indicates that the approved address for that NFT (if any) is reset to none.
-   * @param _owner Owner of NFT.
-   * @param _approved Address that we are approving.
-   * @param _tokenId NFT which we are approving.
-   */
-  event Approval(
-    address indexed _owner,
-    address indexed _approved,
-    uint256 indexed _tokenId
-  );
-
-  /**
-   * @dev This emits when an operator is enabled or disabled for an owner. The operator can manage
-   * all NFTs of the owner.
-   * @param _owner Owner of NFT.
-   * @param _operator Address to which we are setting operator rights.
-   * @param _approved Status of operator rights(true if operator rights are given and false if
-   * revoked).
-   */
-  event ApprovalForAll(
-    address indexed _owner,
-    address indexed _operator,
-    bool _approved
-  );
-
-  /**
    * @dev Guarantees that the msg.sender is an owner or operator of the given NFT.
    * @param _tokenId ID of the NFT to validate.
    */
@@ -107,7 +63,10 @@ contract NFToken is
   )
   {
     address tokenOwner = idToOwner[_tokenId];
-    require(tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender], NOT_OWNER_OR_OPERATOR);
+    require(
+      tokenOwner == msg.sender || ownerToOperators[tokenOwner][msg.sender],
+      NOT_OWNER_OR_OPERATOR
+    );
     _;
   }
 
@@ -124,7 +83,7 @@ contract NFToken is
       tokenOwner == msg.sender
       || idToApproval[_tokenId] == msg.sender
       || ownerToOperators[tokenOwner][msg.sender],
-      NOT_OWNER_APPROWED_OR_OPERATOR
+      NOT_OWNER_APPROVED_OR_OPERATOR
     );
     _;
   }
@@ -145,7 +104,6 @@ contract NFToken is
    * @dev Contract constructor.
    */
   constructor()
-    public
   {
     supportedInterfaces[0x80ac58cd] = true; // ERC721
   }
@@ -435,7 +393,7 @@ contract NFToken is
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to].add(1);
+    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to] + 1;
   }
 
   /**

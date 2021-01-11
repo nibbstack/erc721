@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 /**
  * @dev The contract has an owner address, and provides basic authorization control whitch
@@ -33,7 +34,6 @@ contract Ownable
    * @dev The constructor sets the original `owner` of the contract to the sender account.
    */
   constructor()
-    public
   {
     owner = msg.sender;
   }

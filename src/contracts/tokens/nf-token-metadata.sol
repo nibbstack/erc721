@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "./nf-token.sol";
 import "./erc721-metadata.sol";
@@ -31,7 +32,6 @@ contract NFTokenMetadata is
    * @notice When implementing this contract don't forget to set nftName and nftSymbol.
    */
   constructor()
-    public
   {
     supportedInterfaces[0x5b5e139f] = true; // ERC721Metadata
   }
