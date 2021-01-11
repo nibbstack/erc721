@@ -11,8 +11,7 @@ contract SupportsInterface is
 {
 
   /**
-   * @dev Mapping of supported intefraces.
-   * @notice You must not set element 0xffffffff to true.
+   * @dev Mapping of supported intefraces. You must not set element 0xffffffff to true.
    */
   mapping(bytes4 => bool) internal supportedInterfaces;
 
