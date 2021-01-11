@@ -3,7 +3,6 @@ pragma solidity 0.8.0;
 
 import "./erc721.sol";
 import "./erc721-token-receiver.sol";
-import "../math/safe-math.sol";
 import "../utils/supports-interface.sol";
 import "../utils/address-utils.sol";
 
@@ -17,7 +16,7 @@ contract NFToken is
   using AddressUtils for address;
 
   /**
-   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * @dev List of revert message codes. Implementing dApp should handle showing the correct message.
    * Based on 0xcert framework error codes.
    */
   string constant ZERO_ADDRESS = "003001";
