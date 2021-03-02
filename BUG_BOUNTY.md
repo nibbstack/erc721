@@ -8,7 +8,7 @@ The leaderboard will list all the contributors to this bounty.
 
 | Bug report | Severity | Researcher
 |-|-|-|
-| - | - | - |
+| #242 | Low severity | @sam-at-luther |
 
 ## Sponsors
 

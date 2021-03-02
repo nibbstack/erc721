@@ -1,9 +1,6 @@
 {
   "extends": "solhint:default",
   "rules": {
-    "indent": ["error", 2],
-    "bracket-align": "off",
-    "two-lines-top-level-separator": "off",
-    "max-line-length": 100
+    "max-line-length": ["warn", 100]
   }
 }

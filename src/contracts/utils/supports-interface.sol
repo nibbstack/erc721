@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "./erc165.sol";
 
@@ -10,8 +11,7 @@ contract SupportsInterface is
 {
 
   /**
-   * @dev Mapping of supported intefraces.
-   * @notice You must not set element 0xffffffff to true.
+   * @dev Mapping of supported intefraces. You must not set element 0xffffffff to true.
    */
   mapping(bytes4 => bool) internal supportedInterfaces;
 
@@ -19,7 +19,6 @@ contract SupportsInterface is
    * @dev Contract constructor.
    */
   constructor()
-    public
   {
     supportedInterfaces[0x01ffc9a7] = true; // ERC165
   }
