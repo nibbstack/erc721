@@ -14,7 +14,7 @@ The leaderboard will list all the contributors to this bounty.
 
 **Sponsor this bug bounty if you support ERC-721**. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
 
-[![0xcert](https://img.shields.io/badge/0xcert-50%20ETH-red.svg)](https://0xcert.org) [![William Entriken](https://img.shields.io/badge/William%20Entriken-5%20ETH-red.svg)](https://github.com/fulldecent) [![ERC-721 Bug Bounty Budget](https://img.shields.io/badge/ERC--721%20Bug%20Bounty%20Budget-55%20ETH-purple.svg)](https://etherscan.io/address/0xa2c60e9E1f6e6B2C16a6B8ECf3BdDAEf015C572b)
+[![0xcert](https://img.shields.io/badge/0xcert-10%20ETH-red.svg)](https://0xcert.org) [![William Entriken](https://img.shields.io/badge/William%20Entriken-2%20ETH-red.svg)](https://github.com/fulldecent) [![ERC-721 Bug Bounty Budget](https://img.shields.io/badge/ERC--721%20Bug%20Bounty%20Budget-12%20ETH-purple.svg)](https://etherscan.io/address/0xa2c60e9E1f6e6B2C16a6B8ECf3BdDAEf015C572b)
 
 Become a sponsor and be listed here as a contributor to the bug bounty fund: `0xa2c60e9E1f6e6B2C16a6B8ECf3BdDAEf015C572b`.
 
