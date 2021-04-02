@@ -176,7 +176,7 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Assignes a new NFT to an address.
+   * @dev Assigns a new NFT to an address.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
@@ -198,7 +198,7 @@ contract NFTokenEnumerable is
 
   /**
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
-   * extension to remove double storage(gas optimization) of owner nft count.
+   * extension to remove double storage(gas optimization) of owner NFT count.
    * @param _owner Address for whom to query the count.
    * @return Number of _owner NFTs.
    */

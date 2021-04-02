@@ -82,7 +82,7 @@ interface ERC721
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
    * address. Throws if `_tokenId` is not a valid NFT.
    * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
-   * they mayb be permanently lost.
+   * they may be permanently lost.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -134,8 +134,8 @@ interface ERC721
     returns (uint256);
 
   /**
-   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
-   * invalid, and queries about them do throw.
+   * @dev Returns the address of the owner of the NFT. NFTs assigned to the zero address are
+   * considered invalid, and queries about them do throw.
    * @param _tokenId The identifier for an NFT.
    * @return Address of _tokenId owner.
    */
