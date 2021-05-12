@@ -422,7 +422,7 @@ contract NFToken is
    */
   function _safeTransferFrom(
     address _from,
-    address _to,
+    ERC721TokenReceiver _to,
     uint256 _tokenId,
     bytes memory _data
   )
@@ -438,7 +438,7 @@ contract NFToken is
 
     if (_to.isContract())
     {
-      bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
+      bytes4 retval = _to.onERC721Received(msg.sender, _from, _tokenId, _data);
       require(retval == MAGIC_ON_ERC721_RECEIVED, NOT_ABLE_TO_RECEIVE_NFT);
     }
   }
