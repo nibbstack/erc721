@@ -452,10 +452,7 @@ contract NFToken is
   )
     private
   {
-    if (idToApproval[_tokenId] != address(0))
-    {
-      delete idToApproval[_tokenId];
-    }
+    delete idToApproval[_tokenId];
   }
 
 }
