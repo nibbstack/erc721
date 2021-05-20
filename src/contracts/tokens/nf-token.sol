@@ -373,7 +373,7 @@ contract NFToken is
     virtual
   {
     require(idToOwner[_tokenId] == _from, NOT_OWNER);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
+    ownerToNFTokenCount[_from] -= 1;
     delete idToOwner[_tokenId];
   }
 
@@ -393,7 +393,7 @@ contract NFToken is
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to] + 1;
+    ownerToNFTokenCount[_to] += 1;
   }
 
   /**
@@ -452,10 +452,7 @@ contract NFToken is
   )
     private
   {
-    if (idToApproval[_tokenId] != address(0))
-    {
-      delete idToApproval[_tokenId];
-    }
+    delete idToApproval[_tokenId];
   }
 
 }
