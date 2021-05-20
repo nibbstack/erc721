@@ -330,7 +330,7 @@ spec.test('throws when trying to safe transfers NFT from owner to a smart contra
   await ctx.reverts(() => nftoken.instance.methods.safeTransferFrom(bob, nftoken.receipt._address, id1).send({ from: bob }));
 });
 
-spec.test('corectly safe transfers NFT from owner to smart contract that can recieve NFTs', async (ctx) => {
+spec.test('corectly safe transfers NFT from owner to smart contract that can receive NFTs', async (ctx) => {
   const nftoken = ctx.get('nfToken');
   const owner = ctx.get('owner');
   const bob = ctx.get('bob');
@@ -353,7 +353,7 @@ spec.test('corectly safe transfers NFT from owner to smart contract that can rec
   ctx.is(ownerOfId1, tokenReceiver.receipt._address);
 });
 
-spec.test('corectly safe transfers NFT from owner to smart contract that can recieve NFTs with data', async (ctx) => {
+spec.test('corectly safe transfers NFT from owner to smart contract that can receive NFTs with data', async (ctx) => {
   const nftoken = ctx.get('nfToken');
   const owner = ctx.get('owner');
   const bob = ctx.get('bob');

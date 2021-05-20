@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
 
 import "./nf-token.sol";
 import "./erc721-enumerable.sol";
@@ -12,7 +13,7 @@ contract NFTokenEnumerable is
 {
 
   /**
-   * List of revert message codes. Implementing dApp should handle showing the correct message.
+   * @dev List of revert message codes. Implementing dApp should handle showing the correct message.
    * Based on 0xcert framework error codes.
    */
   string constant INVALID_INDEX = "005007";
@@ -41,7 +42,6 @@ contract NFTokenEnumerable is
    * @dev Contract constructor.
    */
   constructor()
-    public
   {
     supportedInterfaces[0x780e9d63] = true; // ERC721Enumerable
   }
@@ -176,7 +176,7 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Assignes a new NFT to an address.
+   * @dev Assigns a new NFT to an address.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
@@ -198,7 +198,7 @@ contract NFTokenEnumerable is
 
   /**
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
-   * extension to remove double storage(gas optimization) of owner nft count.
+   * extension to remove double storage(gas optimization) of owner NFT count.
    * @param _owner Address for whom to query the count.
    * @return Number of _owner NFTs.
    */
