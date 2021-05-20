@@ -29,7 +29,7 @@ contract NFToken is
   string constant IS_OWNER = "003008";
 
   /**
-   * @dev Magic value of a smart contract that can recieve NFT.
+   * @dev Magic value of a smart contract that can receive NFT.
    * Equal to: bytes4(keccak256("onERC721Received(address,address,uint256,bytes)")).
    */
   bytes4 internal constant MAGIC_ON_ERC721_RECEIVED = 0x150b7a02;
@@ -45,7 +45,7 @@ contract NFToken is
   mapping (uint256 => address) internal idToApproval;
 
    /**
-   * @dev Mapping from owner address to count of his tokens.
+   * @dev Mapping from owner address to count of their tokens.
    */
   mapping (address => uint256) private ownerToNFTokenCount;
 
@@ -159,7 +159,7 @@ contract NFToken is
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
    * address. Throws if `_tokenId` is not a valid NFT. This function can be changed to payable.
    * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
-   * they maybe be permanently lost.
+   * they may be permanently lost.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -241,8 +241,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Returns the address of the owner of the NFT. NFTs assigned to zero address are considered
-   * invalid, and queries about them do throw.
+   * @dev Returns the address of the owner of the NFT. NFTs assigned to the zero address are
+   * considered invalid, and queries about them do throw.
    * @param _tokenId The identifier for an NFT.
    * @return _owner Address of _tokenId owner.
    */
@@ -295,7 +295,7 @@ contract NFToken is
   }
 
   /**
-   * @dev Actually preforms the transfer.
+   * @dev Actually performs the transfer.
    * @notice Does NO checks.
    * @param _to Address of a new owner.
    * @param _tokenId The NFT that is being transferred.
@@ -362,7 +362,7 @@ contract NFToken is
   /**
    * @dev Removes a NFT from owner.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
-   * @param _from Address from wich we want to remove the NFT.
+   * @param _from Address from which we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
   function _removeNFToken(
@@ -373,14 +373,14 @@ contract NFToken is
     virtual
   {
     require(idToOwner[_tokenId] == _from, NOT_OWNER);
-    ownerToNFTokenCount[_from] = ownerToNFTokenCount[_from] - 1;
+    ownerToNFTokenCount[_from] -= 1;
     delete idToOwner[_tokenId];
   }
 
   /**
-   * @dev Assignes a new NFT to owner.
+   * @dev Assigns a new NFT to owner.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
-   * @param _to Address to wich we want to add the NFT.
+   * @param _to Address to which we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */
   function _addNFToken(
@@ -393,12 +393,12 @@ contract NFToken is
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     idToOwner[_tokenId] = _to;
-    ownerToNFTokenCount[_to] = ownerToNFTokenCount[_to] + 1;
+    ownerToNFTokenCount[_to] += 1;
   }
 
   /**
    * @dev Helper function that gets NFT count of owner. This is needed for overriding in enumerable
-   * extension to remove double storage (gas optimization) of owner nft count.
+   * extension to remove double storage (gas optimization) of owner NFT count.
    * @param _owner Address for whom to query the count.
    * @return Number of _owner NFTs.
    */
@@ -452,10 +452,7 @@ contract NFToken is
   )
     private
   {
-    if (idToApproval[_tokenId] != address(0))
-    {
-      delete idToApproval[_tokenId];
-    }
+    delete idToApproval[_tokenId];
   }
 
 }
