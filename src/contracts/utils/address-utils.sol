@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.0;
+pragma solidity 0.8.6;
 
 /**
  * @dev Utility library of inline functions on addresses.
