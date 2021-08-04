@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10, 12, 14, 15, 16] # https://nodejs.org/en/about/releases/
+        node-version: [10, 12, 14] # https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -18,5 +18,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        npm ci
+        npm i
         npm run solhint && npm test
