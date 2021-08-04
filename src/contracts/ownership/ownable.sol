@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.0;
+pragma solidity 0.8.6;
 
 /**
  * @dev The contract has an owner address, and provides basic authorization control whitch

@@ -72,7 +72,7 @@
     "@specron/flattener": "0.17.6",
     "@specron/spec": "0.17.6",
     "@types/node": "16.4.11",
-    "solc": "0.8.0",
+    "solc": "0.8.6",
     "solhint": "3.3.6",
     "ts-node": "10.1.0",
     "typescript": "4.3.5",
