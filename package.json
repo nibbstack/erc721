@@ -68,14 +68,14 @@
     "standard"
   ],
   "devDependencies": {
-    "@specron/cli": "0.17.3",
-    "@specron/flattener": "0.17.3",
-    "@specron/spec": "0.17.3",
-    "@types/node": "14.14.20",
+    "@specron/cli": "0.17.6",
+    "@specron/flattener": "0.17.6",
+    "@specron/spec": "0.17.6",
+    "@types/node": "16.4.11",
     "solc": "0.8.6",
-    "solhint": "^3.3.6",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.3.5",
-    "web3": "1.3.1"
+    "solhint": "3.3.6",
+    "ts-node": "10.1.0",
+    "typescript": "4.3.5",
+    "web3": "1.5.0"
   }
 }

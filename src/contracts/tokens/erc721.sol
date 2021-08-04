@@ -123,6 +123,7 @@ interface ERC721
   /**
    * @dev Returns the number of NFTs owned by `_owner`. NFTs assigned to the zero address are
    * considered invalid, and this function throws for queries about the zero address.
+   * @notice Count all NFTs assigned to an owner.
    * @param _owner Address for whom to query the balance.
    * @return Balance of _owner.
    */
@@ -136,6 +137,7 @@ interface ERC721
   /**
    * @dev Returns the address of the owner of the NFT. NFTs assigned to the zero address are
    * considered invalid, and queries about them do throw.
+   * @notice Find the owner of an NFT.
    * @param _tokenId The identifier for an NFT.
    * @return Address of _tokenId owner.
    */
@@ -161,6 +163,7 @@ interface ERC721
 
   /**
    * @dev Returns true if `_operator` is an approved operator for `_owner`, false otherwise.
+   * @notice Query if an address is an authorized operator for another address
    * @param _owner The address that owns the NFTs.
    * @param _operator The address that acts on behalf of the owner.
    * @return True if approved for all, false otherwise.
