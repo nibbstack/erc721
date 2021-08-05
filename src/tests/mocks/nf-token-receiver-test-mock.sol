@@ -15,7 +15,6 @@ contract NFTokenReceiverTestMock is
     bytes calldata _data
   )
     external
-    pure
     override
     returns(bytes4)
   {
