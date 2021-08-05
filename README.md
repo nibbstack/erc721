@@ -24,7 +24,7 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 
 ## Requirements
 
-* NodeJS 9.0+ is supported
+* NodeJS 12+ is supported
 * Windows, Linux or macOS
 
 ## Installation
@@ -77,7 +77,7 @@ You have created and have possession of unique glass-blown artwork (each having 
 To do this, simply paste the code below into Remix and deploy the smart contract. You will "mint" a token for each new piece of artwork you want to see. Then you will "burn" that token when you surrender physical possession of the piece.
 
 ```solidity
-pragma solidity 0.8.0;
+pragma solidity 0.8.6;
 
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
