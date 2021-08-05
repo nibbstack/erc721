@@ -1,4 +1,5 @@
-pragma solidity 0.6.2;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.6;
 
 import "../../contracts/mocks/nf-token-mock.sol";
 import "./nf-token-receiver-test-mock.sol";
@@ -8,8 +9,7 @@ contract SendsToSelfOnConstruct is
 {
   uint constant TOKEN_ID = 1;
 
-  constructor() 
-    public  
+  constructor()
   {
     NFTokenMock tokens = new NFTokenMock();
     tokens.mint(address(this), TOKEN_ID);
