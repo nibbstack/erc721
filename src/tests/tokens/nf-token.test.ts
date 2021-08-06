@@ -405,7 +405,9 @@ spec.test('safeTransfer does not call onERC721Received to constructing contract'
     contract: 'SendsToSelfOnConstruct',
   });
 
-  const receipt = sendsToSelfOnConstruct.receipt;
-  console.log(receipt.events.Received());
-  ctx.not(receipt.events.Received, undefined); // I want to confirm here that there is only one event (the mint(), and not the safeTransferFrom)
+  const logs = sendsToSelfOnConstruct.receipt.logs;
+  ctx.is(logs.length, 2); // There need to be 2 logs. First transfer event for creating the token. Second transfer event for sending yourself a token.
+  // There must not be a Receive event.
+  ctx.is(logs[0].topics[0], '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'); // this represents transfer topic hash
+  ctx.is(logs[1].topics[0], '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'); // this represents transfer topic hash
 });
