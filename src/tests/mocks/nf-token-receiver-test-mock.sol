@@ -6,6 +6,7 @@ import "../../contracts/tokens/erc721-token-receiver.sol";
 contract NFTokenReceiverTestMock is
   ERC721TokenReceiver
 {
+  event Received();
 
   function onERC721Received(
     address _operator,
@@ -14,7 +15,6 @@ contract NFTokenReceiverTestMock is
     bytes calldata _data
   )
     external
-    pure
     override
     returns(bytes4)
   {
@@ -22,6 +22,7 @@ contract NFTokenReceiverTestMock is
     _from;
     _tokenId;
     _data;
+    emit Received();
     return 0x150b7a02;
   }
 

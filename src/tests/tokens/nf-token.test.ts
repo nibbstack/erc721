@@ -398,3 +398,16 @@ spec.test('throws when trying to burn non existant NFT', async (ctx) => {
 
   await ctx.reverts(() => nftoken.instance.methods.burn(id1).send({ from: owner }), '003002');
 });
+
+spec.test('safeTransfer does not call onERC721Received to constructing contract', async (ctx) => {
+  const sendsToSelfOnConstruct = await ctx.deploy({ 
+    src: './build/sends-to-self-on-construct.json',
+    contract: 'SendsToSelfOnConstruct',
+  });
+
+  const logs = sendsToSelfOnConstruct.receipt.logs;
+  ctx.is(logs.length, 2); // There need to be 2 logs. First transfer event for creating the token. Second transfer event for sending yourself a token.
+  // There must not be a Receive event.
+  ctx.is(logs[0].topics[0], '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'); // this represents transfer topic hash
+  ctx.is(logs[1].topics[0], '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'); // this represents transfer topic hash
+});
