@@ -96,10 +96,10 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Mints a new NFT.
    * @notice This is an internal function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
+   * @dev Mints a new NFT.
    * @param _to The address that will own the minted NFT.
    * @param _tokenId of the NFT to be minted by the msg.sender.
    */
@@ -117,11 +117,11 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Burns a NFT.
    * @notice This is an internal function which should be called from user-implemented external
    * burn function. Its purpose is to show and properly initialize data structures when using this
    * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
    * NFT.
+   * @dev Burns a NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
@@ -146,8 +146,8 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Removes a NFT from an address.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
+   * @dev Removes a NFT from an address.
    * @param _from Address from wich we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
@@ -176,8 +176,8 @@ contract NFTokenEnumerable is
   }
 
   /**
-   * @dev Assigns a new NFT to an address.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
+   * @dev Assigns a new NFT to an address.
    * @param _to Address to wich we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */

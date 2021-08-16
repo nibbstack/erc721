@@ -109,14 +109,14 @@ contract NFToken is
   }
 
   /**
-   * @dev Transfers the ownership of an NFT from one address to another address. This function can
-   * be changed to payable.
    * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
    * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
    * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
    * function checks if `_to` is a smart contract (code size > 0). If so, it calls
    * `onERC721Received` on `_to` and throws if the return value is not
    * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
+   * @dev Transfers the ownership of an NFT from one address to another address. This function can
+   * be changed to payable.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -135,10 +135,10 @@ contract NFToken is
   }
 
   /**
+   * @notice This works identically to the other function with an extra data parameter, except this
+   * function just sets data to "".
    * @dev Transfers the ownership of an NFT from one address to another address. This function can
    * be changed to payable.
-   * @notice This works identically to the other function with an extra data parameter, except this
-   * function just sets data to ""
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -155,11 +155,11 @@ contract NFToken is
   }
 
   /**
+   * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
+   * they may be permanently lost.
    * @dev Throws unless `msg.sender` is the current owner, an authorized operator, or the approved
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
    * address. Throws if `_tokenId` is not a valid NFT. This function can be changed to payable.
-   * @notice The caller is responsible to confirm that `_to` is capable of receiving NFTs or else
-   * they may be permanently lost.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -182,9 +182,9 @@ contract NFToken is
   }
 
   /**
-   * @dev Set or reaffirm the approved address for an NFT. This function can be changed to payable.
    * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
    * the current NFT owner, or an authorized operator of the current owner.
+   * @dev Set or reaffirm the approved address for an NFT. This function can be changed to payable.
    * @param _approved Address to be approved for the given NFT ID.
    * @param _tokenId ID of the token to be approved.
    */
@@ -205,9 +205,9 @@ contract NFToken is
   }
 
   /**
+   * @notice This works even if sender doesn't own any tokens at the time.
    * @dev Enables or disables approval for a third party ("operator") to manage all of
    * `msg.sender`'s assets. It also emits the ApprovalForAll event.
-   * @notice This works even if sender doesn't own any tokens at the time.
    * @param _operator Address to add to the set of authorized operators.
    * @param _approved True if the operators is approved, false to revoke approval.
    */
@@ -259,8 +259,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Get the approved address for a single NFT.
    * @notice Throws if `_tokenId` is not a valid NFT.
+   * @dev Get the approved address for a single NFT.
    * @param _tokenId ID of the NFT to query the approval of.
    * @return Address that _tokenId is approved for.
    */
@@ -295,8 +295,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Actually performs the transfer.
    * @notice Does NO checks.
+   * @dev Actually performs the transfer.
    * @param _to Address of a new owner.
    * @param _tokenId The NFT that is being transferred.
    */
@@ -316,10 +316,10 @@ contract NFToken is
   }
 
   /**
-   * @dev Mints a new NFT.
    * @notice This is an internal function which should be called from user-implemented external
    * mint function. Its purpose is to show and properly initialize data structures when using this
    * implementation.
+   * @dev Mints a new NFT.
    * @param _to The address that will own the minted NFT.
    * @param _tokenId of the NFT to be minted by the msg.sender.
    */
@@ -339,11 +339,11 @@ contract NFToken is
   }
 
   /**
-   * @dev Burns a NFT.
    * @notice This is an internal function which should be called from user-implemented external burn
    * function. Its purpose is to show and properly initialize data structures when using this
    * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
    * NFT.
+   * @dev Burns a NFT.
    * @param _tokenId ID of the NFT to be burned.
    */
   function _burn(
@@ -360,8 +360,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Removes a NFT from owner.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
+   * @dev Removes a NFT from owner.
    * @param _from Address from which we want to remove the NFT.
    * @param _tokenId Which NFT we want to remove.
    */
@@ -378,8 +378,8 @@ contract NFToken is
   }
 
   /**
-   * @dev Assigns a new NFT to owner.
    * @notice Use and override this function with caution. Wrong usage can have serious consequences.
+   * @dev Assigns a new NFT to owner.
    * @param _to Address to which we want to add the NFT.
    * @param _tokenId Which NFT we want to add.
    */
