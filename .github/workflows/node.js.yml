@@ -21,3 +21,7 @@ jobs:
         npm ci
         npm run solhint && npm test
         npm run coverage
+    - name: Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        flags: unittests
