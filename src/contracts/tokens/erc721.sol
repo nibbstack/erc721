@@ -48,7 +48,8 @@ interface ERC721
    * function checks if `_to` is a smart contract (code size > 0). If so, it calls
    * `onERC721Received` on `_to` and throws if the return value is not
    * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
-   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @dev Transfers the ownership of an NFT from one address to another address. This function can
+   * be changed to payable.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -65,7 +66,8 @@ interface ERC721
   /**
    * @notice This works identically to the other function with an extra data parameter, except this
    * function just sets data to ""
-   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @dev Transfers the ownership of an NFT from one address to another address. This function can
+   * be changed to payable.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -82,7 +84,7 @@ interface ERC721
    * they may be permanently lost.
    * @dev Throws unless `msg.sender` is the current owner, an authorized operator, or the approved
    * address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is the zero
-   * address. Throws if `_tokenId` is not a valid NFT.
+   * address. Throws if `_tokenId` is not a valid NFT.  This function can be changed to payable.
    * @param _from The current owner of the NFT.
    * @param _to The new owner.
    * @param _tokenId The NFT to transfer.
@@ -98,7 +100,7 @@ interface ERC721
    * @notice The zero address indicates there is no approved address. Throws unless `msg.sender` is
    * the current NFT owner, or an authorized operator of the current owner.
    * @param _approved The new approved NFT controller.
-   * @dev Set or reaffirm the approved address for an NFT.
+   * @dev Set or reaffirm the approved address for an NFT. This function can be changed to payable.
    * @param _tokenId The NFT to approve.
    */
   function approve(
