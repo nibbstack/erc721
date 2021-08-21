@@ -79,7 +79,7 @@ How to win:
 
 - Be descriptive and detailed when describing your issue
 - Fix it — recommend a way to solve the problem
-- Include a [Specron test](https://specron.github.io/framework/) case that we can reproduce
+- Include a [Hardhat test](https://hardhat.org/) case that we can reproduce
 
 Rules for bounty sponsor:
 
