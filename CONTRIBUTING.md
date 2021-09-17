@@ -16,10 +16,9 @@ The full style guide is available [here](https://github.com/0xcert/solidity-styl
 
 ## Release process
 
-The release manager is responsible to follow this process for each release of this project.
+The release manager is responsible to follow the process for each release of this project.
 
-1. Summarize the changes and create a release using [GitHub releases](https://github.com/0xcert/solidity-style-guide/releases).
-2. Create a branch/pull request against https://github.com/0xcert/framework/tree/master/packages/0xcert-ethereum-erc721-contracts for any relevant changes since the last release here
+Summarize the changes and create a release using [GitHub releases](https://github.com/0xcert/solidity-style-guide/releases). Note that only major releases are required to be fully documented.
 
 ```
 $ npm i
