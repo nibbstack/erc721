@@ -123,6 +123,10 @@ contract MyArtSale is
 
 *You should contact a lawyer before holding an auction, or selling anything. Specifically, laws for auctions vary wildly by jurisdiction. This application is provided only as an example of the technology and is not legal advice.*
 
+### Validation
+
+You can check the validity of the smart contract, the correctness of the implementation and the supported functions of the respective smart contract using the online validator at https://erc721validator.org/.
+
 ## Playground
 
 ### Ethereum - Ropsten testnet
