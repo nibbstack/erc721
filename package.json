@@ -1,6 +1,6 @@
 {
   "name": "@0xcert/ethereum-erc721",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
   "scripts": {
     "test": "npx hardhat test",
