@@ -76,6 +76,23 @@ contract NFTokenMetadata is
     validNFToken(_tokenId)
     returns (string memory)
   {
+    return _tokenURI(_tokenId);
+  }
+
+  /**
+   * @notice This is an internal function that can be overriden if you want to implement a different
+   * way to generate token URI.
+   * @param _tokenId Id for which we want uri.
+   * @return URI of _tokenId.
+   */
+  function _tokenURI(
+    uint256 _tokenId
+  )
+    internal
+    virtual
+    view
+    returns (string memory)
+  {
     return idToUri[_tokenId];
   }
 
