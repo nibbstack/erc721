@@ -1,5 +1,5 @@
 {
-  "name": "@0xcert/ethereum-erc721",
+  "name": "@nibbstack/erc721",
   "version": "2.5.0",
   "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
   "scripts": {

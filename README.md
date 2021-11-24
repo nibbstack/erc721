@@ -2,7 +2,7 @@
 
 # ERC-721 Token — Reference Implementation
 
-**NOTICE: This repository has been transferred from 0xcert to Nibbstack. The documentation has not yet been fully updated but you can safely continue to use the existing packages.**
+**NOTICE: This repository has been transferred from 0xcert to Nibbstack and thus renamed from 0xcert/ethereum-erc721 to @nibbstack/erc721.**
 
 This is the complete reference implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum and Wanchain blockchains. It is also compatible with other EVM compatible chains like Binance Smart Chain (BSC), Avalanche (AVAX) etc. This is an open-source project, complete with [Hardhat](https://hardhat.org/) testing.
 
