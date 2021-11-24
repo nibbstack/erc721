@@ -4,7 +4,7 @@ const { expect } = require('chai');
 describe('nf-token-metadata', function() {
   let nfToken, owner, bob;
   const id1 = 1;
-  const uri1 = 'http://0xcert.org/1';
+  const uri1 = 'http://nibbstack.com/1';
 
   beforeEach(async () => {
     const nftContract = await ethers.getContractFactory('NFTokenMetadataTestMock');

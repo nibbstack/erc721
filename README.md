@@ -1,13 +1,15 @@
-![Build Status](https://travis-ci.org/0xcert/ethereum-erc721.svg?branch=master)&nbsp;[![codecov](https://codecov.io/gh/0xcert/ethereum-erc721/branch/master/graph/badge.svg?token=F0tgRHyWSM)](https://codecov.io/gh/0xcert/ethereum-erc721)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@0xcert/ethereum-erc721)&nbsp;[![Dependencies Status](https://david-dm.org/0xcert/ethereum-erc721.svg)](https://david-dm.org/0xcert/ethereum-erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/0xcert/ethereum-erc721/blob/master/BUG_BOUNTY.md)
+![Build Status](https://travis-ci.org/nibbstack/erc721.svg?branch=master)&nbsp;[![codecov](https://codecov.io/gh/nibbstack/erc721/branch/master/graph/badge.svg?token=F0tgRHyWSM)](https://codecov.io/gh/nibbstack/erc721)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721)&nbsp;[![Dependencies Status](https://david-dm.org/nibbstack/erc721.svg)](https://david-dm.org/nibbstack/erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/nibbstack/erc721/blob/master/BUG_BOUNTY.md)
 
 # ERC-721 Token — Reference Implementation
+
+**NOTICE: This repository has been transferred from 0xcert to Nibbstack. The documentation has not yet been fully updated but you can safely continue to use the existing packages.**
 
 This is the complete reference implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum and Wanchain blockchains. It is also compatible with other EVM compatible chains like Binance Smart Chain (BSC), Avalanche (AVAX) etc. This is an open-source project, complete with [Hardhat](https://hardhat.org/) testing.
 
 The purpose of this implementation is to provide a good starting point for anyone who wants to use and develop non-fungible tokens on the Ethereum and Wanchain blockchains. Instead of re-implementing the ERC-721 yourself you can use this code which has gone through multiple audits and we hope it will be extensively used by the community in the future.
 Note that this implementation is more restrictive then the ERC-721 standard since it does not support `payable` function calls out of the box. You are however free to add this yourself.
 
-If you are looking for a more feature-rich and advanced ERC721 implementation, then check out the [0xcert Framework](https://github.com/0xcert/framework).
+If you are looking for a more feature-rich and advanced ERC-721 implementation, then check out the [0xcert Framework](https://github.com/0xcert/framework).
 
 ## Structure
 
@@ -34,20 +36,20 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 
 *This is the recommended installation method if you want to use this package in your JavaScript project.*
 
-This project is [released as an npm module](https://www.npmjs.com/package/@0xcert/ethereum-erc721). You must install it using the `npm` command:
+This project is [released as an npm module](https://www.npmjs.com/package/@nibbstack/erc721). You must install it using the `npm` command:
 
 ```
-$ npm install @0xcert/ethereum-erc721@2.0.0
+$ npm install @nibbstack/erc721@2.0.0
 ```
 
 ### Source
 
-*This is the recommended installation method if you want to improve the `0xcert/ethereum-erc721` project.*
+*This is the recommended installation method if you want to improve the `nibbstack/erc721` project.*
 
 Clone this repository and install the required `npm` dependencies:
 
 ```
-$ git clone git@github.com:0xcert/ethereum-erc721.git
+$ git clone git@github.com:nibbstack/erc721.git
 $ cd ethereum-erc721
 $ npm install
 ```
@@ -65,7 +67,7 @@ $ npm run test
 To interact with this package's contracts within JavaScript code, you simply need to require this package's `.json` files:
 
 ```js
-const contract = require("@0xcert/ethereum-erc721/build/nf-token-enumerable.json");
+const contract = require("@nibbstack/erc721/build/nf-token-enumerable.json");
 console.log(contract);
 ```
 
@@ -80,8 +82,8 @@ To do this, simply paste the code below into Remix and deploy the smart contract
 ```solidity
 pragma solidity ^0.8.0;
 
-import "https://github.com/0xcert/ethereum-erc721/src/contracts/tokens/nf-token-metadata.sol";
-import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownable.sol";
+import "https://github.com/nibbstack/erc721/src/contracts/tokens/nf-token-metadata.sol";
+import "https://github.com/nibbstack/erc721/src/contracts/ownership/ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.
@@ -157,7 +159,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
 You are somebody that reads the documentation of smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
 
-If your project depends on ERC-721 or you want to help improve the assurance of this project then you can pledge a bounty. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@0xcert.org](mailto:bounty@0xcert.org) if interested. Thank you.
+If your project depends on ERC-721 or you want to help improve the assurance of this project then you can pledge a bounty. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@nibbstack.com](mailto:bounty@nibbstack.com) if interested. Thank you.
 
 Read the full [bug bounty program](BUG_BOUNTY.md).
 
