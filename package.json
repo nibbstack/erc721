@@ -9,16 +9,15 @@
     "coverage": "npx hardhat coverage",
     "solhint": "solhint src/**/*.sol"
   },
-  "author": "0xcert",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/0xcert/ethereum-erc721.git"
+    "url": "git+https://github.com/nibbstack/erc721.git"
   },
   "bugs": {
-    "url": "https://github.com/0xcert/etheethereum-erc721reum/issues"
+    "url": "https://github.com/nibbstack/erc721/issues"
   },
-  "homepage": "https://github.com/0xcert/ethereum-erc721#readme",
+  "homepage": "https://github.com/nibbstack/erc721#readme",
   "keywords": [
     "ethereum",
     "blockchain",

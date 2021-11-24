@@ -6,9 +6,9 @@ describe('nf-token-enumerable', function() {
   const id1 = 123;
   const id2 = 124;
   const id3 = 125;
-  const uri1 = 'http://0xcert.org/1';
-  const uri2 = 'http://0xcert.org/2';
-  const uri3 = 'http://0xcert.org/3';
+  const uri1 = 'http://nibbstack.com/1';
+  const uri2 = 'http://nibbstack.com/2';
+  const uri3 = 'http://nibbstack.com/3';
 
   beforeEach(async () => {
     const nftContract = await ethers.getContractFactory('NFTokenMetadataEnumerableTestMock');
