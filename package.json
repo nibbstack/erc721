@@ -1,7 +1,7 @@
 {
-  "name": "@0xcert/ethereum-erc721",
+  "name": "@nibbstack/erc721",
   "version": "2.5.0",
-  "description": "Non-fungible token standard implementation for the Ethereum blockchain.",
+  "description": "Reference implementation of the ERC-721 non-fungible token standard.",
   "scripts": {
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",

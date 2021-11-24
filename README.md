@@ -2,7 +2,7 @@
 
 # ERC-721 Token — Reference Implementation
 
-**NOTICE: This repository has been transferred from 0xcert to Nibbstack. The documentation has not yet been fully updated but you can safely continue to use the existing packages.**
+**NOTICE: This repository has been transferred from 0xcert to Nibbstack and thus renamed from 0xcert/ethereum-erc721 to @nibbstack/erc721.**
 
 This is the complete reference implementation of the [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) non-fungible token standard for the Ethereum and Wanchain blockchains. It is also compatible with other EVM compatible chains like Binance Smart Chain (BSC), Avalanche (AVAX) etc. This is an open-source project, complete with [Hardhat](https://hardhat.org/) testing.
 
@@ -39,7 +39,7 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 This project is [released as an npm module](https://www.npmjs.com/package/@nibbstack/erc721). You must install it using the `npm` command:
 
 ```
-$ npm install @nibbstack/erc721@2.0.0
+$ npm install @nibbstack/erc721@2.5.0
 ```
 
 ### Source

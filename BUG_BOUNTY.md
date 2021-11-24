@@ -38,7 +38,7 @@ Help us find any problems with this contract and with ERC-721 in general. This b
 - Issues that have already been published here or are already disclosed to the Nibbstack team are not eligible for rewards (a corollary, the Nibbstack team members are ineligible for rewards).
 - Social engineering, XKCD#538 attacks, bringing down Mainnet/Infura are not in scope and will NOT be paid a reward.
 - Only the end-user contracts (`src/contracts/**/*.sol`) are in scope.
-- Only the latest released version of this project [![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@0xcert/ethereum-erc721) is in scope.
+- Only the latest released version of this project [![NPM Version](https://badge.fury.io/js/@nibbstack%2Ferc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721) is in scope.
 - Only Ethereum mainnet is in scope. We intend to add other blockchains at a future date such as Hyperledger Burrow, Ethereum Classic, and POA Network.
 - [GitHub Issues](https://github.com/nibbstack/erc721/issues) is the only way to report issues and request rewards.
 - The Nibbstack team has complete and final judgment on the acceptability of bug reports.
