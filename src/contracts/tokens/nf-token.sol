@@ -305,6 +305,7 @@ contract NFToken is
     uint256 _tokenId
   )
     internal
+    virtual
   {
     address from = idToOwner[_tokenId];
     _clearApproval(_tokenId);
