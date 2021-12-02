@@ -67,7 +67,7 @@ $ npm run test
 To interact with this package's contracts within JavaScript code, you simply need to require this package's `.json` files:
 
 ```js
-const contract = require("@nibbstack/erc721/build/nf-token-enumerable.json");
+const contract = require("@nibbstack/erc721/abi/NFTokenEnumerable.json");
 console.log(contract);
 ```
 

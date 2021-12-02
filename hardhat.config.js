@@ -18,7 +18,7 @@ module.exports = {
     tests: './src/tests/*'
   },
   abiExporter: {
-    path: './data/abi',
+    path: './abi',
     clear: true,
     flat: true,
   }
