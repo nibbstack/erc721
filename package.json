@@ -1,6 +1,6 @@
 {
   "name": "@nibbstack/erc721",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Reference implementation of the ERC-721 non-fungible token standard.",
   "scripts": {
     "test": "npx hardhat test",

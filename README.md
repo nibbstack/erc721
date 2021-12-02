@@ -39,7 +39,7 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 This project is [released as an npm module](https://www.npmjs.com/package/@nibbstack/erc721). You must install it using the `npm` command:
 
 ```
-$ npm install @nibbstack/erc721@2.5.0
+$ npm install @nibbstack/erc721@2.6.1
 ```
 
 ### Source
