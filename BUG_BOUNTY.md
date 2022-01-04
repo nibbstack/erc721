@@ -14,10 +14,6 @@ The leaderboard will list all the contributors to this bounty.
 
 **Sponsor this bug bounty if you support ERC-721**. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@nibbstack.com](mailto:bounty@nibbstack.com) if interested. Thank you.
 
-[![nibbstack](https://img.shields.io/badge/nibbstack-1%20ETH-red.svg)](https://nibbstack.com) [![William Entriken](https://img.shields.io/badge/William%20Entriken-1%20ETH-red.svg)](https://github.com/fulldecent) [![ERC-721 Bug Bounty Budget](https://img.shields.io/badge/ERC--721%20Bug%20Bounty%20Budget-2%20ETH-purple.svg)](https://etherscan.io/address/0xa2c60e9E1f6e6B2C16a6B8ECf3BdDAEf015C572b)
-
-Become a sponsor and be listed here as a contributor to the bug bounty fund: `0xa2c60e9E1f6e6B2C16a6B8ECf3BdDAEf015C572b`.
-
 ## Scope of this bounty program
 
 This bounty is open for an unlimited time. A previous limited-time bounty program was:
