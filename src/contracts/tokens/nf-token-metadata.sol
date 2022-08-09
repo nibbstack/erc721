@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./nf-token.sol";
-import "./erc721-metadata.sol";
+import "../interface/erc721-metadata.sol";
 
 /**
  * @dev Optional metadata implementation for ERC-721 non-fungible token standard.

@@ -7,7 +7,8 @@
     "compile": "npx hardhat compile",
     "flatten": "npx hardhat flatten",
     "coverage": "npx hardhat coverage",
-    "solhint": "solhint src/**/*.sol"
+    "solhint": "solhint src/**/*.sol",
+    "solhint:fix": "solhint --fix src/**/*.sol"
   },
   "license": "MIT",
   "repository": {

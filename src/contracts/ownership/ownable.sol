@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
  * @dev The contract has an owner address, and provides basic authorization control whitch
  * simplifies the implementation of user permissions. This contract is based on the source code at:
  * https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol
+ * NFT 的所有权
  */
 contract Ownable
 {

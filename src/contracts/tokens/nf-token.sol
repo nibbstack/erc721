@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./erc721.sol";
-import "./erc721-token-receiver.sol";
+import "../interface/erc721.sol";
+import "../interface/erc721-token-receiver.sol";
 import "../utils/supports-interface.sol";
 import "../utils/address-utils.sol";
 
