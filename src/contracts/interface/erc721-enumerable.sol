@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 /**
  * @dev Optional enumeration extension for ERC-721 non-fungible token standard.
  * See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md.
- * 着重于整体NFT的存放、列举
  */
 interface ERC721Enumerable {
   /**
@@ -12,14 +11,22 @@ interface ERC721Enumerable {
     * assigned and queryable owner not equal to the zero address.
     * @return Total supply of NFTs.
     */
-  function totalSupply() external view returns (uint256);
+  function totalSupply()
+    external
+    view
+    returns (uint256);
 
   /**
     * @dev Returns the token identifier for the `_index`th NFT. Sort order is not specified.
     * @param _index A counter less than `totalSupply()`.
     * @return Token id.
     */
-  function tokenByIndex(uint256 _index) external view returns (uint256);
+  function tokenByIndex(
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256);
 
   /**
     * @dev Returns the token identifier for the `_index`th NFT assigned to `_owner`. Sort order is
@@ -31,8 +38,9 @@ interface ERC721Enumerable {
     */
   function tokenOfOwnerByIndex(
     address _owner,
-    uint256 _index)
-      external
-      view
-      returns (uint256);
+    uint256 _index
+  )
+    external
+    view
+    returns (uint256);
 }

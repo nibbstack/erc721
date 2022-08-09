@@ -12,8 +12,8 @@ contract NFT is NFTokenMetadata, Ownable {
      * @dev Contract constructor. Sets metadata extension `name` and `symbol`.
      */
     constructor() {
-        nftName = "Frank's Art Sale";
-        nftSymbol = "FAS";
+        nftName = "yzm token";
+        nftSymbol = "YZM";
     }
 
     /**

@@ -14,12 +14,13 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     * Based on 0xcert framework error codes.
     */
   string constant INVALID_INDEX = "005007";
+  string constant OUT_OF_MAX_SUPPLY = "005008";
 
   /**
     * @dev Total supply NTFs
-    * Unlimited total amount if _totalSupply = 0
+    * Unlimited total amount if maxSupply = 0
     */
-  uint256 _totalSupply = 0;
+  uint256 internal maxSupply = 0;
 
   /**
     * @dev Array of all NFT IDs.
@@ -54,6 +55,17 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     */
   function totalSupply() external view override returns (uint256) {
     return tokens.length;
+  }
+
+  /**
+    * @dev Returns the max count of this NFT collection.
+    * @return Total max supply of NFTs.
+    */
+  function getMaxSupply() external view returns (uint256) {
+    if (maxSupply == 0) {
+      return tokens.length;
+    }
+    return maxSupply;
   }
 
   /**
@@ -96,6 +108,8 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     * @param _tokenId of the NFT to be minted by the msg.sender.
     */
   function _mint(address _to, uint256 _tokenId) internal virtual override {
+    require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
+
     super._mint(_to, _tokenId);
     tokens.push(_tokenId);
     idToIndex[_tokenId] = tokens.length - 1;
@@ -163,6 +177,7 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     virtual
     override
   {
+    require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
     idToOwner[_tokenId] = _to;
 

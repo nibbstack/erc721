@@ -100,6 +100,16 @@ contract NFToken is
     _;
   }
 
+  modifier notZeroAddress(
+    address _addr
+  )
+  {
+    require(_addr != address(0), ZERO_ADDRESS);
+    _;
+  }
+
+
+
   /**
    * @dev Contract constructor.
    */
@@ -173,10 +183,10 @@ contract NFToken is
     override
     canTransfer(_tokenId)
     validNFToken(_tokenId)
+    notZeroAddress(_to)
   {
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == _from, NOT_OWNER);
-    require(_to != address(0), ZERO_ADDRESS);
 
     _transfer(_to, _tokenId);
   }
@@ -196,6 +206,7 @@ contract NFToken is
     override
     canOperate(_tokenId)
     validNFToken(_tokenId)
+    notZeroAddress(_approved)
   {
     address tokenOwner = idToOwner[_tokenId];
     require(_approved != tokenOwner, IS_OWNER);
@@ -217,6 +228,7 @@ contract NFToken is
   )
     external
     override
+    notZeroAddress(_operator)
   {
     ownerToOperators[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
@@ -234,9 +246,9 @@ contract NFToken is
     external
     override
     view
+    notZeroAddress(_owner)
     returns (uint256)
   {
-    require(_owner != address(0), ZERO_ADDRESS);
     return _getOwnerNFTCount(_owner);
   }
 
@@ -330,8 +342,8 @@ contract NFToken is
   )
     internal
     virtual
+    notZeroAddress(_to)
   {
-    require(_to != address(0), ZERO_ADDRESS);
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
 
     _addNFToken(_to, _tokenId);
