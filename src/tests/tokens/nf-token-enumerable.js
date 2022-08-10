@@ -6,12 +6,32 @@ describe('nf-token-enumerable', function() {
   const id1 = 123;
   const id2 = 124;
   const id3 = 125;
+  const id4 = 126;
 
   beforeEach(async () => {
     const nftContract = await ethers.getContractFactory('NFTokenEnumerableTestMock');
-    nfToken = await nftContract.deploy();
+    nfToken = await nftContract.deploy(0);
     [ owner, bob, jane, sara] = await ethers.getSigners();
     await nfToken.deployed();
+  });
+
+  it('correctly mints a NFT limited by maxSupply', async function() {
+    const nftContract = await ethers.getContractFactory('NFTokenEnumerableTestMock');
+    nfToken = await nftContract.deploy(3);
+    [ owner ] = await ethers.getSigners();
+    await nfToken.deployed();
+
+    await nfToken.connect(owner).mint(owner.address, id1);
+    await nfToken.connect(owner).mint(owner.address, id2);
+    await nfToken.connect(owner).mint(owner.address, id3);
+
+    expect(await nfToken.balanceOf(owner.address)).to.equal(3);
+    expect(await nfToken.totalSupply()).to.equal(3);
+    expect(await nfToken.getMaxSupply()).to.equal(3);
+
+    await expect(nfToken.connect(owner).mint(owner.address, id4)).to.be.revertedWith('005008');
+    expect(await nfToken.totalSupply()).to.equal(3);
+    expect(await nfToken.getMaxSupply()).to.equal(3);
   });
 
   it('correctly checks all the supported interfaces', async function() {
@@ -24,6 +44,7 @@ describe('nf-token-enumerable', function() {
     expect(await nfToken.connect(owner).mint(bob.address, id1)).to.emit(nfToken, 'Transfer');
     expect(await nfToken.balanceOf(bob.address)).to.equal(1);
     expect(await nfToken.totalSupply()).to.equal(1);
+    expect(await nfToken.getMaxSupply()).to.equal(1);
   });
 
   it('returns the correct token by index', async function() {
@@ -33,6 +54,7 @@ describe('nf-token-enumerable', function() {
     expect(await nfToken.tokenByIndex(0)).to.equal(id1);
     expect(await nfToken.tokenByIndex(1)).to.equal(id2);
     expect(await nfToken.tokenByIndex(2)).to.equal(id3);
+    expect(await nfToken.getMaxSupply()).to.equal(3);
   });
 
   it('throws when trying to get token by non-existing index', async function() {
@@ -120,5 +142,4 @@ describe('nf-token-enumerable', function() {
     expect(await nfToken.ownerToIdsLen(sara.address)).to.equal(1);
     expect(await nfToken.ownerToIdbyIndex(sara.address, 0)).to.equal(id1);
   });
-
 });

@@ -19,14 +19,17 @@ contract NFTokenMetadataEnumerableMock is
    * @dev Contract constructor.
    * @param _name A descriptive name for a collection of NFTs.
    * @param _symbol An abbreviated name for NFTokens.
+   * @param _maxSupply The max amount NFTs to supply.
    */
   constructor(
     string memory _name,
-    string memory _symbol
+    string memory _symbol,
+    uint256 _maxSupply
   )
   {
     nftName = _name;
     nftSymbol = _symbol;
+    maxSupply = _maxSupply;
   }
 
   /**

@@ -183,7 +183,7 @@ describe('nf-token', function() {
   //   const sendsToSelfOnConstructContract = await ethers.getContractFactory('SendsToSelfOnConstruct');
   //   const sendsToSelfOnConstruct = await sendsToSelfOnConstructContract.deploy();
   //   expect(await sendsToSelfOnConstruct.deployed().deployTransaction).to.emit(sendsToSelfOnConstructContract, 'Transfer');
-  
+
   //   console.log('here');
   //   // console.log(log);
   //   // console.log(sendsToSelfOnConstruct); No Receive event, 2x Transfer

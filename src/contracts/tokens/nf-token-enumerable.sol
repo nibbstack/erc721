@@ -108,7 +108,9 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     * @param _tokenId of the NFT to be minted by the msg.sender.
     */
   function _mint(address _to, uint256 _tokenId) internal virtual override {
-    require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
+    if (maxSupply != 0) {
+      require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
+    }
 
     super._mint(_to, _tokenId);
     tokens.push(_tokenId);
@@ -177,7 +179,10 @@ contract NFTokenEnumerable is NFToken, ERC721Enumerable {
     virtual
     override
   {
-    require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
+    if (maxSupply != 0) {
+      require(tokens.length < maxSupply, OUT_OF_MAX_SUPPLY);
+    }
+
     require(idToOwner[_tokenId] == address(0), NFT_ALREADY_EXISTS);
     idToOwner[_tokenId] = _to;
 

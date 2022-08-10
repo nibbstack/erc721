@@ -206,7 +206,6 @@ contract NFToken is
     override
     canOperate(_tokenId)
     validNFToken(_tokenId)
-    notZeroAddress(_approved)
   {
     address tokenOwner = idToOwner[_tokenId];
     require(_approved != tokenOwner, IS_OWNER);
@@ -442,10 +441,10 @@ contract NFToken is
     private
     canTransfer(_tokenId)
     validNFToken(_tokenId)
+    notZeroAddress(_to)
   {
     address tokenOwner = idToOwner[_tokenId];
     require(tokenOwner == _from, NOT_OWNER);
-    require(_to != address(0), ZERO_ADDRESS);
 
     _transfer(_to, _tokenId);
 

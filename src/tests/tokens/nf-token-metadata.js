@@ -48,4 +48,4 @@ describe('nf-token-metadata', function() {
     expect(await nfToken.checkUri(id1)).to.equal('');
   });
 
-});  
+});

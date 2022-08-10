@@ -1,7 +1,7 @@
 
 const { expect } = require('chai');
 
-describe('nf-token-enumerable', function() {
+describe('nf-token-metadata-enumerable', function() {
   let nfToken, owner, bob, jane, sara;
   const id1 = 123;
   const id2 = 124;
@@ -15,6 +15,7 @@ describe('nf-token-enumerable', function() {
     nfToken = await nftContract.deploy(
       'Foo',
       'F',
+      0
     );
     [ owner, bob, jane, sara] = await ethers.getSigners();
     await nfToken.deployed();

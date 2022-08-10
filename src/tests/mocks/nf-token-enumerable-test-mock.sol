@@ -4,6 +4,12 @@ pragma solidity ^0.8.0;
 import "../../contracts/mocks/nf-token-enumerable-mock.sol";
 
 contract NFTokenEnumerableTestMock is NFTokenEnumerableMock {
+    constructor(
+      uint256 _maxSupply
+    )
+      NFTokenEnumerableMock(_maxSupply) {
+    }
+
     function ownerToIdsLen(address _owner) external view returns (uint256) {
         return ownerToIds[_owner].length;
     }

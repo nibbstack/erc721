@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../../contracts/tokens/erc721-token-receiver.sol";
+import "../../contracts/interface/erc721-token-receiver.sol";
 
 contract NFTokenReceiverTestMock is
   ERC721TokenReceiver
