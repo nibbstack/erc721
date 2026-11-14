@@ -141,7 +141,7 @@ describe('nf-token', function() {
 
   it('throws when trying to safe transfers NFT from owner to a smart contract', async function() {
     await nfToken.connect(owner).mint(bob.address, id1);
-    await expect(nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, nfToken.address, id1)).to.be.revertedWith('Transaction reverted: function selector was not recognized and there\'s no fallback function');
+    await expect(nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, nfToken.address, id1)).to.be.revertedWith('function selector was not recognized and there\'s no fallback function');
   });
 
   it('correctly safe transfers NFT from owner to smart contract that can receive NFTs', async function() {

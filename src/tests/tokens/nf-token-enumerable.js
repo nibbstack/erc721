@@ -98,7 +98,12 @@ describe('nf-token-enumerable', function() {
     await nfToken.connect(owner).burn(id3);
     expect(await nfToken.idToOwnerIndexWrapper(id3)).to.equal(0);
     expect(await nfToken.ownerToIdsLen(bob.address)).to.equal(0);
-    await expect(nfToken.ownerToIdbyIndex(bob.address, 0)).to.be.revertedWith('VM Exception while processing transaction: reverted with panic code 0x32 (Array accessed at an out-of-bounds or negative index)');
+    try {
+      await nfToken.ownerToIdbyIndex(bob.address, 0);
+      expect.fail('index 0 should revert');
+    } catch (error) {
+      expect(String(error.message)).to.match(/panic code (0x32|50)/);
+    }
     expect(await nfToken.idToIndexWrapper(id3)).to.equal(0);
   });
 
@@ -115,7 +120,12 @@ describe('nf-token-enumerable', function() {
     expect(await nfToken.ownerToIdsLen(bob.address)).to.equal(2);
     expect(await nfToken.ownerToIdbyIndex(bob.address, 0)).to.equal(id2);
     expect(await nfToken.ownerToIdbyIndex(bob.address, 1)).to.equal(id3);
-    await expect(nfToken.ownerToIdbyIndex(bob.address, 2)).to.be.revertedWith('VM Exception while processing transaction: reverted with panic code 0x32 (Array accessed at an out-of-bounds or negative index)');
+    try {
+      await nfToken.ownerToIdbyIndex(bob.address, 2);
+      expect.fail('index 2 should revert');
+    } catch (error) {
+      expect(String(error.message)).to.match(/panic code (0x32|50)/);
+    }
 
     expect(await nfToken.ownerToIdsLen(sara.address)).to.equal(1);
     expect(await nfToken.ownerToIdbyIndex(sara.address, 0)).to.equal(id1);

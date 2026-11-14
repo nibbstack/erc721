@@ -15,7 +15,7 @@ module.exports = {
   paths: {
     sources: './src/*',
     artifacts: './build',
-    tests: './src/tests/*'
+    tests: './src/tests'
   },
   abiExporter: {
     path: './abi',
