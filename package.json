@@ -2,11 +2,11 @@
   "name": "@nibbstack/erc721",
   "version": "2.6.1",
   "description": "Reference implementation of the ERC-721 non-fungible token standard.",
+  "type": "module",
   "scripts": {
-    "test": "npx hardhat test",
-    "compile": "npx hardhat compile",
-    "flatten": "npx hardhat flatten",
-    "coverage": "npx hardhat coverage",
+    "test": "hardhat test mocha",
+    "compile": "hardhat build",
+    "coverage": "hardhat test mocha --coverage",
     "solhint": "solhint src/**/*.sol"
   },
   "license": "MIT",
@@ -41,15 +41,14 @@
     "standard"
   ],
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "2.0.2",
-    "@nomiclabs/hardhat-waffle": "2.0.1",
-    "chai": "4.3.4",
-    "ethereum-waffle": "3.4.0",
-    "ethers": "5.5.2",
-    "hardhat": "2.7.0",
-    "hardhat-abi-exporter": "2.3.1",
-    "solhint": "3.3.6",
-    "solidity-coverage": "0.7.17",
-    "ts-node": "10.4.0"
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "4.0.0",
+    "@solidstate/hardhat-abi-exporter": "3.0.4",
+    "chai": "6.3.0",
+    "ethers": "6.17.0",
+    "hardhat": "3.22.0",
+    "solhint": "6.2.5"
+  },
+  "engines": {
+    "node": "26"
   }
 }

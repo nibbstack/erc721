@@ -27,8 +27,8 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 
 ## Requirements
 
-* NodeJS 12+ is supported
-* Windows, Linux or macOS
+* Node.js 26
+* macOS, Linux, or Windows
 
 ## Installation
 
@@ -81,10 +81,10 @@ To do this, simply paste the code below into Remix and deploy the smart contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.38;
 
-import "https://github.com/fulldecent/erc721/src/contracts/tokens/nf-token-metadata.sol";
-import "https://github.com/fulldecent/erc721/src/contracts/ownership/ownable.sol";
+import "https://github.com/fulldecent/erc721/blob/main/src/contracts/tokens/nf-token-metadata.sol";
+import "https://github.com/fulldecent/erc721/blob/main/src/contracts/ownership/ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.

@@ -1,6 +1,6 @@
 {
-  "extends": "solhint:default",
   "rules": {
-    "max-line-length": ["warn", 100]
+    "max-line-length": ["warn", 100],
+    "no-console": "error"
   }
 }
