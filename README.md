@@ -1,4 +1,4 @@
-[![Node.js CI](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml/badge.svg)](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml) [![NPM Version](https://badge.fury.io/js/@nibbstack%2Ferc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721) [![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/fulldecent/erc721/blob/main/BUG_BOUNTY.md)
+[![Node.js CI](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml/badge.svg)](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml) [![NPM Version](https://img.shields.io/npm/v/@nibbstack/erc721)](https://www.npmjs.com/package/@nibbstack/erc721) [![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/fulldecent/erc721/blob/main/BUG_BOUNTY.md)
 
 # ERC-721 Token — Reference Implementation
 
