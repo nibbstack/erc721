@@ -12,12 +12,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nibbstack/erc721.git"
+    "url": "git+https://github.com/fulldecent/erc721.git"
   },
   "bugs": {
-    "url": "https://github.com/nibbstack/erc721/issues"
+    "url": "https://github.com/fulldecent/erc721/issues"
   },
-  "homepage": "https://github.com/nibbstack/erc721#readme",
+  "homepage": "https://github.com/fulldecent/erc721#readme",
   "keywords": [
     "ethereum",
     "blockchain",

@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/nibbstack/erc721.svg?branch=master)&nbsp;[![codecov](https://codecov.io/gh/nibbstack/erc721/branch/master/graph/badge.svg?token=F0tgRHyWSM)](https://codecov.io/gh/nibbstack/erc721)&nbsp;[![NPM Version](https://badge.fury.io/js/@0xcert%2Fethereum-erc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721)&nbsp;[![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/nibbstack/erc721/blob/master/BUG_BOUNTY.md)
+[![Node.js CI](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml/badge.svg)](https://github.com/fulldecent/erc721/actions/workflows/node.js.yml) [![NPM Version](https://badge.fury.io/js/@nibbstack%2Ferc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721) [![Bug Bounty](https://img.shields.io/badge/bounty-open-2930e8.svg)](https://github.com/fulldecent/erc721/blob/main/BUG_BOUNTY.md)
 
 # ERC-721 Token — Reference Implementation
 
@@ -44,13 +44,13 @@ $ npm install @nibbstack/erc721@2.6.1
 
 ### Source
 
-*This is the recommended installation method if you want to improve the `nibbstack/erc721` project.*
+*This is the recommended installation method if you want to improve the `fulldecent/erc721` project.*
 
 Clone this repository and install the required `npm` dependencies:
 
 ```
-$ git clone git@github.com:nibbstack/erc721.git
-$ cd ethereum-erc721
+$ git clone https://github.com/fulldecent/erc721.git
+$ cd erc721
 $ npm install
 ```
 
@@ -83,8 +83,8 @@ To do this, simply paste the code below into Remix and deploy the smart contract
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "https://github.com/nibbstack/erc721/src/contracts/tokens/nf-token-metadata.sol";
-import "https://github.com/nibbstack/erc721/src/contracts/ownership/ownable.sol";
+import "https://github.com/fulldecent/erc721/src/contracts/tokens/nf-token-metadata.sol";
+import "https://github.com/fulldecent/erc721/src/contracts/ownership/ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.
@@ -160,7 +160,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to help out.
 
 You are somebody that reads the documentation of smart contracts and understands how the ERC-721 Token Reference Implementation works. So you have unique skills and your time is valuable. We will pay you for your contributions to this project in the form of bug reports.
 
-If your project depends on ERC-721 or you want to help improve the assurance of this project then you can pledge a bounty. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@nibbstack.com](mailto:bounty@nibbstack.com) if interested. Thank you.
+If your project depends on ERC-721 or you want to help improve the assurance of this project then you can pledge a bounty. This means you will commit to paying researchers that demonstrate a problem. [Contact us](https://x.com/intent/tweet?text=%40fulldecent%20) if interested. Thank you.
 
 Read the full [bug bounty program](BUG_BOUNTY.md).
 

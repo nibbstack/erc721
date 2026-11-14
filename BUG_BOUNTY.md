@@ -12,13 +12,13 @@ The leaderboard will list all the contributors to this bounty.
 
 ## Sponsors
 
-**Sponsor this bug bounty if you support ERC-721**. This means you will commit to paying researchers that demonstrate a problem. Contact us at [bounty@nibbstack.com](mailto:bounty@nibbstack.com) if interested. Thank you.
+**Sponsor this bug bounty if you support ERC-721**. This means you will commit to paying researchers that demonstrate a problem. [Contact us](https://x.com/intent/tweet?text=%40fulldecent%20) if interested. Thank you.
 
 ## Scope of this bounty program
 
 This bounty is open for an unlimited time. A previous limited-time bounty program was:
 
-* [Round 1](https://github.com/nibbstack/erc721/issues/46) — **2018-05-16 at 00:01 CET** to **2018-07-16 at 23:59 CET**
+* [Round 1](https://github.com/fulldecent/erc721/issues/46) — **2018-05-16 at 00:01 CET** to **2018-07-16 at 23:59 CET**
 
 Help us find any problems with this contract and with ERC-721 in general. This bounty program's function scope includes:
 
@@ -37,7 +37,7 @@ Style guide conformance is out of scope. The style guide for this project and th
 - Only the end-user contracts (`src/contracts/**/*.sol`) are in scope.
 - Only the latest released version of this project [![NPM Version](https://badge.fury.io/js/@nibbstack%2Ferc721.svg)](https://www.npmjs.com/package/@nibbstack/erc721) is in scope.
 - Only Ethereum mainnet is in scope. We intend to add other blockchains at a future date such as Hyperledger Burrow, Ethereum Classic, and POA Network.
-- [GitHub Issues](https://github.com/nibbstack/erc721/issues) is the only way to report issues and request rewards.
+- [GitHub Issues](https://github.com/fulldecent/erc721/issues) is the only way to report issues and request rewards.
 - The Nibbstack team has complete and final judgment on the acceptability of bug reports.
 - This program is governed under the laws of the Republic of Slovenia, if there is a party that we are unable to pay due to trade embargoes or other restrictions, then we won't pay. But we are happy to cooperate by making alternate arrangements.
 
@@ -90,12 +90,12 @@ Rules for bounty sponsor:
   * Yes. [Well known losses](https://github.com/ethereum/EIPs/issues/223) due to problems with ERC-20 have exceeded [tens of millions USD]((https://github.com/ethereum/EIPs/issues/223)). The best defense we can offer to the community is to be transparent when issues come. The following are two references on this topic to explore further.
   * Schneier, Bruce. ["Damned Good Idea"](https://www.schneier.com/essay-146.html). CSO Online. Retrieved 29 April 2013.
   * Heiser, Jay (January 2001). ["Exposing Infosecurity Hype"](https://web.archive.org/web/20060328012516/http://infosecuritymag.techtarget.com/articles/january01/columns_curmudgeons_corner.shtml). *Information Security Mag*. TechTarget. Archived from [the original](http://infosecuritymag.techtarget.com/articles/january01/columns_curmudgeons_corner.shtml) on 28 March 2006. Retrieved 29 April 2013.
-  * [:star: Star this repo](https://github.com/nibbstack/erc721/) if you are using this code. Surely you would want to know of any bugs as soon as possible.
-  * If you prefer to send us a bug report privately so that a fix can be developed concurrently with the announcement you are welcome to mail us at [bounty@nibbstack.com](mailto:bounty@nibbstack.com). You are welcome to make a hashed bug report (set issue body to hash of your message). This will still be eligible for payment and recognition.
+  * [:star: Star this repo](https://github.com/fulldecent/erc721/) if you are using this code. Surely you would want to know of any bugs as soon as possible.
+  * If you prefer to send a bug report privately so that a fix can be developed concurrently with the announcement, contact the sponsors through mutually trusted contacts. This project does not publish a direct address.
 
 * Will things change during the bounty program?
   * Yes, we are seeking sponsors and will add additional prizes here if that happens.
-  * Yes, we will update the code and redeploy the contract. So, click [:star: STAR and :eye: WATCH](https://github.com/nibbstack/erc721/) above on this repo for updates.
+  * Yes, we will update the code and redeploy the contract. So, click [:star: STAR and :eye: WATCH](https://github.com/fulldecent/erc721/) above on this repo for updates.
 
 - Taxes?
   - If you earn so much money that you will need to fill out a tax form, then we will ask you to fill out a tax form. This whole program is subject to the laws of the Republic of Slovenia.
