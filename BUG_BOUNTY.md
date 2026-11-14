@@ -27,7 +27,8 @@ Help us find any problems with this contract and with ERC-721 in general. This b
 - Give a token to somebody else and double-spend it or revert it to your control
 - Any undocumented and unintuitive behavior
 - Typos
-- Style guide violations (find the current style guide in effect referenced from [CONTRIBUTING.md](CONTRIBUTING.md))
+
+Style guide conformance is out of scope. The style guide for this project and the Solidity style guide disagree, so right now conformance is impossible. We intend to update our style guide (and possibly update the Solidity style guide) and later add this conformance back into scope for this bounty program.
 
 ## Rules and rewards
 
