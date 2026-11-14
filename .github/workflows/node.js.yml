@@ -1,27 +1,56 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# Test the reference implementation on the Node.js version in .node-version.
+# Coverage runs in its own job so instrumentation cannot land in the workspace
+# that a later pack or publish step would ship.
 
 name: Node.js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  build-test:
+    name: Build and test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16] # https://nodejs.org/en/about/releases/
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: |
-        npm ci
-        npm run solhint && npm test
-        npm run coverage
-    - name: Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        flags: unittests
+      - name: Check out this commit
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint contracts
+        run: npm run solhint
+
+      - name: Test
+        run: npm test
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this commit
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Coverage
+        run: npm run coverage

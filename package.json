@@ -51,5 +51,8 @@
     "solhint": "3.3.6",
     "solidity-coverage": "0.7.17",
     "ts-node": "10.4.0"
+  },
+  "engines": {
+    "node": "26"
   }
 }

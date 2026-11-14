@@ -27,8 +27,8 @@ There are also test mocks that can be seen [here](src/tests/mocks). These are sp
 
 ## Requirements
 
-* NodeJS 12+ is supported
-* Windows, Linux or macOS
+* Node.js 26
+* macOS, Linux, or Windows
 
 ## Installation
 
