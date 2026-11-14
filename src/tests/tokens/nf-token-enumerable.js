@@ -1,17 +1,19 @@
 
-const { expect } = require('chai');
+import { expect } from "chai";
+import { network } from "hardhat";
 
 describe('nf-token-enumerable', function() {
-  let nfToken, owner, bob, jane, sara;
+  let nfToken, owner, bob, jane, sara, ethers;
   const id1 = 123;
   const id2 = 124;
   const id3 = 125;
 
   beforeEach(async () => {
+    ({ ethers } = await network.create());
     const nftContract = await ethers.getContractFactory('NFTokenEnumerableTestMock');
     nfToken = await nftContract.deploy();
     [ owner, bob, jane, sara] = await ethers.getSigners();
-    await nfToken.deployed();
+    await nfToken.waitForDeployment();
   });
 
   it('correctly checks all the supported interfaces', async function() {

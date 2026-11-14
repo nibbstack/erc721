@@ -83,8 +83,8 @@ To do this, simply paste the code below into Remix and deploy the smart contract
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.38;
 
-import "https://github.com/fulldecent/erc721/src/contracts/tokens/nf-token-metadata.sol";
-import "https://github.com/fulldecent/erc721/src/contracts/ownership/ownable.sol";
+import "https://github.com/fulldecent/erc721/blob/main/src/contracts/tokens/nf-token-metadata.sol";
+import "https://github.com/fulldecent/erc721/blob/main/src/contracts/ownership/ownable.sol";
 
 /**
  * @dev This is an example contract implementation of NFToken with metadata extension.

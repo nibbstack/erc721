@@ -1,19 +1,21 @@
 
-const { expect } = require('chai');
+import { expect } from "chai";
+import { network } from "hardhat";
 
 describe('nf-token-metadata', function() {
-  let nfToken, owner, bob;
+  let nfToken, owner, bob, ethers;
   const id1 = 1;
   const uri1 = 'http://nibbstack.com/1';
 
   beforeEach(async () => {
+    ({ ethers } = await network.create());
     const nftContract = await ethers.getContractFactory('NFTokenMetadataTestMock');
     nfToken = await nftContract.deploy(
       'Foo',
       'F',
     );
     [ owner, bob] = await ethers.getSigners();
-    await nfToken.deployed();
+    await nfToken.waitForDeployment();
   });
 
   it('correctly checks all the supported interfaces', async function() {

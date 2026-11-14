@@ -1,16 +1,18 @@
-const { expect } = require('chai');
+import { expect } from "chai";
+import { network } from "hardhat";
 
 describe('nf-token', function() {
-  let nfToken, owner, bob, jane, sara;
+  let nfToken, owner, bob, jane, sara, ethers;
   const zeroAddress = '0x0000000000000000000000000000000000000000';
   const id1 = 123;
   const id2 = 124;
 
   beforeEach(async () => {
+    ({ ethers } = await network.create());
     const nftContract = await ethers.getContractFactory('NFTokenTestMock');
     nfToken = await nftContract.deploy();
     [ owner, bob, jane, sara] = await ethers.getSigners();
-    await nfToken.deployed();
+    await nfToken.waitForDeployment();
   });
 
   it('correctly checks all the supported interfaces', async function() {
@@ -141,31 +143,31 @@ describe('nf-token', function() {
 
   it('throws when trying to safe transfers NFT from owner to a smart contract', async function() {
     await nfToken.connect(owner).mint(bob.address, id1);
-    await expect(nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, nfToken.address, id1)).to.be.revertedWith('function selector was not recognized and there\'s no fallback function');
+    await expect(nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, await nfToken.getAddress(), id1)).to.revert(ethers);
   });
 
   it('correctly safe transfers NFT from owner to smart contract that can receive NFTs', async function() {
     const tokenReceiverContract = await ethers.getContractFactory('NFTokenReceiverTestMock');
     const tokenReceiver = await tokenReceiverContract.deploy();
-    await tokenReceiver.deployed();
+    await tokenReceiver.waitForDeployment();
 
     await nfToken.connect(owner).mint(bob.address, id1);
-    await nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, tokenReceiver.address, id1);
+    await nfToken.connect(bob)['safeTransferFrom(address,address,uint256)'](bob.address, await tokenReceiver.getAddress(), id1);
     expect(await nfToken.balanceOf(bob.address)).to.equal(0);
-    expect(await nfToken.balanceOf(tokenReceiver.address)).to.equal(1);
-    expect(await nfToken.ownerOf(id1)).to.equal(tokenReceiver.address);
+    expect(await nfToken.balanceOf(await tokenReceiver.getAddress())).to.equal(1);
+    expect(await nfToken.ownerOf(id1)).to.equal(await tokenReceiver.getAddress());
   });
 
   it('correctly safe transfers NFT from owner to smart contract that can receive NFTs with data', async function() {
     const tokenReceiverContract = await ethers.getContractFactory('NFTokenReceiverTestMock');
     const tokenReceiver = await tokenReceiverContract.deploy();
-    await tokenReceiver.deployed();
+    await tokenReceiver.waitForDeployment();
 
     await nfToken.connect(owner).mint(bob.address, id1);
-    expect(await nfToken.connect(bob)['safeTransferFrom(address,address,uint256,bytes)'](bob.address, tokenReceiver.address, id1, '0x01')).to.emit(nfToken, 'Transfer');
+    expect(await nfToken.connect(bob)['safeTransferFrom(address,address,uint256,bytes)'](bob.address, await tokenReceiver.getAddress(), id1, '0x01')).to.emit(nfToken, 'Transfer');
     expect(await nfToken.balanceOf(bob.address)).to.equal(0);
-    expect(await nfToken.balanceOf(tokenReceiver.address)).to.equal(1);
-    expect(await nfToken.ownerOf(id1)).to.equal(tokenReceiver.address);
+    expect(await nfToken.balanceOf(await tokenReceiver.getAddress())).to.equal(1);
+    expect(await nfToken.ownerOf(id1)).to.equal(await tokenReceiver.getAddress());
   });
 
   it('correctly burns a NFT', async function() {
@@ -182,7 +184,7 @@ describe('nf-token', function() {
   // it.only('safeTransfer does not call onERC721Received to constructing contract', async function() {
   //   const sendsToSelfOnConstructContract = await ethers.getContractFactory('SendsToSelfOnConstruct');
   //   const sendsToSelfOnConstruct = await sendsToSelfOnConstructContract.deploy();
-  //   expect(await sendsToSelfOnConstruct.deployed().deployTransaction).to.emit(sendsToSelfOnConstructContract, 'Transfer');
+  //   expect(await sendsToSelfOnConstruct.waitForDeployment().deployTransaction).to.emit(sendsToSelfOnConstructContract, 'Transfer');
   
   //   console.log('here');
   //   // console.log(log);
