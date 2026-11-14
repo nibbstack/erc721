@@ -81,7 +81,7 @@ To do this, simply paste the code below into Remix and deploy the smart contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.38;
 
 import "https://github.com/fulldecent/erc721/src/contracts/tokens/nf-token-metadata.sol";
 import "https://github.com/fulldecent/erc721/src/contracts/ownership/ownable.sol";
